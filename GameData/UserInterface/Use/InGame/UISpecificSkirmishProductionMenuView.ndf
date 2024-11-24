@@ -1109,7 +1109,7 @@ template UISpecificSkirmishProductionMenuViewDescriptor
 
     ShortcutUILayer = $/M3D/Input/UserInputLayerHandler/InputLayer_InGameShortcuts
 
-    NbMaxPlanes = 9
+    NbMaxPlanes = 25  // @tag : 最大飞机数(原为9)
 
     SquadGroupName = "HPROD_SQD"
     HalfSquadGroupName = "HPROD_HSQD"

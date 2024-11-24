@@ -391,3 +391,15 @@ MatrixCostName_WP_Unternehmen_Zentrum_multi is MAP
     (EDefaultFactories/Tanks, [1, 1, 1, 2, 2, 3]),
 ]
 
+// ANCHOR - 为All_mutil定制消耗矩阵
+MatrixCostName_All_mutil is MAP [
+    (EDefaultFactories/Art, [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]),
+    (EDefaultFactories/DCA, [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]),
+    (EDefaultFactories/Defense, [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]),
+    (EDefaultFactories/Helis, [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]),
+    (EDefaultFactories/Infantry, [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]),
+    (EDefaultFactories/Logistic, [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]),
+    (EDefaultFactories/Planes, [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]),
+    (EDefaultFactories/Recons, [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]),
+    (EDefaultFactories/Tanks, [1, 1, 1, 1, 1, 1, 1, 1, 1, 1])
+]

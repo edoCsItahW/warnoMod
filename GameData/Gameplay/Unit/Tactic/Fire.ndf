@@ -1,11 +1,9 @@
-export ModernWarfareModularUnitFireDescriptorForTestIA is TEntityDescriptor
-(
+export ModernWarfareModularUnitFireDescriptorForTestIA is TEntityDescriptor (
     World        = WorldIndices_Fires
     DescriptorId      = GUID:{00000000-0000-0000-0000-000013000000}
     ClassNameForDebug = 'WargameFireForTestIA'
 
-    ModulesDescriptors           =
-    [
+    ModulesDescriptors           = [
         TTypeUnitModuleDescriptor(),
         TPositionModuleDescriptor(),
         TApparenceModelModuleDescriptor

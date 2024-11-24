@@ -1,7 +1,7 @@
 
 // -------------------------------------------------------------------------------------------------
 
-OffMapAirplaneComponentDimension is [111.0, 72.0]
+OffMapAirplaneComponentDimension is [66.6, 43.2]  // @tag : 大概是飞机面板的尺寸(原为[111.0, 72.0])
 OffMapAirplaneRadioButton is TBUCKRadioButtonManager()
 
 BUCKSpecificOffMapAirplaneMainComponentDescriptor is BUCKSpecificOffMapButton

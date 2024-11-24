@@ -108,3 +108,12 @@ unnamed TLocalisationDicoResource
     DicoToken = "NAMES_ESP"
     FileName = "GameData:/Gameplay/Unit/Names/UNITNAMES_ESP.csv"
 )
+
+// ANCHOR - -------------- 开始修改: 为All_mutil添加新的名称 -------------
+
+unnamed TLocalisationDicoResource (
+    DicoToken = "ALLMUTIL"
+    FileName = "GameData:/Gameplay/Unit/Names/UNITNAMES_ALLMUTIL.csv"
+)
+
+// -------------------------- 结束修改 ---------------------------------

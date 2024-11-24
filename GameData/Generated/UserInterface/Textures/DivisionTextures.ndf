@@ -1,7 +1,14 @@
 // Ne pas éditer, ce fichier est généré par DivisionTextureFileWriter
 
+// ANCHOR - ------------------ 开始修改: 为All_multi添加纹理(图标) ----------------- 
+// TODO: 似乎无用
+/**
+ * Texture_Division_Emblem_All_multi is TUIResourceTexture_Common (
+ *   FileName = "GameData:dog.png"
+ * )
+ * */
 
-
+// --------------------------- 结束修改 ----------------------------------------
 
 Texture_Division_Emblem_FR_11e_Para is TUIResourceTexture_Common
 (
@@ -266,6 +273,8 @@ DivisionAdditionalTextureBank is TBUCKToolAdditionalTextureBank
 (
     Textures = MAP
     [
+        // ("Texture_Division_Emblem_All_multi", MAP [(~/ComponentState/Normal, ~/Texture_Division_Emblem_All_multi)]),  // ANCHOR - 添加All_multi的纹理 // TODO - 似乎无效
+
         ("Texture_Division_Emblem_FR_11e_Para", MAP [(~/ComponentState/Normal, ~/Texture_Division_Emblem_FR_11e_Para)]),
         ("Texture_Division_Emblem_FR_152eID", MAP [(~/ComponentState/Normal, ~/Texture_Division_Emblem_FR_152eID)]),
         ("Texture_Division_Emblem_FR_5eDB", MAP [(~/ComponentState/Normal, ~/Texture_Division_Emblem_FR_5eDB)]),

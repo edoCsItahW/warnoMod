@@ -6,6 +6,7 @@ DeckSerializer is TDeckSerializer
 
     DivisionIds = MAP
     [
+        (Descriptor_Deck_Division_All_multi, 1),   // ANCHOR - 将该师
         (Descriptor_Deck_Division_SOV_3FrontUkr_solo, 4),
         (Descriptor_Deck_Division_US_CENTAG_solo, 5),
         (Descriptor_Deck_Division_US_11ACR_solo, 8),
