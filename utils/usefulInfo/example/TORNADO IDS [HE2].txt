@@ -1,0 +1,567 @@
+
+//武器参考对象F4F_Phantom_II_HE1_RFA
+
+
+//UniteDescriptor.ndf
+
+export Descriptor_Unit_Tornado_IDS_HE2_RFA is TEntityDescriptor
+(
+    DescriptorId       = GUID:{2a91e3c0-24f0-4d4b-86c9-dd6df594cd62}
+    ClassNameForDebug  = 'Unit_Tornado_IDS_HE2_RFA'
+    ModulesDescriptors = [
+        TTypeUnitModuleDescriptor
+        (
+            Nationalite                      = ENationalite/Allied
+            MotherCountry                    = 'RFA'
+            AcknowUnitType                   = ~/TAcknowUnitType_Air_CAS
+            TypeUnitFormation                = 'None'
+        ),
+        AirplaneFlagsModuleDescriptor,
+        ~/TargetManagerModuleSelector,
+        TemplateUnitCriticalModule(Module=$/GFX/UnitConstantes/CriticalEffectModule_Airplane),
+        ~/TargetCoordinatorModuleSelector,
+        AirplanePositionModuleDescriptor
+        (
+            LowAltitudeFlyingAltitude  = ((2000) * Metre)
+        ),
+        ~/PlayerMissionModuleDescriptor,
+        ~/InflammableModuleDescriptorUnit,
+        ~/LinkTeamModuleDescriptor,
+        TTagsModuleDescriptor
+        (
+            TagSet = [
+                "Air",
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Avion",
+                "Avion_Bombardier",
+                "Avion_Bombardier_Infanterie",
+                "UNITE_Tornado_IDS_HE2_RFA",
+                "Unite",
+            ]
+        ),
+        TExperienceModuleDescriptor
+        (
+            ExperienceLevelsPackDescriptor = ~/ExperienceLevelsPackDescriptor_XP_pack_avion
+            CanWinExperience = True
+            ExperienceGainBySecond = ~/ExperienceGainBySecond
+            ExperienceMultiplierBonusOnKill = ~/ExperienceMultiplierBonusOnKill
+        ),
+        TVisibilityModuleDescriptor
+        (
+            UnitConcealmentBonus = 1.0
+            VisionUnitType       = EVisionUnitType/AlwaysInHighAltitude
+        ),
+        ApparenceModel is VehicleApparenceModelModuleDescriptor
+        (
+            Depiction = ~/Gfx_Tornado_IDS_HE1_RFA_Autogen
+            BlackHoleIdentifier = "Tornado_IDS_HE1_RFA"
+            ReferenceMesh = $/GFX/DepictionResources/Modele_Tornado_IDS_HE1_RFA
+        ),
+        WeaponManager is TModuleSelector
+        (
+            Default        = $/GFX/Weapon/WeaponDescriptor_Tornado_IDS_HE2_RFA
+            Selection      = [~/NilDescriptorIfCadavre]
+        ),
+        TBaseDamageModuleDescriptor
+        (
+            MaxPhysicalDamages = 10
+            MaxSuppressionDamages = ~/Airplane_MaxSuppressionDamages
+            MaxStunDamages = ~/Airplane_MaxStunDamages
+            PhysicalDamageLevelsPack = ~/DamageLevelsPackDescriptor_Default_pack_paliers_degats_phy
+            SuppressDamageLevelsPack = ~/DamageLevelsPackDescriptor_Airplanes_packSupp
+            StunDamageLevelsPack = ~/DamageLevelsPackDescriptor_Unit_packStun_Artillerie
+        ),
+        TDamageModuleDescriptor
+        (
+            SuppressDamagesRegenRatio = ~/Airplane_SuppressDamagesRegenRatioList
+            StunDamagesRegen = ~/Airplane_StunDamagesRegen
+            BlindageProperties = TBlindageProperties
+            (
+                ResistanceFront = TResistanceTypeRTTI(Family=ResistanceFamily_avion Index=1)
+                ResistanceSides = TResistanceTypeRTTI(Family=ResistanceFamily_avion Index=1)
+                ResistanceRear = TResistanceTypeRTTI(Family=ResistanceFamily_avion Index=1)
+                ResistanceTop = TResistanceTypeRTTI(Family=ResistanceFamily_avion Index=1)
+                ExplosiveReactiveArmor = False
+            )
+            KillWhenDamagesReachMax = True
+            HitRollECM = -0.3
+            AutoOrientation = True
+            UseTopArmorAgainstFire = False
+        ),
+        TRoutModuleDescriptor(MoralLevel = 60),
+        GenericMovement is TModuleSelector
+        (
+            Default = TGenericMovementModuleDescriptor
+            (
+               MaxSpeedInKmph = 1162
+               PathfindType = $/Pathfind/PathfindTypes/Flying
+            )
+            Selection = [~/NilDescriptorIfCadavre]
+        ),
+        AirplaneMovement is AirplaneMovementDescriptor
+        (
+            Altitude = ((1400) * Metre)
+            AltitudeMin = (300 * Metre)
+            SpeedInKmph = 1162
+            AgilityRadius = ((3690) * Metre)
+            PitchAngle = 17
+            RollAngle = 70
+            RollSpeed = 105
+            EvacAngle = 5
+            EvacToStartingPoint = True
+            OrderedAttackStrategies =
+            [
+                DogfightAttackStrategyDescriptor,
+                BombAttackStrategyDescriptor,
+                DiveAttackStrategyDescriptor,
+            ]
+        ),
+        TFuelModuleDescriptor
+        (
+            FuelCapacity = 2400
+            FuelMoveDuration = 240.0
+        ),
+        TScannerConfigurationDescriptor
+        (
+            OpticsAltitudeConfig = ~/EVisionOpticsAltitudeConfig/UseOnRS_TBAWithGroundOpticsLerp
+            PorteeVisionTBAGRU = 4947
+            PorteeVisionFOWGRU = 0.0
+            DetectionTBAGRU = 4947
+            PorteeVisionGRU = 4947
+            PorteeIdentification = 0.0
+            OpticalStrength = 0
+            OpticalStrengthAltitude = 450
+            SpecializedDetectionsGRU = MAP [
+                ( EVisionUnitType/AlwaysInHighAltitude, 31802.0 ),
+            ]
+        ),
+        TReverseScannerWithIdentificationDescriptor
+        (
+            VisibilityRollRule = TModernWarfareVisibilityRollRule
+            (
+                IdentifyBaseProbability     = 0.9
+                TimeBetweenEachIdentifyRoll = 2.0
+                VisibilityRuleDescriptor    = $/GFX/VisionRules/StandardWargameVisibilityRollRule
+                DistanceMultiplierRule      = TModernWarfareDistanceMultiplierRollRuleDescriptor
+                (
+                    MultiplicateurAPorteeMaximale            = DefaultMultiplicateurAPorteeMaximale
+                    MultiplicateurAPorteeMinimale            = DefaultMultiplicateurAPorteeMinimale
+                    Exposant                                 = DefaultExposant
+                    MultiplicateurAPorteeMaximaleEnMouvement = DefaultMultiplicateurAPorteeMaximaleEnMouvement
+                    MultiplicateurAPorteeMinimaleEnMouvement = DefaultMultiplicateurAPorteeMinimaleEnMouvement
+                    ExposantEnMouvement                      = DefaultExposantEnMouvement
+                )
+            )
+        ),
+        MissileCarriage is TemplateUnitMissileCarriage(Connoisseur = MissileCarriage_Tornado_IDS_HE1_RFA),
+        TCadavreGeneratorModuleDescriptor( CadavreDescriptor = ~/Descriptor_UnitCadavre_Tornado_IDS_HE1_RFA ),
+        TIAStratModuleDescriptor
+        (
+            DatabaseId = 0
+            GameplayBehavior = EGameplayBehavior/Nothing
+        ),
+        ~/IAStratZoneIndexModuleDescriptor,
+        ~/AirplaneStateEngineCompanyModuleDescriptor,
+        ~/AirplaneStateEngineModuleDescriptor,
+        ~/DebugModuleDescriptor,
+        ~/SelectionModuleDescriptor,
+        TFlareModuleDescriptor_MW
+        (
+            ProjectileSpeed                   = [~/VitesseInitialFlare_Avion, ~/VitesseInitialFlare_Avion, ~/VitesseInitialFlare_Avion]
+            DistanceActivation                = ~/DistanceActivationFlare_Avion
+            TimeBetweenFlare                  = ~/TempsEntreLancementFlare_Avion
+            MinimalTimeBetweenFlare           = ~/TempsMinimalEntreLancementFlare_Avion
+            BonusTimeBetweenFlareByProjectile = ~/TempsBonusLancementFlareParArme_Avion
+        ),
+        ~/EffectApplierModuleDescriptor,
+        TProductionModuleDescriptor
+        (
+            Factory            = EDefaultFactories/Planes
+            ProductionTime     = -1
+            ProductionRessourcesNeeded = MAP [
+                ($/GFX/Resources/Resource_CommandPoints, 265),
+                ($/GFX/Resources/Resource_Tickets, 4),
+            ]
+        ),
+        ~/InfluencePositionModuleDescriptor,
+        ~/InfluenceDataModuleDescriptor,
+        TAutomaticBehaviorModuleDescriptor
+        (
+            CanAssist = False
+            AssistRequestBroadcastRadius = 0.0 * Metre
+            DistanceToFlee = 0.0 * Metre
+            MaxDistanceForOffensiveReaction = 0.0 * Metre
+            MaxDistanceForEngagement = 10000 * Metre
+            SearchedTagsInEngagementTarget = [
+               "AllUnits",
+            ]
+        ),
+        TCubeActionModuleDescriptor
+        (
+            CubeActionDescriptor = $/GFX/UI/CubeAction_Menu_Ordres_avions
+        ),
+        TMinimapDisplayModuleDescriptor
+        (
+            Texture = "Texture_Minimap_Unit_avion"
+            FollowUnitOrientation = True
+        ),
+        TOrderConfigModuleDescriptor
+        (
+            ValidOrders = ~/Descriptor_OrderAvailability_Tornado_IDS_HE1_RFA
+        ),
+        TOrderableModuleDescriptor
+        (
+            UnlockableOrders = ~/Descriptor_OrderAvailability_Tornado_IDS_HE1_RFA
+        ),
+        ~/OrderDisplayModuleDescriptor,
+        ~/GroupableUnitModuleSelector,
+        TTacticalLabelModuleDescriptor
+        (
+            MultiSelectionSortingOrder = 19240
+            IdentifiedTexture = TBUCKToolAlternativeValues_TUIValueTextureNameFromTEugBMutableInteger
+            (
+                CommandNameTrigger = ~/SpecificCommandName/UpdateGUIFromIconType
+                Alterator = $/GUIOption/IconType
+                Values =
+                [
+                    "Texture_RTS_H_Support_air",
+                    "Texture_Support_air"
+                ]
+            )
+            UnidentifiedTexture = TBUCKToolAlternativeValues_TUIValueTextureNameFromTEugBMutableInteger
+            (
+                CommandNameTrigger = ~/SpecificCommandName/UpdateGUIFromIconType
+                Alterator = $/GUIOption/IconType
+                Values =
+                [
+                    "Texture_RTS_H_avion_nonIdentifie",
+                    "Texture_NATO_Unidentified"
+                ]
+            )
+            PositionHeightOffset = 1000.0
+        ),
+        TAirplaneModuleDescriptor
+        (
+            EvacuationTime = 12
+            TravelDuration = 10
+        ),
+        ~/TargetDataModuleDescriptor,
+        ~/PackSignauxModuleDescriptor,
+        TStrategicDataModuleDescriptor
+        (
+            UnitAttackValue = 346
+            UnitDefenseValue = 461
+            UnitBonusXpPerLevelValue = 0
+        ),
+        TUnitUIModuleDescriptor
+        (
+            UnitRole = 'tank_B'
+            SpecialtiesList = [
+                'appui',
+            ]
+            NameToken = 'GXTNPGOSBF'
+            InfoPanelConfigurationToken = 'avion'
+            GenerateName = true
+            MenuIconTexture = 'Texture_RTS_H_Support_air'
+            ButtonTexture = 'Texture_Button_Unit_Tornado_IDS_HE1_RFA'
+            CountryTexture = 'CommonTexture_MotherCountryFlag_RFA'
+            TypeStrategicCount = ETypeStrategicDetailedCount/Air_Support
+        ),
+        TUnitUpkeepModuleDescriptor( UpkeepPercentage = 0.5 ),
+    ]
+)
+
+
+
+//WeaponDescriptor.ndf
+
+export WeaponDescriptor_Tornado_IDS_HE2_RFA is TWeaponManagerModuleDescriptor
+(
+    Salves           = [ 4, 1, ]
+    SalvoIsMainSalvo = [ False, True, ]
+    AlwaysOrientArmorTowardsThreat = True
+    TurretDescriptorList = [
+        TTurretTwoAxisDescriptor
+        (
+            AngleRotationBase           = 0.0
+            AngleRotationBasePitch      = 0.0
+            AngleRotationMax            = 0.12217304763960307
+            AngleRotationMaxPitch       = 0.12217304763960307
+            AngleRotationMinPitch       = -0.12217304763960307
+            MountedWeaponDescriptorList = [
+                TMountedWeaponDescriptor
+                (
+                    AmmoConsumption_ForInterface        = 1
+                    Ammunition                          = $/GFX/Weapon/Ammo_GatlingAir_Mauser_BK_27mm_x2
+                    AnimateOnlyOneSoldier               = False
+                    DispersionRadiusOffColor            = RGBA[0,0,0,0]
+                    DispersionRadiusOffThickness        = -0.1
+                    DispersionRadiusOnColor             = RGBA[0,0,0,0]
+                    DispersionRadiusOnThickness         = -0.1
+                    EffectTag                           = 'FireEffect_GatlingAir_Mauser_BK_27mm_x2'
+                    HandheldEquipmentKey                = 'MeshAlternative_1'
+                    NbWeapons                           = 1
+                    SalvoStockIndex                     = 0
+                    ShowDispersion                      = False
+                    ShowInInterface                     = True
+                    TirContinu                          = True
+                    WeaponActiveAndCanShootPropertyName = 'WeaponActiveAndCanShoot_1'
+                    WeaponIgnoredPropertyName           = 'WeaponIgnored_1'
+                    WeaponShootDataPropertyName         = ["WeaponShootData_0_1", ]
+                )
+            ]
+            Tag                         = 'tourelle1'
+            VitesseRotation             = 1.5707963267948966
+            YulBoneOrdinal              = 1
+        ),
+        TTurretBombardierDescriptor
+        (
+            FlyingAltitude              = ((1400) * Metre)
+            FlyingSpeedInKmph           = 1162
+            MountedWeaponDescriptorList = [
+                TMountedWeaponDescriptor
+                (
+                    AmmoConsumption_ForInterface        = 1
+                    Ammunition                          = $/GFX/Weapon/Ammo_Bomb_Mk83_450kg_x12
+                    AnimateOnlyOneSoldier               = True
+                    DispersionRadiusOffColor            = RGBA[0,0,0,0]
+                    DispersionRadiusOffThickness        = -0.1
+                    DispersionRadiusOnColor             = RGBA[0,0,0,0]
+                    DispersionRadiusOnThickness         = -0.1
+                    EffectTag                           = 'FireEffect_Bomb_Mk82_250kg_x12'
+                    HandheldEquipmentKey                = 'MeshAlternative_2'
+                    NbWeapons                           = 1
+                    SalvoStockIndex                     = 1
+                    ShowDispersion                      = False
+                    ShowInInterface                     = True
+                    WeaponActiveAndCanShootPropertyName = 'WeaponActiveAndCanShoot_2'
+                    WeaponIgnoredPropertyName           = 'WeaponIgnored_2'
+                    WeaponShootDataPropertyName         = ["WeaponShootData_0_2", ]
+                )
+            ]
+            Tag                         = 'tourelle2'
+            YulBoneOrdinal              = 2
+        )
+    ]
+)
+
+
+
+//MissileCarriage.ndf
+// Tornado_IDS_HE2_RFA : ['Bomb Mk83 450kg x12']
+MissileCarriage_Tornado_IDS_HE2_RFA is TMissileCarriageConnoisseur
+(
+    MeshDescriptor = $/GFX/DepictionResources/Modele_Tornado_IDS_HE1_RFA
+    PylonSet = ~/DepictionPylonSet_Airplane_Default
+    WeaponInfos = 
+    [
+        TMissileCarriageWeaponInfo
+        (
+            Count = 12
+            MissileType = eAGM
+            MountingType = eMountingBomb
+            WeaponIndex = 2
+        ),
+    ]
+)
+MissileCarriage_Tornado_IDS_HE2_RFA_Showroom is TMissileCarriageConnoisseur
+(
+    MeshDescriptor = $/GFX/DepictionResources/Modele_Tornado_IDS_HE1_RFA
+    PylonSet = ~/DepictionPylonSet_Airplane_Default_Showroom
+    WeaponInfos = 
+    [
+        TMissileCarriageWeaponInfo
+        (
+            Count = 12
+            MissileType = eAGM
+            MountingType = eMountingBomb
+            WeaponIndex = 2
+        ),
+    ]
+)
+
+
+
+//MissileCarriageDepiction.ndf
+
+SubGenerators_Tornado_IDS_HE2_RFA is TStaticMissileCarriageSubDepictionGenerator
+(
+    MissileCarriageConnoisseur = MissileCarriage_Tornado_IDS_HE2_RFA
+    Missiles = 
+    [
+        TStaticMissileCarriageSubDepictionMissileInfo
+        (
+            Depiction = TemplateDepictionStaticMissilesAirUnit
+            (
+                PhysicalProperty = "Tourelle2_MissileCount"
+                ProjectileModelResource = $/GFX/DepictionResources/Modele_Missile_Mk_83
+            )
+            MissileCount = 12
+            WeaponIndex = 2
+        ),
+    ]
+    Pylons = ~/DepictionPylonSet_Airplane_Default
+    ReferenceMesh = $/GFX/DepictionResources/Modele_Tornado_IDS_HE1_RFA
+)
+SubGenerators_Showroom_Tornado_IDS_HE2_RFA is TStaticMissileCarriageSubDepictionGenerator
+(
+    MissileCarriageConnoisseur = MissileCarriage_Tornado_IDS_HE2_RFA_Showroom
+    Missiles = 
+    [
+        TStaticMissileCarriageSubDepictionMissileInfo
+        (
+            Depiction = TemplateDepictionMissileShowroom
+            (
+                ProjectileModelResource = $/GFX/DepictionResources/Modele_Missile_Mk_83
+            )
+            MissileCount = 12
+            WeaponIndex = 2
+        ),
+    ]
+    Pylons = ~/DepictionPylonSet_Airplane_Default_Showroom
+    ReferenceMesh = $/GFX/DepictionResources/Modele_Tornado_IDS_HE1_RFA
+)
+
+
+
+//DeckSerializer.ndf
+
+DeckSerializer is TDeckSerializer
+(
+
+    DivisionIds = MAP
+    [
+//......
+        ($/GFX/Unit/Descriptor_Unit_Tornado_IDS_HE2_RFA, 5005),
+    ]
+)
+
+
+
+//DivisionPacks.ndf
+
+Descriptor_Deck_Pack_Tornado_IDS_HE2_RFA is DeckPackDescriptor
+(
+    Unit = $/GFX/Unit/Descriptor_Unit_Tornado_IDS_HE2_RFA
+)
+
+
+
+//DivisionRules.ndf
+
+            ~/Descriptor_Deck_Division_RFA_5_Panzer_multi,
+//......
+                UnitRuleList =
+                [
+//......
+                    TDeckUniteRule
+                    (
+                        UnitDescriptor = $/GFX/Unit/Descriptor_Unit_Tornado_IDS_HE2_RFA
+                        AvailableWithoutTransport = True
+                        NumberOfUnitInPack = 2
+                        NumberOfUnitInPackXPMultiplier = [0.0, 1.0, 0.4, 0.0]
+                    ),
+                ]
+//......
+
+            ~/Descriptor_Deck_Division_RFA_2_PzGrenadier_multi,
+//......
+                UnitRuleList =
+                [
+//......
+                    TDeckUniteRule
+                    (
+                        UnitDescriptor = $/GFX/Unit/Descriptor_Unit_Tornado_IDS_HE2_RFA
+                        AvailableWithoutTransport = True
+                        NumberOfUnitInPack = 2
+                        NumberOfUnitInPackXPMultiplier = [0.0, 1.0, 0.4, 0.0]
+                    ),
+                ]
+//......
+
+
+
+//Divisions.ndf
+
+Descriptor_Deck_Division_RFA_5_Panzer_multi is TDeckDivisionDescriptor
+//......
+    PackList = MAP
+    [
+//......
+        (~/Descriptor_Deck_Pack_Tornado_IDS_HE2_RFA, 1),
+    ]
+//......
+
+Descriptor_Deck_Division_RFA_2_PzGrenadier_multi is TDeckDivisionDescriptor
+//......
+    PackList = MAP
+    [
+//......
+        (~/Descriptor_Deck_Pack_Tornado_IDS_HE2_RFA, 1),
+    ]
+//......
+
+
+
+//ShowRoomEquivalence.ndf
+
+export ShowRoomEquivalenceManager is TShowRoomEquivalenceManager
+(
+    UnitToShowRoomEquivalent = Map [
+//......
+        ( $/GFX/Unit/Descriptor_Unit_Tornado_IDS_HE2_RFA, $/GFX/Unit/Descriptor_ShowRoomUnit_Tornado_IDS_HE2_RFA ),
+    ]
+)
+
+
+
+//ShowRoomUnits.ndf
+
+export Descriptor_ShowRoomUnit_Tornado_IDS_HE2_RFA is TEntityDescriptor
+(
+    DescriptorId        = GUID:{d39e13f9-b283-44b7-9d7a-42a43528da58}
+    ClassNameForDebug   = "ShowRoomUnit_Tornado_IDS_HE2_RFA"
+    ModulesDescriptors = [
+        TTypeUnitModuleDescriptor
+        (
+            Nationalite                      = ENationalite/Allied
+            MotherCountry                    = 'RFA'
+            AcknowUnitType                   = ~/TAcknowUnitType_Air_CAS
+            TypeUnitFormation                = 'None'
+        ),
+        ~/ShowroomPositionModuleDescriptor,
+        TApparenceModelModuleDescriptor
+        (
+            PickableObject       = True
+            Depiction            = ~/Gfx_Tornado_IDS_HE1_RFA_Showroom_Autogen
+            ReferenceMesh        = $/GFX/DepictionResources/Modele_Tornado_IDS_HE1_RFA
+        ),
+        $/GFX/Weapon/WeaponDescriptor_Tornado_IDS_HE2_RFA,
+        ~/LinkTeamModuleDescriptor,
+        ~/EffectApplierModuleDescriptor,
+        TExperienceModuleDescriptor
+        (
+            ExperienceLevelsPackDescriptor = ~/ExperienceLevelsPackDescriptor_XP_pack_avion
+            CanWinExperience = True
+            ExperienceGainBySecond = ~/ExperienceGainBySecond
+            ExperienceMultiplierBonusOnKill = ~/ExperienceMultiplierBonusOnKill
+        ),
+        TCameraShowroomModuleDescriptor
+        (
+            Token = 'BigVehicle'
+            SpawnType = EShowroomSpawnType/Airplane
+        ),
+    ]
+)
+
+
+
+//AllUnitsTactic.ndf
+
+AllUnitsTactic is [
+//......
+    $/GFX/Unit/Descriptor_Unit_Tornado_IDS_HE2_RFA,
+//......
+]
+

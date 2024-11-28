@@ -1,0 +1,13 @@
+In a NDF file like UnitNames.ndf, you can create a new dictionary like this :
+unnamed TLocalisationDicoResource
+(
+DicoToken = ~/LocalisationConstantes/dico_unites
+FileName = "GameData:/Path/To/Your/File/MyDico.csv"
+)
+
+DicoToken depends on what your tokens are used for (this example is for unit names), and FileName is a path to your new CSV file. This CSV file must be structured like this :
+"TOKEN";"REFTEXT"
+"RFIEYZQQMY";"Big Gun Abrams"
+"RGZDPHIMPJ";"Anti-Tank unicorn"
+
+This example file creates two new tokens, usable for unit names : respectively RFIEYZQQMY and RGZDPHIMPJ, that you can plug in the NameToken field of the TUnitUIModuleDescriptor of a unit in UniteDescriptor.ndf, to name your unit "Big Gun Abrams" or "Anti-Tank unicorn".

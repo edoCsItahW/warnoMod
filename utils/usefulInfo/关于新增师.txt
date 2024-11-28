@@ -1,0 +1,118 @@
+Even if i can help you not much , at least i can give you a jumpstart.
+I still have to try a lotmyself.
+
+steamapps\common\WARNO\Mods\ModName\GameData\Generated\Gameplay\Decks
+There are you files you want to look for
+
+DeckSerializer/DivisionList is the list of units, packs and decks just add your Divisions in the same format, but use a new number.
+
+e.g
+(Descriptor_Deck_Division_SOV_27_Gds_Rifle_multi, 207),
+
+~/Descriptor_Deck_Division_SOV_27_Gds_Rifle_multi,
+
+Unfortunately i don't know what this list actually do, but my division appeared in arsenal as soon i wrote it here.
+
+The file division is your actually division. At least for me is is almost self explanatory what means what.
+e.g. (this is what they look like)
+Descriptor_Deck_Division_SOV_27_Gds_Rifle_multi is TDeckDivisionDescriptor
+(
+.
+.
+.
+
+
+In the [] comes the Packs you want to add and the number of it. Look into the file pack for the pack names.
+
+(~/Descriptor_Deck_Pack_TOE_SOV_27_Gds_Rifle_multi_2S1_Gvozdika_SOV, 2),
+2 Packs of an art unit.
+
+There are few interisting setting for you in divisions but i still dont know change them.
+DivisionName = 'PFMPJNZAXB' is the actually name. Every division which would use it gets the name of the 27th. I asume somewhere is a file that translate the letters into a actually name. If you change it into something new the name of you division will be blank.
+
+PortraitTexture = "Texture_Division_Portrait_default"
+TypeTexture = "Texture_Division_Type_infantryReg"
+
+This is something i cant get my head around because i asumed a path or somthing that i can just fill with my own png or something like that. Probably there is a file for this aswell.
+
+Also it uses axis for pact.
+
+In the file DivisionCostMatrix you can find you cost matrix
+
+CostMatrix = MatrixCostName_SOV_27_Gds_Rifle_multi (this is in the divsions file )
+
+MatrixCostName_SOV_27_Gds_Rifle_multi is MAP
+[
+(EDefaultFactories/AT, [1, 1, 1, 1, 2, 3, 3, 3]),
+(EDefaultFactories/Defense, [0]),
+(EDefaultFactories/Helis, [1, 1, 2, 3]),
+(EDefaultFactories/Infantry, [1, 1, 1, 1, 1, 1, 2, 3, 3]),
+(EDefaultFactories/Logistic, [1, 1, 2, 2, 3, 3, 3]),
+(EDefaultFactories/Planes, [1, 1, 2, 3, 3, 3]),
+(EDefaultFactories/Recons, [1, 1, 2, 3, 3, 3]),
+(EDefaultFactories/Support, [1, 1, 1, 1, 2, 3, 3, 3]),
+(EDefaultFactories/Tanks, [1, 2, 2, 3, 3, 3]),
+]
+
+I think thats pretty much self explanatory
+
+
+DivisionRules states which pack has how many units, which transports and how the experience is distributed.
+
+~/Descriptor_Deck_Division_SOV_27_Gds_Rifle_multi,
+TDeckDivisionRule
+(
+UnitRuleList =
+[
+TDeckUniteRule
+(
+UnitDescriptor = $/GFX/Unit/Descriptor_Unit_2S1_Gvozdika_SOV
+AvailableWithoutTransport = True
+NumberOfUnitInPack = 3
+NumberOfUnitInPackXPMultiplier = [1.0, 0.68, 0.49, 0.0]
+),
+. After that a new "Rule" is set for the next unit.
+.
+.
+
+As you can see in in this file states you have in a pack 3 units (specific for this division)
+and the Exp ratios. In this case you got 1 times 3 rookies, 0.68 times 3 trained and 0.49 time 3 experienced units
+
+In the file packs you find your packs.
+
+Descriptor_Deck_Pack_TOE_SOV_27_Gds_Rifle_challenge_2S1_Gvozdika_SOV is TDeckPackDescriptor
+(
+DescriptorId = GUID:{aa198597-9ec7-4c85-8f5a-31652ad1e62a}
+CfgName = 'TOE_SOV_27_Gds_Rifle_challenge_2S1_Gvozdika_SOV'
+TransporterAndUnitsList =
+[
+TDeckTransporterAndUnitsDescriptor
+(
+UnitDescriptor = $/GFX/Unit/Descriptor_Unit_2S1_Gvozdika_SOV
+),
+]
+)
+
+
+
+\steamapps\common\WARNO\Mods\ModName\GameData\Generated\Gameplay\Gfx
+Here the find UniteDescriptor which includes every unit in game, look here for the unitnames
+
+They start like that followed by a bunch of settings
+export Descriptor_Unit_2S1_Gvozdika_SOV is TEntityDescriptor
+(
+.
+.
+.
+
+
+
+The main problem is that somewhere is a file that needs a specific object, but you dont know that because your actually edited file has no reference to that. The compiler also dont tell you that missing link a mistake. You only know something isnt working.
+
+You can visit youtube, someone called oatmilk has uploaded a "tutorial".
+Its not perfekt but should give you an idea how to mess around with the files.
+
+
+If i make progress i will update you.
+
+i hope i helped you somwhat.

@@ -6,16 +6,11 @@ Descriptor_CombatGroup_pion_BEL_11Sq_A_11ste_Smaldeel is TDeckCombatGroupDescrip
     Name = "VJUGOBWUEI"
     SmartGroupList =
     [
-        TDeckSmartGroupDescriptor
-        (
+        TDeckSmartGroupDescriptor(
             Name = "OOFEEKZYZU"
-            PackIndexUnitNumberList =
-            [
-                (0,2),
-            ]
+            PackIndexUnitNumberList = [(0,2)]
         ),
-        TDeckSmartGroupDescriptor
-        (
+        TDeckSmartGroupDescriptor(
             Name = "BLKHXBDHRX"
             PackIndexUnitNumberList =
             [

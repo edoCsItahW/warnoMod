@@ -1,0 +1,353 @@
+
+//UniteDescriptor.ndf
+export Descriptor_Unit_M998_Humvee_DDR is TEntityDescriptor
+(
+    DescriptorId       = GUID:{ec37efea-3e12-4ec2-af11-ae212e30dd3d}
+    ClassNameForDebug  = 'Unit_M998_Humvee_DDR'
+    ModulesDescriptors = [
+        TTypeUnitModuleDescriptor
+        (
+            Nationalite                      = ENationalite/Axis
+            MotherCountry                    = 'DDR'
+            AcknowUnitType                   = ~/TAcknowUnitType_Transport
+            TypeUnitFormation                = 'Char'
+        ),
+        TankFlagsModuleDescriptor,
+        TemplateUnitCriticalModule(Module=$/GFX/UnitConstantes/CriticalEffectModule_Vehicule_NonArme),
+        ~/TargetCoordinatorModuleSelector,
+        ~/UnitPositionModuleDescriptor,
+        ~/PlayerMissionModuleDescriptor,
+        ~/InflammableModuleDescriptorUnit,
+        ~/LinkTeamModuleDescriptor,
+        TTagsModuleDescriptor
+        (
+            TagSet = [
+                "AllUnits",
+                "GroundUnits",
+                "UNITE_M998_Humvee_DDR",
+                "Unite",
+                "Vehicule",
+                "Vehicule_Transport",
+            ]
+        ),
+        TExperienceModuleDescriptor
+        (
+            ExperienceLevelsPackDescriptor = ~/ExperienceLevelsPackDescriptor_XP_pack_simple_v3
+            CanWinExperience = True
+            ExperienceGainBySecond = ~/ExperienceGainBySecond
+            ExperienceMultiplierBonusOnKill = ~/ExperienceMultiplierBonusOnKill
+        ),
+        TVisibilityModuleDescriptor
+        (
+            UnitConcealmentBonus = 1.5
+            VisionUnitType       = EVisionUnitType/AlwaysOnGround
+        ),
+        ApparenceModel is VehicleApparenceModelModuleDescriptor
+        (
+            Depiction = ~/Gfx_M998_Humvee_US_Autogen
+            BlackHoleIdentifier = "M998_Humvee_US"
+            GameplayBBoxBoneName = "chassis"
+            ReferenceMesh = $/GFX/DepictionResources/Modele_M998_Humvee_US
+        ),
+        TAutoCoverModuleDescriptor
+        (
+            AutoCoverRange             = 350*Metre
+            OccupationRadius           = 100*Metre
+            TerrainListMask            = ~/ETerrainType/None | ~/ETerrainType/ForetLegere | ~/ETerrainType/ForetDense
+            TerrainList                = [~/ETerrainType/ForetLegere, ~/ETerrainType/ForetDense, ]
+            UseTerrainsForEscape       = False
+        ),
+        TBaseDamageModuleDescriptor
+        (
+            MaxPhysicalDamages = 6
+            MaxSuppressionDamages = ~/GroundUnit_MaxSuppressionDamages
+            MaxStunDamages = ~/GroundUnit_MaxStunDamages
+            PhysicalDamageLevelsPack = ~/DamageLevelsPackDescriptor_Default_pack_paliers_degats_phy
+            SuppressDamageLevelsPack = ~/DamageLevelsPackDescriptor_GroundUnits_packSupp
+            StunDamageLevelsPack = ~/DamageLevelsPackDescriptor_Unit_packStun
+        ),
+        TDamageModuleDescriptor
+        (
+            SuppressDamagesRegenRatio = ~/GroundUnit_SuppressDamagesRegenRatioList
+            StunDamagesRegen = ~/GroundUnit_StunDamagesRegen
+            BlindageProperties = TBlindageProperties
+            (
+                ResistanceFront = TResistanceTypeRTTI(Family=ResistanceFamily_vehicule Index=1)
+                ResistanceSides = TResistanceTypeRTTI(Family=ResistanceFamily_vehicule Index=1)
+                ResistanceRear = TResistanceTypeRTTI(Family=ResistanceFamily_vehicule Index=1)
+                ResistanceTop = TResistanceTypeRTTI(Family=ResistanceFamily_vehicule Index=1)
+                ExplosiveReactiveArmor = False
+            )
+            KillWhenDamagesReachMax = True
+            HitRollECM = 0.0
+            AutoOrientation = True
+            UseTopArmorAgainstFire = True
+        ),
+        TRoutModuleDescriptor(MoralLevel = 0),
+        FacingInfos is ~/FacingInfosModuleDescriptor,
+        GenericMovement is TModuleSelector
+        (
+            Default = TGenericMovementModuleDescriptor
+            (
+               MaxSpeedInKmph = 72
+               PathfindType = $/Pathfind/PathfindTypes/Vehicle
+            )
+            Selection = [~/NilDescriptorIfCadavre]
+        ),
+        LandMovement is TModuleSelector
+        (
+            Default = TLandMovementModuleDescriptor
+            (
+                UnitMovingType = EUnitMovingType/AllTerrainWheel
+                SpeedBonusFactorOnRoad = 1.88
+                MaxAcceleration = ((75.0) * Metre)
+                MaxDeceleration = ((155.0) * Metre)
+                TempsDemiTour = 4.5
+                StartTime = 0
+                StopTime = 0
+                RotationStartTime = 0
+                RotationStopTime = 0
+            )
+            Selection = [~/NilDescriptorIfCadavre]
+        ),
+        TFuelModuleDescriptor
+        (
+            FuelCapacity = 100
+            FuelMoveDuration = 863.0
+        ),
+        ~/CapturableModuleDescriptor,
+        TScannerConfigurationDescriptor
+        (
+            OpticsAltitudeConfig = ~/EVisionOpticsAltitudeConfig/DontUse
+            PorteeVisionTBAGRU = 0.0
+            PorteeVisionFOWGRU = 0.0
+            DetectionTBAGRU = 4947
+            PorteeVisionGRU = 3534
+            PorteeIdentification = 0.0
+            OpticalStrength = 42.45
+            OpticalStrengthAltitude = 10
+            SpecializedDetectionsGRU = MAP [
+                ( EVisionUnitType/AlwaysInHighAltitude, 5654.0 ),
+            ]
+        ),
+        TReverseScannerWithIdentificationDescriptor
+        (
+            VisibilityRollRule = TModernWarfareVisibilityRollRule
+            (
+                IdentifyBaseProbability     = 0.13
+                TimeBetweenEachIdentifyRoll = 15.0
+                VisibilityRuleDescriptor    = $/GFX/VisionRules/StandardWargameVisibilityRollRule
+                DistanceMultiplierRule      = TModernWarfareDistanceMultiplierRollRuleDescriptor
+                (
+                    MultiplicateurAPorteeMaximale            = DefaultMultiplicateurAPorteeMaximale
+                    MultiplicateurAPorteeMinimale            = DefaultMultiplicateurAPorteeMinimale
+                    Exposant                                 = DefaultExposant
+                    MultiplicateurAPorteeMaximaleEnMouvement = DefaultMultiplicateurAPorteeMaximaleEnMouvement
+                    MultiplicateurAPorteeMinimaleEnMouvement = DefaultMultiplicateurAPorteeMinimaleEnMouvement
+                    ExposantEnMouvement                      = DefaultExposantEnMouvement
+                )
+            )
+        ),
+        Transporter is
+            TModuleSelector
+            (
+                Default        = TTransporterModuleDescriptor
+                (
+                   TransportableTagSet            = [
+                                        "Crew",
+                                        "Unite_transportable",
+                                                    ]
+                   NbSeatsAvailable               = 1
+                   WreckUnloadPhysicalDamageBonus = WreckUnloadDamageBonus_Default_Physical
+                   WreckUnloadSuppressDamageBonus = WreckUnloadDamageBonus_Default_Suppress
+                   WreckUnloadStunDamageBonus     = WreckUnloadDamageBonus_Default_Stun
+                   LoadRadius                     = ((200) * Metre)
+                 )
+                Selection      = [~/NilDescriptorIfCadavre]
+             ),
+        TCadavreGeneratorModuleDescriptor( CadavreDescriptor = ~/Descriptor_UnitCadavre_M998_Humvee_US ),
+        TIAStratModuleDescriptor
+        (
+            DatabaseId = 0
+            GameplayBehavior = EGameplayBehavior/Nothing | EGameplayBehavior/TacticalAttackNearCover
+        ),
+        ~/IAStratZoneIndexModuleDescriptor,
+        ~/UnitStateEngineCompanyModuleDescriptor,
+        ~/UnitStateEngineModuleDescriptor,
+        ~/DebugModuleDescriptor,
+        ~/SelectionModuleDescriptor,
+        ~/EffectApplierModuleDescriptor,
+        TProductionModuleDescriptor
+        (
+            Factory            = EDefaultFactories/Infantry
+            ProductionTime     = 5
+            ProductionRessourcesNeeded = MAP [
+                ($/GFX/Resources/Resource_CommandPoints, 20),
+            ]
+        ),
+        ~/InfluencePositionModuleDescriptor,
+        ~/InfluenceDataModuleDescriptor,
+        TAutomaticBehaviorModuleDescriptor
+        (
+            CanAssist = False
+            AssistRequestBroadcastRadius = 0.0 * Metre
+            DistanceToFlee = 1000 * Metre
+            MaxDistanceForOffensiveReaction = 1000 * Metre
+            MaxDistanceForEngagement = 0.0 * Metre
+            SearchedTagsInEngagementTarget = [
+               "AllUnits",
+            ]
+        ),
+        TCubeActionModuleDescriptor
+        (
+            CubeActionDescriptor = $/GFX/UI/CubeAction_Menu_Ordres_transports_NonArme
+        ),
+        TMinimapDisplayModuleDescriptor
+        (
+            Texture = "Texture_Minimap_Unit_unit"
+            FollowUnitOrientation = False
+        ),
+        TOrderConfigModuleDescriptor
+        (
+            ValidOrders = ~/Descriptor_OrderAvailability_M998_Humvee_US
+        ),
+        TOrderableModuleDescriptor
+        (
+            UnlockableOrders = ~/Descriptor_OrderAvailability_M998_Humvee_US
+        ),
+        ~/OrderDisplayModuleDescriptor,
+        ~/GroupableUnitModuleSelector,
+        TTacticalLabelModuleDescriptor
+        (
+            MultiSelectionSortingOrder = 11020
+            IdentifiedTexture = TBUCKToolAlternativeValues_TUIValueTextureNameFromTEugBMutableInteger
+            (
+                CommandNameTrigger = ~/SpecificCommandName/UpdateGUIFromIconType
+                Alterator = $/GUIOption/IconType
+                Values =
+                [
+                    "Texture_RTS_H_transport_small",
+                    "Texture_transport_small"
+                ]
+            )
+            UnidentifiedTexture = TBUCKToolAlternativeValues_TUIValueTextureNameFromTEugBMutableInteger
+            (
+                CommandNameTrigger = ~/SpecificCommandName/UpdateGUIFromIconType
+                Alterator = $/GUIOption/IconType
+                Values =
+                [
+                    "Texture_RTS_H_veh_nonIdentifie",
+                    "Texture_veh_nonIdentifie"
+                ]
+            )
+            PositionHeightOffset = 1000.0
+            NbSoldiers = 0
+        ),
+        ~/TargetDataModuleDescriptor,
+        ~/PackSignauxModuleDescriptor,
+        TStrategicDataModuleDescriptor
+        (
+            UnitAttackValue = 1
+            UnitDefenseValue = 1
+            UnitBonusXpPerLevelValue = 1
+        ),
+        TUnitUIModuleDescriptor
+        (
+            UnitRole = 'tank_D'
+            SpecialtiesList = [
+                'transport',
+                '_transport2',
+            ]
+            NameToken = 'XUQUQFDEOR'
+            InfoPanelConfigurationToken = 'VehiculeTransporter'
+            DisplayRoadSpeedInKmph = 108
+            GenerateName = true
+            MenuIconTexture = 'Texture_RTS_H_transport_small'
+            ButtonTexture = 'Texture_Button_Unit_M998_Humvee_US'
+            CountryTexture = 'CommonTexture_MotherCountryFlag_DDR'
+            TypeStrategicCount = ETypeStrategicDetailedCount/Transport
+        ),
+            TModuleSelector
+            (
+                Default = TSellModuleDescriptor
+                (
+                )
+                Selection = [ ~/NilDescriptorIfCadavre ]
+            ),
+        TUnitUpkeepModuleDescriptor( UpkeepPercentage = 1.0 ),
+    ]
+)
+
+
+
+//DeckSerializer.ndf
+
+    DivisionIds = MAP
+    [
+//......
+        ($/GFX/Unit/Descriptor_Unit_M998_Humvee_DDR, 5003),
+    ]
+)
+
+
+
+//ShowRoomEquivalence.ndf
+
+export ShowRoomEquivalenceManager is TShowRoomEquivalenceManager
+(
+    UnitToShowRoomEquivalent = Map [
+//......
+        ( $/GFX/Unit/Descriptor_Unit_M998_Humvee_DDR, $/GFX/Unit/Descriptor_ShowRoomUnit_M998_Humvee_DDR ),
+    ]
+)
+
+
+
+//ShowRoomUnits.ndf
+
+export Descriptor_ShowRoomUnit_M998_Humvee_DDR is TEntityDescriptor
+(
+    DescriptorId        = GUID:{4f20ca41-5a12-4a64-97c8-fc770997ab72}
+    ClassNameForDebug   = "ShowRoomUnit_M998_Humvee_DDR"
+    ModulesDescriptors = [
+        TTypeUnitModuleDescriptor
+        (
+            Nationalite                      = ENationalite/Axis
+            MotherCountry                    = 'DDR'
+            AcknowUnitType                   = ~/TAcknowUnitType_Transport
+            TypeUnitFormation                = 'Char'
+        ),
+        ~/ShowroomPositionModuleDescriptor,
+        TApparenceModelModuleDescriptor
+        (
+            PickableObject       = True
+            Depiction            = ~/Gfx_M998_Humvee_US_Showroom_Autogen
+            ReferenceMesh        = $/GFX/DepictionResources/Modele_M998_Humvee_US
+            GameplayBBoxBoneName = 'chassis'
+        ),
+        ~/LinkTeamModuleDescriptor,
+        ~/EffectApplierModuleDescriptor,
+        TExperienceModuleDescriptor
+        (
+            ExperienceLevelsPackDescriptor = ~/ExperienceLevelsPackDescriptor_XP_pack_simple_v3
+            CanWinExperience = True
+            ExperienceGainBySecond = ~/ExperienceGainBySecond
+            ExperienceMultiplierBonusOnKill = ~/ExperienceMultiplierBonusOnKill
+        ),
+        TCameraShowroomModuleDescriptor
+        (
+            Token = 'Vehicle'
+            SpawnType = EShowroomSpawnType/Vehicle
+        ),
+    ]
+)
+
+
+
+//AllUnitsTactic.ndf
+
+AllUnitsTactic is [
+//......
+    $/GFX/Unit/Descriptor_Unit_M998_Humvee_DDR,
+//......
+]

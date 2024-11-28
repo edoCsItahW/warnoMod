@@ -1,0 +1,788 @@
+
+//UniteDescriptor.ndf
+
+export Descriptor_Unit_Begleitpanzer_57_DDR is TEntityDescriptor
+(
+    DescriptorId       = GUID:{32d8e6e1-b597-4549-85f0-ab89e03071ab}
+    ClassNameForDebug  = 'Unit_Begleitpanzer_57_DDR'
+    ModulesDescriptors = [
+        TTypeUnitModuleDescriptor
+        (
+            Nationalite                      = ENationalite/Axis
+            MotherCountry                    = 'DDR'
+            AcknowUnitType                   = ~/TAcknowUnitType_Tank
+            TypeUnitFormation                = 'Char'
+        ),
+        TankFlagsModuleDescriptor,
+        ~/TargetManagerModuleSelector,
+        TemplateUnitCriticalModule(Module=$/GFX/UnitConstantes/CriticalEffectModule_Vehicule_Arme),
+        ~/TargetCoordinatorModuleSelector,
+        ~/UnitPositionModuleDescriptor,
+        ~/PlayerMissionModuleDescriptor,
+        ~/InflammableModuleDescriptorUnit,
+        ~/LinkTeamModuleDescriptor,
+        TTagsModuleDescriptor
+        (
+            TagSet = [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Char",
+                "GroundUnits",
+                "UNITE_Begleitpanzer_57_DDR",
+                "Unite",
+                "Vehicule_Appui",
+            ]
+        ),
+        TExperienceModuleDescriptor
+        (
+            ExperienceLevelsPackDescriptor = ~/ExperienceLevelsPackDescriptor_XP_pack_simple_v3
+            CanWinExperience = True
+            ExperienceGainBySecond = ~/ExperienceGainBySecond
+            ExperienceMultiplierBonusOnKill = ~/ExperienceMultiplierBonusOnKill
+        ),
+        TVisibilityModuleDescriptor
+        (
+            UnitConcealmentBonus = 1.0
+            VisionUnitType       = EVisionUnitType/AlwaysOnGround
+        ),
+        ApparenceModel is VehicleApparenceModelModuleDescriptor
+        (
+            Depiction = ~/Gfx_Marder_1A3_MILAN_RFA_Autogen
+            BlackHoleIdentifier = "Marder_1A3_MILAN_RFA"
+            GameplayBBoxBoneName = "chassis"
+            ReferenceMesh = $/GFX/DepictionResources/Modele_Marder_1A3_MILAN_RFA
+        ),
+        TAutoCoverModuleDescriptor
+        (
+            AutoCoverRange             = 350*Metre
+            OccupationRadius           = 100*Metre
+            TerrainListMask            = ~/ETerrainType/None | ~/ETerrainType/ForetLegere | ~/ETerrainType/ForetDense
+            TerrainList                = [~/ETerrainType/ForetLegere, ~/ETerrainType/ForetDense, ]
+            UseTerrainsForEscape       = False
+        ),
+        WeaponManager is TModuleSelector
+        (
+            Default        = $/GFX/Weapon/WeaponDescriptor_Begleitpanzer_57_DDR
+            Selection      = [~/NilDescriptorIfCadavre]
+        ),
+        TBaseDamageModuleDescriptor
+        (
+            MaxPhysicalDamages = 10
+            MaxSuppressionDamages = ~/GroundUnit_MaxSuppressionDamages
+            MaxStunDamages = ~/GroundUnit_MaxStunDamages
+            PhysicalDamageLevelsPack = ~/DamageLevelsPackDescriptor_Default_pack_paliers_degats_phy
+            SuppressDamageLevelsPack = ~/DamageLevelsPackDescriptor_GroundUnits_packSupp
+            StunDamageLevelsPack = ~/DamageLevelsPackDescriptor_Unit_packStun
+        ),
+        TDamageModuleDescriptor
+        (
+            SuppressDamagesRegenRatio = ~/GroundUnit_SuppressDamagesRegenRatioList
+            StunDamagesRegen = ~/GroundUnit_StunDamagesRegen
+            BlindageProperties = TBlindageProperties
+            (
+                ResistanceFront = TResistanceTypeRTTI(Family=ResistanceFamily_blindage Index=5)
+                ResistanceSides = TResistanceTypeRTTI(Family=ResistanceFamily_blindage Index=3)
+                ResistanceRear = TResistanceTypeRTTI(Family=ResistanceFamily_blindage Index=2)
+                ResistanceTop = TResistanceTypeRTTI(Family=ResistanceFamily_blindage Index=2)
+                ExplosiveReactiveArmor = False
+            )
+            KillWhenDamagesReachMax = True
+            HitRollECM = 0.0
+            AutoOrientation = True
+            UseTopArmorAgainstFire = True
+        ),
+        TDangerousnessModuleDescriptor(Dangerousness  = 38),
+        TRoutModuleDescriptor(MoralLevel = 0),
+        FacingInfos is ~/FacingInfosModuleDescriptor,
+        GenericMovement is TModuleSelector
+        (
+            Default = TGenericMovementModuleDescriptor
+            (
+               MaxSpeedInKmph = 59
+               PathfindType = $/Pathfind/PathfindTypes/Vehicle
+            )
+            Selection = [~/NilDescriptorIfCadavre]
+        ),
+        LandMovement is TModuleSelector
+        (
+            Default = TLandMovementModuleDescriptor
+            (
+                UnitMovingType = EUnitMovingType/Track
+                SpeedBonusFactorOnRoad = 1.67
+                MaxAcceleration = ((50.0) * Metre)
+                MaxDeceleration = ((155.0) * Metre)
+                TempsDemiTour = 5.5
+                StartTime = 0
+                StopTime = 0
+                RotationStartTime = 0
+                RotationStopTime = 0
+            )
+            Selection = [~/NilDescriptorIfCadavre]
+        ),
+        TFuelModuleDescriptor
+        (
+            FuelCapacity = 500
+            FuelMoveDuration = 575.0
+        ),
+        TScannerConfigurationDescriptor
+        (
+            OpticsAltitudeConfig = ~/EVisionOpticsAltitudeConfig/DontUse
+            PorteeVisionTBAGRU = 0.0
+            PorteeVisionFOWGRU = 0.0
+            DetectionTBAGRU = 4947
+            PorteeVisionGRU = 3534
+            PorteeIdentification = 0.0
+            OpticalStrength = 90.9
+            OpticalStrengthAltitude = 40
+            SpecializedDetectionsGRU = MAP [
+                ( EVisionUnitType/AlwaysInHighAltitude, 5654.0 ),
+            ]
+        ),
+        TReverseScannerWithIdentificationDescriptor
+        (
+            VisibilityRollRule = TModernWarfareVisibilityRollRule
+            (
+                IdentifyBaseProbability     = 0.2
+                TimeBetweenEachIdentifyRoll = 10.0
+                VisibilityRuleDescriptor    = $/GFX/VisionRules/StandardWargameVisibilityRollRule
+                DistanceMultiplierRule      = TModernWarfareDistanceMultiplierRollRuleDescriptor
+                (
+                    MultiplicateurAPorteeMaximale            = DefaultMultiplicateurAPorteeMaximale
+                    MultiplicateurAPorteeMinimale            = DefaultMultiplicateurAPorteeMinimale
+                    Exposant                                 = DefaultExposant
+                    MultiplicateurAPorteeMaximaleEnMouvement = DefaultMultiplicateurAPorteeMaximaleEnMouvement
+                    MultiplicateurAPorteeMinimaleEnMouvement = DefaultMultiplicateurAPorteeMinimaleEnMouvement
+                    ExposantEnMouvement                      = DefaultExposantEnMouvement
+                )
+            )
+        ),
+        MissileCarriage is TemplateUnitMissileCarriage(Connoisseur = MissileCarriage_Begleitpanzer_57_DDR),
+        TCadavreGeneratorModuleDescriptor( CadavreDescriptor = ~/Descriptor_UnitCadavre_Begleitpanzer_57_DDR ),
+        TIAStratModuleDescriptor
+        (
+            DatabaseId = 0
+            GameplayBehavior = EGameplayBehavior/Nothing | EGameplayBehavior/RetreatOnOutOfAmmo | EGameplayBehavior/RetreatOnOutOfAmmo
+        ),
+        ~/IAStratZoneIndexModuleDescriptor,
+        ~/UnitStateEngineCompanyModuleDescriptor,
+        ~/UnitStateEngineModuleDescriptor,
+        ~/DebugModuleDescriptor,
+        ~/SelectionModuleDescriptor,
+        ~/EffectApplierModuleDescriptor,
+        TProductionModuleDescriptor
+        (
+            Factory            = EDefaultFactories/Tanks
+            ProductionTime     = 5
+            ProductionRessourcesNeeded = MAP [
+                ($/GFX/Resources/Resource_CommandPoints, 75),
+                ($/GFX/Resources/Resource_Tickets, 1),
+            ]
+        ),
+        ~/InfluencePositionModuleDescriptor,
+        ~/InfluenceDataModuleDescriptor,
+        TAutomaticBehaviorModuleDescriptor
+        (
+            CanAssist = False
+            AssistRequestBroadcastRadius = 0.0 * Metre
+            DistanceToFlee = 1000 * Metre
+            MaxDistanceForOffensiveReaction = 1000 * Metre
+            MaxDistanceForEngagement = 0.0 * Metre
+            SearchedTagsInEngagementTarget = [
+               "AllUnits",
+            ]
+        ),
+        TCubeActionModuleDescriptor
+        (
+            CubeActionDescriptor = $/GFX/UI/CubeAction_Menu_Ordres_unites
+        ),
+        TMinimapDisplayModuleDescriptor
+        (
+            Texture = "Texture_Minimap_Unit_unit"
+            FollowUnitOrientation = False
+        ),
+        TOrderConfigModuleDescriptor
+        (
+            ValidOrders = ~/Descriptor_OrderAvailability_Marder_1A3_MILAN_RFA
+        ),
+        TOrderableModuleDescriptor
+        (
+            UnlockableOrders = ~/Descriptor_OrderAvailability_Marder_1A3_MILAN_RFA
+        ),
+        ~/OrderDisplayModuleDescriptor,
+        ~/GroupableUnitModuleSelector,
+        TTacticalLabelModuleDescriptor
+        (
+            MultiSelectionSortingOrder = 14080
+            IdentifiedTexture = TBUCKToolAlternativeValues_TUIValueTextureNameFromTEugBMutableInteger
+            (
+                CommandNameTrigger = ~/SpecificCommandName/UpdateGUIFromIconType
+                Alterator = $/GUIOption/IconType
+                Values =
+                [
+                    "Texture_RTS_H_ifv",
+                    "Texture_ifv"
+                ]
+            )
+            UnidentifiedTexture = TBUCKToolAlternativeValues_TUIValueTextureNameFromTEugBMutableInteger
+            (
+                CommandNameTrigger = ~/SpecificCommandName/UpdateGUIFromIconType
+                Alterator = $/GUIOption/IconType
+                Values =
+                [
+                    "Texture_RTS_H_veh_nonIdentifie",
+                    "Texture_veh_nonIdentifie"
+                ]
+            )
+            PositionHeightOffset = 1000.0
+            NbSoldiers = 0
+        ),
+        ~/TargetDataModuleDescriptor,
+        ~/PackSignauxModuleDescriptor,
+        TStrategicDataModuleDescriptor
+        (
+            UnitAttackValue = 101
+            UnitDefenseValue = 64
+            UnitBonusXpPerLevelValue = 1
+        ),
+        TUnitUIModuleDescriptor
+        (
+            UnitRole = 'tank_C'
+            SpecialtiesList = [
+                'ifv',
+                '_resolute',
+            ]
+            NameToken = 'NRYNUVUIRL'
+            InfoPanelConfigurationToken = 'Default'
+            DisplayRoadSpeedInKmph = 79
+            UpgradeFromUnit = Descriptor_Unit_Marder_1A3_MILAN_RFA
+            GenerateName = true
+            MenuIconTexture = 'Texture_RTS_H_ifv'
+            ButtonTexture = 'Texture_Button_Unit_Marder_1A3_MILAN_RFA'
+            CountryTexture = 'CommonTexture_MotherCountryFlag_DDR'
+            TypeStrategicCount = ETypeStrategicDetailedCount/Armor
+        ),
+        TUnitUpkeepModuleDescriptor( UpkeepPercentage = 1.0 ),
+    ]
+)
+
+
+
+//UniteCadavreDescriptor.ndf
+
+Descriptor_UnitCadavre_Begleitpanzer_57_DDR is TEntityDescriptor
+(
+    DescriptorId       = GUID:{694a68a8-57d5-4088-8b4b-2daa0101520a}
+    ClassNameForDebug  = 'Unit_CadavreBegleitpanzer_57_DDR'
+    ModulesDescriptors = [
+        TTypeUnitModuleDescriptor
+        (
+            Nationalite                      = ENationalite/Axis
+            MotherCountry                    = 'DDR'
+            AcknowUnitType                   = ~/TAcknowUnitType_Tank
+            TypeUnitFormation                = 'Char'
+        ),
+        ~/EmptyTagsModuleDescriptor,
+        ~/CadavreFlagsModuleDescriptor,
+        ~/UnitCadavrePositionModuleDescriptor,
+        ~/LinkTeamModuleDescriptor,
+        UnitCadavreModuleDescriptor
+        (
+            KillAsVehicule = True
+            CadavreDuration = ~/CadavreDurationApresFeu
+            DeathExplosionAmmo = $/GFX/Weapon/Ammo_Mort_Unite_forte
+            ModuleDescriptorsToSteal =
+            [
+                ~/Descriptor_Unit_Begleitpanzer_57_DDR/WeaponManager,
+                ~/Descriptor_Unit_Begleitpanzer_57_DDR/ApparenceModel,
+                ~/Descriptor_Unit_Begleitpanzer_57_DDR/LandMovement,
+                ~/Descriptor_Unit_Begleitpanzer_57_DDR/GenericMovement,
+                ~/Descriptor_Unit_Begleitpanzer_57_DDR/MissileCarriage,
+            ]
+        ),
+        ~/Descriptor_Unit_Begleitpanzer_57_DDR/WeaponManager,
+        ~/Descriptor_Unit_Begleitpanzer_57_DDR/ApparenceModel,
+        ~/Descriptor_Unit_Begleitpanzer_57_DDR/LandMovement,
+        ~/Descriptor_Unit_Begleitpanzer_57_DDR/GenericMovement,
+        ~/Descriptor_Unit_Begleitpanzer_57_DDR/MissileCarriage,
+        ~/PackSignauxModuleDescriptor,
+        ~/DebugModuleDescriptor,
+    ]
+)
+
+
+
+//WeaponDescriptor.ndf
+
+export WeaponDescriptor_Begleitpanzer_57_DDR is TWeaponManagerModuleDescriptor
+(
+    Salves           = [ 37, 6, 250, 1, ]
+    AlwaysOrientArmorTowardsThreat = True
+    TurretDescriptorList = [
+        TTurretTwoAxisDescriptor
+        (
+            AimingPriority                  = 2
+            AngleRotationBase               = 0.0
+            AngleRotationBasePitch          = 0.0
+            AngleRotationMax                = 6.283185307179586
+            AngleRotationMaxPitch           = 0.4363323129985824
+            AngleRotationMinPitch           = -0.17453292519943295
+            MountedWeaponDescriptorList     = [
+                TMountedWeaponDescriptor
+                (
+                    AmmoConsumption_ForInterface        = 1
+                    Ammunition                          = $/GFX/Weapon/Ammo_AutoCanon_AP_L70_Mk1
+                    AnimateOnlyOneSoldier               = False
+                    DispersionRadiusOffColor            = RGBA[0,0,0,0]
+                    DispersionRadiusOffThickness        = -0.1
+                    DispersionRadiusOnColor             = RGBA[0,0,0,0]
+                    DispersionRadiusOnThickness         = -0.1
+                    EffectTag                           = 'FireEffect_DCA_2_canons_S60_57mm'
+                    HandheldEquipmentKey                = 'MeshAlternative_1'
+                    NbWeapons                           = 1
+                    SalvoStockIndex                     = 0
+                    ShowDispersion                      = False
+                    ShowInInterface                     = True
+                    WeaponActiveAndCanShootPropertyName = 'WeaponActiveAndCanShoot_1'
+                    WeaponIgnoredPropertyName           = 'WeaponIgnored_1'
+                    WeaponShootDataPropertyName         = ["WeaponShootData_0_1", ]
+                ),
+                TMountedWeaponDescriptor
+                (
+                    AmmoConsumption_ForInterface        = 1
+                    Ammunition                          = $/GFX/Weapon/Ammo_AutoCanon_HE_L70_Mk1
+                    AnimateOnlyOneSoldier               = False
+                    DispersionRadiusOffColor            = RGBA[0,0,0,0]
+                    DispersionRadiusOffThickness        = -0.1
+                    DispersionRadiusOnColor             = RGBA[0,0,0,0]
+                    DispersionRadiusOnThickness         = -0.1
+                    EffectTag                           = 'FireEffect_DCA_2_canons_S60_57mm'
+                    HandheldEquipmentKey                = 'MeshAlternative_2'
+                    NbWeapons                           = 1
+                    SalvoStockIndex                     = 0
+                    ShowDispersion                      = False
+                    ShowInInterface                     = True
+                    WeaponActiveAndCanShootPropertyName = 'WeaponActiveAndCanShoot_2'
+                    WeaponIgnoredPropertyName           = 'WeaponIgnored_2'
+                    WeaponShootDataPropertyName         = ["WeaponShootData_0_2", ]
+                )
+            ]
+            OutOfRangeTrackingDuration      = 3.5
+            Tag                             = 'tourelle1'
+            TurretIdleBehaviourDescriptor   = ~/TurretIdle_VehicleReco
+            VitesseRotation                 = 1.3962634015954636
+            YulBoneOrdinal                  = 1
+        ),
+        TTurretTwoAxisDescriptor
+        (
+            AngleRotationBase           = 0.0
+            AngleRotationBasePitch      = 0.17453292519943275
+            AngleRotationMax            = 6.283185307179586
+            AngleRotationMaxPitch       = 0.7853981633974483
+            AngleRotationMinPitch       = -0.17453292519943295
+            MountedWeaponDescriptorList = [
+                TMountedWeaponDescriptor
+                (
+                    AmmoConsumption_ForInterface        = 1
+                    Ammunition                          = $/GFX/Weapon/Ammo_ATGM_9M113_Konkurs_BMP2
+                    AnimateOnlyOneSoldier               = True
+                    DispersionRadiusOffColor            = RGBA[0,0,0,0]
+                    DispersionRadiusOffThickness        = -0.1
+                    DispersionRadiusOnColor             = RGBA[0,0,0,0]
+                    DispersionRadiusOnThickness         = -0.1
+                    EffectTag                           = 'FireEffect_ATGM_9M113_Konkurs_BMP2'
+                    HandheldEquipmentKey                = 'MeshAlternative_3'
+                    NbWeapons                           = 1
+                    SalvoStockIndex                     = 1
+                    ShowDispersion                      = False
+                    ShowInInterface                     = True
+                    WeaponActiveAndCanShootPropertyName = 'WeaponActiveAndCanShoot_3'
+                    WeaponIgnoredPropertyName           = 'WeaponIgnored_3'
+                    WeaponShootDataPropertyName         = ["WeaponShootData_0_3", ]
+                )
+            ]
+            OutOfRangeTrackingDuration  = 3.5
+            Tag                         = 'tourelle2'
+            VitesseRotation             = 1.0471975511965976
+            YulBoneOrdinal              = 2
+        ),
+        TTurretTwoAxisDescriptor
+        (
+            AimingPriority              = 1
+            AngleRotationBase           = 0.0
+            AngleRotationBasePitch      = 0.0
+            AngleRotationMax            = 0.017453292519943295
+            AngleRotationMaxPitch       = 0.13962634015954636
+            AngleRotationMinPitch       = -0.13962634015954636
+            MasterTurretYulBoneOrdinal  = 1
+            MountedWeaponDescriptorList = [
+                TMountedWeaponDescriptor
+                (
+                    AmmoConsumption_ForInterface        = 1
+                    Ammunition                          = $/GFX/Weapon/Ammo_MMG_MG3_7_62mm
+                    AnimateOnlyOneSoldier               = True
+                    DispersionRadiusOffColor            = RGBA[0,0,0,0]
+                    DispersionRadiusOffThickness        = -0.1
+                    DispersionRadiusOnColor             = RGBA[0,0,0,0]
+                    DispersionRadiusOnThickness         = -0.1
+                    EffectTag                           = 'FireEffect_MMG_MG3_7_62mm'
+                    HandheldEquipmentKey                = 'MeshAlternative_4'
+                    NbWeapons                           = 1
+                    SalvoStockIndex                     = 2
+                    ShowDispersion                      = False
+                    ShowInInterface                     = True
+                    TirContinu                          = True
+                    WeaponActiveAndCanShootPropertyName = 'WeaponActiveAndCanShoot_4'
+                    WeaponIgnoredPropertyName           = 'WeaponIgnored_4'
+                    WeaponShootDataPropertyName         = ["WeaponShootData_0_4", ]
+                )
+            ]
+            OutOfRangeTrackingDuration  = 3.5
+            Tag                         = 'tourelle4'
+            VitesseRotation             = 1.5707963267948966
+            YulBoneOrdinal              = 4
+        ),
+        TTurretUnitDescriptor
+        (
+            AngleRotationMax            = 2.0943951023931953
+            AngleRotationMaxPitch       = 1.5707963267948966
+            AngleRotationMinPitch       = -1.5707963267948966
+            MountedWeaponDescriptorList = [
+                TMountedWeaponDescriptor
+                (
+                    AmmoConsumption_ForInterface        = 1
+                    Ammunition                          = $/GFX/Weapon/Ammo_SMOKE_Vehicle_Grenadex8
+                    AnimateOnlyOneSoldier               = True
+                    DispersionRadiusOffColor            = RGBA[0,0,0,0]
+                    DispersionRadiusOffThickness        = -0.1
+                    DispersionRadiusOnColor             = RGBA[0,0,0,0]
+                    DispersionRadiusOnThickness         = -0.1
+                    EffectTag                           = 'FireEffect_SMOKE_Vehicle_Grenadex8'
+                    HandheldEquipmentKey                = 'MeshAlternative_5'
+                    NbWeapons                           = 1
+                    SalvoStockIndex                     = 3
+                    ShowDispersion                      = False
+                    ShowInInterface                     = False
+                    WeaponActiveAndCanShootPropertyName = 'WeaponActiveAndCanShoot_5'
+                    WeaponIgnoredPropertyName           = 'WeaponIgnored_5'
+                    WeaponShootDataPropertyName         = ["WeaponShootData_0_5", "WeaponShootData_1_5", "WeaponShootData_2_5", "WeaponShootData_3_5", ]
+                )
+            ]
+            Tag                         = 'tourelle5'
+            YulBoneOrdinal              = 5
+        )
+    ]
+)
+
+
+
+//Ammunition.ndf
+
+Ammo_AutoCanon_AP_L70_Mk1 is TAmmunitionDescriptor
+(
+    DescriptorId                      = GUID:{111e98c5-d598-4789-a4cc-ef4c58b254cc}
+    Name                              = 'WTPQTBRIVS'
+    TypeCategoryName                  = 'YNDLJFDBIK'
+    Caliber                           = 'JHQILZUMFI'
+    WeaponDescriptionToken            = 'BGKHTMZYRF'
+    TraitsToken                       = [ 'MOTION', 'HE', 'KINETIC', ]
+    WeaponCursorType                  = Weapon_Cursor_FastCanon
+    MinMaxCategory                    = MinMax_CanonAP
+    Arme                              = TDamageTypeRTTI(Family=DamageFamily_ap Index=19)
+    ProjectileType                    = EProjectileType/Obus
+    ImpactHappening                   = [ 'CanonMoyenAPPT76' ]
+    FxPower                           = EFXPower/Moyen
+    TempsEntreDeuxTirs                = 0.4
+    TempsEntreDeuxFx                  = 0.4
+    PorteeMaximaleGRU                 = 1750
+    PorteeMinimaleGRU                 = 35
+    AffecteParNombre                  = True
+    AngleDispersion                   = 0.0
+    DispersionAtMaxRange              = ((250) * Metre)
+    DispersionAtMinRange              = ((50) * Metre)
+    DispersionWithoutSorting          = False
+    CorrectedShotAimtimeMultiplier    = 1.0
+    RadiusSplashPhysicalDamages       = 2 * Metre
+    PhysicalDamages                   = 1.0
+    ShowDamageInUI                    = False
+    RadiusSplashSuppressDamages       = 80 * Metre
+    SuppressDamages                   = 40.0
+    AllowSuppressDamageWhenNoImpact                = False
+    DisplaySalveAccuracy              = True
+    TirIndirect                       = False
+    TirReflexe                        = True
+    InterdireTirReflexe               = False
+    MaximalSpeed                      = 0.0
+    ShotWithoutPhysics                = False
+    FluidFriction                     = 0.0
+    NoiseDissimulationMalus           = 2.0
+    ShotsBeforeMaxNoise               = 4
+    TargetOnlyOneUnitInDistrict       = True
+    HitRollRuleDescriptor = TDiceHitRollRuleDescriptor
+    (
+        DescriptorId          = GUID:{30d70a0d-a073-4f07-ad6a-81e665cbe4c5}
+        BaseCriticModifier = 0
+        BaseHitValueModifiers =
+        [
+            (EBaseHitValueModifier/Base, 0.0),
+            (EBaseHitValueModifier/Idling, 18),
+            (EBaseHitValueModifier/Moving, 10),
+            (EBaseHitValueModifier/Targeted, 0.0),
+        ]
+        DistanceToTarget = True
+    )
+    MaxSuccessiveHitCount             = 4
+    TempsDeVisee                      = 2.5
+    TempsEntreDeuxSalves              = 2.4
+    TempsEntreDeuxSalves_Min           = -1.0
+    TempsEntreDeuxSalves_Max           = -1.0
+    NbTirParSalves                    = 4
+    SupplyCost                        = 8.0
+    NbSalvosShootOnPosition           = 4
+    CanShootOnPosition                = False
+    CanShootWhileMoving               = True
+    NbrProjectilesSimultanes          = 1
+    AffichageMunitionParSalve         = 4
+    InterfaceWeaponTexture            = "Texture_Interface_Weapon_Bofors_L70"
+    SmokeDescriptor                   = nil
+    FireDescriptor                    = nil
+    TargetUnitCenter                  = True
+    CanHarmAirplanes                  = True
+    IsHarmlessForAllies               = True
+    PiercingWeapon                    = True
+    TandemCharge                      = False
+    FlightTimeForSpeed                    = 1.1
+    DistanceForSpeed                      = 5000.0 * Metre
+    DamageTypeEvolutionOverRangeDescriptor  = ~/DamageTypeEvolutionOverRangeDescriptor_AP1_1Km
+)
+Ammo_AutoCanon_HE_L70_Mk1 is TAmmunitionDescriptor
+(
+    DescriptorId                      = GUID:{283c3b9b-00ce-4769-bd1e-18e4c5168328}
+    Name                              = 'WTPQTBRIVS'
+    TypeCategoryName                  = 'YNDLJFDBIK'
+    Caliber                           = 'JHQILZUMFI'
+    WeaponDescriptionToken            = 'BGKHTMZYRF'
+    TraitsToken                       = [ 'MOTION', 'HE', 'KINETIC', ]
+    WeaponCursorType                  = Weapon_Cursor_FastCanon
+    MinMaxCategory                    = MinMax_AutocanonHE
+    Arme                              = TDamageTypeRTTI(Family=DamageFamily_he_autocanon Index=1)
+    ProjectileType                    = EProjectileType/Obus
+    ImpactHappening                   = [ 'CanonMoyenS60HEFI' ]
+    FxPower                           = EFXPower/Moyen
+    TempsEntreDeuxTirs                = 0.4
+    TempsEntreDeuxFx                  = 0.4
+    PorteeMaximaleGRU                 = 1750
+    PorteeMaximaleTBAGRU              = 1600
+    PorteeMinimaleGRU                 = 35
+    AffecteParNombre                  = True
+    AngleDispersion                   = 0.0
+    DispersionAtMaxRange              = ((250) * Metre)
+    DispersionAtMinRange              = ((50) * Metre)
+    DispersionWithoutSorting          = False
+    CorrectedShotAimtimeMultiplier    = 1.0
+    RadiusSplashPhysicalDamages       = 15 * Metre
+    PhysicalDamages                   = 0.85
+    ShowDamageInUI                    = True
+    RadiusSplashSuppressDamages       = 180 * Metre
+    SuppressDamages                   = 80.0
+    AllowSuppressDamageWhenNoImpact                = True
+    DisplaySalveAccuracy              = True
+    TirIndirect                       = False
+    TirReflexe                        = True
+    InterdireTirReflexe               = False
+    MaximalSpeed                      = 0.0
+    ShotWithoutPhysics                = False
+    FluidFriction                     = 0.0
+    NoiseDissimulationMalus           = 2.0
+    ShotsBeforeMaxNoise               = 4
+    TargetOnlyOneUnitInDistrict       = True
+    HitRollRuleDescriptor = TDiceHitRollRuleDescriptor
+    (
+        DescriptorId          = GUID:{d4419010-8de5-4cb0-8970-e7c28466bf3a}
+        BaseCriticModifier = 25
+        BaseHitValueModifiers =
+        [
+            (EBaseHitValueModifier/Base, 0.0),
+            (EBaseHitValueModifier/Idling, 18),
+            (EBaseHitValueModifier/Moving, 10),
+            (EBaseHitValueModifier/Targeted, 0.0),
+        ]
+        DistanceToTarget = True
+    )
+    MaxSuccessiveHitCount             = 4
+    TempsDeVisee                      = 2.5
+    TempsEntreDeuxSalves              = 2.4
+    TempsEntreDeuxSalves_Min           = -1.0
+    TempsEntreDeuxSalves_Max           = -1.0
+    NbTirParSalves                    = 4
+    SupplyCost                        = 8.0
+    NbSalvosShootOnPosition           = 4
+    CanShootOnPosition                = True
+    CanShootWhileMoving               = True
+    NbrProjectilesSimultanes          = 1
+    AffichageMunitionParSalve         = 4
+    InterfaceWeaponTexture            = "Texture_Interface_Weapon_Bofors_L70"
+    SmokeDescriptor                   = nil
+    FireDescriptor                    = $/GFX/Weapon/Descriptor_Fire_Incendie
+    FireTriggeringProbability         = 0.1
+    TargetUnitCenter                  = True
+    CanHarmAirplanes                  = True
+    IsHarmlessForAllies               = False
+    PiercingWeapon                    = False
+    TandemCharge                      = False
+    FlightTimeForSpeed                    = 1.1
+    DistanceForSpeed                      = 5000.0 * Metre
+    DamageTypeEvolutionOverRangeDescriptor  = nil
+)
+
+
+
+//MissileCarriage.ndf
+// Begleitpanzer_57_DDR : ['ATGM 9M113 Konkurs BMP2']
+MissileCarriage_Begleitpanzer_57_DDR is TMissileCarriageConnoisseur
+(
+    MeshDescriptor = $/GFX/DepictionResources/Modele_Marder_1A3_MILAN_RFA
+    PylonSet = ~/DepictionPylonSet_ATGM
+    WeaponInfos = 
+    [
+        TMissileCarriageWeaponInfo
+        (
+            Count = 6
+            MissileType = eAGM
+            WeaponIndex = 2
+        ),
+    ]
+)
+MissileCarriage_Begleitpanzer_57_DDR_Showroom is TMissileCarriageConnoisseur
+(
+    MeshDescriptor = $/GFX/DepictionResources/Modele_Marder_1A3_MILAN_RFA
+    PylonSet = ~/DepictionPylonSet_ATGM_Showroom
+    WeaponInfos = 
+    [
+        TMissileCarriageWeaponInfo
+        (
+            Count = 6
+            MissileType = eAGM
+            WeaponIndex = 2
+        ),
+    ]
+)
+
+
+
+//DeckSerializer.ndf
+
+DeckSerializer is TDeckSerializer
+(
+
+    DivisionIds = MAP
+    [
+//......
+        ($/GFX/Unit/Descriptor_Unit_Begleitpanzer_57_DDR, 5006),
+    ]
+)
+
+
+
+//DivisionPacks.ndf
+
+Descriptor_Deck_Pack_Begleitpanzer_57_DDR is DeckPackDescriptor
+(
+    Unit = $/GFX/Unit/Descriptor_Unit_Begleitpanzer_57_DDR
+)
+
+
+
+//DivisionRules.ndf
+
+            ~/Descriptor_Deck_Division_RFA_5_Panzer_multi,
+//......
+                UnitRuleList =
+                [
+//......
+                    TDeckUniteRule
+                    (
+                        UnitDescriptor = $/GFX/Unit/Descriptor_Unit_Begleitpanzer_57_DDR
+                        AvailableWithoutTransport = True
+                        NumberOfUnitInPack = 6
+                        NumberOfUnitInPackXPMultiplier = [1.0, 0.68, 0.49, 0.0]
+                    ),
+                ]
+//......
+
+
+
+
+//Divisions.ndf
+
+Descriptor_Deck_Division_RFA_5_Panzer_multi is TDeckDivisionDescriptor
+//......
+    PackList = MAP
+    [
+//......
+        (~/Descriptor_Deck_Pack_Begleitpanzer_57_DDR, 2),
+    ]
+//......
+
+
+
+//ShowRoomEquivalence.ndf
+
+export ShowRoomEquivalenceManager is TShowRoomEquivalenceManager
+(
+    UnitToShowRoomEquivalent = Map [
+//......
+        ( $/GFX/Unit/Descriptor_Unit_Begleitpanzer_57_DDR, $/GFX/Unit/Descriptor_ShowRoomUnit_Begleitpanzer_57_DDR ),
+    ]
+)
+
+
+
+//ShowRoomUnits.ndf
+
+export Descriptor_ShowRoomUnit_Begleitpanzer_57_DDR is TEntityDescriptor
+(
+    DescriptorId        = GUID:{6058849d-7569-406f-9278-96b400aa5f09}
+    ClassNameForDebug   = "ShowRoomUnit_Begleitpanzer_57_DDR"
+    ModulesDescriptors = [
+        TTypeUnitModuleDescriptor
+        (
+            Nationalite                      = ENationalite/Axis
+            MotherCountry                    = 'DDR'
+            AcknowUnitType                   = ~/TAcknowUnitType_Tank
+            TypeUnitFormation                = 'Char'
+        ),
+        ~/ShowroomPositionModuleDescriptor,
+        TApparenceModelModuleDescriptor
+        (
+            PickableObject       = True
+            Depiction            = ~/Gfx_Marder_1A3_MILAN_RFA_Showroom_Autogen
+            ReferenceMesh        = $/GFX/DepictionResources/Modele_Marder_1A3_MILAN_RFA
+            GameplayBBoxBoneName = 'chassis'
+        ),
+        $/GFX/Weapon/WeaponDescriptor_Begleitpanzer_57_DDR,
+        ~/LinkTeamModuleDescriptor,
+        ~/EffectApplierModuleDescriptor,
+        TExperienceModuleDescriptor
+        (
+            ExperienceLevelsPackDescriptor = ~/ExperienceLevelsPackDescriptor_XP_pack_simple_v3
+            CanWinExperience = True
+            ExperienceGainBySecond = ~/ExperienceGainBySecond
+            ExperienceMultiplierBonusOnKill = ~/ExperienceMultiplierBonusOnKill
+        ),
+        TCameraShowroomModuleDescriptor
+        (
+            Token = 'MBT'
+            SpawnType = EShowroomSpawnType/Vehicle
+        ),
+    ]
+)
+
+
+
+//AllUnitsTactic.ndf
+
+AllUnitsTactic is [
+//......
+    $/GFX/Unit/Descriptor_Unit_Begleitpanzer_57_DDR,
+//......
+]

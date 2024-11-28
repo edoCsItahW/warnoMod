@@ -1,0 +1,745 @@
+
+//UniteDescriptor.ndf
+
+export Descriptor_Unit_Fallschirmjager_FalseFlag_90_DDR is TEntityDescriptor
+(
+    DescriptorId       = GUID:{e49948f1-fd0f-4cfa-83a5-ab1d7d5005c3}
+    ClassNameForDebug  = 'Unit_Fallschirmjager_FalseFlag_90_DDR'
+    ModulesDescriptors = [
+        TTypeUnitModuleDescriptor
+        (
+            Nationalite                      = ENationalite/Axis
+            MotherCountry                    = 'DDR'
+            AcknowUnitType                   = ~/TAcknowUnitType_Recon_INF
+            TypeUnitFormation                = 'Reconnaissance'
+        ),
+        InfantryFlagsModuleDescriptor,
+        ~/TargetManagerModuleSelector,
+        TemplateUnitCriticalModule(Module=$/GFX/UnitConstantes/CriticalEffectModule_Infanterie),
+        ~/TargetCoordinatorModuleSelector,
+        ~/UnitPositionModuleDescriptor,
+        ~/PlayerMissionModuleDescriptor,
+        ~/InflammableModuleDescriptorUnit,
+        ~/LinkTeamModuleDescriptor,
+        TTagsModuleDescriptor
+        (
+            TagSet = [
+                "AllUnits",
+                "AllowedForMissileRoE",
+                "Crew",
+                "GroundUnits",
+                "Inf_quartier_ok",
+                "Infanterie",
+                "Infanterie_Reco",
+                "Radio",
+                "Reco",
+                "UNITE_Fallschirmjager_FalseFlag_90_DDR",
+                "Unite",
+                "reco_radar",
+            ]
+        ),
+        TExperienceModuleDescriptor
+        (
+            ExperienceLevelsPackDescriptor = ~/ExperienceLevelsPackDescriptor_XP_pack_SF_v2
+            CanWinExperience = True
+            ExperienceGainBySecond = ~/ExperienceGainBySecond
+            ExperienceMultiplierBonusOnKill = ~/ExperienceMultiplierBonusOnKill
+        ),
+        TVisibilityModuleDescriptor
+        (
+            UnitConcealmentBonus = 2.5
+            VisionUnitType       = EVisionUnitType/AlwaysOnGround
+        ),
+        ApparenceModel is InfantryApparenceModelModuleDescriptor
+        (
+            Depiction = ~/Gfx_Fallschirmjager_FlaseFlag_Demo_DDR
+        ),
+        TAutoCoverModuleDescriptor
+        (
+            AutoCoverRange             = 350*Metre
+            OccupationRadius           = 100*Metre
+            TerrainListMask            = ~/ETerrainType/None | ~/ETerrainType/Batiment | ~/ETerrainType/Ruin | ~/ETerrainType/ForetLegere
+            TerrainList                = [~/ETerrainType/Batiment, ~/ETerrainType/Ruin, ~/ETerrainType/ForetLegere, ]
+            UseTerrainsForEscape       = True
+        ),
+        WeaponManager is TModuleSelector
+        (
+            Default        = $/GFX/Weapon/WeaponDescriptor_Fallschirmjager_FalseFlag_90_DDR
+            Selection      = [~/NilDescriptorIfCadavre]
+        ),
+        TBaseDamageModuleDescriptor
+        (
+            MaxPhysicalDamages = 8
+            MaxSuppressionDamages = ~/Infanterie_MaxSuppressionDamages
+            MaxStunDamages = ~/Infanterie_MaxStunDamages
+            PhysicalDamageLevelsPack = ~/DamageLevelsPackDescriptor_Default_pack_paliers_degats_phy
+            SuppressDamageLevelsPack = ~/DamageLevelsPackDescriptor_GroundUnits_packSupp
+            StunDamageLevelsPack = ~/DamageLevelsPackDescriptor_Unit_packStun
+        ),
+        TDamageModuleDescriptor
+        (
+            SuppressDamagesRegenRatio = ~/Infanterie_SuppressDamagesRegenRatioList
+            StunDamagesRegen = ~/Infanterie_StunDamagesRegen
+            BlindageProperties = TBlindageProperties
+            (
+                ResistanceFront = TResistanceTypeRTTI(Family=ResistanceFamily_infanterie Index=1)
+                ResistanceSides = TResistanceTypeRTTI(Family=ResistanceFamily_infanterie Index=1)
+                ResistanceRear = TResistanceTypeRTTI(Family=ResistanceFamily_infanterie Index=1)
+                ResistanceTop = TResistanceTypeRTTI(Family=ResistanceFamily_infanterie Index=1)
+                ExplosiveReactiveArmor = False
+            )
+            KillWhenDamagesReachMax = True
+            HitRollECM = 0.0
+            AutoOrientation = True
+            UseTopArmorAgainstFire = True
+        ),
+        TRoutModuleDescriptor(MoralLevel = 0),
+        GroupeCombat is
+            TModuleSelector
+            (
+                Default        = TInfantrySquadModuleDescriptor
+                (
+                    NbSoldatInGroupeCombat = 8
+                    SquadDataDescriptor = ~/SoldierSquadDataDescriptor
+                    InfantryMimeticName = 'Fallschirmjager_FalseFlag_DDR'
+                    WeaponUnitFXKey     = 'Fallschirmjager_FalseFlag_DDR'
+                    MimeticDescriptor   = Descriptor_Unit_MimeticUnit
+                    (
+                        DescriptorId = GUID:{68e5296c-aaea-4fe3-a668-771053b3c2a7}
+                        MimeticName = 'Fallschirmjager_FalseFlag_DDR'
+                    )
+                    BoundingBoxSize     = 10 * Metre
+                )
+                Selection      = [ NilDescriptorIfCadavre ]
+            ),
+        ~/ColumnInfantrySquadSlotPositionsModuleDescriptor,
+        TInfantrySquadWeaponAssignmentModuleDescriptor
+        (
+            InitialSoldiersToTurretIndexMap = MAP[
+                (0,[1,]),
+                (1,[1,]),
+                (2,[0,]),
+                (3,[0,]),
+                (4,[0,]),
+                (5,[0,]),
+                (6,[0,2,]),
+                (7,[0,3,]),
+            ]
+        ),
+        FacingInfos is ~/FacingInfosModuleDescriptor,
+        GenericMovement is TModuleSelector
+        (
+            Default = TGenericMovementModuleDescriptor
+            (
+               MaxSpeedInKmph = 25
+               PathfindType = $/Pathfind/PathfindTypes/Infantry
+            )
+            Selection = [~/NilDescriptorIfCadavre]
+        ),
+        LandMovement is TModuleSelector
+        (
+            Default = TLandMovementModuleDescriptor
+            (
+                UnitMovingType = EUnitMovingType/Infantry
+                SpeedBonusFactorOnRoad = 1.00
+                MaxAcceleration = ((30.0) * Metre)
+                MaxDeceleration = ((155.0) * Metre)
+                TempsDemiTour = 0.1
+                StartTime = 0
+                StopTime = 0
+                RotationStartTime = 0
+                RotationStopTime = 0
+            )
+            Selection = [~/NilDescriptorIfCadavre]
+        ),
+        TScannerConfigurationDescriptor
+        (
+            OpticsAltitudeConfig = ~/EVisionOpticsAltitudeConfig/DontUse
+            PorteeVisionTBAGRU = 0.0
+            PorteeVisionFOWGRU = 0.0
+            DetectionTBAGRU = 4947
+            PorteeVisionGRU = 3534
+            PorteeIdentification = 0.0
+            OpticalStrength = 193.02
+            OpticalStrengthAltitude = 40
+            SpecializedDetectionsGRU = MAP [
+                ( EVisionUnitType/AlwaysInHighAltitude, 5654.0 ),
+            ]
+        ),
+        TReverseScannerWithIdentificationDescriptor
+        (
+            VisibilityRollRule = TModernWarfareVisibilityRollRule
+            (
+                IdentifyBaseProbability     = 0.56
+                TimeBetweenEachIdentifyRoll = 4.0
+                VisibilityRuleDescriptor    = $/GFX/VisionRules/StandardWargameVisibilityRollRule
+                DistanceMultiplierRule      = TModernWarfareDistanceMultiplierRollRuleDescriptor
+                (
+                    MultiplicateurAPorteeMaximale            = DefaultMultiplicateurAPorteeMaximale
+                    MultiplicateurAPorteeMinimale            = DefaultMultiplicateurAPorteeMinimale
+                    Exposant                                 = DefaultExposant
+                    MultiplicateurAPorteeMaximaleEnMouvement = DefaultMultiplicateurAPorteeMaximaleEnMouvement
+                    MultiplicateurAPorteeMinimaleEnMouvement = DefaultMultiplicateurAPorteeMinimaleEnMouvement
+                    ExposantEnMouvement                      = DefaultExposantEnMouvement
+                )
+            )
+        ),
+        TTransportableModuleDescriptor
+        (
+            TransportedTexture                     = "UseInGame_Transport_RECO"
+            TransportedSoldier                     = 'Fallschirmjager_FalseFlag_90_DDR'
+            NbSeatsOccupied                        = 1
+            TimeToLoad                             = 0
+            IsTowable                              = False
+        ),
+        TCadavreGeneratorModuleDescriptor( CadavreDescriptor = ~/Descriptor_UnitCadavre_Fallschirmjager_FlaseFlag_Demo_DDR ),
+        TIAStratModuleDescriptor
+        (
+            DatabaseId = 0
+            GameplayBehavior = EGameplayBehavior/Nothing | EGameplayBehavior/TacticalAttackInCover
+        ),
+        ~/IAStratZoneIndexModuleDescriptor,
+        ~/UnitStateEngineCompanyModuleDescriptor,
+        ~/UnitStateEngineModuleDescriptor,
+        ~/DebugModuleDescriptor,
+        ~/SelectionModuleDescriptor,
+        ~/EffectApplierModuleDescriptor,
+        TModuleSelector
+        (
+            Default        = TCapaciteModuleDescriptor
+            (
+                DefaultSkillList = [
+                    $/GFX/EffectCapacity/Capacite_Choc,
+                    $/GFX/EffectCapacity/Capacite_GSR,
+                    $/GFX/EffectCapacity/Capacite_GSR_no_GSR,
+                ]
+            )
+            Selection      = [ ~/NilDescriptorIfCadavre ]
+        ),
+        TProductionModuleDescriptor
+        (
+            Factory            = EDefaultFactories/Recons
+            ProductionTime     = 5
+            ProductionRessourcesNeeded = MAP [
+                ($/GFX/Resources/Resource_CommandPoints, 90),
+                ($/GFX/Resources/Resource_Tickets, 1),
+            ]
+        ),
+        ~/InfluencePositionModuleDescriptor,
+        ~/InfluenceDataModuleDescriptor,
+        TAutomaticBehaviorModuleDescriptor
+        (
+            CanAssist = True
+            AssistRequestBroadcastRadius = 0.0 * Metre
+            DistanceToFlee = 1000 * Metre
+            MaxDistanceForOffensiveReaction = 1000 * Metre
+            MaxDistanceForEngagement = 0.0 * Metre
+            SearchedTagsInEngagementTarget = [
+               "AllUnits",
+            ]
+        ),
+        TCubeActionModuleDescriptor
+        (
+            CubeActionDescriptor = $/GFX/UI/CubeAction_Menu_Ordres_infs_simplifie
+        ),
+        TMinimapDisplayModuleDescriptor
+        (
+            Texture = "Texture_Minimap_Unit_inf"
+            FollowUnitOrientation = False
+        ),
+        TOrderConfigModuleDescriptor
+        (
+            ValidOrders = ~/Descriptor_OrderAvailability_Fallschirmjager_FlaseFlag_Demo_DDR
+        ),
+        TOrderableModuleDescriptor
+        (
+            UnlockableOrders = ~/Descriptor_OrderAvailability_Fallschirmjager_FlaseFlag_Demo_DDR
+        ),
+        ~/OrderDisplayModuleDescriptor,
+        ~/GroupableUnitModuleSelector,
+        TTacticalLabelModuleDescriptor
+        (
+            MultiSelectionSortingOrder = 18060
+            IdentifiedTexture = TBUCKToolAlternativeValues_TUIValueTextureNameFromTEugBMutableInteger
+            (
+                CommandNameTrigger = ~/SpecificCommandName/UpdateGUIFromIconType
+                Alterator = $/GUIOption/IconType
+                Values =
+                [
+                    "Texture_RTS_H_RECO_inf",
+                    "Texture_RECO_inf"
+                ]
+            )
+            UnidentifiedTexture = TBUCKToolAlternativeValues_TUIValueTextureNameFromTEugBMutableInteger
+            (
+                CommandNameTrigger = ~/SpecificCommandName/UpdateGUIFromIconType
+                Alterator = $/GUIOption/IconType
+                Values =
+                [
+                    "Texture_RTS_H_infantry_nonIdentifie",
+                    "Texture_infantry_nonIdentifie"
+                ]
+            )
+            PositionHeightOffset = 1000.0
+            NbSoldiers = 8
+        ),
+            TModuleSelector
+            (
+                Default        = TLinkToDistrictModuleDescriptor()
+                Selection      = [~/NilDescriptorIfCadavre]
+            ),
+        ~/TargetDataModuleDescriptor,
+        ~/PackSignauxModuleDescriptor,
+        TStrategicDataModuleDescriptor
+        (
+            UnitAttackValue = 34
+            UnitDefenseValue = 66
+            UnitBonusXpPerLevelValue = 1
+        ),
+        TUnitUIModuleDescriptor
+        (
+            UnitRole = 'tank_A'
+            SpecialtiesList = [
+                'reco',
+                '_reco',
+                '_sf',
+                '_choc',
+                '_falseflag',
+                '_gsr',
+            ]
+            NameToken = 'PCOLEXJGCQ'
+            InfoPanelConfigurationToken = 'Infantry'
+            UpgradeFromUnit = Descriptor_Unit_Fallschirmjager_FalseFlag_DDR
+            GenerateName = true
+            MenuIconTexture = 'Texture_RTS_H_RECO_inf'
+            ButtonTexture = 'Texture_Button_Unit_Fallschirmjager_FlaseFlag_Demo_DDR'
+            CountryTexture = 'CommonTexture_MotherCountryFlag_DDR'
+            TypeStrategicCount = ETypeStrategicDetailedCount/Reco_Inf
+        ),
+        TUnitUpkeepModuleDescriptor( UpkeepPercentage = 1.0 ),
+        TDeploymentShiftModuleDescriptor
+        (
+            DeploymentShiftGRU = 2473.49823322
+        ),
+    ]
+)
+
+
+
+//WeaponDescriptor.ndf
+export WeaponDescriptor_Fallschirmjager_FalseFlag_90_DDR is TWeaponManagerModuleDescriptor
+(
+    Salves           = [ 156, 184, 4, 4, ]
+    AlwaysOrientArmorTowardsThreat = False
+    TurretDescriptorList = [
+        TTurretInfanterieDescriptor
+        (
+            MountedWeaponDescriptorList = [
+                TMountedWeaponDescriptor
+                (
+                    AmmoConsumption_ForInterface        = 1
+                    Ammunition                          = $/GFX/Weapon/Ammo_FM_M16
+                    AnimateOnlyOneSoldier               = False
+                    DispersionRadiusOffColor            = RGBA[0,0,0,0]
+                    DispersionRadiusOffThickness        = -0.1
+                    DispersionRadiusOnColor             = RGBA[0,0,0,0]
+                    DispersionRadiusOnThickness         = -0.1
+                    EffectTag                           = 'FireEffect_FM_M16'
+                    HandheldEquipmentKey                = 'MeshAlternative_1'
+                    NbWeapons                           = 6
+                    SalvoStockIndex                     = 0
+                    ShowDispersion                      = False
+                    ShowInInterface                     = True
+                    WeaponActiveAndCanShootPropertyName = 'WeaponActiveAndCanShoot_1'
+                    WeaponIgnoredPropertyName           = 'WeaponIgnored_1'
+                    WeaponShootDataPropertyName         = ["WeaponShootData_0_1", ]
+                )
+            ]
+            YulBoneOrdinal              = 1
+        ),
+        TTurretInfanterieDescriptor
+        (
+            MountedWeaponDescriptorList = [
+                TMountedWeaponDescriptor
+                (
+                    AmmoConsumption_ForInterface        = 1
+                    Ammunition                          = $/GFX/Weapon/Ammo_SAW_M249_5_56mm
+                    AnimateOnlyOneSoldier               = False
+                    DispersionRadiusOffColor            = RGBA[0,0,0,0]
+                    DispersionRadiusOffThickness        = -0.1
+                    DispersionRadiusOnColor             = RGBA[0,0,0,0]
+                    DispersionRadiusOnThickness         = -0.1
+                    EffectTag                           = 'FireEffect_SAW_M249_5_56mm'
+                    HandheldEquipmentKey                = 'MeshAlternative_2'
+                    NbWeapons                           = 2
+                    SalvoStockIndex                     = 1
+                    ShowDispersion                      = False
+                    ShowInInterface                     = True
+                    WeaponActiveAndCanShootPropertyName = 'WeaponActiveAndCanShoot_2'
+                    WeaponIgnoredPropertyName           = 'WeaponIgnored_2'
+                    WeaponShootDataPropertyName         = ["WeaponShootData_0_2", ]
+                )
+            ]
+            YulBoneOrdinal              = 2
+        ),
+        TTurretInfanterieDescriptor
+        (
+            MountedWeaponDescriptorList = [
+                TMountedWeaponDescriptor
+                (
+                    AmmoConsumption_ForInterface        = 1
+                    Ammunition                          = $/GFX/Weapon/Ammo_RocketInf_M72E10_66mm
+                    AnimateOnlyOneSoldier               = True
+                    DispersionRadiusOffColor            = RGBA[0,0,0,0]
+                    DispersionRadiusOffThickness        = -0.1
+                    DispersionRadiusOnColor             = RGBA[0,0,0,0]
+                    DispersionRadiusOnThickness         = -0.1
+                    EffectTag                           = 'FireEffect_RocketInf_M72_LAW_66mm'
+                    HandheldEquipmentKey                = 'MeshAlternative_3'
+                    NbWeapons                           = 1
+                    SalvoStockIndex                     = 2
+                    ShowDispersion                      = False
+                    ShowInInterface                     = True
+                    WeaponActiveAndCanShootPropertyName = 'WeaponActiveAndCanShoot_3'
+                    WeaponIgnoredPropertyName           = 'WeaponIgnored_3'
+                    WeaponShootDataPropertyName         = ["WeaponShootData_0_3", ]
+                )
+            ]
+            YulBoneOrdinal              = 3
+        ),
+        TTurretInfanterieDescriptor
+        (
+            MountedWeaponDescriptorList = [
+                TMountedWeaponDescriptor
+                (
+                    AmmoConsumption_ForInterface        = 1
+                    Ammunition                          = $/GFX/Weapon/Ammo_MANPAD_FIM92_A
+                    AnimateOnlyOneSoldier               = True
+                    DispersionRadiusOffColor            = RGBA[0,0,0,0]
+                    DispersionRadiusOffThickness        = -0.1
+                    DispersionRadiusOnColor             = RGBA[0,0,0,0]
+                    DispersionRadiusOnThickness         = -0.1
+                    EffectTag                           = 'FireEffect_MANPAD_FIM92_A'
+                    HandheldEquipmentKey                = 'MeshAlternative_4'
+                    NbWeapons                           = 1
+                    SalvoStockIndex                     = 3
+                    ShowDispersion                      = False
+                    ShowInInterface                     = True
+                    WeaponActiveAndCanShootPropertyName = 'WeaponActiveAndCanShoot_4'
+                    WeaponIgnoredPropertyName           = 'WeaponIgnored_4'
+                    WeaponShootDataPropertyName         = ["WeaponShootData_0_4", ]
+                )
+            ]
+            YulBoneOrdinal              = 4
+        )
+    ]
+)
+
+
+
+//Ammunition.ndf
+Ammo_RocketInf_M72E10_66mm is TAmmunitionDescriptor
+(
+    DescriptorId                      = GUID:{df12ef21-78e7-4be0-83ea-7edabf862ef5}
+    Name                              = 'WKOYVRGZNY'
+    TypeCategoryName                  = 'NZWXQNJFDX'
+    Caliber                           = 'SCJCNYMDYS'
+    WeaponDescriptionToken            = 'YKOXTNOAFR'
+    TraitsToken                       = [ 'STAT',  'HE', 'HEAT', ]
+    WeaponCursorType                  = Weapon_Cursor_UnguidedMissile
+    MinMaxCategory                    = MinMax_LAW
+    Arme                              = TDamageTypeRTTI(Family=DamageFamily_roquette_ap Index=1)
+    ProjectileType                    = EProjectileType/Obus
+    ImpactHappening                   = [ 'RoquetteS13' ]
+    FxPower                           = EFXPower/Moyen
+    TempsEntreDeuxTirs                = 1.0
+    TempsEntreDeuxFx                  = 1.0
+    PorteeMaximaleGRU                 = 675
+    AngleDispersion                   = 0.0
+    DispersionAtMaxRange              = ((130) * Metre)
+    DispersionAtMinRange              = ((50) * Metre)
+    DispersionWithoutSorting          = False
+    CorrectedShotAimtimeMultiplier    = 1.0
+    RadiusSplashPhysicalDamages       = 65 * Metre
+    PhysicalDamages                   = 2.0
+    ShowDamageInUI                    = True
+    RadiusSplashSuppressDamages       = 120 * Metre
+    SuppressDamages                   = 200.0
+    AllowSuppressDamageWhenNoImpact                = False
+    DisplaySalveAccuracy              = True
+    TirIndirect                       = False
+    TirReflexe                        = True
+    InterdireTirReflexe               = False
+    MaximalSpeed                      = 0.0
+    ShotWithoutPhysics                = False
+    FluidFriction                     = 0.0
+    NoiseDissimulationMalus           = 2.5
+    ShotsBeforeMaxNoise               = 2
+    TargetOnlyOneUnitInDistrict       = True
+    HitRollRuleDescriptor = TDiceHitRollRuleDescriptor
+    (
+        DescriptorId          = GUID:{0b106aaa-f33f-4c37-b594-a6ae112fdcd2}
+        BaseCriticModifier = 0
+        BaseHitValueModifiers =
+        [
+            (EBaseHitValueModifier/Base, 0.0),
+            (EBaseHitValueModifier/Idling, 45),
+            (EBaseHitValueModifier/Moving, 0),
+            (EBaseHitValueModifier/Targeted, 0.0),
+        ]
+        DistanceToTarget = True
+    )
+    MaxSuccessiveHitCount             = 3
+    TempsDeVisee                      = 2.0
+    TempsEntreDeuxSalves              = 3.0
+    TempsEntreDeuxSalves_Min           = -1.0
+    TempsEntreDeuxSalves_Max           = -1.0
+    NbTirParSalves                    = 1
+    SupplyCost                        = 15.0
+    NbSalvosShootOnPosition           = 1
+    CanShootOnPosition                = True
+    CanShootWhileMoving               = False
+    NbrProjectilesSimultanes          = 1
+    AffichageMunitionParSalve         = 1
+    InterfaceWeaponTexture            = "Texture_Interface_Weapon_M72_law"
+    FireTriggeringProbability         = 1.0
+    SmokeDescriptor                   = nil
+    FireDescriptor                    = nil
+    TargetUnitCenter                  = True
+    CanHarmAirplanes                  = True
+    IsHarmlessForAllies               = False
+    PiercingWeapon                    = False
+    TandemCharge                      = False
+    FlightTimeForSpeed                    = 1.15
+    DistanceForSpeed                      = 2000.0 * Metre
+    DamageTypeEvolutionOverRangeDescriptor  = nil
+)
+
+
+
+//DeckSerializer.ndf
+
+DeckSerializer is TDeckSerializer
+(
+
+    DivisionIds = MAP
+    [
+//......
+        ($/GFX/Unit/Descriptor_Unit_Fallschirmjager_FalseFlag_90_DDR, 5002),
+    ]
+)
+
+
+
+//DivisionPacks.ndf
+
+Descriptor_Deck_Pack_Fallschirmjager_FalseFlag_90_DDR is DeckPackDescriptor
+(
+    Unit = $/GFX/Unit/Descriptor_Unit_Fallschirmjager_FalseFlag_90_DDR
+)
+
+
+
+//DivisionRules.ndf
+
+            ~/Descriptor_Deck_Division_RFA_2_PzGrenadier_multi,
+//......
+                UnitRuleList =
+                [
+//......
+                    TDeckUniteRule
+                    (
+                        UnitDescriptor = $/GFX/Unit/Descriptor_Unit_Fallschirmjager_FalseFlag_90_DDR
+                        AvailableWithoutTransport = False
+                        AvailableTransportList = [$/GFX/Unit/Descriptor_Unit_M998_Humvee_DDR, $/GFX/Unit/Descriptor_Unit_UH1H_Huey_DDR]
+                        NumberOfUnitInPack = 4
+                        NumberOfUnitInPackXPMultiplier = [0.0, 0.0, 1.0, 0.6]
+                    ),
+                ]
+//......
+
+
+
+//Divisions.ndf
+
+Descriptor_Deck_Division_RFA_2_PzGrenadier_multi is TDeckDivisionDescriptor
+//......
+    PackList = MAP
+    [
+//......
+        (~/Descriptor_Deck_Pack_Fallschirmjager_FalseFlag_90_DDR, 1),
+    ]
+//......
+
+
+
+//ShowRoomEquivalence.ndf
+
+export ShowRoomEquivalenceManager is TShowRoomEquivalenceManager
+(
+    UnitToShowRoomEquivalent = Map [
+//......
+        ( $/GFX/Unit/Descriptor_Unit_Fallschirmjager_FalseFlag_90_DDR, $/GFX/Unit/Descriptor_ShowRoomUnit_Fallschirmjager_FalseFlag_90_DDR ),
+    ]
+)
+
+
+
+//ShowRoomUnits.ndf
+
+export Descriptor_ShowRoomUnit_Fallschirmjager_FalseFlag_90_DDR is TEntityDescriptor
+(
+    DescriptorId        = GUID:{23da62e0-af9f-407b-959e-0806da60ff7a}
+    ClassNameForDebug   = "ShowRoomUnit_Fallschirmjager_FalseFlag_90_DDR"
+    ModulesDescriptors = [
+        TTypeUnitModuleDescriptor
+        (
+            Nationalite                      = ENationalite/Axis
+            MotherCountry                    = 'DDR'
+            AcknowUnitType                   = ~/TAcknowUnitType_Recon_INF
+            TypeUnitFormation                = 'Reconnaissance'
+        ),
+        ~/ShowroomPositionModuleDescriptor,
+        TApparenceModelModuleDescriptor
+        (
+            PickableObject       = False
+            Depiction            = ~/InfantryDepictionSquadShowroom
+            ReferenceMesh        = $/GFX/DepictionResources/Rien
+        ),
+        $/GFX/Weapon/WeaponDescriptor_Fallschirmjager_FalseFlag_90_DDR,
+        TInfantrySquadModuleDescriptor
+        (
+            NbSoldatInGroupeCombat = 8
+            SquadDataDescriptor = ~/SoldierSquadDataDescriptor
+            InfantryMimeticName = 'Fallschirmjager_FalseFlag_90_DDR'
+            WeaponUnitFXKey     = 'Fallschirmjager_FalseFlag_90_DDR'
+            MimeticDescriptor   = Descriptor_Unit_MimeticUnit
+            (
+                DescriptorId = GUID:{e5fff540-580c-4e1c-90ff-b8e1f38a8b52}
+                MimeticName = 'Fallschirmjager_FalseFlag_90_DDR'
+            )
+            BoundingBoxSize     = 10 * Metre
+        ),
+        ~/ColumnInfantrySquadSlotPositionsModuleDescriptor,
+        TInfantrySquadWeaponAssignmentModuleDescriptor
+        (
+            InitialSoldiersToTurretIndexMap = MAP[
+                (0,[1,]),
+                (1,[1,]),
+                (2,[0,]),
+                (3,[0,]),
+                (4,[0,]),
+                (5,[0,]),
+                (6,[0,2,]),
+                (7,[0,3,]),
+            ]
+        ),
+        ~/LinkTeamModuleDescriptor,
+        ~/EffectApplierModuleDescriptor,
+        TExperienceModuleDescriptor
+        (
+            ExperienceLevelsPackDescriptor = ~/ExperienceLevelsPackDescriptor_XP_pack_SF_v2
+            CanWinExperience = True
+            ExperienceGainBySecond = ~/ExperienceGainBySecond
+            ExperienceMultiplierBonusOnKill = ~/ExperienceMultiplierBonusOnKill
+        ),
+        TCameraShowroomModuleDescriptor
+        (
+            Token = 'Inf'
+            SpawnType = EShowroomSpawnType/Infantry
+        ),
+    ]
+)
+
+
+
+//AllUnitsTactic.ndf
+
+AllUnitsTactic is [
+//......
+    $/GFX/Unit/Descriptor_Unit_Fallschirmjager_FalseFlag_90_DDR,
+//......
+]
+
+
+//GeneratedDepictionInfantry.ndf
+
+// *****************************[ Fallschirmjager_FalseFlag_90_DDR ]*********************************
+Gfx_Fallschirmjager_FalseFlag_90_DDR is TemplateInfantryDepictionSquad
+(
+  SoundOperator = $/GFX/Sound/DepictionOperator_MovementSound_SM_Infanterie_US
+)
+AllWeaponAlternatives_Fallschirmjager_FalseFlag_90_DDR is [
+  TDepictionDescriptor( SelectorId = ['MeshAlternative_1'] MeshDescriptor = $/GFX/DepictionResources/Modele_M16A2 ),
+  TDepictionDescriptor( SelectorId = ['MeshAlternative_2'] MeshDescriptor = $/GFX/DepictionResources/Modele_M249 ),
+  TDepictionDescriptor( SelectorId = ['MeshAlternative_3'] MeshDescriptor = $/GFX/DepictionResources/Modele_M72A4 ),
+  TDepictionDescriptor( SelectorId = ['MeshAlternative_4'] MeshDescriptor = $/GFX/DepictionResources/Modele_MANPAD_FIM92 ),
+  TMeshlessDepictionDescriptor( SelectorId = ['none'] ReferenceMeshForSkeleton = $/GFX/DepictionResources/Modele_MANPAD_FIM92 ),
+]
+AllWeaponSubDepiction_Fallschirmjager_FalseFlag_90_DDR is TemplateAllSubWeaponDepiction
+(
+  Alternatives = AllWeaponAlternatives_Fallschirmjager_FalseFlag_90_DDR
+  Operators = [
+    DepictionOperator_WeaponInstantFireInfantry
+    (
+      FireEffectTag = ["FireEffect_FM_M16"]
+      WeaponShootDataPropertyName = "WeaponShootData_0_1"
+    ),
+    DepictionOperator_WeaponInstantFireInfantry
+    (
+      FireEffectTag = ["FireEffect_SAW_M249_5_56mm"]
+      WeaponShootDataPropertyName = "WeaponShootData_0_2"
+    ),
+    DepictionOperator_WeaponInstantFireInfantry
+    (
+      FireEffectTag = ["FireEffect_RocketInf_M72_LAW_66mm"]
+      WeaponShootDataPropertyName = "WeaponShootData_0_3"
+    ),
+    DepictionOperator_WeaponInstantFireInfantry
+    (
+      FireEffectTag = ["FireEffect_MANPAD_FIM92"]
+      WeaponShootDataPropertyName = "WeaponShootData_0_4"
+    ),
+  ]
+)
+AllWeaponSubDepictionBackpack_Fallschirmjager_FalseFlag_90_DDR is TemplateAllSubBackpackWeaponDepiction
+(
+  Alternatives = AllWeaponAlternatives_Fallschirmjager_FalseFlag_90_DDR
+)
+TacticDepiction_Fallschirmjager_FalseFlag_90_DDR_Alternatives is [
+  TDepictionDescriptor( SelectorId = [LOD_High, '01'] MeshDescriptor = $/GFX/DepictionResources/Modele_Fallschirmjager_FlaseFlag_Demo_DDR ),
+  TDepictionDescriptor( SelectorId = [LOD_Low]  MeshDescriptor = $/GFX/DepictionResources/Modele_Fallschirmjager_FlaseFlag_Demo_DDR_LOW ),
+  TMeshlessDepictionDescriptor( SelectorId = ['none']  ReferenceMeshForSkeleton = $/GFX/DepictionResources/Modele_Fallschirmjager_FlaseFlag_Demo_DDR ),
+]
+TacticDepiction_Fallschirmjager_FalseFlag_90_DDR_Soldier is TemplateInfantryDepictionFactoryTactic
+(
+  Selector = InfantrySelectorTactic_00_01
+  Alternatives = TacticDepiction_Fallschirmjager_FalseFlag_90_DDR_Alternatives
+  SubDepictions = [AllWeaponSubDepiction_Fallschirmjager_FalseFlag_90_DDR, AllWeaponSubDepictionBackpack_Fallschirmjager_FalseFlag_90_DDR]
+  Operators = [DepictionOperator_SkeletalAnimation2_Default( ConditionalTags = [ ('bazooka', 'MeshAlternative_3'), ('bazooka', 'MeshAlternative_4') ] )]
+)
+TacticDepiction_Fallschirmjager_FalseFlag_90_DDR_Ghost is TemplateInfantryDepictionFactoryGhost
+(
+  Selector = InfantrySelectorTactic_00_01
+  Alternatives = TacticDepiction_Fallschirmjager_FalseFlag_90_DDR_Alternatives
+)
+
+InfantryMimetic is MAP[
+//......
+  ( 'Fallschirmjager_FalseFlag_90_DDR', TacticDepiction_Fallschirmjager_FalseFlag_90_DDR_Soldier ),
+]
+
+InfantryMimeticGhost is MAP[
+//......
+  ( 'Fallschirmjager_FalseFlag_90_DDR', TacticDepiction_Fallschirmjager_FalseFlag_90_DDR_Ghost ),
+]
+
+TransportedInfantryAlternativesCount is MAP[
+//......
+  ('Fallschirmjager_FalseFlag_90_DDR', (0,1)),
+]
+
+TransportedInfantryAlternatives is [
+//......
+  TDepictionDescriptor( SelectorId = ['Fallschirmjager_FalseFlag_90_DDR', '01'] MeshDescriptor = $/GFX/DepictionResources/Modele_Fallschirmjager_FlaseFlag_Demo_DDR ),
+]

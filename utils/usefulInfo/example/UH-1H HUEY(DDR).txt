@@ -1,0 +1,364 @@
+
+//UniteDescriptor.ndf
+
+export Descriptor_Unit_UH1H_Huey_DDR is TEntityDescriptor
+(
+    DescriptorId       = GUID:{f74c6e40-1cb2-4b9d-ae3d-a308519f4e91}
+    ClassNameForDebug  = 'Unit_UH1H_Huey_DDR'
+    ModulesDescriptors = [
+        TTypeUnitModuleDescriptor
+        (
+            Nationalite                      = ENationalite/Axis
+            MotherCountry                    = 'DDR'
+            AcknowUnitType                   = ~/TAcknowUnitType_HeliAttack
+            TypeUnitFormation                = 'None'
+        ),
+        HelicoFlagsModuleDescriptor,
+        ~/TargetManagerModuleSelector,
+        TemplateUnitCriticalModule(Module=$/GFX/UnitConstantes/CriticalEffectModule_Helico_Arme),
+        ~/TargetCoordinatorModuleSelector,
+        HelicopterPositionModuleDescriptor
+        (
+            LowAltitudeFlyingAltitude  = ((300) * Metre)
+            NearGroundFlyingAltitude   = ((65) * Metre)
+        ),
+        ~/PlayerMissionModuleDescriptor,
+        ~/InflammableModuleDescriptorUnit,
+        ~/LinkTeamModuleDescriptor,
+        TTagsModuleDescriptor
+        (
+            TagSet = [
+                "AllUnits",
+                "Helo",
+                "Helo_Transport",
+                "UNITE_UH1H_Huey_DDR",
+                "Unite",
+            ]
+        ),
+        TExperienceModuleDescriptor
+        (
+            ExperienceLevelsPackDescriptor = ~/ExperienceLevelsPackDescriptor_XP_pack_helico
+            CanWinExperience = True
+            ExperienceGainBySecond = ~/ExperienceGainBySecond
+            ExperienceMultiplierBonusOnKill = ~/ExperienceMultiplierBonusOnKill
+        ),
+        TVisibilityModuleDescriptor
+        (
+            UnitConcealmentBonus = 1.0
+            VisionUnitType       = EVisionUnitType/Undefined
+        ),
+        ApparenceModel is VehicleApparenceModelModuleDescriptor
+        (
+            Depiction = ~/Gfx_UH1H_Huey_US_Autogen
+            BlackHoleIdentifier = "UH1H_Huey_US"
+            GameplayBBoxBoneName = "chassis"
+            ReferenceMesh = $/GFX/DepictionResources/Modele_UH1H_Huey_US
+        ),
+        WeaponManager is TModuleSelector
+        (
+            Default        = $/GFX/Weapon/WeaponDescriptor_UH1H_Huey_US
+            Selection      = [~/NilDescriptorIfCadavre]
+        ),
+        TBaseDamageModuleDescriptor
+        (
+            MaxPhysicalDamages = 6
+            MaxSuppressionDamages = ~/Helico_MaxSuppressionDamages
+            MaxStunDamages = ~/Helico_MaxStunDamages
+            PhysicalDamageLevelsPack = ~/DamageLevelsPackDescriptor_Default_pack_paliers_degats_phy
+            SuppressDamageLevelsPack = ~/DamageLevelsPackDescriptor_helo_packSupp
+            StunDamageLevelsPack = ~/DamageLevelsPackDescriptor_Unit_packStun
+        ),
+        TDamageModuleDescriptor
+        (
+            SuppressDamagesRegenRatio = ~/Helico_SuppressDamagesRegenRatioList
+            StunDamagesRegen = ~/Helico_StunDamagesRegen
+            BlindageProperties = TBlindageProperties
+            (
+                ResistanceFront = TResistanceTypeRTTI(Family=ResistanceFamily_helico Index=1)
+                ResistanceSides = TResistanceTypeRTTI(Family=ResistanceFamily_helico Index=1)
+                ResistanceRear = TResistanceTypeRTTI(Family=ResistanceFamily_helico Index=1)
+                ResistanceTop = TResistanceTypeRTTI(Family=ResistanceFamily_helico Index=1)
+                ExplosiveReactiveArmor = False
+            )
+            KillWhenDamagesReachMax = True
+            HitRollECM = 0.0
+            AutoOrientation = True
+            UseTopArmorAgainstFire = False
+        ),
+        TDangerousnessModuleDescriptor(Dangerousness  = 10),
+        TRoutModuleDescriptor(MoralLevel = 0),
+        FacingInfos is ~/FacingInfosModuleDescriptor,
+        GenericMovement is TModuleSelector
+        (
+            Default = TGenericMovementModuleDescriptor
+            (
+               MaxSpeedInKmph = 178
+               PathfindType = $/Pathfind/PathfindTypes/Flying
+            )
+            Selection = [~/NilDescriptorIfCadavre]
+        ),
+        HelicopterMovement is TModuleSelector
+        (
+            Default        = THelicopterMovementModuleDescriptor
+            (
+                MaxSpeedInKmph   = 178
+                WorldFloorProxy  = $/M3D/Scene/WorldFloorForHelicoProxy
+                MaxAcceleration  = 40 * Metre
+                MaxDeceleration  = 40 * Metre
+                TempsDemiTour    = 5
+                UpwardSpeedInKmph = 72
+                TorqueManoeuvrability = 120
+                CyclicManoeuvrability = 160
+                MaxInclination   = 89
+                GFactorLimit     = 2.2
+                RotorArea        = 153
+                Mass             = 1353
+            )
+            Selection = [~/NilDescriptorIfCadavre]
+        ),
+        TFuelModuleDescriptor
+        (
+            FuelCapacity = 800
+            FuelMoveDuration = 300.0
+        ),
+        TScannerConfigurationDescriptor
+        (
+            OpticsAltitudeConfig = ~/EVisionOpticsAltitudeConfig/DontUse
+            PorteeVisionTBAGRU = 4947
+            PorteeVisionFOWGRU = 565.371024735
+            DetectionTBAGRU = 4947
+            PorteeVisionGRU = 3534
+            PorteeIdentification = 0.0
+            OpticalStrength = 70.75
+            OpticalStrengthAltitude = 40
+            SpecializedDetectionsGRU = MAP [
+                ( EVisionUnitType/AlwaysInHighAltitude, 5654.0 ),
+                ( EVisionUnitType/Building, 565.371024735 ),
+                ( EVisionUnitType/Deposit, 353.356890459 ),
+            ]
+            SpecializedOpticalStrengths = MAP [
+                ( EVisionUnitType/Building, 20.0 ),
+                ( EVisionUnitType/Deposit, 20.0 ),
+            ]
+        ),
+        TReverseScannerWithIdentificationDescriptor
+        (
+            VisibilityRollRule = TModernWarfareVisibilityRollRule
+            (
+                IdentifyBaseProbability     = 0.2
+                TimeBetweenEachIdentifyRoll = 10.0
+                VisibilityRuleDescriptor    = $/GFX/VisionRules/StandardWargameVisibilityRollRule
+                DistanceMultiplierRule      = TModernWarfareDistanceMultiplierRollRuleDescriptor
+                (
+                    MultiplicateurAPorteeMaximale            = DefaultMultiplicateurAPorteeMaximale
+                    MultiplicateurAPorteeMinimale            = DefaultMultiplicateurAPorteeMinimale
+                    Exposant                                 = DefaultExposant
+                    MultiplicateurAPorteeMaximaleEnMouvement = DefaultMultiplicateurAPorteeMaximaleEnMouvement
+                    MultiplicateurAPorteeMinimaleEnMouvement = DefaultMultiplicateurAPorteeMinimaleEnMouvement
+                    ExposantEnMouvement                      = DefaultExposantEnMouvement
+                )
+            )
+        ),
+        Transporter is
+            TModuleSelector
+            (
+                Default        = TTransporterModuleDescriptor
+                (
+                   TransportableTagSet            = [
+                                        "Crew",
+                                                    ]
+                   NbSeatsAvailable               = 1
+                   WreckUnloadPhysicalDamageBonus = WreckUnloadDamageBonus_Chopper_Physical
+                   WreckUnloadSuppressDamageBonus = WreckUnloadDamageBonus_Chopper_Suppress
+                   WreckUnloadStunDamageBonus     = WreckUnloadDamageBonus_Chopper_Stun
+                   LoadRadius                     = (DefaultTransportLoadRadius)
+                 )
+                Selection      = [~/NilDescriptorIfCadavre]
+             ),
+        HeliApparence is ~/HeliApparenceModuleDescriptor,
+        TCadavreGeneratorModuleDescriptor( CadavreDescriptor = ~/Descriptor_UnitCadavre_UH1H_Huey_US ),
+        TIAStratModuleDescriptor
+        (
+            DatabaseId = 0
+            GameplayBehavior = EGameplayBehavior/Nothing | EGameplayBehavior/RetreatOnOutOfAmmo
+        ),
+        ~/IAStratZoneIndexModuleDescriptor,
+        ~/UnitStateEngineCompanyModuleDescriptor,
+        ~/UnitStateEngineModuleDescriptor,
+        ~/DebugModuleDescriptor,
+        ~/SelectionModuleDescriptor,
+        ~/EffectApplierModuleDescriptor,
+        TProductionModuleDescriptor
+        (
+            Factory            = EDefaultFactories/Helis
+            ProductionTime     = 5
+            ProductionRessourcesNeeded = MAP [
+                ($/GFX/Resources/Resource_CommandPoints, 40),
+                ($/GFX/Resources/Resource_Tickets, 1),
+            ]
+        ),
+        ~/InfluencePositionModuleDescriptor,
+        ~/InfluenceDataModuleDescriptor,
+        TAutomaticBehaviorModuleDescriptor
+        (
+            CanAssist = True
+            AssistRequestBroadcastRadius = 250 * Metre
+            DistanceToFlee = 200 * Metre
+            MaxDistanceForOffensiveReaction = 2000 * Metre
+            MaxDistanceForEngagement = 0.0 * Metre
+            SearchedTagsInEngagementTarget = [
+               "AllUnits",
+            ]
+        ),
+        TCubeActionModuleDescriptor
+        (
+            CubeActionDescriptor = $/GFX/UI/CubeAction_Menu_Ordres_helicos
+        ),
+        TMinimapDisplayModuleDescriptor
+        (
+            Texture = "Texture_Minimap_Unit_helico"
+            FollowUnitOrientation = True
+        ),
+        TOrderConfigModuleDescriptor
+        (
+            ValidOrders = ~/Descriptor_OrderAvailability_UH1H_Huey_US
+        ),
+        TOrderableModuleDescriptor
+        (
+            UnlockableOrders = ~/Descriptor_OrderAvailability_UH1H_Huey_US
+        ),
+        ~/OrderDisplayModuleDescriptor,
+        ~/GroupableUnitModuleSelector,
+        TTacticalLabelModuleDescriptor
+        (
+            MultiSelectionSortingOrder = 16040
+            IdentifiedTexture = TBUCKToolAlternativeValues_TUIValueTextureNameFromTEugBMutableInteger
+            (
+                CommandNameTrigger = ~/SpecificCommandName/UpdateGUIFromIconType
+                Alterator = $/GUIOption/IconType
+                Values =
+                [
+                    "Texture_RTS_H_hel",
+                    "Texture_hel"
+                ]
+            )
+            UnidentifiedTexture = TBUCKToolAlternativeValues_TUIValueTextureNameFromTEugBMutableInteger
+            (
+                CommandNameTrigger = ~/SpecificCommandName/UpdateGUIFromIconType
+                Alterator = $/GUIOption/IconType
+                Values =
+                [
+                    "Texture_RTS_H_hel_nonIdentifie",
+                    "Texture_hel_nonIdentifie"
+                ]
+            )
+            PositionHeightOffset = 1000.0
+        ),
+        ~/TargetDataModuleDescriptor,
+        ~/PackSignauxModuleDescriptor,
+        TStrategicDataModuleDescriptor
+        (
+            UnitAttackValue = 11
+            UnitDefenseValue = 9
+            UnitBonusXpPerLevelValue = 1
+        ),
+        TUnitUIModuleDescriptor
+        (
+            UnitRole = 'tank_D'
+            SpecialtiesList = [
+                'transport',
+                '_transport1',
+            ]
+            NameToken = 'IEXWQDOVFM'
+            InfoPanelConfigurationToken = 'HelicoTransporter'
+            GenerateName = true
+            MenuIconTexture = 'Texture_RTS_H_hel'
+            ButtonTexture = 'Texture_Button_Unit_UH1H_Huey_US'
+            CountryTexture = 'CommonTexture_MotherCountryFlag_DDR'
+            TypeStrategicCount = ETypeStrategicDetailedCount/Hel_Transport
+        ),
+            TModuleSelector
+            (
+                Default = TSellModuleDescriptor
+                (
+                )
+                Selection = [ ~/NilDescriptorIfCadavre ]
+            ),
+        TUnitUpkeepModuleDescriptor( UpkeepPercentage = 1.0 ),
+    ]
+)
+
+
+
+//DeckSerializer.ndf
+
+    DivisionIds = MAP
+    [
+//......
+        ($/GFX/Unit/Descriptor_Unit_UH1H_Huey_DDR, 5004),
+    ]
+)
+
+
+
+//ShowRoomEquivalence.ndf
+
+export ShowRoomEquivalenceManager is TShowRoomEquivalenceManager
+(
+    UnitToShowRoomEquivalent = Map [
+//......
+        ( $/GFX/Unit/Descriptor_Unit_UH1H_Huey_DDR, $/GFX/Unit/Descriptor_ShowRoomUnit_UH1H_Huey_DDR ),
+    ]
+)
+
+
+
+//ShowRoomUnits.ndf
+
+export Descriptor_ShowRoomUnit_UH1H_Huey_DDR is TEntityDescriptor
+(
+    DescriptorId        = GUID:{5f10faf0-1d1e-4132-82d4-31b1abd7af2e}
+    ClassNameForDebug   = "ShowRoomUnit_UH1H_Huey_DDR"
+    ModulesDescriptors = [
+        TTypeUnitModuleDescriptor
+        (
+            Nationalite                      = ENationalite/Axis
+            MotherCountry                    = 'DDR'
+            AcknowUnitType                   = ~/TAcknowUnitType_HeliAttack
+            TypeUnitFormation                = 'None'
+        ),
+        ~/ShowroomPositionModuleDescriptor,
+        TApparenceModelModuleDescriptor
+        (
+            PickableObject       = True
+            Depiction            = ~/Gfx_UH1H_Huey_US_Showroom_Autogen
+            ReferenceMesh        = $/GFX/DepictionResources/Modele_UH1H_Huey_US
+            GameplayBBoxBoneName = 'chassis'
+        ),
+        $/GFX/Weapon/WeaponDescriptor_UH1H_Huey_US,
+        ~/LinkTeamModuleDescriptor,
+        ~/EffectApplierModuleDescriptor,
+        TExperienceModuleDescriptor
+        (
+            ExperienceLevelsPackDescriptor = ~/ExperienceLevelsPackDescriptor_XP_pack_helico
+            CanWinExperience = True
+            ExperienceGainBySecond = ~/ExperienceGainBySecond
+            ExperienceMultiplierBonusOnKill = ~/ExperienceMultiplierBonusOnKill
+        ),
+        TCameraShowroomModuleDescriptor
+        (
+            Token = 'BigVehicle'
+            SpawnType = EShowroomSpawnType/Helico
+        ),
+    ]
+)
+
+
+
+//AllUnitsTactic.ndf
+
+AllUnitsTactic is [
+//......
+    $/GFX/Unit/Descriptor_Unit_UH1H_Huey_DDR,
+//......
+]
