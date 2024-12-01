@@ -9,13 +9,13 @@
  * @file main.cpp
  * @author edocsitahw
  * @version 1.1
- * @date 2024/11/24 上午1:33
+ * @date 2024\11\24 上午1:33
  * @brief
  * */
 
 #include "confunc.h"
-#include "src/lexer/tokenProc.h"
-#include "src/parser/parser.h"
+#include "src\lexer\tokenProc.h"
+#include "src\parser\parser.h"
 #include <codecvt>
 #include <fstream>
 #include <iostream>
@@ -42,22 +42,9 @@ int writeToFile(const std::string& text, const std::string& path) {
     return 0;
 }
 
-//class NodeVisitor {
-//public:
-//    void visit(const std::shared_ptr<ast::AST>& root) {
-//        if (root == nullptr)
-//            return;
-//        for (auto child : root->children)
-//    }
-//};
-
 
 int main() {
-//    auto text = std::get<std::string>(os::readFile(R"(E:\codeSpace\codeSet\ndf\warnoMod\GameData\Gameplay\Formules\GainXPJoueur.ndf)", os::Type::UTF8));
-    auto text = std::get<std::string>(os::readFile(R"(E:\codeSpace\codeSet\ndf\warnoMod\GameData\Generated\Gameplay\Decks\StrategicCombatGroups.ndf)", os::Type::UTF8));
-//    auto text = std::get<std::string>(os::readFile(R"(E:\codeSpace\codeSet\ndf\warnoMod\GameData\Generated\Gameplay\Decks\Divisions.ndf)", os::Type::UTF8));
-//    auto text = std::get<std::string>(os::readFile(R"(E:\codeSpace\codeSet\ndf\warnoMod\GameData\Gameplay\Decks\ArmoryConstantes.ndf)", os::Type::UTF8));
-//    auto text = std::get<std::string>(os::readFile(R"(E:\codeSpace\codeSet\ndf\warnoMod\GameData\Gameplay\Decks\DeckTemplates.ndf)", os::Type::UTF8));
+    auto text = std::get<std::string>(os::readFile(R"(..\..\..\..\GameData\Generated\Gameplay\Decks\Divisions.ndf)", os::Type::UTF8));
 
     auto tokens = TokenProcessor::process(Lexer::tokenize(text));
 
@@ -65,7 +52,7 @@ int main() {
 
     auto result = parser.parse();
 
-    writeToFile(result->toJson(), R"(C:\Users\Lenovo\Desktop\ast.json)");
+    writeToFile(result->toJson(), R"(..\..\ast.json)");
 
     return 0;
 }

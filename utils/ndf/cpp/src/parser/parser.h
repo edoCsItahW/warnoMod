@@ -22,7 +22,8 @@
  * - [x] <statement> ::= <assignment> | <objectDef> | <mapDef> | <templateDef> | <comment> | <export>
  * - [x] <export> ::= "export" <statement>
  * - [x] <assignment> ::= <identifier> "is" <expression>
- * - [x] <objectDef> ::= <identifier> "is" <type> "(" <member_list>? ")"  // 由于@ref "类型（几乎？）总是以大写字母“T”开头。它们代表游戏的内部数据结构，其定义不可用。"因此,我们将<type>改为<identifier>。
+ * - [x] <objectDef> ::= <identifier> "is" <type> "(" <member_list>? ")"  // 由于@ref
+ * "类型（几乎？）总是以大写字母“T”开头。它们代表游戏的内部数据结构，其定义不可用。"因此,我们将<type>改为<identifier>。
  * - [x] <object_instance> ::= <identifier> "(" <member_list>? ")"
  * - [x] <map_def> ::= "MAP" "[" <pair_list>? "]"
  * - [\] <pair_list> ::= <pair> ("," <pair>)*
@@ -53,20 +54,19 @@
 
 /**
  * @page antlr ANTLR描述
- * grammar MyLanguage;  
- * Program      : Statement* ;  
- * 
- * Statement    : Assignment   
+ * grammar MyLanguage;
+ * Program      : Statement* ;
+ *
+ * Statement    : Assignment
  *              | ObjectDef
  *              | MapDef
  *              | TemplateDef
- *              | Comment
  *              | Export ;
- * 
- * Assignment   : Identifier 'is' Expression ;  
- * 
- * ObjectDef   : Identifier 'is' Identifier '(' Member* ')' ;  
- * 
+ *
+ * Assignment   : Identifier 'is' Expression ;
+ *
+ * ObjectDef   : Identifier 'is' Identifier '(' Member* ')' ;
+ *
  * MapDef      : 'MAP' '[' Pair* ']' ;
  *
  * TemplateDef : 'template' Identifier '[' Parameter* ']' 'is' Identifier '(' Member* ')' ;
@@ -140,11 +140,11 @@
  *              | '!='
  *              | '|' ;
  *
- * template_ref : 'template' Identifier ;  
- * 
- * // 词法规则  
- * DIGIT        : [0-9] ;  
- * LETTER       : [a-zA-Z] ;  
+ * template_ref : 'template' Identifier ;
+ *
+ * // 词法规则
+ * DIGIT        : [0-9] ;
+ * LETTER       : [a-zA-Z] ;
  * text         : (LETTER | DIGIT | ' ' | ',' | ';' | ':' | '-' | '_' | '.' | '!' | '?' | '@')* ;
  * */
 
@@ -154,9 +154,9 @@
 #include <variant>
 
 struct FUE_Kwargs {
-    bool firstStop = false;
+    bool firstStop   = false;
     bool skipNewLine = true;
-    bool debug = false;
+    bool debug       = false;
 };
 
 class Parser {
@@ -171,39 +171,36 @@ private:
     TokenPtr expect(std::initializer_list<TokenType> types);
     [[nodiscard]] bool inScope() const;
 
-    std::shared_ptr<ast::Statement> parseStatement();
-
-    std::shared_ptr<ast::Assignment> parseAssignment();
-    std::shared_ptr<ast::ObjectDef> parseObjectDef();
-    std::shared_ptr<ast::MapDef> parseMapDef();
-    std::shared_ptr<ast::TemplateDef> parseTemplateDef();
-
+    std::shared_ptr<ast::Nil> parseNil();
     std::shared_ptr<ast::Pair> parsePair();
-    std::shared_ptr<ast::Parameter> parseParameter();
-    std::shared_ptr<ast::Member> parseMember();
-
-    std::shared_ptr<ast::Expression> parsePrimaryExpression();
-    std::shared_ptr<ast::Expression> parseExpression();
-    std::shared_ptr<ast::Literal> parseLiteral();
-    std::shared_ptr<ast::Expression> parseOperation(int precedence);
-    static int getPrecedence(TokenType type);
-    std::shared_ptr<ast::Boolean> parseBoolean();
-    std::shared_ptr<ast::String> parseString();
-    std::shared_ptr<ast::Integer> parseInteger();
-    std::shared_ptr<ast::Float> parseFloat();
-    std::shared_ptr<ast::Vector> parseVector();
-    std::shared_ptr<ast::Identifier> parseIdentifier();
-    std::shared_ptr<ast::ObjectRef> parseObjectRef();
-    std::shared_ptr<ast::MapRef> parseMapRef();
-    std::shared_ptr<ast::TemplateRef> parseTemplateRef();
     std::shared_ptr<ast::GUID> parseGuid();
     std::shared_ptr<ast::Path> parsePath();
-    std::shared_ptr<ast::ObjectIns> parseObjectIns();
-    std::shared_ptr<ast::EnumRef> parseEnumRef();
+    std::shared_ptr<ast::Float> parseFloat();
+    std::shared_ptr<ast::String> parseString();
+    std::shared_ptr<ast::Member> parseMember();
+    std::shared_ptr<ast::MapDef> parseMapDef();
+    std::shared_ptr<ast::Vector> parseVector();
+    std::shared_ptr<ast::MapRef> parseMapRef();
     std::shared_ptr<ast::Export> parseExport();
-    std::shared_ptr<ast::Expression> parseExprInParenthese();
-    std::shared_ptr<ast::Nil> parseNil();
+    std::shared_ptr<ast::Literal> parseLiteral();
+    std::shared_ptr<ast::Boolean> parseBoolean();
+    std::shared_ptr<ast::Integer> parseInteger();
+    std::shared_ptr<ast::EnumRef> parseEnumRef();
+    std::shared_ptr<ast::Statement> parseStatement();
+    std::shared_ptr<ast::ObjectDef> parseObjectDef();
+    std::shared_ptr<ast::Parameter> parseParameter();
+    std::shared_ptr<ast::ObjectRef> parseObjectRef();
+    std::shared_ptr<ast::ObjectIns> parseObjectIns();
+    std::shared_ptr<ast::Assignment> parseAssignment();
+    std::shared_ptr<ast::Expression> parseExpression();
+    std::shared_ptr<ast::Identifier> parseIdentifier();
+    std::shared_ptr<ast::TemplateDef> parseTemplateDef();
+    std::shared_ptr<ast::TemplateRef> parseTemplateRef();
     std::shared_ptr<ast::TemplateParam> parseTemplateParam();
+    std::shared_ptr<ast::Expression> parseExprInParenthese();
+    std::shared_ptr<ast::Expression> parsePrimaryExpression();
+    std::shared_ptr<ast::Expression> parseOperation(int precedence);
+    static int getPrecedence(TokenType type);
 
 public:
     explicit Parser(TokenPtrs tokens);

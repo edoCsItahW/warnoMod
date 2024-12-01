@@ -1,0 +1,301 @@
+#! /user/bin/python3
+
+#  Copyright (c) 2024. All rights reserved.
+#  This source code is licensed under the CC BY-NC-SA
+#  (Creative Commons Attribution-NonCommercial-NoDerivatives) License, By Xiao Songtao.
+#  This software is protected by copyright law. Reproduction, distribution, or use for commercial
+#  purposes is prohibited without the author's permission. If you have any questions or require
+#  permission, please contact the author: 2207150234@st.sziit.edu.cn
+
+# -------------------------<edocsitahw>----------------------------
+# file: jsonAst.py
+# author: edocsitahw
+# data: 2024/11/29 下午1:34
+# desc:
+# -------------------------<edocsitahw>----------------------------
+
+from json import loads
+from typing import Literal as TLiteral, Self, final, Type, Callable, List, ForwardRef, Any
+from abc import ABC, abstractmethod
+from functools import cached_property, wraps
+from types import GenericAlias
+
+_supEncode = TLiteral['utf-8', 'gbk', 'utf-16', 'ascii', 'latin1', 'cp1252']
+
+
+def debug(flagOrName: bool | str = False) -> Callable[[...], ...]:
+    def func(_fn: Callable[[...], ...]) -> Callable[[...], ...]:
+        @wraps(_fn)
+        def wrapper(*args, **kwargs) -> Any:
+            res = None
+            try:
+                return (res := _fn(*args, **kwargs))
+
+            except Exception as e:
+                try:
+                    e.add_note(f"<{_fn.__name__}>: [{', '.join(args)}, {', '.join(map('{}={}'.format, kwargs.items()))} -- {e}")
+                except (TypeError, IndexError):
+                    e.add_note(f"<{_fn.__name__}>: {e}")
+
+                    raise e
+
+            if flagOrName or flagOrName == _fn.__name__:
+                print(f"<{_fn.__name__}>: [{', '.join(args)}, {', '.join(map('{}={}'.format, kwargs.items()))} -- {res}")
+
+            return res
+
+        return wrapper
+
+    return func
+
+
+def camelCase(_s: str):
+    if len(_s) <= 1:
+        return _s.lower()
+    return _s[0].upper() + _s[1:]
+
+
+NEWLINE = '\n'
+
+
+class AST(ABC):
+    """
+    AST各节点情况分析:
+
+    1. 抽象节点类:
+        如: Statement, Expression, Literal
+
+        * 该类保持抽象,从不实例化,当涉及该类时则解析其子节点
+        * 无需实现parse方法
+        * 在任何parse中都不应直接实例化该类,而是通过读取传入json数据的nodeName字段来确定具体的子类
+
+    2. 具体节点类:
+        如: Program, ObjectDef, Identifier
+
+        * 该类实现parse方法,解析其子节点
+
+        * 子类情况分析:
+            1. 表类型属性:
+                如: Program.statements, ObjectDef.members
+                传入autoHandle(在autoHandle中具体分析):
+
+                1. 无需更名情况: autoHandle('某个子类名', jsonData, statements=list)
+                2. 需更名情况: autoHandle('某个子类名', jsonData, members=List['memberList'])
+
+            2. 单类型属性:
+                1. 对应抽象节点类: 如: expression
+                    传入autoHandle: autoHandle('expression', jsonData)  # 直接不传如关键字参数
+                2. 对应具体节点类: 如: identifier
+                    传入autoHandle: autoHandle('identifier', jsonData, identifier=Identifier)
+    """
+
+    def __init__(self, jsonData: dict) -> None:
+        self.__dict__['_orgData'] = self._orgData = jsonData
+
+    @final
+    @property
+    def nodeName(self) -> str:
+        if r := self._orgData.get('nodeName'):
+            return r
+        raise AttributeError(
+            "No 'nodeName' found in the json data.")
+
+    @final
+    def __getitem__(self, item: str) -> Self | list[Self]:
+        return self.parse(item)
+
+    @final
+    def __getattr__(self, item: str) -> Self | list[Self]:
+        return self.parse(item)
+
+    @final
+    def __str__(self) -> str:
+        return self.__repr__() if isinstance(self._orgData, dict) else str(self._orgData)
+
+    @final
+    def __repr__(self) -> str:
+        return f"<{self.__class__.__mro__[1].__name__}::{self.__class__.__name__} at {hex(id(self)).upper()}>"
+
+    def createIns(self, _type: type | str, _data: dict):
+        if isinstance(_type, str):
+            return globals().get(camelCase(_type))(_data)
+
+        elif isinstance(_type, type):
+            if not hasattr(_type, '__annotations__'):
+                return _data
+            elif _type.__annotations__:  # 具体类
+                return _type(_data)
+            else:  # 抽象类 {nodeName: 'MapRef', pairs: [{nodeName: 'Pair', first: {...}, second: {...}}]}
+                if cls := globals().get(_data['nodeName']):
+                    return cls(_data)
+                raise NotImplementedError(
+                    f"No implementation for class name '{_data['nodeName']}' yet.")
+
+    def parse(self, key: str):
+        """
+        1. attr: T
+            {nodeName: 'Assignment', identifier: {...}}
+        2. attr: List[T]
+            {nodeName: 'ObjectDef', members: [T, T, ...]}
+        3. attr: str
+            {nodeName: 'Identifier', name: 'foo'}
+        :param key:
+        :return:
+        """
+        if key in self.__class__.__annotations__:  # 注册了属性
+            typeOrAnno: type | Type[list] = self.__class__.__annotations__[key]
+
+            if typeOrAnno.__class__.__name__ == '_GenericAlias':  # 当属性类型为List[T]时
+                if typeOrAnno.__args__[0].__class__ == ForwardRef:  # 若T为ForwardRef,且保留IndexError
+                    # {nodeName: 'ObjectDef', members: [{nodeName: 'Member', identifier: {...}, expression: {...}}]}
+                    return [self.createIns(typeOrAnno.__args__[0].__forward_arg__, _) for _ in self._orgData[key]]  # {nodeName: 'Member', identifier: {...}, expression: {...}}
+
+                elif isinstance(typeOrAnno.__args__[0], type):  # 若T为具体类
+                    # {nodeName: 'ObjectDef', members: [{nodeName: 'Member', identifier: {...}, expression: {...}}]}
+                    return [self.createIns(typeOrAnno.__args__[0], _) for _ in self._orgData[key]]  # {nodeName: 'Member', identifier: {...}, expression: {...}}
+
+            elif isinstance(typeOrAnno, GenericAlias):  # 当属性类型为list[T]时
+                raise TypeError(
+                    f"Please use 'List[T]' instead of 'list[T]' for attribute '{key}' in '{self.__class__.__name__}'.")
+
+            elif isinstance(typeOrAnno, type):  # str
+                # {nodeName: 'Member', identifier: {...}, expression: {...}}
+                return self.createIns(typeOrAnno, self._orgData[key])  # {nodeName: 'Identifier', name: 'foo'}
+
+        else:
+            raise AttributeError(
+                f"No implementation for attribute '{key}' in '{self.__class__.__name__}'.")
+
+    @abstractmethod
+    def code(self) -> str:
+        ...
+
+
+def readJson(pth: str, *, encoding: _supEncode = 'utf-8') -> dict:
+    with open(pth, 'r', encoding=encoding) as jf:
+        return loads(jf.read())
+
+
+class Statement(AST): ...
+
+
+class Program(AST):
+    """
+    预分析:
+        - 对于
+
+    """
+    statements: List[Statement]
+
+    def code(self) -> str:
+        return ''.join(s.code() for s in self.statements)
+
+
+class Expression(AST): ...
+
+
+class Identifier(Expression):
+    name: str
+
+    def code(self) -> str:
+        return self.name
+
+
+class EnumRef(Expression):
+    enumName: Identifier
+    enumValue: Identifier
+
+    def code(self) -> str:
+        return f"{self.enumName.code()}/{self.enumValue.code()}"
+
+
+class Member(AST):
+    identifier: Identifier
+    expression: Expression
+
+    def code(self) -> str:
+        return f"{self.identifier.code()} = {self.expression.code()}"
+
+
+class ObjectDef(Statement):
+    identifier: Identifier
+    type: Identifier
+    members: List[Member]
+
+    def code(self) -> str:
+        return f"{self.identifier.code()} is {self.type.code()}(\n{NEWLINE.join(m.code() for m in self.members)}"
+
+
+class Assignment(Statement):
+    identifier: Identifier
+    expression: Expression
+
+    def code(self) -> str:
+        return f"{self.identifier.code()} is {self.expression.code()}"
+
+
+class Pair(AST):
+    first: Expression
+    second: Expression
+
+    def code(self) -> str:
+        return f"({self.first.code()}, {self.second.code()})"
+
+
+class MapRef(Expression):
+    pairs: List[Pair]
+
+    def code(self) -> str:
+        return f"MAP [\n{NEWLINE.join(p.code() for p in self.pairs)}]"
+
+
+class Literal(Expression): ...
+
+
+class Path(Literal):
+    value: str
+
+    def code(self) -> str:
+        return self.value
+
+
+class String(Literal):
+    value: str
+
+    def code(self) -> str:
+        return f'"{self.value}"'
+
+
+class Integer(Literal):
+    value: int
+
+    def code(self) -> str:
+        return str(self.value)
+
+
+class GUID(Literal):
+    value: str
+
+    def code(self) -> str:
+        return f"GUID:{{{self.value}}}"
+
+
+class Vector(Literal):
+    expressions: List[Expression]
+
+    def code(self) -> str:
+        return f"[{', '.join(e.code() for e in self.expressions)}]"
+
+
+if __name__ == '__main__':
+    jsonAst = readJson(r"..\ast.json")
+
+    divSet = set()
+
+    ast = Program(jsonAst)
+    for s in ast.statements:
+        if isinstance(s, ObjectDef):
+            for m in s.members:
+                if isinstance(m.expression, MapRef) and m.identifier.name == 'PackList':
+                    for p in m.expression.pairs:
+                        divSet.add(p)

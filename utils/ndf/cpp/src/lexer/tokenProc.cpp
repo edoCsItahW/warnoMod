@@ -17,6 +17,10 @@ TokenPtr TokenProcessor::operator*() {
     else if (_tokens[_idx]->type == TokenType::NUMBER) return handleNumber();
     else if (_tokens[_idx]->type == TokenType::LITERAL) return handleLiteral();
     else if (g_Level1Op.empty() ? g_Level1Op = {'{', '<', '=', '>', '!'} : g_Level1Op, g_Level1Op.find(_tokens[_idx]->value[0]) != g_Level1Op.end()) return handleOperator();
+    else if (_tokens[_idx]->type == TokenType::COMMENT_LINE || _tokens[_idx]->type == TokenType::COMMENT_BLOCK) {
+        _tokens[_idx]->super = TokenType::COMMENT;
+        return _tokens[_idx++];
+    }
     return _tokens[_idx++];
 }
 
@@ -80,7 +84,7 @@ TokenPtrs TokenProcessor::process(TokenPtrs tokens, bool comment) {
 
     while (processer._idx < processer._tokens.size()) {
         TokenPtr token;
-        if ((token = *processer)->type != TokenType::COMMENT || comment) processedTokens.emplace_back(std::move(token));
+        if ((token = *processer)->super != TokenType::COMMENT || comment) processedTokens.emplace_back(std::move(token));
     }
     return processedTokens;
 }

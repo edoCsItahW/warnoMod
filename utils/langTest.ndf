@@ -1,0 +1,30 @@
+Descriptor_Deck_Division_All_multi is TDeckDivisionDescriptor (
+    DescriptorId = GUID:{69a17806-4fc1-45f2-b7de-af42e681a350}
+    CfgName = 'US_3rd_Arm_multi'
+    DivisionName = 'ALLMULTI'
+    DivisionPowerClassification = 'DC_PWR1'
+    DivisionNationalite = ENationalite/Allied
+    DivisionTags = ['DEFAULT', 'US', 'Allied', 'armored', 'DC_PWR1']
+    DescriptionHintTitleToken = 'ALLMULTI'
+    PackList = MAP  // 至59
+    [
+
+        // 后勤
+        (~/Descriptor_Deck_Pack_FOB_US, 1),  // 基地
+        (~/Descriptor_Deck_Pack_M113A2_supply_US, 2),
+        (~/Descriptor_Deck_Pack_M35_supply_US, 3),
+        (~/Descriptor_Deck_Pack_HEMTT_US, 4),
+        (~/Descriptor_Deck_Pack_M577_US, 5),
+        (~/Descriptor_Deck_Pack_UH60A_CO_US, 6),
+        (~/Descriptor_Deck_Pack_UH60A_Supply_US, 7),
+        (~/Descriptor_Deck_Pack_M151_MUTT_CMD_US, 8),
+        (~/Descriptor_Deck_Pack_M2A1_Bradley_Leader_US, 9),
+        (~/Descriptor_Deck_Pack_M2A2_Bradley_Leader_US, 10),
+    ]
+    MaxActivationPoints = 9999
+    CostMatrix = MatrixCostName_All_mutil
+    EmblemTexture     = "Texture_Division_Emblem_All_multi"
+    PortraitTexture   = "Texture_Division_Portrait_default"
+    TypeTexture       = "Texture_Division_Type_armored"
+    CountryId = "US"
+)

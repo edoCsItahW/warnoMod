@@ -79,6 +79,8 @@ enum class TokenType {
     TILDE,      ///< ~,1级
 
     COMMENT,  ///< 注释,1级
+    COMMENT_LINE,  ///< 单行注释,2级
+    COMMENT_BLOCK,  ///< 块注释,2级
 
     NEWLINE,  ///< 换行符,0级
     EOF_,     ///< 结束符,0级

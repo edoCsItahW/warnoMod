@@ -10,7 +10,13 @@
  * @author edocsitahw
  * @version 1.1
  * @date 2024/11/25 下午3:47
- * @brief
+ *
+ * @if zh
+ * @brief 该文件定义了AST节点的抽象类和具体类.
+ *
+ * @else
+ * @brief This file defines the abstract class and concrete class of the AST node.
+ * @endif
  * */
 #ifndef NDF_AST_H
 #define NDF_AST_H
@@ -39,14 +45,14 @@ namespace ast {
      * @if zh
      * @brief AST节点Program
      * @details Program节点表示整个程序,包含多个Statement节点.
-     * @remark Program应该是整个AST的根节点.
-     * @note 这是一个具体的节点,其包括有子节点.
+     * @note Program应该是整个AST的根节点.
+     * @remark 这是一个具体的节点,其包括有子节点.
      *
      * @else
      * @brief AST node Program
      * @details The Program node represents the entire program, which contains multiple Statement nodes.
-     * @remark The Program node should be the root node of the AST.
-     * @note This is a concrete node that includes child nodes.
+     * @note The Program node should be the root node of the AST.
+     * @remark This is a concrete node that includes child nodes.
      * @endif
      *
      * @code{.antlr}
@@ -68,12 +74,12 @@ namespace ast {
      * @if zh
      * @brief AST节点Statement
      * @details Statement节点表示程序中的语句,包含多个Expression节点.
-     * @note 这是一个抽象的节点,其不包括子节点.
+     * @remark 这是一个抽象的节点,其不包括子节点.
      *
      * @else
      * @brief AST node Statement
      * @details The Statement node represents a statement in the program, which contains multiple Expression nodes.
-     * @note This is an abstract node that does not include child nodes.
+     * @remark This is an abstract node that does not include child nodes.
      * @endif
      *
      * @code{.antlr}
@@ -83,7 +89,8 @@ namespace ast {
      *           | ObjectDef
      *           | MapDef
      *           | TemplateDef
-     *           | Comment ;
+     *           | Comment
+     *           | Export ;
      * @endcode
      *
      * @see AST
@@ -100,12 +107,12 @@ namespace ast {
      * @if zh
      * @brief AST节点Assignment
      * @details Assignment节点表示赋值语句,包含一个Identifier节点和一个Expression节点.
-     * @note 这是一个具体的节点,其包括有子节点.
+     * @remark 这是一个具体的节点,其包括有子节点.
      *
      * @else
      * @brief AST node Assignment
      * @details The Assignment node represents an assignment statement, which contains an Identifier node and an Expression node.
-     * @note This is a concrete node that includes child nodes.
+     * @remark This is a concrete node that includes child nodes.
      * @endif
      *
      * @code{.antlr}
@@ -128,17 +135,16 @@ namespace ast {
      * @if zh
      * @brief AST节点ObjectDef
      * @details ObjectDef节点表示对象定义语句,包含一个Identifier节点,一个Identifier节点,一个Member节点的列表.
-     * @note 这是一个具体的节点,其包括有子节点.
+     * @remark 这是一个具体的节点,其包括有子节点.
      * @warning
      * 注意: 由于@c "类型(几乎?)总是以大写字母"T"开头.它们代表游戏的内部数据结构,其定义不可用." 因此,我们将<type>改为<identifier>。
      *
      * @else
      * @brief AST node ObjectDef
      * @details The ObjectDef node represents an object definition statement, which contains an Identifier node, an Identifier node, and a list of Member nodes.
-     * @note This is a concrete node that includes child nodes.
+     * @remark This is a concrete node that includes child nodes.
      * @warning
-     * Note: Since `"types (almost?) always start with a capital letter "T", they represent internal data structures of the game, which cannot be defined."` Therefore, we changed \<type> to
-     * \<identifier>.
+     * Note: Since `"types (almost?) always start with a capital letter "T", they represent internal data structures of the game, which cannot be defined."` Therefore, we changed \<type> to \<identifier>.
      * @endif
      *
      * @code{.antlr}
@@ -162,12 +168,12 @@ namespace ast {
      * @if zh
      * @brief AST节点MapDef
      * @details MapDef节点表示映射定义语句,包含一个Pair节点的列表.
-     * @note 这是一个具体的节点,其包括有子节点.
+     * @remark 这是一个具体的节点,其包括有子节点.
      *
      * @else
      * @brief AST node MapDef
      * @details The MapDef node represents a map definition statement, which contains a list of Pair nodes.
-     * @note This is a concrete node that includes child nodes.
+     * @remark This is a concrete node that includes child nodes.
      * @endif
      *
      * @code{.antlr}
@@ -189,12 +195,12 @@ namespace ast {
      * @if zh
      * @brief AST节点TemplateDef
      * @details TemplateDef节点表示模板定义语句,包含一个Identifier节点,一个Parameter节点的列表,一个Identifier节点,一个Member节点的列表.
-     * @note 这是一个具体的节点,其包括有子节点.
+     * @remark 这是一个具体的节点,其包括有子节点.
      *
      * @else
      * @brief AST node TemplateDef
      * @details The TemplateDef node represents a template definition statement, which contains an Identifier node, a list of Parameter nodes, an Identifier node, and a list of Member nodes.
-     * @note This is a concrete node that includes child nodes.
+     * @remark This is a concrete node that includes child nodes.
      * @endif
      *
      * @code{.antlr}
@@ -214,6 +220,25 @@ namespace ast {
         [[nodiscard]] std::string toString() const override;
     };
 
+    /** @struct Export
+     *
+     * @if zh
+     * @brief AST节点Export
+     * @details Export节点表示导出语句,包含一个Statement节点.
+     * @remark 这是一个具体的节点,其包括有子节点.
+     *
+     * @else
+     * @brief AST node Export
+     * @details The Export node represents an export statement, which contains a Statement node.
+     * @remark This is a concrete node that includes child nodes.
+     * @endif
+     *
+     * @code{.antlr}
+     * Export : 'export' Statement ;
+     * @endcode
+     *
+     * @see Statement
+     * */
     struct Export : public Statement {
         int indent           = 0;
         const char* nodeName = "Export";
@@ -227,19 +252,24 @@ namespace ast {
      * @if zh
      * @brief AST节点Parameter
      * @details Parameter节点表示模板参数,包含一个Identifier节点,一个Identifier节点,一个Expression节点.
-     * @note 这是一个具体的节点,其包括有子节点.
+     * @remark 这是一个具体的节点,其包括有子节点.
+     * @note
+     * 注意: 由于@c "类型（几乎？）总是以大写字母“T”开头。它们代表游戏的内部数据结构，其定义不可用。"因此，我们将<type>更改为<identifier>。
      *
      * @else
      * @brief AST node Parameter
      * @details The Parameter node represents a template parameter, which contains an Identifier node, an Identifier node, and an Expression node.
-     * @note This is a concrete node that includes child nodes.
+     * @remark This is a concrete node that includes child nodes.
+     * @note
+     * Note: Since `"types (almost?) always start with a capital letter "T", they represent internal data structures of the game, which cannot be defined."` Therefore, we changed \<type> to \<identifier>.
      * @endif
      *
      * @code{.antlr}
-     * Parameter    : Identifier [':' Identifier] ['=' Expression] ;
+     * Parameter : Identifier [':' Identifier] ['=' Expression] ;
      * @endcode
      *
      * @see AST
+     * @see \warnoMod\utils\usefulInfo\Modding Manual.pdf
      * */
     struct Parameter : public AST {
         int indent           = 0;
@@ -251,6 +281,25 @@ namespace ast {
         [[nodiscard]] std::string toString() const;
     };
 
+    /** @struct Member
+     *
+     * @if zh
+     * @brief AST节点Member
+     * @details Member节点表示对象成员,包含一个Identifier节点和一个Expression节点.
+     * @remark 这是一个具体的节点,其包括有子节点.
+     *
+     * @else
+     * @brief AST node Member
+     * @details The Member node represents an object member, which contains an Identifier node and an Expression node.
+     * @remark This is a concrete node that includes child nodes.
+     * @endif
+     *
+     * @code{.antlr}
+     * Member : Identifier '=' Expression ;
+     * @endcode
+     *
+     * @see AST
+     * */
     struct Member : public AST {
         int indent           = 0;
         const char* nodeName = "Member";
@@ -425,6 +474,7 @@ namespace ast {
         [[nodiscard]] std::string toJson() const override;
         [[nodiscard]] std::string toString() const override;
     };
+
 }  // namespace ast
 
 std::string idt(int indent);

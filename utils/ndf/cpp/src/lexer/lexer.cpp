@@ -70,7 +70,7 @@ Token Lexer::extractComment() {
     auto start = _pos;
     _pos += 2;
     while (inScope() && curr() != '\n') commentStr += _source[_pos++()];
-    return {TokenType::COMMENT, start, std::move(commentStr)};
+    return {TokenType::COMMENT_LINE, start, std::move(commentStr)};
 }
 
 Token Lexer::extractBlockComment() {
@@ -82,7 +82,7 @@ Token Lexer::extractBlockComment() {
         if (curr() == '\n') _pos.newLine();
     }
     _pos += 2;
-    return {TokenType::COMMENT, start, std::move(blockCommentStr)};
+    return {TokenType::COMMENT_BLOCK, start, std::move(blockCommentStr)};
 }
 
 Token Lexer::extractString() {
