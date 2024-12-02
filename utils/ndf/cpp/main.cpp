@@ -44,7 +44,8 @@ int writeToFile(const std::string& text, const std::string& path) {
 
 
 int main() {
-    auto text = std::get<std::string>(os::readFile(R"(..\..\..\..\GameData\Generated\Gameplay\Decks\Divisions.ndf)", os::Type::UTF8));
+//    auto text = std::get<std::string>(os::readFile(R"(..\..\..\..\GameData\Generated\Gameplay\Decks\Divisions.ndf)", os::Type::UTF8));
+    auto text = std::get<std::string>(os::readFile(R"(..\..\..\..\GameData\Generated\Gameplay\Decks\DeckPacks.ndf)", os::Type::UTF8));
 
     auto tokens = TokenProcessor::process(Lexer::tokenize(text));
 
@@ -52,7 +53,8 @@ int main() {
 
     auto result = parser.parse();
 
-    writeToFile(result->toJson(), R"(..\..\ast.json)");
+//    writeToFile(result->toJson(), R"(..\..\ast.json)");
+    writeToFile(result->toJson(), R"(..\..\DeckPacks.json)");
 
     return 0;
 }

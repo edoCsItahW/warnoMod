@@ -15,10 +15,11 @@
 # -------------------------<edocsitahw>----------------------------
 
 from json import loads
-from typing import Literal as TLiteral, Self, final, Type, Callable, List, ForwardRef, Any
+from typing import Literal as TLiteral, Self, final, Type, Callable, List, ForwardRef, Any, overload, Iterable, NoReturn
 from abc import ABC, abstractmethod
 from functools import cached_property, wraps
 from types import GenericAlias
+from _type import *
 
 _supEncode = TLiteral['utf-8', 'gbk', 'utf-16', 'ascii', 'latin1', 'cp1252']
 
@@ -58,6 +59,28 @@ def camelCase(_s: str):
 NEWLINE = '\n'
 
 
+class SyncList(list):
+    def __init__(self, jsonData: list, iterable: Iterable):
+        super().__init__(iterable)
+        self.__dict__['_jsonData'] = self._jsonData = jsonData
+
+    def _sync(self, _fn: Callable[[...], ...]) -> Callable[[...], Any]:
+        @wraps(_fn)
+        def wrapper(*args, **kwargs) -> Any:
+            mth = getattr(self._jsonData, _fn.__name__)
+            mth(*map(lambda _: _.data if isinstance(_, AST) else _, args), **{k: v.data if isinstance(v, AST) else v for k, v in kwargs.items()})
+            return _fn(*args, **kwargs)
+
+        return wrapper
+
+    def __getattribute__(self, item: str) -> Any:
+        if item in ['_jsonData', '_sync']:
+            return super().__getattribute__(item)
+        if (mthOrattr := super().__getattribute__(item)) and callable(mthOrattr):
+            return self._sync(mthOrattr)
+        return mthOrattr
+
+
 class AST(ABC):
     """
     AST各节点情况分析:
@@ -89,9 +112,6 @@ class AST(ABC):
                     传入autoHandle: autoHandle('identifier', jsonData, identifier=Identifier)
     """
 
-    def __init__(self, jsonData: dict) -> None:
-        self.__dict__['_orgData'] = self._orgData = jsonData
-
     @final
     @property
     def nodeName(self) -> str:
@@ -101,12 +121,44 @@ class AST(ABC):
             "No 'nodeName' found in the json data.")
 
     @final
+    @property
+    def data(self) -> dict:
+        return self._orgData
+
+    @overload
+    def __init__(self, jsonData: ASTJson): ...
+
+    @overload
+    def __init__(self, **kwargs: 'AST'): ...
+
+    def __init__(self, *args, **kwargs) -> None:
+        if len(args) == 1 and isinstance(args[0], dict):
+            self.__dict__['_orgData'] = self._orgData = args[0]
+        elif len(kwargs) > 0:
+            if any(not isinstance(v, AST) for v in kwargs.values()):
+                raise TypeError(
+                    f"All values in the keyword arguments must be instances of 'AST' but got {kwargs}.")
+            else:
+                for k, v in kwargs.items():
+                    setattr(self, k, v)
+        else:
+            raise TypeError(
+                "Either a json data or keyword arguments must be provided.")
+
+    @final
     def __getitem__(self, item: str) -> Self | list[Self]:
         return self.parse(item)
 
     @final
     def __getattr__(self, item: str) -> Self | list[Self]:
         return self.parse(item)
+
+    @final
+    def __setattr__(self, key: str, value: Any) -> None:
+        if key != '_orgData' and key in self._orgData:
+            self._orgData[key] = value
+        else:
+            super().__setattr__(key, value)
 
     @final
     def __str__(self) -> str:
@@ -143,16 +195,16 @@ class AST(ABC):
         :return:
         """
         if key in self.__class__.__annotations__:  # 注册了属性
-            typeOrAnno: type | Type[list] = self.__class__.__annotations__[key]
+            typeOrAnno: type | Type[list] | str = self.__class__.__annotations__[key]
 
             if typeOrAnno.__class__.__name__ == '_GenericAlias':  # 当属性类型为List[T]时
                 if typeOrAnno.__args__[0].__class__ == ForwardRef:  # 若T为ForwardRef,且保留IndexError
                     # {nodeName: 'ObjectDef', members: [{nodeName: 'Member', identifier: {...}, expression: {...}}]}
-                    return [self.createIns(typeOrAnno.__args__[0].__forward_arg__, _) for _ in self._orgData[key]]  # {nodeName: 'Member', identifier: {...}, expression: {...}}
+                    return SyncList(self._orgData[key], (self.createIns(typeOrAnno.__args__[0].__forward_arg__, _) for _ in self._orgData[key]))  # {nodeName: 'Member', identifier: {...}, expression: {...}}
 
                 elif isinstance(typeOrAnno.__args__[0], type):  # 若T为具体类
                     # {nodeName: 'ObjectDef', members: [{nodeName: 'Member', identifier: {...}, expression: {...}}]}
-                    return [self.createIns(typeOrAnno.__args__[0], _) for _ in self._orgData[key]]  # {nodeName: 'Member', identifier: {...}, expression: {...}}
+                    return SyncList(self._orgData[key], (self.createIns(typeOrAnno.__args__[0], _) for _ in self._orgData[key]))  # {nodeName: 'Member', identifier: {...}, expression: {...}}
 
             elif isinstance(typeOrAnno, GenericAlias):  # 当属性类型为list[T]时
                 raise TypeError(
@@ -187,6 +239,15 @@ class Program(AST):
     """
     statements: List[Statement]
 
+    @overload
+    def __init__(self, jsonData: ProgramJson): ...
+
+    @overload
+    def __init__(self, *, statements: List[Statement]): ...
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
     def code(self) -> str:
         return ''.join(s.code() for s in self.statements)
 
@@ -197,6 +258,15 @@ class Expression(AST): ...
 class Identifier(Expression):
     name: str
 
+    @overload
+    def __init__(self, jsonData: IdentifierJson): ...
+
+    @overload
+    def __init__(self, *, name: str): ...
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
     def code(self) -> str:
         return self.name
 
@@ -205,6 +275,15 @@ class EnumRef(Expression):
     enumName: Identifier
     enumValue: Identifier
 
+    @overload
+    def __init__(self, jsonData: EnumRefJson): ...
+
+    @overload
+    def __init__(self, *, enumName: Identifier, enumValue: Identifier): ...
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
     def code(self) -> str:
         return f"{self.enumName.code()}/{self.enumValue.code()}"
 
@@ -212,6 +291,15 @@ class EnumRef(Expression):
 class Member(AST):
     identifier: Identifier
     expression: Expression
+
+    @overload
+    def __init__(self, jsonData: MemberJson): ...
+
+    @overload
+    def __init__(self, *, identifier: Identifier, expression: Expression): ...
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
 
     def code(self) -> str:
         return f"{self.identifier.code()} = {self.expression.code()}"
@@ -222,6 +310,15 @@ class ObjectDef(Statement):
     type: Identifier
     members: List[Member]
 
+    @overload
+    def __init__(self, jsonData: ObjectDefJson): ...
+
+    @overload
+    def __init__(self, *, identifier: Identifier, type: Identifier, members: List[Member]): ...
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
     def code(self) -> str:
         return f"{self.identifier.code()} is {self.type.code()}(\n{NEWLINE.join(m.code() for m in self.members)}"
 
@@ -229,6 +326,15 @@ class ObjectDef(Statement):
 class Assignment(Statement):
     identifier: Identifier
     expression: Expression
+
+    @overload
+    def __init__(self, jsonData: AssignmentJson): ...
+
+    @overload
+    def __init__(self, *, identifier: Identifier, expression: Expression): ...
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
 
     def code(self) -> str:
         return f"{self.identifier.code()} is {self.expression.code()}"
@@ -238,6 +344,15 @@ class Pair(AST):
     first: Expression
     second: Expression
 
+    @overload
+    def __init__(self, jsonData: PairJson): ...
+
+    @overload
+    def __init__(self, *, first: Expression, second: Expression): ...
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
     def code(self) -> str:
         return f"({self.first.code()}, {self.second.code()})"
 
@@ -245,8 +360,17 @@ class Pair(AST):
 class MapRef(Expression):
     pairs: List[Pair]
 
+    @overload
+    def __init__(self, jsonData: MapRefJson): ...
+
+    @overload
+    def __init__(self, *, pairs: List[Pair]): ...
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
     def code(self) -> str:
-        return f"MAP [\n{NEWLINE.join(p.code() for p in self.pairs)}]"
+        return f"MAP [\n{f',{NEWLINE}'.join(p.code() for p in self.pairs)}]"
 
 
 class Literal(Expression): ...
@@ -255,12 +379,30 @@ class Literal(Expression): ...
 class Path(Literal):
     value: str
 
+    @overload
+    def __init__(self, jsonData: PathJson): ...
+
+    @overload
+    def __init__(self, *, value: str): ...
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
     def code(self) -> str:
         return self.value
 
 
 class String(Literal):
     value: str
+
+    @overload
+    def __init__(self, jsonData: StringJson): ...
+
+    @overload
+    def __init__(self, *, value: str): ...
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
 
     def code(self) -> str:
         return f'"{self.value}"'
@@ -269,12 +411,46 @@ class String(Literal):
 class Integer(Literal):
     value: int
 
+    @overload
+    def __init__(self, jsonData: IntegerJson): ...
+
+    @overload
+    def __init__(self, *, value: int): ...
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+    def code(self) -> str:
+        return str(self.value)
+
+
+class Float(Literal):
+    value: float
+
+    @overload
+    def __init__(self, jsonData: FloatJson): ...
+
+    @overload
+    def __init__(self, *, value: float): ...
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
     def code(self) -> str:
         return str(self.value)
 
 
 class GUID(Literal):
     value: str
+
+    @overload
+    def __init__(self, jsonData: GUIDJson): ...
+
+    @overload
+    def __init__(self, *, value: str): ...
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
 
     def code(self) -> str:
         return f"GUID:{{{self.value}}}"
@@ -283,19 +459,214 @@ class GUID(Literal):
 class Vector(Literal):
     expressions: List[Expression]
 
+    @overload
+    def __init__(self, jsonData: VectorJson): ...
+
+    @overload
+    def __init__(self, *, expressions: List[Expression]): ...
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
     def code(self) -> str:
         return f"[{', '.join(e.code() for e in self.expressions)}]"
 
 
-if __name__ == '__main__':
-    jsonAst = readJson(r"..\ast.json")
+class MapDef(Statement):
+    pairs: List[Pair]
 
-    divSet = set()
+    @overload
+    def __init__(self, jsonData: MapDefJson): ...
 
-    ast = Program(jsonAst)
-    for s in ast.statements:
-        if isinstance(s, ObjectDef):
-            for m in s.members:
-                if isinstance(m.expression, MapRef) and m.identifier.name == 'PackList':
-                    for p in m.expression.pairs:
-                        divSet.add(p)
+    @overload
+    def __init__(self, *, pairs: List[Pair]): ...
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+    def code(self) -> str:
+        return f"MAP [\n{f',{NEWLINE}'.join(p.code() for p in self.pairs)}]"
+
+
+class Parameter(AST):
+    identifier: Identifier
+    type: Optional[Identifier]
+    expression: Optional[Expression]
+
+    @overload
+    def __init__(self, jsonData: ProgramJson): ...
+
+    @overload
+    def __init__(self, *, identifier: Identifier, type: Optional[Identifier] = None, expression: Optional[Expression] = None): ...
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+    def code(self) -> str:
+        return f"{self.identifier.code()}{f': {self.type.code()}' if self.type else ''}{f' = {self.expression.code()}' if self.expression else ''}"
+
+
+class TemplateDef(Statement):
+    identifier: Identifier
+    type: Identifier
+    parameters: List[Parameter]
+    members: List[Member]
+
+    @overload
+    def __init__(self, jsonData: TemplateDefJson): ...
+
+    @overload
+    def __init__(self, *, identifier: Identifier, type: Identifier, parameters: List[Parameter], members: List[Member]): ...
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+    def code(self) -> str:
+        return f"template {self.identifier.code()} [\n{f',{NEWLINE}'.join(p.code() for p in self.parameters)}] is (\n{NEWLINE.join(m.code() for m in self.members)})"
+
+
+class Export(Statement):
+    statement: Statement
+
+    @overload
+    def __init__(self, jsonData: ExportJson): ...
+
+    @overload
+    def __init__(self, *, statement: Statement): ...
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+    def code(self) -> str:
+        return f"export {self.statement.code()}"
+
+
+class Boolen(Literal):
+    value: bool
+
+    @overload
+    def __init__(self, jsonData: BooleanJson): ...
+
+    @overload
+    def __init__(self, *, value: bool): ...
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+    def code(self) -> str:
+        return str(self.value)
+
+
+class Nil(Literal):
+    value: str
+
+    @overload
+    def __init__(self, jsonData: NilJson): ...
+
+    @overload
+    def __init__(self, *, value: str): ...
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+    def code(self) -> str:
+        return "nil"
+
+
+class TemplateParam(Expression):
+    identifier: Identifier
+
+    @overload
+    def __init__(self, jsonData: TemplateParamJson): ...
+
+    @overload
+    def __init__(self, *, identifier: Identifier): ...
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+    def code(self) -> str:
+        return f"<{self.identifier.code()}>"
+
+
+class Operator(Expression):
+    value: str
+
+    @overload
+    def __init__(self, jsonData: OperatorJson): ...
+
+    @overload
+    def __init__(self, *, value: str): ...
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+    def code(self) -> str:
+        return self.value
+
+
+class Operation(Expression):
+    left: Expression
+    operator: Operator
+    right: Expression
+
+    @overload
+    def __init__(self, jsonData: OperationJson): ...
+
+    @overload
+    def __init__(self, *, left: Expression, operator: Operator, right: Expression): ...
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+    def code(self) -> str:
+        return f"{self.left.code()} {self.operator.code()} {self.right.code()}"
+
+
+class ObjectRef(Expression):
+    identifier: Identifier
+
+    @overload
+    def __init__(self, jsonData: ObjectRefJson): ...
+
+    @overload
+    def __init__(self, *, identifier: Identifier): ...
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+    def code(self) -> str:
+        return f"$/{self.identifier.code()}"
+
+
+class ObjectIns(Expression):
+    identifier: Identifier
+    members: List[Member]
+
+    @overload
+    def __init__(self, jsonData: ObjectInsJson): ...
+
+    @overload
+    def __init__(self, *, identifier: Identifier, members: List[Member]): ...
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+    def code(self) -> str:
+        return f"{self.identifier.code()} (\n{NEWLINE.join(m.code() for m in self.members)})"
+
+
+class TemplateRef(Expression):
+    identifier: Identifier
+
+    @overload
+    def __init__(self, jsonData: TemplateRefJson): ...
+
+    @overload
+    def __init__(self, *, identifier: Identifier): ...
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+    def code(self) -> str:
+        return f"template {self.identifier.code()}"

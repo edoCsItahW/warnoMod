@@ -13,35 +13,51 @@
 # data: 2023/10/20 20:01
 # desc:
 # -------------------------<edocsitahw>----------------------------
-from abc import ABC, abstractmethod
-from typing import List
-from types import GenericAlias
+from jsonAst import AST, Program, Member, ObjectDef, readJson, SyncList
 
 
-class Base(ABC):
-    base: int
-    baseAttr: int = 1
+def modifyByJson(_ast: dict) -> str:
+    divDict = {}
 
-    @abstractmethod
-    def method(self):
-        print(self.__annotations__, list(filter(lambda _: not _.startswith('__'), dir(self))),)
+    for s in _ast['statements']:
+        for m in s['members']:
+            if m['identifier']['name'] == 'PackList':
+                for p in m['expression']['pairs']:
+                    divDict[p['first']['value']] = p
 
+    _ast['statements'][0]['members'][7]['expression']['pairs'] = []
 
-class Test(Base):
-    attr: int
-    myAttr: int = 2
-    listAttr: list
-    listAnnoAttr: list['Test2']
-    listAnnoAttr2: List['yyy']
-    listAnnoAttr3: List[int]
-    listAnnoAttr4: 'Test2'
+    for i, p in enumerate(divDict.values(), 1):
+        p['second']['value'] = i
+        _ast['statements'][0]['members'][7]['expression']['pairs'].append(p)
 
-    def method(self):
-        super().method()
+    _ast = Program(_ast)
+
+    return _ast.code()
 
 
-class Test2(Base): ...
+def modifyByAst(_ast: dict) -> str:
+    _ast = Program(_ast)
+
+    divDict = {}
+
+    for s in _ast.statements:
+        if isinstance(s, ObjectDef):
+            for m in s.members:
+                if m.identifier.name == 'PackList':
+                    for p in m.expression.pairs:
+                        divDict[p.first.value] = p
+
+    _ast.statements[0].members[7].expression.pairs = []
+
+    for i, p in enumerate(divDict.values(), 1):
+        p.second.value = i
+        _ast.statements[0].members[7].expression.pairs.append(p)
+
+    return _ast.code()
 
 
 if __name__ == '__main__':
-    print(Test2.__mro__)
+    ast = readJson(r"..\ast.json")
+
+    print(modifyByAst(ast))

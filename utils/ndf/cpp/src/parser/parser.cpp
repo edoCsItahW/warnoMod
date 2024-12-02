@@ -23,7 +23,10 @@ Parser::Parser(TokenPtrs tokens)
     : _tokens(std::move(tokens))
     , _idx(0) {}
 
-TokenPtr Parser::curr() const { return _tokens[_idx]; }
+TokenPtr Parser::curr() const {
+    if (_idx < _tokens.size()) return _tokens[_idx];
+    return nullptr;
+}
 
 bool Parser::inScope() const { return _idx < _tokens.size() && curr()->type != TokenType::EOF_; }
 
@@ -250,7 +253,11 @@ std::shared_ptr<ast::Expression> Parser::parsePrimaryExpression() {
         return dbgParseExprInParen(this);
     else if (curr()->type == TokenType::KW_MAP) return dbgParseMapRef(this);
     else if (curr()->type == TokenType::KW_TEMPLATE) return dbgParseTempRef(this);
-    else if (curr()->super == TokenType::LITERAL || curr()->super == TokenType::NUMBER || curr()->type == TokenType::STRING || curr()->type == TokenType::LBRACKET) return dbgParseLiteral(this);
+    else if (curr()->super == TokenType::LITERAL
+            || curr()->super == TokenType::NUMBER
+            || curr()->type == TokenType::STRING
+            || curr()->type == TokenType::LBRACKET)
+        return dbgParseLiteral(this);
     else if (curr()->type == TokenType::IDENTIFIER)
         if (_tokens[_idx + 1]->type == TokenType::DIV) return dbgParseEnumRef(this);
         else if (fromUntilExpect(_idx + 1, _tokens.size(), TokenType::LPAREN, {.firstStop = true})) return dbgParseObjIns(this);
