@@ -221,9 +221,9 @@ Fork + PR.
 
 ## 待办列表
 
-* [ ] (1). 通过解析NDF脚本中的特定注释作为插槽,以方便通过AST向NDF脚本中的指定位置插入代码.
-* [ ] (2). 通过`Pybind11`提供基于C++实现的NDF语言解析器的Python接口,以方便进行NDF脚本的解析与修改.
-* [ ] 基于(1),实现一个模组功能开关,并提供用户界面,以方便玩家进行模组功能的启用与禁用.
+* [ ] (1). 通过解析NDF脚本中的特定注释作为插槽,以方便通过AST向NDF脚本中的指定位置插入代码. -- https://github.com/edoCsItahW/warnoMod/discussions/3
+* [ ] (2). 通过`Pybind11`提供基于C++实现的NDF语言解析器的Python接口,以方便进行NDF脚本的解析与修改. -- https://github.com/edoCsItahW/warnoMod/discussions/4
+* [ ] (3). 基于(1),实现一个模组功能开关,并提供用户界面,以方便玩家进行模组功能的启用与禁用. -- https://github.com/edoCsItahW/warnoMod/discussions/5
 
 
 最后,享受游戏吧!
