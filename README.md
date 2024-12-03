@@ -203,8 +203,8 @@ See [Toolset File Structure and Explanation](./utils/utilsFileStruc.md)
 
 ## To-Do List
 
-* [ ] (1). Implement parsing of specific comments in NDF scripts as slots to facilitate code insertion into designated locations within NDF scripts through AST.
-* [ ] (2). Provide a Python interface for a C++ implemented NDF language parser using `Pybind11` for easier NDF script parsing and modification.
-* [ ] Based on (1), implement a mod function toggle and provide a user interface to allow players to enable or disable mod functions.
+* [ ] (1). Implement parsing of specific comments in NDF scripts as slots to facilitate code insertion into designated locations within NDF scripts through AST. -- https://github.com/edoCsItahW/warnoMod/discussions/3
+* [ ] (2). Provide a Python interface for a C++ implemented NDF language parser using `Pybind11` for easier NDF script parsing and modification. -- https://github.com/edoCsItahW/warnoMod/discussions/4
+* [ ] (3). Based on (1), implement a mod function toggle and provide a user interface to allow players to enable or disable mod functions. -- https://github.com/edoCsItahW/warnoMod/discussions/5
 
 Finally, Enjoy the game!
