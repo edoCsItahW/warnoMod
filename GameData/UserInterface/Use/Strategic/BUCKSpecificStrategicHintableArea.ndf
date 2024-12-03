@@ -12,7 +12,7 @@ template BUCKSpecificStrategicHintableArea
 [
     ElementName : string = "",
 
-    ForbiddenTags : list<string> = [],
+    ForbiddenTags : LIST<string> = [],
 
     // hint standard : un titre, un corps et un corps étendu avec des tokens fixes
     DicoToken : string = "",

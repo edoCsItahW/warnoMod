@@ -389,7 +389,6 @@ OnTargetUnitDestroyed is TUIFeedbackDispatchedMessageDescriptor // une unité du
     IsActiveForPlayer = true
     IsActiveForAllies = false
     IsActiveForEnemies = false
-    IsActiveOnlyOnSelectedUnits = false
     UnitAcknow = TAcknowUnitAction_TargetDestroyed
     TimeBeforeRepeat = 5
 )
@@ -443,7 +442,6 @@ OnTargetDistrictDestroyed is TUIFeedbackDispatchedMessageDescriptor
     IsActiveForPlayer = true
     IsActiveForAllies = false
     IsActiveForEnemies = false
-    IsActiveOnlyOnSelectedUnits = false
     //UnitAcknow = TAcknowUnitAction_TargetDestroyed
     TimeBeforeRepeat = 5
 )
@@ -453,7 +451,6 @@ OnTargetBuildingDestroyed is TUIFeedbackDispatchedMessageDescriptor
     IsActiveForPlayer = true
     IsActiveForAllies = false
     IsActiveForEnemies = false
-    IsActiveOnlyOnSelectedUnits = false
     //UnitAcknow = TAcknowUnitAction_TargetDestroyed
     TimeBeforeRepeat = 5
 )

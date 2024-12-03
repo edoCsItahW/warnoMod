@@ -3581,17 +3581,6 @@ Gfx_SPW_152K_DDR_Showroom_Autogen is ShowroomVehicleDepictionTemplate
         ),
     ]
 )
-Gfx_SVO_TCH_Showroom_Autogen is ShowroomVehicleDepictionTemplate
-(
-    Alternatives = Alternatives_SVO_TCH
-    Selector = Selector_SVO_TCH
-
-    SubDepictionGenerators = [ ShowroomRocketSubDepictionTemplate(
-            UnitMeshDescriptor = $/GFX/DepictionResources/Modele_SVO_TCH
-            RocketMeshDescriptor = $/GFX/DepictionResources/Modele_Missile_PW_LWD
-            RocketCount = 2
-        ) ]
-)
 Gfx_Saxon_CMD_UK_Showroom_Autogen is ShowroomVehicleDepictionTemplate
 (
     Alternatives = Alternatives_Saxon_CMD_UK

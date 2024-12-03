@@ -235,16 +235,6 @@ UnitSpecialties is TUnitSpecialtiesContainer
             )
         ),
         (
-            "_poorlytrained",
-            TUnitSpecialtyDescriptor
-            (
-                SpecialtyTextureName       = "Texture_Speciality_Icon_poorlytrained"
-                SpecialtyHintTitleToken    = "LHWZEZQPZG"
-                SpecialtyHintBodyToken     = "HSOMKEUDVC"
-                SpecialtyHintExtendedToken = "DJGKHTPOAE"
-            )
-        ),
-        (
             "_reco",
             TUnitSpecialtyDescriptor
             (
@@ -514,14 +504,6 @@ UnitSpecialties is TUnitSpecialtiesContainer
                 SpecialtyTextureName       = "Texture_Speciality_Icon_ifv"
                 SpecialtyHintTitleToken    = "WJNFVCGXIG"
                 SpecialtyHintBodyToken     = "TKYCQOXMIT"
-            )
-        ),
-        (
-            "ifv_infantry_half",
-            TUnitSpecialtyDescriptor
-            (
-                SpecialtyTextureName       = "Texture_Speciality_Icon_ifv_infantry_half"
-                SpecialtyHintBodyToken     = "WCWULPEHYO"
             )
         ),
         (

@@ -4827,10 +4827,10 @@ MissileCarriage_AH1F_HeavyHog_US_Showroom is TMissileCarriageConnoisseur
         ),
     ]
 )
-// AH1S_Cobra_US : ['RocketAir Hydra 70mm x19'] ['RocketAir Hydra 70mm x19']
-MissileCarriage_AH1S_Cobra_US is TMissileCarriageConnoisseur
+// AH1F_Hog_US : ['RocketAir Hydra 70mm x19'] ['RocketAir Hydra 70mm x19']
+MissileCarriage_AH1F_Hog_US is TMissileCarriageConnoisseur
 (
-    MeshDescriptor = $/GFX/DepictionResources/Modele_AH1S_Cobra_US
+    MeshDescriptor = $/GFX/DepictionResources/Modele_AH1F_Hog_US
     PylonSet = ~/DepictionPylonSet_Helico_Default
     WeaponInfos = 
     [
@@ -4850,9 +4850,9 @@ MissileCarriage_AH1S_Cobra_US is TMissileCarriageConnoisseur
         ),
     ]
 )
-MissileCarriage_AH1S_Cobra_US_Showroom is TMissileCarriageConnoisseur
+MissileCarriage_AH1F_Hog_US_Showroom is TMissileCarriageConnoisseur
 (
-    MeshDescriptor = $/GFX/DepictionResources/Modele_AH1S_Cobra_US
+    MeshDescriptor = $/GFX/DepictionResources/Modele_AH1F_Hog_US
     PylonSet = ~/DepictionPylonSet_Helico_Default_Showroom
     WeaponInfos = 
     [
@@ -5135,7 +5135,7 @@ MissileCarriage_AH6G_Little_Bird_US_Showroom is TMissileCarriageConnoisseur
         ),
     ]
 )
-// Alouette_III_SS11_FR : ['ATGM SS11 x4']
+// Alouette_III_SS11_FR : ['ATGM AS11 x4']
 MissileCarriage_Alouette_III_SS11_FR is TMissileCarriageConnoisseur
 (
     MeshDescriptor = $/GFX/DepictionResources/Modele_Alouette_III_SS11_FR
@@ -6247,6 +6247,37 @@ MissileCarriage_Mi_2_rocket_DDR is TMissileCarriageConnoisseur
 MissileCarriage_Mi_2_rocket_DDR_Showroom is TMissileCarriageConnoisseur
 (
     MeshDescriptor = $/GFX/DepictionResources/Modele_Mi_2_rocket_DDR
+    PylonSet = ~/DepictionPylonSet_Helico_Default_Showroom
+    WeaponInfos = 
+    [
+        TMissileCarriageWeaponInfo
+        (
+            Count = 32
+            MissileType = eAGM
+            MountingType = eMountingPod
+            WeaponIndex = 2
+        ),
+    ]
+)
+// Mi_4AV_130mm_TCH : ['RocketAir S5 57mm x32']
+MissileCarriage_Mi_4AV_130mm_TCH is TMissileCarriageConnoisseur
+(
+    MeshDescriptor = $/GFX/DepictionResources/Modele_Mi_4AV_130mm_TCH
+    PylonSet = ~/DepictionPylonSet_Helico_Default
+    WeaponInfos = 
+    [
+        TMissileCarriageWeaponInfo
+        (
+            Count = 32
+            MissileType = eAGM
+            MountingType = eMountingPod
+            WeaponIndex = 2
+        ),
+    ]
+)
+MissileCarriage_Mi_4AV_130mm_TCH_Showroom is TMissileCarriageConnoisseur
+(
+    MeshDescriptor = $/GFX/DepictionResources/Modele_Mi_4AV_130mm_TCH
     PylonSet = ~/DepictionPylonSet_Helico_Default_Showroom
     WeaponInfos = 
     [
@@ -7715,7 +7746,7 @@ MissileCarriage_CM170_Magister_FR_Showroom is TMissileCarriageConnoisseur
         ),
     ]
 )
-// CM170_Magister_SS11_FR : ['AGM SS11 x2']
+// CM170_Magister_SS11_FR : ['AGM AS11 x2']
 MissileCarriage_CM170_Magister_SS11_FR is TMissileCarriageConnoisseur
 (
     MeshDescriptor = $/GFX/DepictionResources/Modele_CM170_Magister_SS11_FR

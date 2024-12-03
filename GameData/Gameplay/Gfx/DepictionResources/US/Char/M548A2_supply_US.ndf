@@ -5,10 +5,10 @@ export Modele_M548A2_supply_US is ModelDescriptor
 
 export Modele_M548A2_supply_US_MID is ModelDescriptor
 (
-    FileName = 'GameData:/Assets/3D/Units/US/APC/M548A2_supply/M548A2_supply.fbx'
+    FileName = 'GameData:/Assets/3D/Units/US/APC/M548A2_supply_MID/M548A2_supply_MID.fbx'
 )
 
 export Modele_M548A2_supply_US_LOW is ModelDescriptor
 (
-    FileName = 'GameData:/Assets/3D/Units/US/APC/M548A2_supply/M548A2_supply.fbx'
+    FileName = 'GameData:/Assets/3D/Units/US/APC/M548A2_supply_LOW/M548A2_supply_LOW.fbx'
 )

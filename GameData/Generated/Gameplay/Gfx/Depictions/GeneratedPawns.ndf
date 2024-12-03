@@ -2880,7 +2880,7 @@ Depiction_pion_US_1AD_1Cav_1 is StrategicGroundVehiclePawnDepictionTemplate
 )
 Depiction_pion_US_1AD_1Helo_2 is StrategicHelicopterPawnDepictionTemplate
 (
-    MeshDescriptorPawn = $/GFX/DepictionResources/Modele_AH1S_Cobra_US
+    MeshDescriptorPawn = $/GFX/DepictionResources/Modele_AH1F_Hog_US
     MeshSocle = $/GFX/DepictionResources/MeshModele_Socle_US
 )
 Depiction_pion_US_1AD_1Helo_3 is StrategicHelicopterPawnDepictionTemplate
@@ -2970,7 +2970,7 @@ Depiction_pion_US_3AD_18Mech_5 is StrategicGroundVehiclePawnDepictionTemplate
 )
 Depiction_pion_US_3AD_227Helo_2 is StrategicHelicopterPawnDepictionTemplate
 (
-    MeshDescriptorPawn = $/GFX/DepictionResources/Modele_AH1S_Cobra_US
+    MeshDescriptorPawn = $/GFX/DepictionResources/Modele_AH1F_Hog_US
     MeshSocle = $/GFX/DepictionResources/MeshModele_Socle_US
 )
 Depiction_pion_US_3AD_227Helo_3 is StrategicHelicopterPawnDepictionTemplate
@@ -3080,12 +3080,12 @@ Depiction_pion_US_3ID_30Mech_2 is StrategicGroundVehiclePawnDepictionTemplate
 )
 Depiction_pion_US_3ID_3Helo_2 is StrategicHelicopterPawnDepictionTemplate
 (
-    MeshDescriptorPawn = $/GFX/DepictionResources/Modele_AH1S_Cobra_US
+    MeshDescriptorPawn = $/GFX/DepictionResources/Modele_AH1F_Hog_US
     MeshSocle = $/GFX/DepictionResources/MeshModele_Socle_US
 )
 Depiction_pion_US_3ID_3Helo_3 is StrategicHelicopterPawnDepictionTemplate
 (
-    MeshDescriptorPawn = $/GFX/DepictionResources/Modele_AH1S_Cobra_US
+    MeshDescriptorPawn = $/GFX/DepictionResources/Modele_AH1F_Hog_US
     MeshSocle = $/GFX/DepictionResources/MeshModele_Socle_US
 )
 Depiction_pion_US_3ID_41Art_2 is StrategicGroundVehiclePawnDepictionTemplate
@@ -3500,12 +3500,12 @@ Depiction_pion_US_8ID_39Mech_1 is StrategicGroundVehiclePawnDepictionTemplate
 )
 Depiction_pion_US_8ID_4Helo_2 is StrategicHelicopterPawnDepictionTemplate
 (
-    MeshDescriptorPawn = $/GFX/DepictionResources/Modele_AH1S_Cobra_US
+    MeshDescriptorPawn = $/GFX/DepictionResources/Modele_AH1F_Hog_US
     MeshSocle = $/GFX/DepictionResources/MeshModele_Socle_US
 )
 Depiction_pion_US_8ID_4Helo_3 is StrategicHelicopterPawnDepictionTemplate
 (
-    MeshDescriptorPawn = $/GFX/DepictionResources/Modele_AH1S_Cobra_US
+    MeshDescriptorPawn = $/GFX/DepictionResources/Modele_AH1F_Hog_US
     MeshSocle = $/GFX/DepictionResources/MeshModele_Socle_US
 )
 Depiction_pion_US_8ID_68Arm_1 is StrategicGroundVehiclePawnDepictionTemplate

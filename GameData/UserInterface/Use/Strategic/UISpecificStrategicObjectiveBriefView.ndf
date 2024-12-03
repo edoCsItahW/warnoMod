@@ -329,14 +329,14 @@ UISpecificStrategicObjectiveBriefViewDescriptor is TUISpecificStrategicObjective
     MainComponentDescriptor = ~/BUCKSpecificStrategicObjectiveBriefMainComponentDescriptor
     MainComponentContainerUniqueName = "StrategicGlobalObjectivesContainer" // Permet d'indiquer l'endroit ou le composant doit s'insérer
 
-    NationaliteFlagTextures = MAP
+    CoalitionFlagTextures = MAP
     [
         (
-            ENationalite/OTAN,
+            ECoalition/OTAN,
             "CommonTexture_MotherCountryFlag_NATO_small"
         ),
         (
-            ENationalite/PACT,
+            ECoalition/PACT,
             "CommonTexture_MotherCountryFlag_PACT_small"
         ),
     ]

@@ -166,12 +166,12 @@ MouseWidgetSelector_Attack is TUIMouseWidgetSelector_Attack
 
     LoSResource = TUITacticalShootingLoSResource
     (
-        VisionLineBlockedColor = rgba[50, 50, 50, 128] // ligne de vue bloquée
-        VisionLineInefficientColor = rgba[255, 255, 0, 250]
-        VisionLineOutOfRangeMinColor = rgba[255, 255, 255, 125]
-        VisionLineOutOfRangeMaxColor = rgba[50, 50, 50, 128]
-        VisionLineUnSeenColor = rgba[0, 0, 0, 0] // out of range visuel
-        VisionLineVisibleAndShootableColor = rgba[119,241,241,255]
+        VisionLineBlockedColor = RGBA[50, 50, 50, 128] // ligne de vue bloquée
+        VisionLineInefficientColor = RGBA[255, 255, 0, 250]
+        VisionLineOutOfRangeMinColor = RGBA[255, 255, 255, 125]
+        VisionLineOutOfRangeMaxColor = RGBA[50, 50, 50, 128]
+        VisionLineUnSeenColor = RGBA[0, 0, 0, 0] // out of range visuel
+        VisionLineVisibleAndShootableColor = RGBA[119,241,241,255]
         //~~~~~~~~
         DashedLineSize = 5000 div 1000
         MeshMaterialLine = $/M3D/Shader/MeshMaterialLoS
@@ -440,7 +440,7 @@ template Template_HardwareMouseWidgetResource_WithTerrainFeedback
 [
     TerrainTypeToMouseCursorAnimation,
     TextSize = "MouseWidget/TextModule",
-    TerrainTypeToHintContent : Map<int, THintContentHolder> = MAP[],
+    TerrainTypeToHintContent : MAP<int, THintContentHolder> = MAP[],
     HintDescriptor : TBUCKHintDescriptor = HintInGameBUCKComponent(),
     StillTimeBeforeHintAppearance : float = 0.0,
 ]

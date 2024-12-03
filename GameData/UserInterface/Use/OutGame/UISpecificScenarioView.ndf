@@ -6,6 +6,9 @@ StrategicMissionListBackground is "mission_dossierVide"
 //-------------------------------------------------------------------------------------
 private ScenarioBriefButtonRadioManager is TBUCKRadioButtonManager()
 
+private DlcLockWidth is 20.0
+private FirstMarginWidth is 10.0
+
 private template ScenarioBriefDescriptor
 [
     GameType : int,
@@ -41,70 +44,19 @@ private template ScenarioBriefDescriptor
 
             Components =
             [
-                BUCKListDescriptor
+                BUCKTextureDescriptor
                 (
                     ComponentFrame = TUIFramePropertyRTTI
                     (
-                        AlignementToAnchor = [0.5, 0.5]
-                        AlignementToFather = [0.5, 0.5]
+                        // RelativeWidthHeight = [0.0, 1.0]
+                        MagnifiableWidthHeight = [DlcLockWidth, DlcLockWidth]
+                        AlignementToFather = [0.0, 0.5]
+                        AlignementToAnchor = [0.0, 0.5]
+                        MagnifiableOffset = [ChallengeDoneColumnWidth * 0.5 - DlcLockWidth * 0.5 + FirstMarginWidth, 0.0] // on centre sur la colonne (le 2.5 étant la largeur de l'icone moins la firstMargin)
                     )
 
-                    Axis = ~/ListAxis/Horizontal
-
-                    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
-
-                    Elements =
-                    [
-                        BUCKListElementDescriptor
-                        (
-                            ComponentDescriptor = BUCKTextureDescriptor
-                            (
-                                ComponentFrame = TUIFramePropertyRTTI
-                                (
-                                    MagnifiableWidthHeight = [40.0, 40.0]
-                                    AlignementToFather = [0.0, 0.5]
-                                    AlignementToAnchor = [0.0, 0.5]
-                                )
-
-                                TextureFrame = TUIFramePropertyRTTI( RelativeWidthHeight = [1.0, 1.0] )
-                                TextureToken = "UseOutGame_Cadenas"
-                            )
-                        ),
-                        BUCKListElementDescriptor
-                        (
-                            ComponentDescriptor = BUCKTextDescriptor
-                            (
-                                ElementName = "ContentName"
-
-                                ParagraphStyle = TParagraphStyle
-                                (
-                                    Alignment = UIText_Center
-                                    VerticalAlignment = ~/UIText_VerticalCenter
-                                )
-
-                                ComponentFrame = TUIFramePropertyRTTI
-                                (
-                                    AlignementToFather = [0.0, 0.5]
-                                    AlignementToAnchor = [0.0, 0.5]
-                                )
-
-                                HorizontalFitStyle = ~/FitStyle/FitToContent
-                                VerticalFitStyle = ~/FitStyle/FitToContent
-
-                                BigLineAction = ~/BigLineAction/CutByDots
-
-                                TextStyle = "Default"
-                                TypefaceToken = "UIMainFont"
-
-                                TextDico = ~/LocalisationConstantes/dico_interface_outgame
-
-                                TextColor = "Glacier"
-                                TextSize = "20"
-
-                                TextPadding = TRTTILength4(Magnifiable = [20.0, 0.0, 20.0, 0.0])
-                            )
-                        )
-                    ]
+                    TextureFrame = TUIFramePropertyRTTI( RelativeWidthHeight = [1.0, 1.0] )
+                    TextureToken = "UseOutGame_Cadenas"
                 )
             ]
         )
@@ -125,7 +77,7 @@ private template Texte_Mission
     )
     Axis = ~/ListAxis/Horizontal
 
-    FirstMargin = TRTTILength (Magnifiable = 10.0)
+    FirstMargin = TRTTILength (Magnifiable = FirstMarginWidth)
     InterItemMargin = TRTTILength (Magnifiable = 5.0)
     LastMargin = TRTTILength (Magnifiable = 10.0)
 
@@ -186,37 +138,84 @@ private template Texte_Mission
 
                         Components =
                         [
-                            BUCKTextDescriptor
+                            BUCKListDescriptor
                             (
-                                ElementName = "MissionName"
+                                ElementName = "MissionNameList"
+
                                 ComponentFrame = TUIFramePropertyRTTI
                                 (
-                                    RelativeWidthHeight = [1.0, 1.0]
+                                    RelativeWidthHeight = [0.0, 1.0]
                                 )
+                                Axis = ~/ListAxis/Horizontal
 
-                                ParagraphStyle = TParagraphStyle
-                                (
-                                    Alignment = ~/UIText_Left
-                                    VerticalAlignment = ~/UIText_VerticalCenter
-                                )
-
-                                TextStyle = 'Default'
-                                TypefaceToken = "Eurostyle"
-                                TextSize = '16'
-                                TextDico = ~/LocalisationConstantes/dico_interface_ingame
-                                TextColor = "noir_listeMission"
-
-                                Components =
+                                Elements =
                                 [
-                                    BUCKTextureDescriptor
+                                    BUCKListElementDescriptor
                                     (
-                                        ComponentFrame = TUIFramePropertyRTTI
+                                        ExtendWeight = 1
+                                        ComponentDescriptor = BUCKTextDescriptor
                                         (
-                                            RelativeWidthHeight = [1.1, 1.1]
-                                            AlignementToAnchor = [0.5, 0.5]
-                                            AlignementToFather = [0.5, 0.5]
+                                            ElementName = "MissionName"
+                                            ComponentFrame = TUIFramePropertyRTTI
+                                            (
+                                                RelativeWidthHeight = [1.0, 1.0]
+                                            )
+
+                                            ParagraphStyle = TParagraphStyle
+                                            (
+                                                Alignment = ~/UIText_Left
+                                                VerticalAlignment = ~/UIText_VerticalCenter
+                                            )
+
+                                            TextStyle = 'Default'
+                                            TypefaceToken = "Eurostyle"
+                                            TextSize = '16'
+                                            TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                                            TextColor = "noir_listeMission"
+
+                                            // BigLineAction = ~/BigLineAction/ResizeFont
+
+                                            Components =
+                                            [
+                                                BUCKTextureDescriptor
+                                                (
+                                                    ComponentFrame = TUIFramePropertyRTTI
+                                                    (
+                                                        RelativeWidthHeight = [1.1, 1.1]
+                                                        AlignementToAnchor = [0.5, 0.5]
+                                                        AlignementToFather = [0.5, 0.5]
+                                                    )
+                                                    TextureToken = 'EffetSurvol_listeMission'
+                                                )
+                                            ]
                                         )
-                                        TextureToken = 'EffetSurvol_listeMission'
+                                    ),
+                                    BUCKListElementDescriptor
+                                    (
+                                        // ExtendWeight = 0.20
+                                        ComponentDescriptor = BUCKTextDescriptor
+                                        (
+                                            ElementName = "DlcName"
+                                            ComponentFrame = TUIFramePropertyRTTI
+                                            (
+                                                RelativeWidthHeight = [0.0, 1.0]
+                                            )
+
+                                            ParagraphStyle = TParagraphStyle
+                                            (
+                                                Alignment = ~/UIText_Right
+                                                VerticalAlignment = ~/UIText_VerticalCenter
+                                            )
+                                            HorizontalFitStyle = ~/FitStyle/FitToContent
+
+                                            TextStyle = 'Default'
+                                            TypefaceToken = "Eurostyle"
+                                            TextSize = '8'
+                                            TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                                            TextColor = "noir_listeMission"
+                                            TextToken = "DIVSEL_DLC"
+
+                                        )
                                     )
                                 ]
                             )
@@ -324,7 +323,7 @@ private template ScenarioBriefsRack
     )
 
     Axis = ~/ListAxis/Vertical
-    FirstMargin = TRTTILength(Magnifiable = 10.0)
+    FirstMargin = TRTTILength(Magnifiable = FirstMarginWidth)
     InterItemMargin = TRTTILength(Magnifiable = 0.0)
     BladeDescriptor = ScenarioBriefDescriptor(GameType = <GameType>)
 )
@@ -952,7 +951,7 @@ template titleColumnMissionList
 
     Axis = ~/ListAxis/Horizontal
 
-    FirstMargin = TRTTILength (Magnifiable = 10.0)
+    FirstMargin = TRTTILength (Magnifiable = FirstMarginWidth)
     InterItemMargin = TRTTILength (Magnifiable = 5.0)
     LastMargin = TRTTILength (Magnifiable = 10.0)
 

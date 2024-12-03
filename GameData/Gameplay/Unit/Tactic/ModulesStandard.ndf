@@ -11,7 +11,7 @@ CapturableModuleDescriptor is TCapturableModuleDescriptor
 GroupableUnitModuleSelector is TModuleSelector
 (
     Default        = TGroupableUnitModuleDescriptor()
-    Selection      = [~/NilDescriptorIfCadavre]
+    Condition      = ~/IfNotCadavreCondition
 )
 
 PlayerMissionModuleDescriptor is TPlayerMissionModuleDescriptor()
@@ -19,19 +19,19 @@ PlayerMissionModuleDescriptor is TPlayerMissionModuleDescriptor()
 TargetCoordinatorModuleSelector is TModuleSelector
 (
     Default        = TTargetCoordinatorModuleDescriptor()
-    Selection      = [~/NilDescriptorIfCadavre]
+    Condition      = ~/IfNotCadavreCondition
 )
 
 TargetManagerModuleSelector is TModuleSelector
 (
     Default        = TTargetManagerModuleDescriptor()
-    Selection      = [~/NilDescriptorIfCadavre]
+    Condition      = ~/IfNotCadavreCondition
 )
 
 IAStratZoneIndexModuleDescriptor is TModuleSelector
 (
     Default        = TIAStratZoneIndexModuleDescriptor()
-    Selection      = [~/NilDescriptorIfCadavre]
+    Condition      = ~/IfNotCadavreCondition
 )
 
 BuildingOrderConfigModuleDescriptor is TOrderableModuleDescriptor
@@ -75,16 +75,16 @@ template AirplaneMovementDescriptor
         RudderRotationMax = ~/RudderRotationMax
         OrderedAttackStrategies = <OrderedAttackStrategies>
     )
-    Selection = [~/NilDescriptorIfCadavre]
+    Condition = ~/IfNotCadavreCondition
 )
 
-template BuildingApparenceModelModuleDescriptor
+template BuildingApparenceModuleDescriptor
 [
     BlackHoleIdentifier,
     SymbolName,
 ] is TModuleSelector
 (
-    Default            = TApparenceModelModuleDescriptor
+    Default            = TApparenceModuleDescriptor
     (
         PickableObject                        = True
         BlackHoleIdentifier = <BlackHoleIdentifier>
@@ -93,23 +93,23 @@ template BuildingApparenceModelModuleDescriptor
             SymbolName = <SymbolName>
         )
     )
-    Selection = [ ~/NilDescriptorIfCadavre ]
+    Condition = ~/IfNotCadavreCondition
 )
 
-DistrictApparenceModelModuleDescriptor is TModuleSelector
+DistrictApparenceModuleDescriptor is TModuleSelector
 (
-    Default = TApparenceModelModuleDescriptor
+    Default = TApparenceModuleDescriptor
     (
         PickableObject = True
         Depiction = TTimelyModifyLevelBuildReceiverFactory()
     )
-    Selection = [ ~/NilDescriptorIfCadavre ]
+    Condition = ~/IfNotCadavreCondition
 )
 
-template InfantryApparenceModelModuleDescriptor [
+template InfantryApparenceModuleDescriptor [
     Depiction,
     SkinWardrobe = nil,
-] is TApparenceModelModuleDescriptor
+] is TApparenceModuleDescriptor
 (
     UseFollowCam = True
     PickableObject = False
@@ -118,7 +118,7 @@ template InfantryApparenceModelModuleDescriptor [
     ReferenceMesh = $/GFX/DepictionResources/Rien
 )
 
-template VehicleApparenceModelModuleDescriptor [
+template VehicleApparenceModuleDescriptor [
     Depiction,
     BlackHoleIdentifier,
     GameplayBBoxBoneName = "",
@@ -126,7 +126,7 @@ template VehicleApparenceModelModuleDescriptor [
     ReferenceMesh,
 ] is TModuleSelector
 (
-    Default = TApparenceModelModuleDescriptor
+    Default = TApparenceModuleDescriptor
     (
         UseFollowCam = True
         PickableObject = True
@@ -136,7 +136,7 @@ template VehicleApparenceModelModuleDescriptor [
         GameplayBBoxBoneName = <GameplayBBoxBoneName>
         SkinWardrobe = <SkinWardrobe>
     )
-    Selection = [ ~/NilDescriptorIfCadavre ]
+    Condition = ~/IfNotCadavreCondition
 )
 
 FacingInfosModuleDescriptor is TFacingInfosModuleDescriptor()
@@ -144,7 +144,7 @@ FacingInfosModuleDescriptor is TFacingInfosModuleDescriptor()
 HeliApparenceModuleDescriptor is TModuleSelector
 (
     Default = THeliApparenceModuleDescriptor()
-    Selection = [ ~/NilDescriptorIfCadavre ]
+    Condition = ~/IfNotCadavreCondition
 )
 
 UnitStateEngineCompanyModuleDescriptor is TStateEngineCompanyModuleDescriptor
@@ -326,8 +326,8 @@ template UnitCadavreModuleDescriptor [
 
 FOBBuildingModuleDescriptor is TWargameBuildingModuleDescriptor
 (
-    BoundingBoxMin = $/GFX/Constantes/FOBBoxMin
-    BoundingBoxMax = $/GFX/Constantes/FOBBoxMax
+    BoundingBoxMinInLBU = $/GFX/Constantes/FOBBoxMin
+    BoundingBoxMaxInLBU = $/GFX/Constantes/FOBBoxMax
 )
 
 BuildingDescriptorTagsModuleDescriptor is TTagsModuleDescriptor
@@ -335,9 +335,9 @@ BuildingDescriptorTagsModuleDescriptor is TTagsModuleDescriptor
     TagSet = [ "FOB" ]
 )
 
-BuildingTagsModuleDescriptor is TTagsModuleDescriptor
+DistrictTagsModuleDescriptor is TTagsModuleDescriptor
 (
-    TagSet = [ "Standard", "FOB" ]
+    TagSet = [ "Standard" ]
 )
 
 DistrictModuleDescriptor is TDistrictModuleDescriptor()

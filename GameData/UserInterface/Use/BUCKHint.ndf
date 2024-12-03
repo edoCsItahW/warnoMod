@@ -278,7 +278,7 @@ template HintableAreaBUCKComponent
     ElementName : string = "",
     UniqueName : string = "",
 
-    ForbiddenTags : list<string> = [],
+    ForbiddenTags : LIST<string> = [],
 
     // hint standard
     DicoToken : string = "",

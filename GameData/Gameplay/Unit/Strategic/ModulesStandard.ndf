@@ -34,8 +34,8 @@ StrategicIdleStatusModuleDescriptor is TStrategicIdleStatusModuleDescriptor
 
 StrategicBuildingModuleDescriptor is TWargameBuildingModuleDescriptor
 (
-    BoundingBoxMin = $/GFX/Constantes/StrategicBuildingBoxMin
-    BoundingBoxMax = $/GFX/Constantes/StrategicBuildingBoxMax
+    BoundingBoxMinInLBU = $/GFX/Constantes/StrategicBuildingBoxMin
+    BoundingBoxMaxInLBU = $/GFX/Constantes/StrategicBuildingBoxMax
 )
 
 template StrategicUIModuleDescriptor [ NameToken, ProdMenuTexture ] is TPawnUIModuleDescriptor

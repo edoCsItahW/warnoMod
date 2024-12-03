@@ -5,18 +5,7 @@ PackSignauxModuleDescriptor  is TPackSignauxModuleDescriptor()
 SimpleTypeUnitModuleDescriptor is TTypeUnitModuleDescriptor()
 TargetDataModuleDescriptor is TTargetDataModuleDescriptor()
 
-template TModuleSelectorFilterIfCadavre
-[ Descriptor ]
-is TModuleSelectorFilter
-(
-    Condition  = TModuleSelectorCondition_ParamEquals_Integer(ParamId=~/Parameter_ModuleCreationSelectionFilter  ParamValue=~/ModuleCreationFilter_Cadavre)
-    Descriptor = <Descriptor>
-)
-
-NilDescriptorIfCadavre is TModuleSelectorFilterIfCadavre
-(
-    Descriptor = nil
-)
+IfNotCadavreCondition is TModuleSelectorCondition_IsNotCadavre()
 
 ShowroomPositionModuleDescriptor is TPositionModuleDescriptor
 (
@@ -57,7 +46,7 @@ template Descriptor_Unit_MimeticUnit[ DescriptorId, MimeticName ] is TEntityDesc
             TMimeticSteeringModuleDescriptor(),
             TLinkTeamModuleDescriptor(),
             TLinkToOwnerModuleDescriptor(),
-            TApparenceModelModuleDescriptor
+            TApparenceModuleDescriptor
             (
                 PickableObject = True
                 Depiction      = TTimelyDepictionReceiverFactory( MimeticName = <MimeticName> )
@@ -135,7 +124,6 @@ HelicoFlagsModuleDescriptor is TFlagsModuleDescriptor
         Flag_LdDetectable,
         Flag_NearGroundFlying,
         Flag_DetectableLowAltitude,
-        Flag_DEPRECATED_NePasUtiliser_OnlyForBriquePython_Helico,
     ]
 )
 

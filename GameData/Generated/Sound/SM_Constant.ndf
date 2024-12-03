@@ -61,7 +61,7 @@ export DepictionOperator_MovementSound_SM_SD_avion_AlphaJet is TCosmeticConstant
 export DepictionOperator_MovementSound_SM_SD_avion_Aquila_MQM_105 is TCosmeticConstantMovementSoundOperatorDesc
 (
     FadeInDuration = 0.5
-    MaxVolume = 1
+    MaxVolume = 0.5
     MaxVolumeSpeed = 80
     MinVolume = 0.1
     OperatorId = "constantSound"
@@ -69,7 +69,7 @@ export DepictionOperator_MovementSound_SM_SD_avion_Aquila_MQM_105 is TCosmeticCo
     [
         TSoundDescriptor
         (
-            SoundSettings = $/SoundSettings/SoundSettings_Moteur_Avion
+            SoundSettings = $/SoundSettings/SoundSettings_Moteur_Helico
             TheSoundStream = TSoundStream
             (
                 FileName = "GameData:/Assets/Sounds/SFX/Avions/MQM_105_Engine.wav"
@@ -126,7 +126,7 @@ export DepictionOperator_MovementSound_SM_SD_avion_Epervier is TCosmeticConstant
     [
         TSoundDescriptor
         (
-            SoundSettings = $/SoundSettings/SoundSettings_Moteur_Avion
+            SoundSettings = $/SoundSettings/SoundSettings_Moteur_Helico
             TheSoundStream = TSoundStream
             (
                 FileName = "GameData:/Assets/Sounds/SFX/Avions/Epervier_Engine.wav"
@@ -251,7 +251,7 @@ export DepictionOperator_MovementSound_SM_SD_avion_MirageIV is TCosmeticConstant
 export DepictionOperator_MovementSound_SM_SD_avion_Pchela_1T is TCosmeticConstantMovementSoundOperatorDesc
 (
     FadeInDuration = 0.5
-    MaxVolume = 1
+    MaxVolume = 0.5
     MaxVolumeSpeed = 80
     MinVolume = 0.1
     OperatorId = "constantSound"
@@ -259,7 +259,7 @@ export DepictionOperator_MovementSound_SM_SD_avion_Pchela_1T is TCosmeticConstan
     [
         TSoundDescriptor
         (
-            SoundSettings = $/SoundSettings/SoundSettings_Moteur_Avion
+            SoundSettings = $/SoundSettings/SoundSettings_Moteur_Helico
             TheSoundStream = TSoundStream
             (
                 FileName = "GameData:/Assets/Sounds/SFX/Avions/MQM_105_Engine.wav"

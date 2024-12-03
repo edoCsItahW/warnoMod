@@ -1490,29 +1490,29 @@ HumanSubDepictions_DCA_FK20_2_20mm_RFA is
 [
     SubDepiction_ServantWalkOnlyLeft
     (
-        MeshDescriptorHigh = $/GFX/DepictionResources/MeshDescriptor_Servant_G_RFA
-        MeshDescriptorLow = $/GFX/DepictionResources/MeshDescriptor_Servant_G_RFA_LOW
+        MeshDescriptorHigh = $/GFX/DepictionResources/MeshDescriptor_Servant_G_FJ_RFA
+        MeshDescriptorLow = $/GFX/DepictionResources/MeshDescriptor_Servant_G_FJ_RFA_LOW
     ),
     SubDepiction_GunnerIdleOnlyLeft
     (
-        MeshDescriptorHigh = $/GFX/DepictionResources/MeshDescriptor_Servant_G_RFA
-        MeshDescriptorLow = $/GFX/DepictionResources/MeshDescriptor_Servant_G_RFA_LOW
+        MeshDescriptorHigh = $/GFX/DepictionResources/MeshDescriptor_Servant_G_FJ_RFA
+        MeshDescriptorLow = $/GFX/DepictionResources/MeshDescriptor_Servant_G_FJ_RFA_LOW
     ),
     SubDepiction_ServantRight
     (
-        MeshDescriptorHigh = $/GFX/DepictionResources/MeshDescriptor_Servant_D_RFA
-        MeshDescriptorLow = $/GFX/DepictionResources/MeshDescriptor_Servant_D_RFA_LOW
+        MeshDescriptorHigh = $/GFX/DepictionResources/MeshDescriptor_Servant_D_FJ_RFA
+        MeshDescriptorLow = $/GFX/DepictionResources/MeshDescriptor_Servant_D_FJ_RFA_LOW
     ),
 ]
 HumanSubDepictionsShowroom_DCA_FK20_2_20mm_RFA is 
 [
     ShowroomSubDepiction_GunnerLeft
     (
-        MeshDescriptor = $/GFX/DepictionResources/MeshDescriptor_Servant_G_RFA
+        MeshDescriptor = $/GFX/DepictionResources/MeshDescriptor_Servant_G_FJ_RFA
     ),
     ShowroomSubDepiction_ServantRight
     (
-        MeshDescriptor = $/GFX/DepictionResources/MeshDescriptor_Servant_D_RFA
+        MeshDescriptor = $/GFX/DepictionResources/MeshDescriptor_Servant_D_FJ_RFA
     ),
 ]
 HumanSubDepictions_DCA_FK20_2_20mm_Zwillinge_RFA is 
@@ -5857,8 +5857,8 @@ TransportedServantAlternatives is
     TDepictionDescriptor( MeshDescriptor = $/GFX/DepictionResources/MeshDescriptor_Servant_D_FR SelectorId = [ "DCA_Bofors_L60_FR", "02" ] ),
     TDepictionDescriptor( MeshDescriptor = $/GFX/DepictionResources/MeshDescriptor_Servant_G_DDR SelectorId = [ "DCA_FASTA_4_DDR", "01" ] ),
     TDepictionDescriptor( MeshDescriptor = $/GFX/DepictionResources/MeshDescriptor_Servant_D_DDR SelectorId = [ "DCA_FASTA_4_DDR", "02" ] ),
-    TDepictionDescriptor( MeshDescriptor = $/GFX/DepictionResources/MeshDescriptor_Servant_G_RFA SelectorId = [ "DCA_FK20_2_20mm_RFA", "01" ] ),
-    TDepictionDescriptor( MeshDescriptor = $/GFX/DepictionResources/MeshDescriptor_Servant_D_RFA SelectorId = [ "DCA_FK20_2_20mm_RFA", "02" ] ),
+    TDepictionDescriptor( MeshDescriptor = $/GFX/DepictionResources/MeshDescriptor_Servant_G_FJ_RFA SelectorId = [ "DCA_FK20_2_20mm_RFA", "01" ] ),
+    TDepictionDescriptor( MeshDescriptor = $/GFX/DepictionResources/MeshDescriptor_Servant_D_FJ_RFA SelectorId = [ "DCA_FK20_2_20mm_RFA", "02" ] ),
     TDepictionDescriptor( MeshDescriptor = $/GFX/DepictionResources/MeshDescriptor_Servant_G_RFA SelectorId = [ "DCA_FK20_2_20mm_Zwillinge_RFA", "01" ] ),
     TDepictionDescriptor( MeshDescriptor = $/GFX/DepictionResources/MeshDescriptor_Servant_PzGrenadier_spe_D_RFA SelectorId = [ "DCA_FK20_2_20mm_Zwillinge_RFA", "02" ] ),
     TDepictionDescriptor( MeshDescriptor = $/GFX/DepictionResources/MeshDescriptor_Servant_G_BEL SelectorId = [ "DCA_I_Hawk_BEL", "01" ] ),

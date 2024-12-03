@@ -253,9 +253,6 @@ IAStratConstantes is TIAStratConstantesDescriptor_Specific
     DefaultTransportSettings = [~/DefaultWargameTransport,]
     DefaultTransportIsRequiredProduction = false
 
-    // RoE Pour l'IA
-    RoEConstantes = ~/RoEConstantes
-
     CommanderTagSet = ["InfmapCommander"]
     // constante de l'idle des helico
     HelicoSafeCollisionPlanesOrderByTag =
@@ -322,14 +319,6 @@ UnitPowerInformation is TUnitPowerInformationConstante
     UnitPowerBuildingMultiplier = 0.01
     UnitPowerUnarmedOrPinnedMultiplier = 0.1
     DefaultDistanceToConsiderOtherUnitsPowerGRU = 707 // Les missions d'attaque prendront en compte ce rayon pour calculer leurs ratios
-)
-
-RoEConstantes is TRoEConstantes
-(
-    UnarmedVehiculeBehavior = EUnarmedVehiculeBehaviour/FireAtWill
-    MissilesBehavior = EMissilesBehaviour/LookAtAllTransport
-    ShotReactionBehavior = EShotReactionBehaviour/Defensive
-    ActivateAutoResale = true
 )
 
 //--------------------------------------------------------------------------------------//

@@ -77,10 +77,6 @@ Texture_Speciality_Icon_para is TUIResourceTexture_Common
 (
     FileName = "GameData:/Assets/2D/Interface/Common/UnitsIcons/Specialties/para.png"
 )
-Texture_Speciality_Icon_poorlytrained is TUIResourceTexture_Common
-(
-    FileName = "GameData:/Assets/2D/Interface/Common/UnitsIcons/Specialties/poorlytrained.png"
-)
 Texture_Speciality_Icon_reco_deploy is TUIResourceTexture_Common
 (
     FileName = "GameData:/Assets/2D/Interface/Common/UnitsIcons/Specialties/reco_deploy.png"
@@ -177,10 +173,6 @@ Texture_Speciality_Icon_ifv is TUIResourceTexture_Common
 (
     FileName = "GameData:/Assets/2D/Interface/Common/UnitsIcons/Specialties/ifv.png"
 )
-Texture_Speciality_Icon_ifv_infantry_half is TUIResourceTexture_Common
-(
-    FileName = "GameData:/Assets/2D/Interface/Common/UnitsIcons/Specialties/ifv_infantry_half.png"
-)
 Texture_Speciality_Icon_infantry is TUIResourceTexture_Common
 (
     FileName = "GameData:/Assets/2D/Interface/Common/UnitsIcons/Specialties/infantry.png"
@@ -261,7 +253,6 @@ UnitSpecialityAdditionalTextureBank is TBUCKToolAdditionalTextureBank
         ("Texture_Speciality_Icon_cmd", MAP [(~/ComponentState/Normal, ~/Texture_Speciality_Icon_cmd)]),
         ("Texture_Speciality_Icon_mp", MAP [(~/ComponentState/Normal, ~/Texture_Speciality_Icon_mp)]),
         ("Texture_Speciality_Icon_para", MAP [(~/ComponentState/Normal, ~/Texture_Speciality_Icon_para)]),
-        ("Texture_Speciality_Icon_poorlytrained", MAP [(~/ComponentState/Normal, ~/Texture_Speciality_Icon_poorlytrained)]),
         ("Texture_Speciality_Icon_reco_deploy", MAP [(~/ComponentState/Normal, ~/Texture_Speciality_Icon_reco_deploy)]),
         ("Texture_Speciality_Icon_reserviste", MAP [(~/ComponentState/Normal, ~/Texture_Speciality_Icon_reserviste)]),
         ("Texture_Speciality_Icon_resolute", MAP [(~/ComponentState/Normal, ~/Texture_Speciality_Icon_resolute)]),
@@ -286,7 +277,6 @@ UnitSpecialityAdditionalTextureBank is TBUCKToolAdditionalTextureBank
         ("Texture_Speciality_Icon_howitzer", MAP [(~/ComponentState/Normal, ~/Texture_Speciality_Icon_howitzer)]),
         ("Texture_Speciality_Icon_hq", MAP [(~/ComponentState/Normal, ~/Texture_Speciality_Icon_hq)]),
         ("Texture_Speciality_Icon_ifv", MAP [(~/ComponentState/Normal, ~/Texture_Speciality_Icon_ifv)]),
-        ("Texture_Speciality_Icon_ifv_infantry_half", MAP [(~/ComponentState/Normal, ~/Texture_Speciality_Icon_ifv_infantry_half)]),
         ("Texture_Speciality_Icon_infantry", MAP [(~/ComponentState/Normal, ~/Texture_Speciality_Icon_infantry)]),
         ("Texture_Speciality_Icon_mlrs", MAP [(~/ComponentState/Normal, ~/Texture_Speciality_Icon_mlrs)]),
         ("Texture_Speciality_Icon_mortar", MAP [(~/ComponentState/Normal, ~/Texture_Speciality_Icon_mortar)]),

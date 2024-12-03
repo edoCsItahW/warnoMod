@@ -66,9 +66,9 @@ GhostDepiction_AH1F_HeavyHog_US is GhostAerialDepictionTemplate
     Alternatives = Alternatives_AH1F_HeavyHog_US
     Selector = SpecificHelicoDepictionSelector
 )
-GhostDepiction_AH1S_Cobra_US is GhostAerialDepictionTemplate
+GhostDepiction_AH1F_Hog_US is GhostAerialDepictionTemplate
 (
-    Alternatives = Alternatives_AH1S_Cobra_US
+    Alternatives = Alternatives_AH1F_Hog_US
     Selector = SpecificHelicoDepictionSelector
 )
 GhostDepiction_AH64_Apache_ATAS_US is GhostAerialDepictionTemplate
@@ -1046,6 +1046,11 @@ GhostDepiction_Mi_2_trans_SOV is GhostAerialDepictionTemplate
     Alternatives = Alternatives_Mi_2_trans_SOV
     Selector = SpecificHelicoDepictionSelector
 )
+GhostDepiction_Mi_4AV_130mm_TCH is GhostAerialDepictionTemplate
+(
+    Alternatives = Alternatives_Mi_4AV_130mm_TCH
+    Selector = SpecificHelicoDepictionSelector
+)
 GhostDepiction_Mi_6_SOV is GhostAerialDepictionTemplate
 (
     Alternatives = Alternatives_Mi_6_SOV
@@ -1575,7 +1580,7 @@ AerialMimeticGhost is MAP[
   ( 'AH1F_Cobra_NG_US', GhostDepiction_AH1F_Cobra_NG_US ),
   ( 'AH1F_Cobra_US', GhostDepiction_AH1F_Cobra_US ),
   ( 'AH1F_HeavyHog_US', GhostDepiction_AH1F_HeavyHog_US ),
-  ( 'AH1S_Cobra_US', GhostDepiction_AH1S_Cobra_US ),
+  ( 'AH1F_Hog_US', GhostDepiction_AH1F_Hog_US ),
   ( 'AH64_Apache_ATAS_US', GhostDepiction_AH64_Apache_ATAS_US ),
   ( 'AH64_Apache_NG_US', GhostDepiction_AH64_Apache_NG_US ),
   ( 'AH64_Apache_US', GhostDepiction_AH64_Apache_US ),
@@ -1771,6 +1776,7 @@ AerialMimeticGhost is MAP[
   ( 'Mi_2_rocket_DDR', GhostDepiction_Mi_2_rocket_DDR ),
   ( 'Mi_2_trans_DDR', GhostDepiction_Mi_2_trans_DDR ),
   ( 'Mi_2_trans_SOV', GhostDepiction_Mi_2_trans_SOV ),
+  ( 'Mi_4AV_130mm_TCH', GhostDepiction_Mi_4AV_130mm_TCH ),
   ( 'Mi_6_SOV', GhostDepiction_Mi_6_SOV ),
   ( 'Mi_8K_CMD_SOV', GhostDepiction_Mi_8K_CMD_SOV ),
   ( 'Mi_8MTPI_SOV', GhostDepiction_Mi_8MTPI_SOV ),

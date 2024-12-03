@@ -43,7 +43,7 @@ export colonelDefenseDescriptor is TMacroActionDescriptor_Defense_Specific
     ]
 )
 ///////////////////////////////////////////////////////////////////////////////////////////
-export colonelArtilleryCounterBatteryDescriptor is TMacroActionDescriptor_Artillery_PlayerMission
+export colonelArtilleryCounterBatteryDescriptor is TMacroActionDescriptor_Artillery_Specific
 (
     ParametresDeMission =
     [
@@ -58,7 +58,7 @@ export colonelArtilleryCounterBatteryDescriptor is TMacroActionDescriptor_Artill
     ]
 )
 ///////////////////////////////////////////////////////////////////////////////////////////
-export colonelArtilleryDescriptor is TMacroActionDescriptor_Artillery_PlayerMission
+export colonelArtilleryDescriptor is TMacroActionDescriptor_Artillery_Specific
 (
     ParametresDeMission =
     [

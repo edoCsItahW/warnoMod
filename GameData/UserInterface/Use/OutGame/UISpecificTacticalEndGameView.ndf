@@ -2563,11 +2563,11 @@ UISpecificTacticalEndGameViewDescriptor is TUISpecificTacticalEndGameViewDescrip
         (EAllianceStyle/REDFOR, "REDFOR"),
     ]
 
-    NationaliteDico = ~/LocalisationConstantes/dico_interface_outgame
-    NationaliteTokens = MAP
+    CoalitionDico = ~/LocalisationConstantes/dico_interface_outgame
+    CoalitionTokens = MAP
     [
-        (ENationalite/OTAN, "NATO"),
-        (ENationalite/PACT, "PACT"),
+        (ECoalition/OTAN, "NATO"),
+        (ECoalition/PACT, "PACT"),
     ]
 
     IADico = ~/LocalisationConstantes/dico_interface_outgame
@@ -2633,7 +2633,7 @@ UISpecificTacticalEndGameViewDescriptor is TUISpecificTacticalEndGameViewDescrip
         (~/EGameEndingCondition/NoMoreZone,             "EG_nozoneW"),
         (~/EGameEndingCondition/NoMoreProd,             "EG_noprodW"),
         (~/EGameEndingCondition/Time,                   "EG_scWTL"),
-        (~/EGameEndingCondition/ScriptDecided ,         "EG_wsc"),
+        (~/EGameEndingCondition/ScriptDecided ,         ""),
     ]
 
     LossTokenByGameEndingCondition = MAP
@@ -2645,7 +2645,7 @@ UISpecificTacticalEndGameViewDescriptor is TUISpecificTacticalEndGameViewDescrip
         (~/EGameEndingCondition/NoMoreZone,             "EG_nozoneL"),
         (~/EGameEndingCondition/NoMoreProd,             "EG_noprodL"),
         (~/EGameEndingCondition/Time,                   "EG_scLTL"),
-        (~/EGameEndingCondition/ScriptDecided ,         "EG_lsc"),
+        (~/EGameEndingCondition/ScriptDecided ,         ""),
     ]
 
     VictoryTokens = MAP

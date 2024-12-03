@@ -155,6 +155,27 @@ export Dynamic_Defense_OnlyTestAuto is TMacroActionDescriptor_CorridorDynamicDef
         TGenerationSettingHolder(GenerationType = TGenerationType_FixedSize NumberLaunchBasedOnGenerationType = 1),
         TMacroActionProductionSettingHolder(PoolModelList = [ ~/Pool_Defense_TestAuto]),
         TForcedPlacementSettingHolder(ForcedCorridor = [2]), // On force le couloirs pour ne pas dépendre du déterminisme
+        TDefenseBehaviorSettingHolder( // Pour ce test auto on veut que le point de défense choisit soit le plus en avant possible
+            DefensePointScoringFeature =
+                TDefensePointScoringFeature(DefensePointScoringValue =  MAP
+                [
+                    (EDefensePointScoringFeature/AltitudeCoeff, 0.0),                       // Bonus dépendant de l'altitude min et max sur la carte et appliqué sur toute la carte
+
+                    (EDefensePointScoringFeature/DistanceBonus, 1.0),                       // | Entre 0 et DistanceMargin => Bonus de DistanceBonus
+                    (EDefensePointScoringFeature/DistanceMarginGRU, 177),                   // | Entre DistanceMargin et DistanceDecayLength => Diminution progressive du bonus jusqu'à 0
+                    (EDefensePointScoringFeature/DistanceDecayLengthGRU, 353),              // | Après DistanceDecayLength => Malus progressif
+                    (EDefensePointScoringFeature/DistanceDecayCoeff, 1.0),
+
+                    (EDefensePointScoringFeature/DistrictCoeff, 0.0),                       // | Bonus appliqués en fonction de la présence d'un quartier ou d'un terrain
+                    (EDefensePointScoringFeature/ForetDenseCoeff, 0.0),                     // | Seul le bonus le plus prioritaire est appliqué si plusieurs bonus sont applicables
+                    (EDefensePointScoringFeature/ForetLightCoeff, 0.0),                     // | Ordre de priorité : District > Foret Dense > Foret Legere
+
+                    (EDefensePointScoringFeature/IsObjectifCoeff, 0.0),                     // Bonus si la case contient un objectif
+                    (EDefensePointScoringFeature/MalusDefaultDefensePoint, 10.0),           // Malus si la case a été prise à défaut d'autres possibilités
+                    (EDefensePointScoringFeature/IsDefenseUnit, 0.0),                       // Bonus si la case contient une tranchée ou une position de tir
+                ]
+            DefensePointPositioning = EDefensePointPositioningType/Offensive)
+        ),
     ]
 )
 

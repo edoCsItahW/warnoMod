@@ -3,7 +3,7 @@ MainPositionEvents is TDescriptorPositionEvents
     MaxEventCount = 10
     EventsDurationInSeconds = 30
     TriggNextEventDurationCeilInSeconds = 2.0
-    CameraMoverTargetClient = $/Camera/CameraMoverTargetClient
+    CameraManipulator = $/Camera/CameraManipulator
 
     World3D = $/M3D/Scene/DefaultWorld
     SituationAwarenessNextEventCommandName = CommandName/SituationAwarenessNextEvent

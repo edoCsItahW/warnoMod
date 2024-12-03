@@ -10,7 +10,7 @@ export Modele_Su_22_DDR_MID is ModelDescriptor
 
 export Modele_Su_22_DDR_LOW is ModelDescriptor
 (
-    FileName = 'GameData:/Assets/3D/Units/DDR/Avion/LODS/Su_22_LOW.fbx'
+    FileName = 'GameData:/Assets/3D/Units/DDR/Avion/Su_22_LOW/Su_22_LOW.fbx'
 )
 
 export Modele_Su_22_DDR_train is ModelDescriptor

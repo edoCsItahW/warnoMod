@@ -688,24 +688,6 @@ TacticalPreparationIncomeAndMoralInfos is BUCKListDescriptor
                 ValueToken = "income"
             )
         ),
-        // BUCKListElementDescriptor
-        // (
-        //     ComponentDescriptor = StrategicTacticalPreparationInfosLine
-        //     (
-        //         ElementName = "Upkeep"
-        //         TitleToken = "PrC_upk"
-        //         ValueToken = "upkeep"
-        //     )
-        // ),
-        // BUCKListElementDescriptor
-        // (
-        //     ComponentDescriptor = StrategicTacticalPreparationInfosLine
-        //     (
-        //         ElementName = "MaxTicket"
-        //         TitleToken = "PrC_ticm"
-        //         ValueToken = "tickMax"
-        //     )
-        // ),
         BUCKListElementDescriptor
         (
             ComponentDescriptor = TacticalPreparationCategoryLine

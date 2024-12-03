@@ -1,0 +1,144 @@
+template DistrictDescriptor
+[
+    DescriptorId,
+    CadavreDescriptorId,
+    ClassNameForDebug       : string,
+    NbSlots                 : int,
+    MaxPhysicalDamages      : int,
+    KillWhenDamagesReachMax : bool,
+] is TEntityDescriptor
+(
+    CadavreDescriptor is TEntityDescriptor
+    (
+        DescriptorId       = <CadavreDescriptorId>
+        ClassNameForDebug  = 'Cadavre' + <ClassNameForDebug>
+        ModulesDescriptors =
+        [
+            TTypeUnitModuleDescriptor(),
+            ~/DistrictTagsModuleDescriptor,
+            ~/DistrictFlagsModuleDescriptor,
+            ~/DistrictCadavrePositionModuleDescriptor,
+            ~/LinkTeamModuleDescriptor,
+            ~/DebugModuleDescriptor,
+            TIAStratModuleDescriptor
+            (
+                DatabaseId = 1
+                GameplayBehavior = EGameplayBehavior/Nothing
+            ),
+            BuildingCadavreModuleDescriptor
+            (
+                CadavreDuration = $/GFX/Unit/CadavreDurationApresFeu_Batiment
+                ModuleDescriptorsToSteal =
+                [
+                    ~/DistrictApparenceModuleDescriptor,
+                ]
+            ),
+            ~/DistrictApparenceModuleDescriptor,
+        ]
+    )
+
+    DescriptorId = <DescriptorId>
+    ClassNameForDebug = <ClassNameForDebug>
+    ModulesDescriptors =
+    [
+        TTypeUnitModuleDescriptor(),
+        ~/DistrictTagsModuleDescriptor,
+        ~/DistrictFlagsModuleDescriptor,
+        ~/DistrictModuleDescriptor,
+        TDistrictUnitsContainerModuleDescriptor
+        (
+            NbSlots                         = <NbSlots>
+            AllowedTagSet                   = [
+                "Inf_quartier_ok",
+            ]
+        ),
+        TDynamicTerrainModuleDescriptor
+        (
+            TerrainToApplyOnInit  = ETerrainType/Batiment
+            TerrainToApplyOnDeath = ETerrainType/Ruin
+        ),
+        ~/InflammableModuleDescriptorDistrict,
+        ~/DistrictPositionModuleDescriptor,
+        TBaseDamageModuleDescriptor
+        (
+            MaxPhysicalDamages = <MaxPhysicalDamages>
+            MaxSuppressionDamages = ~/Building_MaxSuppressionDamages
+            MaxStunDamages = ~/Building_MaxStunDamages
+        ),
+        TDamageModuleDescriptor
+        (
+            SuppressDamagesRegenRatio = ~/Building_SuppressDamagesRegenRatioList
+            StunDamagesRegen = ~/Building_StunDamagesRegen
+            BlindageProperties = TBlindageProperties
+            (
+                ResistanceFront = TResistanceTypeRTTI(Family=ResistanceFamily_batiment Index=1)
+                ResistanceSides = TResistanceTypeRTTI(Family=ResistanceFamily_batiment Index=1)
+                ResistanceRear = TResistanceTypeRTTI(Family=ResistanceFamily_batiment Index=1)
+                ResistanceTop = TResistanceTypeRTTI(Family=ResistanceFamily_batiment Index=1)
+                ExplosiveReactiveArmor = False
+            )
+            KillWhenDamagesReachMax = <KillWhenDamagesReachMax>
+            HitRollECM = 0.0
+            AutoOrientation = False
+            UseTopArmorAgainstFire = True
+        ),
+        ~/DistrictSelectionModuleDescriptor,
+        TShootingPointsModuleDescriptor(),
+        ~/DistrictApparenceModuleDescriptor,
+        ~/LinkTeamModuleDescriptor,
+        ~/DebugModuleDescriptor,
+        TIAStratModuleDescriptor
+        (
+            DatabaseId = 1
+            GameplayBehavior = EGameplayBehavior/Nothing
+        ),
+        TCadavreGeneratorModuleDescriptor( CadavreDescriptor = CadavreDescriptor ),
+        TMinimapDisplayModuleDescriptor
+        (
+            Texture = "Texture_Minimap_Unit_inf"
+            FollowUnitOrientation = True
+        ),
+        ~/PackSignauxModuleDescriptor,
+        ~/TargetDataModuleDescriptor,
+    ]
+)
+// ------------------------------------------------------------------------------------
+export Descriptor_District_Big_District is DistrictDescriptor
+(
+    DescriptorId            = GUID:{c3bee1ea-9a61-47ce-8e66-31c571c362ae}
+    CadavreDescriptorId     = GUID:{2387bae3-7504-42c3-948d-9fa745ef79a6}
+    ClassNameForDebug       = 'Big_District'
+    NbSlots                 = 4
+    MaxPhysicalDamages      = 60
+    KillWhenDamagesReachMax = true
+)
+
+export Descriptor_District_HLM_District is DistrictDescriptor
+(
+    DescriptorId            = GUID:{97cc18e2-21f5-4c6d-b0ea-82db7b12ca41}
+    CadavreDescriptorId     = GUID:{72eb94a2-0963-444d-8f8f-3c693f4c422e}
+    ClassNameForDebug       = 'HLM_District'
+    NbSlots                 = 4
+    MaxPhysicalDamages      = 90
+    KillWhenDamagesReachMax = false
+)
+
+export Descriptor_District_Mid_District is DistrictDescriptor
+(
+    DescriptorId            = GUID:{9efebf25-6b32-4903-91d0-912fc061ec1c}
+    CadavreDescriptorId     = GUID:{b48f05b1-cc13-4d3b-ace2-c5fb0062c44c}
+    ClassNameForDebug       = 'Mid_District'
+    NbSlots                 = 4
+    MaxPhysicalDamages      = 45
+    KillWhenDamagesReachMax = true
+)
+
+export Descriptor_District_Small_District is DistrictDescriptor
+(
+    DescriptorId            = GUID:{b48192ea-4d1e-491b-a8a6-cb1244251f58}
+    CadavreDescriptorId     = GUID:{8ba7a9ce-1db8-4d75-8420-c43e92fa6ef3}
+    ClassNameForDebug       = 'Small_District'
+    NbSlots                 = 4
+    MaxPhysicalDamages      = 15
+    KillWhenDamagesReachMax = true
+)

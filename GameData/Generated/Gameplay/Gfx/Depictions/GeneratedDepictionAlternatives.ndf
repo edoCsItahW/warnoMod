@@ -2636,11 +2636,6 @@ Alternatives_SPW_152K_DDR is [
     DepictionDescriptor_LOD_Mid( MeshDescriptor = $/GFX/DepictionResources/Modele_SPW_152K_DDR_MID ),
     DepictionDescriptor_LOD_Low( MeshDescriptor = $/GFX/DepictionResources/Modele_SPW_152K_DDR_LOW DisabledOperators = [ 'tourelle1' ] ),
 ]
-Alternatives_SVO_TCH is [
-    DepictionDescriptor_LOD_High( MeshDescriptor = $/GFX/DepictionResources/Modele_SVO_TCH ),
-    DepictionDescriptor_LOD_Mid( MeshDescriptor = $/GFX/DepictionResources/Modele_SVO_TCH_MID ),
-    DepictionDescriptor_LOD_Low( MeshDescriptor = $/GFX/DepictionResources/Modele_SVO_TCH_LOW DisabledOperators = [ 'tourelle1' ] ),
-]
 Alternatives_Saxon_CMD_UK is [
     DepictionDescriptor_LOD_High( MeshDescriptor = $/GFX/DepictionResources/Modele_Saxon_CMD_UK ),
     DepictionDescriptor_LOD_Mid( MeshDescriptor = $/GFX/DepictionResources/Modele_Saxon_CMD_UK_MID ),

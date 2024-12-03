@@ -192,16 +192,16 @@ Descriptor_Deck_Pack_AH1F_HeavyHog_US_1 is DeckPackDescriptor
     Unit = $/GFX/Unit/Descriptor_Unit_AH1F_HeavyHog_US
 )
 
-Descriptor_Deck_Pack_AH1S_Cobra_US_1 is DeckPackDescriptor
+Descriptor_Deck_Pack_AH1F_Hog_US_1 is DeckPackDescriptor
 (
     Xp = 1
-    Unit = $/GFX/Unit/Descriptor_Unit_AH1S_Cobra_US
+    Unit = $/GFX/Unit/Descriptor_Unit_AH1F_Hog_US
 )
 
-Descriptor_Deck_Pack_AH1S_Cobra_US_2 is DeckPackDescriptor
+Descriptor_Deck_Pack_AH1F_Hog_US_2 is DeckPackDescriptor
 (
     Xp = 2
-    Unit = $/GFX/Unit/Descriptor_Unit_AH1S_Cobra_US
+    Unit = $/GFX/Unit/Descriptor_Unit_AH1F_Hog_US
 )
 
 Descriptor_Deck_Pack_AH64_Apache_ATAS_US_1 is DeckPackDescriptor
@@ -496,6 +496,13 @@ Descriptor_Deck_Pack_ATteam_Milan_2_FR_VLTT_P4_FR_0 is DeckPackDescriptor
     Unit = $/GFX/Unit/Descriptor_Unit_ATteam_Milan_2_FR
 )
 
+Descriptor_Deck_Pack_ATteam_Milan_2_FR_VLTT_P4_FR_1 is DeckPackDescriptor
+(
+    Xp = 1
+    Transport = $/GFX/Unit/Descriptor_Unit_VLTT_P4_FR
+    Unit = $/GFX/Unit/Descriptor_Unit_ATteam_Milan_2_FR
+)
+
 Descriptor_Deck_Pack_ATteam_Milan_2_FR_VLTT_P4_FR_2 is DeckPackDescriptor
 (
     Xp = 2
@@ -557,6 +564,13 @@ Descriptor_Deck_Pack_ATteam_RCL_M40A1_NG_US_M151_MUTT_trans_US_1 is DeckPackDesc
 
 Descriptor_Deck_Pack_ATteam_RCL_M40A1_RFA_Iltis_trans_RFA_0 is DeckPackDescriptor
 (
+    Transport = $/GFX/Unit/Descriptor_Unit_Iltis_trans_RFA
+    Unit = $/GFX/Unit/Descriptor_Unit_ATteam_RCL_M40A1_RFA
+)
+
+Descriptor_Deck_Pack_ATteam_RCL_M40A1_RFA_Iltis_trans_RFA_1 is DeckPackDescriptor
+(
+    Xp = 1
     Transport = $/GFX/Unit/Descriptor_Unit_Iltis_trans_RFA
     Unit = $/GFX/Unit/Descriptor_Unit_ATteam_RCL_M40A1_RFA
 )
@@ -2074,13 +2088,6 @@ Descriptor_Deck_Pack_Gepard_1A2_RFA_1 is DeckPackDescriptor
     Unit = $/GFX/Unit/Descriptor_Unit_Gepard_1A2_RFA
 )
 
-Descriptor_Deck_Pack_GreenBerets_CMD_US_CH47_Chinook_US_3 is DeckPackDescriptor
-(
-    Xp = 3
-    Transport = $/GFX/Unit/Descriptor_Unit_CH47_Chinook_US
-    Unit = $/GFX/Unit/Descriptor_Unit_GreenBerets_CMD_US
-)
-
 Descriptor_Deck_Pack_GreenBerets_CMD_US_MH47D_Super_Chinook_US_3 is DeckPackDescriptor
 (
     Xp = 3
@@ -2100,13 +2107,6 @@ Descriptor_Deck_Pack_GreenBerets_ODA_US_MH47D_Super_Chinook_US_2 is DeckPackDesc
     Xp = 2
     Transport = $/GFX/Unit/Descriptor_Unit_MH47D_Super_Chinook_US
     Unit = $/GFX/Unit/Descriptor_Unit_GreenBerets_ODA_US
-)
-
-Descriptor_Deck_Pack_GreenBerets_US_M998_Humvee_US_2 is DeckPackDescriptor
-(
-    Xp = 2
-    Transport = $/GFX/Unit/Descriptor_Unit_M998_Humvee_US
-    Unit = $/GFX/Unit/Descriptor_Unit_GreenBerets_US
 )
 
 Descriptor_Deck_Pack_Grenzer_Flam_DDR_W50_LA_A_DDR_0 is DeckPackDescriptor

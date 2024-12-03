@@ -131,7 +131,7 @@ template TemplateWeaponAccessorySubDepiction
         Selector = TInfantryWeaponAccessorySelector
         (
             NoneLimitInMeter = LodHighNoneLimit_SoldierWeapon
-            CameraMoverManagerModernWarfare = $/Camera/CameraMoverManager
+            CameraMoverManager = $/Camera/CameraMoverManager
             MeshAlternativeKeys = ['mesh_alternative','mesh_alternative_backpack']
             PrincipalDepiction = [LOD_High]
             EnabledValue = <EnabledValue>
@@ -163,7 +163,7 @@ template TemplateInfantrySelectorTactic
     HighSurrogates = <Surrogates>
     HighLowLimitInMeter = LodHighLowLimit_Infantry
     LowNoneLimitInMeter = LodLowNoneLimit_Infantry
-    CameraMoverManagerModernWarfare = $/Camera/CameraMoverManager
+    CameraMoverManager = $/Camera/CameraMoverManager
     OptionalLimit = $/GraphicOption/ModelQuality
 )
 
@@ -230,7 +230,7 @@ template TransportedInfantryDepiction
         Index = <Index>
         Counts = <Counts>
         HighNoneLimitInMeter = LodHighLowLimit_Infantry
-        CameraMoverManagerModernWarfare = $/Camera/CameraMoverManager
+        CameraMoverManager = $/Camera/CameraMoverManager
         OptionalLimit = $/GraphicOption/ModelQuality
     )
 
@@ -419,7 +419,7 @@ template TacticTowedSubDepictionTemplate
 ]
 is TSubDepiction
 (
-    Anchors = ["remorque_1"]
+    Anchors = ["remorque"]
     Depiction = TDepictionTemplate
     (
         TowedInitialPoses is TTowedInitialPoses( InitialPoses = <InitialPoses> )
@@ -453,7 +453,7 @@ is TSubDepiction
                     Selector = TSubDepictionInstancedTowedMissileSelector
                     (
                         HighNoneLimitInMeter = LodHighNoneLimit_Missile
-                        CameraMoverManagerModernWarfare = $/Camera/CameraMoverManager
+                        CameraMoverManager = $/Camera/CameraMoverManager
                         AllowedUnits = <AllowedUnits>
                     )
                     DepictionAlternatives = [ AlternativeNone ] + <MissileAlternatives>

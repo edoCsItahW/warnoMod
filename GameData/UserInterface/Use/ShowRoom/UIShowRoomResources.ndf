@@ -53,8 +53,8 @@ ShowRoomResource is TUISpecificShowRoomResources
 
     CountriesToShow = ["SOV","US","UK","FR","CAN","POL","DDR","RFA","NL","BEL","LUX","TCH","ESP"]
     AllianceToCountriesToShow = MAP [
-        (ENationalite/Axis, ["SOV","DDR","POL","TCH"]),
-        (ENationalite/Allied, ["US","UK","FR","RFA","CAN","NL","BEL","LUX","ESP"])
+        (ECoalition/Axis, ["SOV","DDR","POL","TCH"]),
+        (ECoalition/Allied, ["US","UK","FR","RFA","CAN","NL","BEL","LUX","ESP"])
     ]
 
     SpecificHidingViewDescriptor = ~/UISpecificHidingViewDescriptor

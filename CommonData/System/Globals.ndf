@@ -99,7 +99,6 @@ SDMask_SquashOrDestroy      is SDMask_Squash+SDMask_Destroy
 
 //-----------------------------------------------------------------------------
 MapCellSize                 is 655360
-
 //-----------------------------------------------------------------------------
 // primitive type (Synchronisé avec Core3D/Primitives.h)
 
@@ -389,7 +388,7 @@ CommandName is TBaseClass
 RSP_DecompressedBufferResourceThreshold is 5000*42
 
 //-----------------------------------------------------------------------------
-OneMeterInGameUnits is 215 //Francis (21/12/21) A virer ASAP
+GameUnitsPerLBU is 215 //Francis (21/12/21) A virer ASAP
 
 CaseSplitCount is TBaseClass
 (
