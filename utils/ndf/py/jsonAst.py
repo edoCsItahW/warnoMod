@@ -19,7 +19,7 @@ from typing import Literal as TLiteral, Self, final, Type, Callable, List, Forwa
 from abc import ABC, abstractmethod
 from functools import cached_property, wraps
 from types import GenericAlias
-from _type import *
+from _types import *
 
 _supEncode = TLiteral['utf-8', 'gbk', 'utf-16', 'ascii', 'latin1', 'cp1252']
 
