@@ -44,7 +44,7 @@ namespace ast {
 
     std::string Assignment::toJson() const {
         std::ostringstream oss;
-        oss << R"({"nodeName":"Assignment", "identifier":)" << identifier->toJson() << "}";
+        oss << R"({"nodeName":"Assignment", "identifier":)" << identifier->toJson() << R"(, "expression": )" << expression->toJson() << "}";
 
         return oss.str();
     }
@@ -135,7 +135,7 @@ namespace ast {
 
         for (int i = 0; i < parameterList.size(); i++)
             oss << parameterList[i]->toJson() << (i == parameterList.size() - 1 ? "" : ",");
-        oss << "]," << R"("type":)" << type->toJson() << "," << R"("memberList":[)";
+        oss << "]," << R"("type":)" << type->toJson() << "," << R"("members":[)";
 
         for (int i = 0; i < memberList.size(); i++)
             oss << memberList[i]->toJson() << (i == memberList.size() - 1 ? "" : ",");

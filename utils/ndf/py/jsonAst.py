@@ -24,39 +24,20 @@ from _type import *
 _supEncode = TLiteral['utf-8', 'gbk', 'utf-16', 'ascii', 'latin1', 'cp1252']
 
 
-def debug(flagOrName: bool | str = False) -> Callable[[...], ...]:
-    def func(_fn: Callable[[...], ...]) -> Callable[[...], ...]:
-        @wraps(_fn)
-        def wrapper(*args, **kwargs) -> Any:
-            res = None
-            try:
-                return (res := _fn(*args, **kwargs))
-
-            except Exception as e:
-                try:
-                    e.add_note(f"<{_fn.__name__}>: [{', '.join(args)}, {', '.join(map('{}={}'.format, kwargs.items()))} -- {e}")
-                except (TypeError, IndexError):
-                    e.add_note(f"<{_fn.__name__}>: {e}")
-
-                    raise e
-
-            if flagOrName or flagOrName == _fn.__name__:
-                print(f"<{_fn.__name__}>: [{', '.join(args)}, {', '.join(map('{}={}'.format, kwargs.items()))} -- {res}")
-
-            return res
-
-        return wrapper
-
-    return func
-
-
 def camelCase(_s: str):
     if len(_s) <= 1:
         return _s.lower()
     return _s[0].upper() + _s[1:]
 
 
+def assigmRetrun(_ins: Any, **kwargs: Any) -> Any:
+    for k, v in kwargs.items():
+        setattr(_ins, k, v)
+    return _ins
+
+
 NEWLINE = '\n'
+IDT = 4 * ' '
 
 
 class SyncList(list):
@@ -111,6 +92,9 @@ class AST(ABC):
                 2. 对应具体节点类: 如: identifier
                     传入autoHandle: autoHandle('identifier', jsonData, identifier=Identifier)
     """
+    Vector = True
+    MapRef = True
+    ObjectIns = True
 
     @final
     @property
@@ -132,6 +116,7 @@ class AST(ABC):
     def __init__(self, **kwargs: 'AST'): ...
 
     def __init__(self, *args, **kwargs) -> None:
+        # 尽量在该条件语句后定义其它属性,以免出现__setattr__时未定义的属性
         if len(args) == 1 and isinstance(args[0], dict):
             self.__dict__['_orgData'] = self._orgData = args[0]
         elif len(kwargs) > 0:
@@ -139,11 +124,15 @@ class AST(ABC):
                 raise TypeError(
                     f"All values in the keyword arguments must be instances of 'AST' but got {kwargs}.")
             else:
+                self.__dict__['_orgData'] = self._orgData = {}
                 for k, v in kwargs.items():
                     setattr(self, k, v)
+                    self._orgData[k] = v.data
         else:
             raise TypeError(
                 "Either a json data or keyword arguments must be provided.")
+
+        self.indent = getattr(self, 'indent', 0)
 
     @final
     def __getitem__(self, item: str) -> Self | list[Self]:
@@ -157,8 +146,7 @@ class AST(ABC):
     def __setattr__(self, key: str, value: Any) -> None:
         if key != '_orgData' and key in self._orgData:
             self._orgData[key] = value
-        else:
-            super().__setattr__(key, value)
+        super().__setattr__(key, value)
 
     @final
     def __str__(self) -> str:
@@ -200,11 +188,11 @@ class AST(ABC):
             if typeOrAnno.__class__.__name__ == '_GenericAlias':  # 当属性类型为List[T]时
                 if typeOrAnno.__args__[0].__class__ == ForwardRef:  # 若T为ForwardRef,且保留IndexError
                     # {nodeName: 'ObjectDef', members: [{nodeName: 'Member', identifier: {...}, expression: {...}}]}
-                    return SyncList(self._orgData[key], (self.createIns(typeOrAnno.__args__[0].__forward_arg__, _) for _ in self._orgData[key]))  # {nodeName: 'Member', identifier: {...}, expression: {...}}
+                    return SyncList(self._orgData[key], (assigmRetrun(self.createIns(typeOrAnno.__args__[0].__forward_arg__, _), indent=self._indent()) for _ in self._orgData[key]))  # {nodeName: 'Member', identifier: {...}, expression: {...}}
 
                 elif isinstance(typeOrAnno.__args__[0], type):  # 若T为具体类
                     # {nodeName: 'ObjectDef', members: [{nodeName: 'Member', identifier: {...}, expression: {...}}]}
-                    return SyncList(self._orgData[key], (self.createIns(typeOrAnno.__args__[0], _) for _ in self._orgData[key]))  # {nodeName: 'Member', identifier: {...}, expression: {...}}
+                    return SyncList(self._orgData[key], (assigmRetrun(self.createIns(typeOrAnno.__args__[0], _), indent=self._indent()) for _ in self._orgData[key]))  # {nodeName: 'Member', identifier: {...}, expression: {...}}
 
             elif isinstance(typeOrAnno, GenericAlias):  # 当属性类型为list[T]时
                 raise TypeError(
@@ -212,7 +200,13 @@ class AST(ABC):
 
             elif isinstance(typeOrAnno, type):  # str
                 # {nodeName: 'Member', identifier: {...}, expression: {...}}
-                return self.createIns(typeOrAnno, self._orgData[key])  # {nodeName: 'Identifier', name: 'foo'}
+                res = self.createIns(typeOrAnno, self._orgData[key])
+                if isinstance(res, AST):
+                    res.indent = self._indent()
+                return res  # {nodeName: 'Identifier', name: 'foo'}
+
+        elif key in dir(self):
+            return getattr(self, key)
 
         else:
             raise AttributeError(
@@ -221,6 +215,16 @@ class AST(ABC):
     @abstractmethod
     def code(self) -> str:
         ...
+
+    def _indent(self) -> int:
+        return self.indent + 1
+
+    def _newline(self) -> str:
+        return NEWLINE if getattr(AST, self.__class__.__name__, False) else ''
+
+    @final
+    def _idt(self) -> str:
+        return IDT * self.indent
 
 
 def readJson(pth: str, *, encoding: _supEncode = 'utf-8') -> dict:
@@ -247,6 +251,9 @@ class Program(AST):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+
+    def _indent(self) -> int:
+        return self.indent
 
     def code(self) -> str:
         return ''.join(s.code() for s in self.statements)
@@ -301,8 +308,11 @@ class Member(AST):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
+    def _indent(self) -> int:
+        return self.indent
+
     def code(self) -> str:
-        return f"{self.identifier.code()} = {self.expression.code()}"
+        return f"{self._idt()}{self.identifier.code()} = {self.expression.code()}"
 
 
 class ObjectDef(Statement):
@@ -320,7 +330,7 @@ class ObjectDef(Statement):
         super().__init__(*args, **kwargs)
 
     def code(self) -> str:
-        return f"{self.identifier.code()} is {self.type.code()}(\n{NEWLINE.join(m.code() for m in self.members)}"
+        return f"{self.identifier.code()} is {self.type.code()}(\n{NEWLINE.join(m.code() for m in self.members)}\n)\n"
 
 
 class Assignment(Statement):
@@ -337,7 +347,7 @@ class Assignment(Statement):
         super().__init__(*args, **kwargs)
 
     def code(self) -> str:
-        return f"{self.identifier.code()} is {self.expression.code()}"
+        return f"{self.identifier.code()} is {self.expression.code()}\n"
 
 
 class Pair(AST):
@@ -354,7 +364,7 @@ class Pair(AST):
         super().__init__(*args, **kwargs)
 
     def code(self) -> str:
-        return f"({self.first.code()}, {self.second.code()})"
+        return f"{self._idt()}({self.first.code()}, {self.second.code()})"
 
 
 class MapRef(Expression):
@@ -369,8 +379,11 @@ class MapRef(Expression):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
+    def _newline(self) -> str:
+        return super()._newline() if len(self._orgData['pairs']) > 3 else ''
+
     def code(self) -> str:
-        return f"MAP [\n{f',{NEWLINE}'.join(p.code() for p in self.pairs)}]"
+        return f"MAP [{self._newline()}{(', ' + self._newline()).join(p.code() for p in self.pairs)}{self._newline()}{self._idt()}]"
 
 
 class Literal(Expression): ...
@@ -468,8 +481,11 @@ class Vector(Literal):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
+    def _newline(self) -> str:
+        return super()._newline() if len(self._orgData['expressions']) > 10 or any(k['nodeName'] == 'ObjectIns' for k in self._orgData['expressions']) else ''
+
     def code(self) -> str:
-        return f"[{', '.join(e.code() for e in self.expressions)}]"
+        return f"[{self._newline()}{', '.join(e.code() for e in self.expressions)}{self._newline()}{self._idt() if self._newline() else ''}]"
 
 
 class MapDef(Statement):
@@ -503,7 +519,7 @@ class Parameter(AST):
         super().__init__(*args, **kwargs)
 
     def code(self) -> str:
-        return f"{self.identifier.code()}{f': {self.type.code()}' if self.type else ''}{f' = {self.expression.code()}' if self.expression else ''}"
+        return f"{self._idt()}{self.identifier.code()}{f': {self.type.code()}' if self.type else ''}{f' = {self.expression.code()}' if self.expression else ''}"
 
 
 class TemplateDef(Statement):
@@ -522,7 +538,7 @@ class TemplateDef(Statement):
         super().__init__(*args, **kwargs)
 
     def code(self) -> str:
-        return f"template {self.identifier.code()} [\n{f',{NEWLINE}'.join(p.code() for p in self.parameters)}] is (\n{NEWLINE.join(m.code() for m in self.members)})"
+        return f"template {self.identifier.code()} [\n{f',{NEWLINE}'.join(p.code() for p in self.parameters)}\n] is (\n{NEWLINE.join(m.code() for m in self.members)})"
 
 
 class Export(Statement):
@@ -652,8 +668,11 @@ class ObjectIns(Expression):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
+    def _newline(self) -> str:
+        return super()._newline() if len(self._orgData['members']) else ''
+
     def code(self) -> str:
-        return f"{self.identifier.code()} (\n{NEWLINE.join(m.code() for m in self.members)})"
+        return f"{self._idt()}{self.identifier.code()}({self._newline()}{NEWLINE.join(m.code() for m in self.members)}{self._newline()}{self._idt() if self.members else ''})"
 
 
 class TemplateRef(Expression):

@@ -58,6 +58,8 @@ def modifyByAst(_ast: dict) -> str:
 
 
 if __name__ == '__main__':
-    ast = readJson(r"..\ast.json")
+    ast = readJson(r"..\Temp.json")
 
-    print(modifyByAst(ast))
+    prog = Program(ast)
+
+    print(prog.code())
