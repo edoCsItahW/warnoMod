@@ -2636,11 +2636,6 @@ GhostDepiction_SPW_152K_DDR is GhostVehicleDepictionTemplate
     Selector = Selector_SPW_152K_DDR
     Alternatives = Alternatives_SPW_152K_DDR
 )
-GhostDepiction_SVO_TCH is GhostVehicleDepictionTemplate
-(
-    Selector = Selector_SVO_TCH
-    Alternatives = Alternatives_SVO_TCH
-)
 GhostDepiction_Saxon_CMD_UK is GhostVehicleDepictionTemplate
 (
     Selector = Selector_Saxon_CMD_UK
@@ -3744,7 +3739,6 @@ VehicleMimeticGhost is MAP[
   ( 'Rover_101FC_UK', GhostDepiction_Rover_101FC_UK ),
   ( 'Rover_101FC_supply_UK', GhostDepiction_Rover_101FC_supply_UK ),
   ( 'SPW_152K_DDR', GhostDepiction_SPW_152K_DDR ),
-  ( 'SVO_TCH', GhostDepiction_SVO_TCH ),
   ( 'Saxon_CMD_UK', GhostDepiction_Saxon_CMD_UK ),
   ( 'Saxon_UK', GhostDepiction_Saxon_UK ),
   ( 'Sonderwagen_4_RFA', GhostDepiction_Sonderwagen_4_RFA ),

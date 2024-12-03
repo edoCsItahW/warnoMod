@@ -5,10 +5,10 @@ export Modele_T80UD_SOV is ModelDescriptor
 
 export Modele_T80UD_SOV_MID is ModelDescriptor
 (
-    FileName = 'GameData:/Assets/3D/Units/URSS/Char/T80UD/T80UD.fbx'
+    FileName = 'GameData:/Assets/3D/Units/URSS/Char/T80UD_MID/T80UD_MID.fbx'
 )
 
 export Modele_T80UD_SOV_LOW is ModelDescriptor
 (
-    FileName = 'GameData:/Assets/3D/Units/URSS/Char/T80UD/T80UD.fbx'
+    FileName = 'GameData:/Assets/3D/Units/URSS/Char/T80UD_LOW/T80UD_LOW.fbx'
 )

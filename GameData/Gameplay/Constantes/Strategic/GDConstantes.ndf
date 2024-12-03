@@ -113,8 +113,8 @@ StrategicConstantes is TStrategicTunableConstante
     BattleDeploymentMode = EDeploymentMode/Breakthrough
 
     SteelmanMaxUnitSelection = MAP[
-        (ENationalite/Allied, 1),
-        (ENationalite/Axis, 1)
+        (ECoalition/Allied, 1),
+        (ECoalition/Axis, 1)
     ]
 
     // Le tableau de valeur contient le nombre de ticketPoint disponible en fonction du nombre de pions dans le battle plan, le nombre de cases dans le tableau
@@ -256,12 +256,6 @@ StrategicConstantes is TStrategicTunableConstante
     ]
 
 
-    FXTokensForMoveSequence = ["Move"]
-    FXTokensForDieSequence = ["Die"]
-    FXTokensForArtiFireSequence = ["ArtiFire"]
-    FXTokensForArtiBombSequence = ["ArtiBomb"]
-    FXTokensForAerialBombSequence = ["AerBomb"]
-
     ActionPointConsumptionGridConstantsDescriptor = ~/ActionPointConsumptionGridConstants
 
     HideManual = true
@@ -283,14 +277,14 @@ StrategicConstantes is TStrategicTunableConstante
 
 TacticFromStrategicScoreLimitReachedVictoryLevelConstantes is TVictoryLevelConstantes
 (
-    PalierVictoireMineure = 0.1   // Ratio entre le score du vainqueur et le deuxieme meilleur score
-    PalierVictoireMajeure = 0.5  // Ratio entre le score du vainqueur et le deuxieme meilleur score
-    PalierVictoireTotale = 0.9   // Ratio entre le score du vainqueur et le deuxieme meilleur score
+    MinorVictoryLimit = 0.1  // Ratio entre le score du vainqueur et le deuxieme meilleur score
+    MajorVictoryLimit = 0.5  // Ratio entre le score du vainqueur et le deuxieme meilleur score
+    TotalVictoryLimit = 0.9  // Ratio entre le score du vainqueur et le deuxieme meilleur score
 )
 
 TacticFromStrategicDefeatMoralVictoryLevelConstantes is TVictoryLevelConstantes
 (
-    PalierVictoireMineure = 0.10   // Ratio entre le score du vainqueur et le deuxieme meilleur score
-    PalierVictoireMajeure = 0.50  // Ratio entre le score du vainqueur et le deuxieme meilleur score
-    PalierVictoireTotale = 0.80   // Ratio entre le score du vainqueur et le deuxieme meilleur score
+    MinorVictoryLimit = 0.10  // Ratio entre le score du vainqueur et le deuxieme meilleur score
+    MajorVictoryLimit = 0.50  // Ratio entre le score du vainqueur et le deuxieme meilleur score
+    TotalVictoryLimit = 0.80  // Ratio entre le score du vainqueur et le deuxieme meilleur score
 )

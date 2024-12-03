@@ -23,7 +23,7 @@ export SpecificVehicleDepictionSelector is TLodSelector
 (
     HighMidLimitInMeter = LodHighMidLimit_Vehicle
     MidLowLimitInMeter = LodMidLowLimit_Vehicle
-    CameraMoverManagerModernWarfare = $/Camera/CameraMoverManager
+    CameraMoverManager = $/Camera/CameraMoverManager
     OptionalLimit = $/GraphicOption/ModelQuality
 )
 
@@ -31,7 +31,7 @@ template SpecificVehicleDepictionSelectorWithSkins [ SkinMap ] is TLodSelectorWi
 (
     HighMidLimitInMeter = LodHighMidLimit_Vehicle
     MidLowLimitInMeter = LodMidLowLimit_Vehicle
-    CameraMoverManagerModernWarfare = $/Camera/CameraMoverManager
+    CameraMoverManager = $/Camera/CameraMoverManager
     OptionalLimit = $/GraphicOption/ModelQuality
     SkinMap = <SkinMap>
 )
@@ -40,7 +40,7 @@ export SpecificAirplaneDepictionSelector is TLodSelector
 (
     HighMidLimitInMeter = LodHighMidLimit_Airplane
     MidLowLimitInMeter = LodMidLowLimit_Airplane
-    CameraMoverManagerModernWarfare = $/Camera/CameraMoverManager
+    CameraMoverManager = $/Camera/CameraMoverManager
     OptionalLimit = $/GraphicOption/ModelQuality
 )
 
@@ -57,7 +57,7 @@ export SpecificHelicoDepictionSelector is TLodSelector
 (
     HighMidLimitInMeter = LodHighMidLimit_Helico
     MidLowLimitInMeter = LodMidLowLimit_Helico
-    CameraMoverManagerModernWarfare = $/Camera/CameraMoverManager
+    CameraMoverManager = $/Camera/CameraMoverManager
     OptionalLimit = $/GraphicOption/ModelQuality
 )
 
@@ -69,7 +69,7 @@ is THumanWithConditionSelector
 (
     HighLowLimitInMeter = LodHighLowLimit_Infantry
     LowNoneLimitInMeter = LodLowNoneLimit_Infantry
-    CameraMoverManagerModernWarfare = $/Camera/CameraMoverManager
+    CameraMoverManager = $/Camera/CameraMoverManager
     OptionalLimit = $/GraphicOption/ModelQuality
     DisplayCondition = <DisplayCondition>
 )
@@ -98,14 +98,14 @@ export TowedUnitSubDepictionSelector is TTowedUnitSelector
 (
     HighMidLimitInMeter = LodHighMidLimit_Vehicle
     MidLowLimitInMeter = LodMidLowLimit_Vehicle
-    CameraMoverManagerModernWarfare = $/Camera/CameraMoverManager
+    CameraMoverManager = $/Camera/CameraMoverManager
     OptionalLimit = $/GraphicOption/ModelQuality
 )
 
 export SoldierDynamicWeaponSubDepictionSelector is TInfantryWeaponSelector
 (
     NoneLimitInMeter = LodHighNoneLimit_SoldierWeapon
-    CameraMoverManagerModernWarfare = $/Camera/CameraMoverManager
+    CameraMoverManager = $/Camera/CameraMoverManager
     MeshAlternativeKey = 'mesh_alternative'
     PrincipalDepiction = ['MeshAlternative_1'] // On verra bien si y'a besoin de gérer un truc ici si ça crash parce que y'a pas d'arme 1
 )
@@ -113,7 +113,7 @@ export SoldierDynamicWeaponSubDepictionSelector is TInfantryWeaponSelector
 export SoldierDynamicBackpackWeaponSubDepictionSelector is TInfantryBackpackWeaponSelector
 (
     NoneLimitInMeter = LodHighNoneLimit_SoldierWeapon
-    CameraMoverManagerModernWarfare = $/Camera/CameraMoverManager
+    CameraMoverManager = $/Camera/CameraMoverManager
     MeshAlternativeKey = 'mesh_alternative_backpack'
     PrincipalDepiction = ['MeshAlternative_1'] // On verra bien si y'a besoin de gérer un truc ici si ça crash parce que y'a pas d'arme 1
 )

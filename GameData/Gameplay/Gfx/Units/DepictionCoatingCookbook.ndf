@@ -121,6 +121,30 @@ liveEditCoatingCookbook is TCoatingCookbook
                 'Mi_24P_landing_gears'
             ]
         )),
+        ('Mi_24D_POL', TCoatingRecipe
+        (
+            Ingredients = [
+                'Mi_24P_landing_gears'
+            ]
+        )),
+        ('Mi_24D_s8_AT_POL', TCoatingRecipe
+        (
+            Ingredients = [
+                'Mi_24P_landing_gears'
+            ]
+        )),
+        ('Mi_24D_s5_AT_SOV', TCoatingRecipe
+        (
+            Ingredients = [
+                'Mi_24P_landing_gears'
+            ]
+        )),
+        ('Mi_24D_s8_AT_SOV', TCoatingRecipe
+        (
+            Ingredients = [
+                'Mi_24P_landing_gears'
+            ]
+        )),
         ('Ka_50_SOV', TCoatingRecipe
         (
             Ingredients = [

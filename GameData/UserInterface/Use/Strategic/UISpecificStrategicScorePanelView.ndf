@@ -833,9 +833,9 @@ UISpecificStrategicScorePanelViewDescriptor is TUISpecificStrategicScorePanelVie
     TerritoryToken = "SSC_TERRIT"
     TerritoryLine = ~/TerritoryLine
 
-    NationaliteTextureTokens = MAP
+    CoalitionTextureTokens = MAP
     [
-        (ENationalite/OTAN, "CommonTexture_MotherCountryFlag_NATO"),
-        (ENationalite/PACT, "CommonTexture_MotherCountryFlag_PACT"),
+        (ECoalition/OTAN, "CommonTexture_MotherCountryFlag_NATO"),
+        (ECoalition/PACT, "CommonTexture_MotherCountryFlag_PACT"),
     ]
 )

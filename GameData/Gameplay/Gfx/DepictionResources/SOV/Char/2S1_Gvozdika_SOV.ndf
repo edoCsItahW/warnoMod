@@ -10,5 +10,5 @@ export Modele_2S1_Gvozdika_SOV_MID is ModelDescriptor
 
 export Modele_2S1_Gvozdika_SOV_LOW is ModelDescriptor
 (
-    FileName = 'GameData:/Assets/3D/Units/URSS/Artillerie/LODS/2S1_Gvozdika_LOW.fbx'
+    FileName = 'GameData:/Assets/3D/Units/URSS/Artillerie/2S1_Gvozdika_LOW/2S1_Gvozdika_LOW.fbx'
 )

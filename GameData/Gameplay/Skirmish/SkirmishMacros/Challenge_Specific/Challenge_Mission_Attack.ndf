@@ -121,18 +121,18 @@ export Blackhorse_Side_Attack is TMacroActionDescriptor_CorridorAttack_Specific
 )
 
 //-------------------------------------------------------------------------
-export Challenge_Alamo_Main_Attack is Template_Main_Attack
+export Challenge_Marauders_Main_Attack is Template_Main_Attack
 (
-    PoolModel_Generic = ~/Pool_Alamo_Main_Attack
-    PoolModel_Easy = ~/Pool_Alamo_Main_Attack
+    PoolModel_Generic = ~/Pool_Marauders_Main_Attack
+    PoolModel_Easy = ~/Pool_Marauders_Main_Attack
     RatioMinimumPourAttaquer = 0.75
 )
 
 //-------------------------------------------------------------------------
-export Challenge_Alamo_Main_Attack_Phase2 is Template_Main_Attack
+export Challenge_Marauders_Main_Attack_Phase2 is Template_Main_Attack
 (
-    PoolModel_Generic = ~/Pool_Alamo_Main_Attack_Phase2
-    PoolModel_Easy = ~/Pool_Alamo_Main_Attack_Phase2
+    PoolModel_Generic = ~/Pool_Marauders_Main_Attack_Phase2
+    PoolModel_Easy = ~/Pool_Marauders_Main_Attack_Phase2
     RatioMinimumPourAttaquer = 0.75
 )
 
@@ -154,23 +154,23 @@ is TMacroActionDescriptor_CorridorAttack_Specific
 )
 
 //-------------------------------------------------------------------------
-export Challenge_Alamo_Aux_Attack is Template_Challenge_Simple_Corridor_Attack
+export Challenge_Marauders_Aux_Attack is Template_Challenge_Simple_Corridor_Attack
 (
     RatioMinimumPourAttaquer = 0.75
-    PoolModelList = [~/Pool_Alamo_Aux_Attack]
+    PoolModelList = [~/Pool_Marauders_Aux_Attack]
 )
 
 //-------------------------------------------------------------------------
-export Challenge_Alamo_Aux_Attack_Phase2 is Template_Challenge_Simple_Corridor_Attack
+export Challenge_Marauders_Aux_Attack_Phase2 is Template_Challenge_Simple_Corridor_Attack
 (
     RatioMinimumPourAttaquer = 0.75
-    PoolModelList = [~/Pool_Alamo_Aux_Attack_Phase2]
+    PoolModelList = [~/Pool_Marauders_Aux_Attack_Phase2]
 )
 
 //-------------------------------------------------------------------------
-export Challenge_Alamo_Artillery is Template_Artillery_TriggerHappy
+export Challenge_Marauders_Artillery is Template_Artillery_TriggerHappy
 (
-    PoolModelList= [~/Pool_Alamo_Arty]
+    PoolModelList= [~/Pool_Marauders_Arty]
 )
 
 //-------------------------------------------------------------------------
@@ -300,7 +300,7 @@ export Pool_BlackHorse_Attack is TPoolModel
 
 
 //-------------------------------------------------------------------------
-export Pool_Alamo_Main_Attack is TPoolModel
+export Pool_Marauders_Main_Attack is TPoolModel
 (
     ModelList = [
         TPoolElement(
@@ -439,7 +439,7 @@ export Pool_Alamo_Main_Attack is TPoolModel
 )
 
 //-------------------------------------------------------------------------
-export Pool_Alamo_Main_Attack_Phase2 is TPoolModel
+export Pool_Marauders_Main_Attack_Phase2 is TPoolModel
 (
     ModelList = [
         TPoolElement(
@@ -600,7 +600,7 @@ export Pool_Alamo_Main_Attack_Phase2 is TPoolModel
 )
 
 //-------------------------------------------------------------------------
-export Pool_Alamo_Aux_Attack is TPoolModel
+export Pool_Marauders_Aux_Attack is TPoolModel
 (
     ModelList = [
         TPoolElement(
@@ -694,7 +694,7 @@ export Pool_Alamo_Aux_Attack is TPoolModel
 )
 
 //-------------------------------------------------------------------------
-export Pool_Alamo_Aux_Attack_Phase2 is TPoolModel
+export Pool_Marauders_Aux_Attack_Phase2 is TPoolModel
 (
     ModelList = [
         TPoolElement(
@@ -853,7 +853,7 @@ export Pool_Alamo_Aux_Attack_Phase2 is TPoolModel
 )
 
 //-------------------------------------------------------------------------
-export Pool_Alamo_Arty is TPoolModel
+export Pool_Marauders_Arty is TPoolModel
 (
     ModelList = [
         TPoolElement(
@@ -871,7 +871,7 @@ export Pool_Alamo_Arty is TPoolModel
 )
 
 //-------------------------------------------------------------------------
-export Pool_Alamo_Side_Main_Attack is TPoolModel
+export Pool_Marauders_Side_Main_Attack is TPoolModel
 (
     ModelList = [
         TPoolElement(
@@ -944,7 +944,7 @@ export Pool_Alamo_Side_Main_Attack is TPoolModel
 )
 
 //-------------------------------------------------------------------------
-export Pool_Alamo_Side_Aux_Attack is TPoolModel
+export Pool_Marauders_Side_Aux_Attack is TPoolModel
 (
     ModelList = [
         TPoolElement(

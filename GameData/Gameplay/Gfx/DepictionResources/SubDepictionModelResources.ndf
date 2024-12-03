@@ -239,6 +239,19 @@ export MeshDescriptor_Servant_D_SOV is ModelDescriptor
 export MeshDescriptor_Servant_G_SOV_LOW is ModelDescriptor (FileName = MotoStrelki_1_LOW)
 export MeshDescriptor_Servant_D_SOV_LOW is ModelDescriptor (FileName = MotoStrelki_1_LOW)
 //--------------------------------------------------------------------------------------------------------------------
+export MeshDescriptor_Servant_G_LUX is ModelDescriptor (FileName = BEL_Lux_1)
+export MeshDescriptor_Servant_D_LUX is ModelDescriptor (FileName = BEL_Lux_2)
+// export MeshDescriptor_Servant_G_LUX is ModelDescriptor
+// (
+//     FileName = 'GameData:/Assets/3D/Units/BEL/Infanterie/Lux/Lux_1.fbx'
+// )
+// export MeshDescriptor_Servant_D_LUX is ModelDescriptor
+// (
+//     FileName = 'GameData:/Assets/3D/Units/BEL/Infanterie/Lux/Lux_2.fbx'
+// )
+export MeshDescriptor_Servant_G_LUX_LOW is ModelDescriptor (FileName = BEL_Lux_1_LOW)
+export MeshDescriptor_Servant_D_LUX_LOW is ModelDescriptor (FileName = BEL_Lux_1_LOW)
+//--------------------------------------------------------------------------------------------------------------------
 export MeshDescriptor_Servant_MotoStrelki_NCO_G_SOV is ModelDescriptor
 (
     FileName = 'GameData:/Assets/3D/Units/URSS/Infanterie/MotoStrelki/MotoStrelki_NCO.fbx'

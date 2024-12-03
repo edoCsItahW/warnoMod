@@ -5190,10 +5190,10 @@ Descriptor_StrategicPack_OH58C_CMD_US_2 is DeckPackDescriptor
     Unit = $/GFX/Unit/Descriptor_Unit_OH58C_CMD_US
 )
 
-Descriptor_StrategicPack_AH1S_Cobra_US_2 is DeckPackDescriptor
+Descriptor_StrategicPack_AH1F_Hog_US_2 is DeckPackDescriptor
 (
     Xp = 2
-    Unit = $/GFX/Unit/Descriptor_Unit_AH1S_Cobra_US
+    Unit = $/GFX/Unit/Descriptor_Unit_AH1F_Hog_US
 )
 
 Descriptor_StrategicPack_OH58D_Combat_Scout_US_2 is DeckPackDescriptor
@@ -6059,9 +6059,9 @@ Descriptor_StrategicPack_AH1F_Cobra_US_0 is DeckPackDescriptor
     Unit = $/GFX/Unit/Descriptor_Unit_AH1F_Cobra_US
 )
 
-Descriptor_StrategicPack_AH1S_Cobra_US_0 is DeckPackDescriptor
+Descriptor_StrategicPack_AH1F_Hog_US_0 is DeckPackDescriptor
 (
-    Unit = $/GFX/Unit/Descriptor_Unit_AH1S_Cobra_US
+    Unit = $/GFX/Unit/Descriptor_Unit_AH1F_Hog_US
 )
 
 Descriptor_StrategicPack_OH58_CS_US_0 is DeckPackDescriptor

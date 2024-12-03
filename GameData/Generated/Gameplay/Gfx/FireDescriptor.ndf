@@ -11,7 +11,7 @@ export Descriptor_Fire_Incendie is TEntityDescriptor
         ~/EmptyTagsModuleDescriptor,
         ~/FirePositionModuleDescriptor,
         ~/LinkTeamModuleDescriptor,
-        TApparenceModelModuleDescriptor
+        TApparenceModuleDescriptor
         (
             ReferenceMesh  = $/GFX/DepictionResources/Rien
             Depiction  = Template_DescriptorFire_Depiction
@@ -48,7 +48,7 @@ export Descriptor_Fire_Napalm is TEntityDescriptor
         ~/EmptyTagsModuleDescriptor,
         ~/FirePositionModuleDescriptor,
         ~/LinkTeamModuleDescriptor,
-        TApparenceModelModuleDescriptor
+        TApparenceModuleDescriptor
         (
             ReferenceMesh  = $/GFX/DepictionResources/Rien
             Depiction  = Template_DescriptorFire_Depiction
@@ -85,7 +85,7 @@ export Descriptor_Fire_NapalmLeger is TEntityDescriptor
         ~/EmptyTagsModuleDescriptor,
         ~/FirePositionModuleDescriptor,
         ~/LinkTeamModuleDescriptor,
-        TApparenceModelModuleDescriptor
+        TApparenceModuleDescriptor
         (
             ReferenceMesh  = $/GFX/DepictionResources/Rien
             Depiction  = Template_DescriptorFire_Depiction
@@ -122,7 +122,7 @@ export Descriptor_Fire_NapalmLourd is TEntityDescriptor
         ~/EmptyTagsModuleDescriptor,
         ~/FirePositionModuleDescriptor,
         ~/LinkTeamModuleDescriptor,
-        TApparenceModelModuleDescriptor
+        TApparenceModuleDescriptor
         (
             ReferenceMesh  = $/GFX/DepictionResources/Rien
             Depiction  = Template_DescriptorFire_Depiction
@@ -159,7 +159,7 @@ export Descriptor_Fire_NapalmMoyen is TEntityDescriptor
         ~/EmptyTagsModuleDescriptor,
         ~/FirePositionModuleDescriptor,
         ~/LinkTeamModuleDescriptor,
-        TApparenceModelModuleDescriptor
+        TApparenceModuleDescriptor
         (
             ReferenceMesh  = $/GFX/DepictionResources/Rien
             Depiction  = Template_DescriptorFire_Depiction

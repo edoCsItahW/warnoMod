@@ -11,8 +11,6 @@ export ExperienceLevelsPackDescriptor_XP_pack_SF_v2 is TExperienceLevelsPackDesc
             LocalizationToken = "EXPLEVEL0"
             ThresholdAdditionalValue = 0.0
             ThresholdPriceMultiplier = 0.0
-            IconsByNationality = [
-            ]
             HintTitleToken = 'DES_UE_VE0'
             HintBodyToken = 'xp_sf_0'
             NameForDebug = "Exemple_XP_niveau_0"
@@ -23,8 +21,6 @@ export ExperienceLevelsPackDescriptor_XP_pack_SF_v2 is TExperienceLevelsPackDesc
             LocalizationToken = "EXPLEVEL1"
             ThresholdAdditionalValue = 0.0
             ThresholdPriceMultiplier = 2.0
-            IconsByNationality = [
-            ]
             HintTitleToken = 'DES_UE_VE1'
             HintBodyToken = 'xp_sf_1'
             LevelEffectsPacks = [
@@ -39,8 +35,6 @@ export ExperienceLevelsPackDescriptor_XP_pack_SF_v2 is TExperienceLevelsPackDesc
             LocalizationToken = "EXPLEVEL2"
             ThresholdAdditionalValue = 0.0
             ThresholdPriceMultiplier = 4.0
-            IconsByNationality = [
-            ]
             HintTitleToken = 'DES_UE_VE2'
             HintBodyToken = 'xp_sf_2'
             LevelEffectsPacks = [
@@ -55,8 +49,6 @@ export ExperienceLevelsPackDescriptor_XP_pack_SF_v2 is TExperienceLevelsPackDesc
             LocalizationToken = "EXPLEVEL3"
             ThresholdAdditionalValue = 0.0
             ThresholdPriceMultiplier = 6.0
-            IconsByNationality = [
-            ]
             HintTitleToken = 'DES_UE_VE3'
             HintBodyToken = 'xp_sf_3'
             LevelEffectsPacks = [
@@ -78,8 +70,6 @@ export ExperienceLevelsPackDescriptor_XP_pack_artillery is TExperienceLevelsPack
             LocalizationToken = "EXPLEVEL0"
             ThresholdAdditionalValue = 0.0
             ThresholdPriceMultiplier = 0.0
-            IconsByNationality = [
-            ]
             HintTitleToken = 'DES_UE_VE0'
             HintBodyToken = 'xp_art_0'
             LevelEffectsPacks = [
@@ -93,8 +83,6 @@ export ExperienceLevelsPackDescriptor_XP_pack_artillery is TExperienceLevelsPack
             LocalizationToken = "EXPLEVEL1"
             ThresholdAdditionalValue = 0.0
             ThresholdPriceMultiplier = 6.0
-            IconsByNationality = [
-            ]
             HintTitleToken = 'DES_UE_VE1'
             HintBodyToken = 'xp_art_1'
             LevelEffectsPacks = [
@@ -108,8 +96,6 @@ export ExperienceLevelsPackDescriptor_XP_pack_artillery is TExperienceLevelsPack
             LocalizationToken = "EXPLEVEL2"
             ThresholdAdditionalValue = 0.0
             ThresholdPriceMultiplier = 8.0
-            IconsByNationality = [
-            ]
             HintTitleToken = 'DES_UE_VE2'
             HintBodyToken = 'xp_art_2'
             LevelEffectsPacks = [
@@ -123,8 +109,6 @@ export ExperienceLevelsPackDescriptor_XP_pack_artillery is TExperienceLevelsPack
             LocalizationToken = "EXPLEVEL3"
             ThresholdAdditionalValue = 0.0
             ThresholdPriceMultiplier = 12.0
-            IconsByNationality = [
-            ]
             HintTitleToken = 'DES_UE_VE3'
             HintBodyToken = 'xp_art_3'
             LevelEffectsPacks = [
@@ -145,8 +129,6 @@ export ExperienceLevelsPackDescriptor_XP_pack_avion is TExperienceLevelsPackDesc
             LocalizationToken = "EXPLEVEL0"
             ThresholdAdditionalValue = 0.0
             ThresholdPriceMultiplier = 0.0
-            IconsByNationality = [
-            ]
             HintTitleToken = 'DES_UE_VE0'
             HintBodyToken = 'xp_air_0'
             LevelEffectsPacks = [
@@ -160,8 +142,6 @@ export ExperienceLevelsPackDescriptor_XP_pack_avion is TExperienceLevelsPackDesc
             LocalizationToken = "EXPLEVEL1"
             ThresholdAdditionalValue = 0.0
             ThresholdPriceMultiplier = 6.0
-            IconsByNationality = [
-            ]
             HintTitleToken = 'DES_UE_VE1'
             HintBodyToken = 'xp_air_1'
             LevelEffectsPacks = [
@@ -175,8 +155,6 @@ export ExperienceLevelsPackDescriptor_XP_pack_avion is TExperienceLevelsPackDesc
             LocalizationToken = "EXPLEVEL2"
             ThresholdAdditionalValue = 0.0
             ThresholdPriceMultiplier = 8.0
-            IconsByNationality = [
-            ]
             HintTitleToken = 'DES_UE_VE2'
             HintBodyToken = 'xp_air_2'
             LevelEffectsPacks = [
@@ -190,8 +168,6 @@ export ExperienceLevelsPackDescriptor_XP_pack_avion is TExperienceLevelsPackDesc
             LocalizationToken = "EXPLEVEL3"
             ThresholdAdditionalValue = 0.0
             ThresholdPriceMultiplier = 12.0
-            IconsByNationality = [
-            ]
             HintTitleToken = 'DES_UE_VE3'
             HintBodyToken = 'xp_air_3'
             LevelEffectsPacks = [
@@ -212,8 +188,6 @@ export ExperienceLevelsPackDescriptor_XP_pack_helico is TExperienceLevelsPackDes
             LocalizationToken = "EXPLEVEL0"
             ThresholdAdditionalValue = 0.0
             ThresholdPriceMultiplier = 0.0
-            IconsByNationality = [
-            ]
             HintTitleToken = 'DES_UE_VE0'
             HintBodyToken = 'xp_hel_0'
             LevelEffectsPacks = [
@@ -227,8 +201,6 @@ export ExperienceLevelsPackDescriptor_XP_pack_helico is TExperienceLevelsPackDes
             LocalizationToken = "EXPLEVEL1"
             ThresholdAdditionalValue = 0.0
             ThresholdPriceMultiplier = 4.8
-            IconsByNationality = [
-            ]
             HintTitleToken = 'DES_UE_VE1'
             HintBodyToken = 'xp_hel_1'
             LevelEffectsPacks = [
@@ -242,8 +214,6 @@ export ExperienceLevelsPackDescriptor_XP_pack_helico is TExperienceLevelsPackDes
             LocalizationToken = "EXPLEVEL2"
             ThresholdAdditionalValue = 0.0
             ThresholdPriceMultiplier = 6.4
-            IconsByNationality = [
-            ]
             HintTitleToken = 'DES_UE_VE2'
             HintBodyToken = 'xp_hel_2'
             LevelEffectsPacks = [
@@ -257,8 +227,6 @@ export ExperienceLevelsPackDescriptor_XP_pack_helico is TExperienceLevelsPackDes
             LocalizationToken = "EXPLEVEL3"
             ThresholdAdditionalValue = 0.0
             ThresholdPriceMultiplier = 9.6
-            IconsByNationality = [
-            ]
             HintTitleToken = 'DES_UE_VE3'
             HintBodyToken = 'xp_hel_3'
             LevelEffectsPacks = [
@@ -279,8 +247,6 @@ export ExperienceLevelsPackDescriptor_XP_pack_simple_v3 is TExperienceLevelsPack
             LocalizationToken = "EXPLEVEL0"
             ThresholdAdditionalValue = 0.0
             ThresholdPriceMultiplier = 0.0
-            IconsByNationality = [
-            ]
             HintTitleToken = 'DES_UE_VE0'
             HintBodyToken = 'xp_std_0'
             LevelEffectsPacks = [
@@ -294,8 +260,6 @@ export ExperienceLevelsPackDescriptor_XP_pack_simple_v3 is TExperienceLevelsPack
             LocalizationToken = "EXPLEVEL1"
             ThresholdAdditionalValue = 0.0
             ThresholdPriceMultiplier = 4.8
-            IconsByNationality = [
-            ]
             HintTitleToken = 'DES_UE_VE1'
             HintBodyToken = 'xp_std_1'
             LevelEffectsPacks = [
@@ -309,8 +273,6 @@ export ExperienceLevelsPackDescriptor_XP_pack_simple_v3 is TExperienceLevelsPack
             LocalizationToken = "EXPLEVEL2"
             ThresholdAdditionalValue = 0.0
             ThresholdPriceMultiplier = 6.4
-            IconsByNationality = [
-            ]
             HintTitleToken = 'DES_UE_VE2'
             HintBodyToken = 'xp_std_2'
             LevelEffectsPacks = [
@@ -324,8 +286,6 @@ export ExperienceLevelsPackDescriptor_XP_pack_simple_v3 is TExperienceLevelsPack
             LocalizationToken = "EXPLEVEL3"
             ThresholdAdditionalValue = 0.0
             ThresholdPriceMultiplier = 9.6
-            IconsByNationality = [
-            ]
             HintTitleToken = 'DES_UE_VE3'
             HintBodyToken = 'xp_std_3'
             LevelEffectsPacks = [

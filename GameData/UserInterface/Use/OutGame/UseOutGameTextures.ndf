@@ -69,7 +69,6 @@ OutgameTexture_GameRoomList_ModActive is TUIResourceTexture_Common( FileName = "
 OutgameTexture_GameRoomList_Observable is TUIResourceTexture_Common( FileName = "GameData:/Assets/2D/Interface/StyleDesk/observer_mode.png" )
 
 OutgameTexture_Division_Dlc_Corner is TUIResourceTexture_Common( FileName = "GameData:/Assets/2D/Interface/UseOutGame/banniere_dlc.png" )
-OutgameTexture_Division_Dlc_Seal is TUIResourceTexture_Common( FileName = "GameData:/Assets/2D/Interface/UseOutGame/cachet_dlc.png" )
 
 OutgameTexture_Lobby_Filter_East is TUIResourceTexture_Common( FileName = "GameData:/Assets/2D/Interface/UseOutGame/socialism_icon.png" )
 

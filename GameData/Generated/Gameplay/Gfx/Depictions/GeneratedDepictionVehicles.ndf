@@ -6642,6 +6642,14 @@ DepictionOperator_BMP_3_SOV_Weapon5 is DepictionOperator_WeaponInstantFire
     WeaponShootDataPropertyName = ["WeaponShootData_0_5", "WeaponShootData_1_5", "WeaponShootData_2_5", "WeaponShootData_3_5", ]
     NbProj = 4
 )
+DepictionOperator_BMP_3_SOV_Weapon6 is DepictionOperator_WeaponContinuousFire
+(
+    FireEffectTag = "weapon_effet_tag6"
+    Anchors = ["fx_tourelle6_tir_01"]
+    WeaponShootDataPropertyName = "WeaponShootData_0_6"
+    WeaponActiveAndCanShootPropertyName = "WeaponActiveAndCanShoot_6"
+    NbFX = 1
+)
 Gfx_BMP_3_SOV_Autogen is TacticVehicleDepictionTemplate
 (
     CoatingName = 'BMP_3_SOV'
@@ -6666,6 +6674,7 @@ Gfx_BMP_3_SOV_Autogen is TacticVehicleDepictionTemplate
         DepictionOperator_BMP_3_SOV_Weapon3,
         DepictionOperator_BMP_3_SOV_Weapon4,
         DepictionOperator_BMP_3_SOV_Weapon5,
+        DepictionOperator_BMP_3_SOV_Weapon6,
         DepictionOperator_Heat,
         DepictionOperator_MovementFX_Amphibious,
         DepictionOperator_EjectableProps_Vehicle,
@@ -6677,6 +6686,7 @@ Gfx_BMP_3_SOV_Autogen is TacticVehicleDepictionTemplate
                 ( [ "weapon_effet_tag3" ], Weapon_AutoCanon_HE_30mm_2A72_BMP3 ),
                 ( [ "weapon_effet_tag4" ], Weapon_ATGM_9M117_Bastion ),
                 ( [ "weapon_effet_tag5" ], Weapon_SMOKE_Vehicle_Grenadex8 ),
+                ( [ "weapon_effet_tag6" ], Weapon_MMG_PKT_7_62mm ),
             ]
             + DepictionAction_Stress_And_Wrecked
             + DepictionAction_MovementFX_Tracked
@@ -15583,7 +15593,7 @@ Gfx_KanJagdPanzer_RFA_Autogen is TacticVehicleDepictionTemplate
     Actions = MAP[
                 ( [ "weapon_effet_tag1" ], Weapon_Canon_AP_90mm_KanJPz ),
                 ( [ "weapon_effet_tag2" ], Weapon_Canon_HE_90mm_M48_KanJPz ),
-                ( [ "weapon_effet_tag4" ], Weapon_MMG_FN_MAG_7_62mm ),
+                ( [ "weapon_effet_tag4" ], Weapon_MMG_MG3S_7_62mm ),
                 ( [ "weapon_effet_tag5" ], Weapon_SMOKE_Vehicle_Grenadex8 ),
             ]
             + DepictionAction_Stress_And_Wrecked
@@ -15600,7 +15610,7 @@ Gfx_KrAZ_255B_SOV_Autogen is TacticVehicleDepictionTemplate
     Operators = 
     [
         DepictionOperator_CropFlattening,
-        $/GFX/Sound/DepictionOperator_MovementSound_SM_LARS,
+        $/GFX/Sound/DepictionOperator_MovementSound_SM_Ural,
         DepictionOperator_SoundProbe,
         DepictionOperator_CriticalEffects,
         DepictionOperator_Chassis_Vehicle,
@@ -15631,7 +15641,7 @@ Gfx_KrAZ_255B_supply_SOV_Autogen is TacticVehicleDepictionTemplate
     Operators = 
     [
         DepictionOperator_CropFlattening,
-        $/GFX/Sound/DepictionOperator_MovementSound_SM_LARS,
+        $/GFX/Sound/DepictionOperator_MovementSound_SM_Ural,
         DepictionOperator_SoundProbe,
         DepictionOperator_CriticalEffects,
         DepictionOperator_Chassis_Vehicle,
@@ -19140,6 +19150,13 @@ DepictionOperator_M113A1G_MILAN_RFA_Weapon1 is DepictionOperator_WeaponMissileCa
     WeaponShootDataPropertyName = ["WeaponShootData_0_1", ]
     NbProj = 1
 )
+DepictionOperator_M113A1G_MILAN_RFA_Weapon2 is DepictionOperator_WeaponInstantFire
+(
+    FireEffectTag = "weapon_effet_tag2"
+    Anchors = ["fx_tourelle5_tir_01", "fx_tourelle5_tir_02"]
+    WeaponShootDataPropertyName = ["WeaponShootData_0_2", "WeaponShootData_1_2", "WeaponShootData_2_2", "WeaponShootData_3_2", ]
+    NbProj = 4
+)
 Gfx_M113A1G_MILAN_RFA_Autogen is TacticVehicleDepictionTemplate
 (
     CoatingName = 'M113A1G_MILAN_RFA'
@@ -19155,10 +19172,12 @@ Gfx_M113A1G_MILAN_RFA_Autogen is TacticVehicleDepictionTemplate
         DepictionOperator_Chassis_MediumTank,
         DepictionOperator_Propulsion_ContinuousTrack,
         DepictionOperator_MovementFX_Standard,
+        DepictionOperator_M113A1G_MILAN_RFA_Weapon2,
         DepictionOperator_EjectableProps_Vehicle,
     ]
 
     Actions = MAP[
+                ( [ "weapon_effet_tag2" ], Weapon_SMOKE_Vehicle_Grenadex8 ),
             ]
             + DepictionAction_Stress_And_Wrecked
             + DepictionAction_MovementFX_Tracked
@@ -25714,7 +25733,7 @@ Gfx_Mortier_2B14_82mm_DShV_SOV_Autogen is TacticVehicleDepictionTemplate
 
     Operators = 
     [
-        $/GFX/Sound/DepictionOperator_MovementSound_SM_Infanterie_Crew_GER,
+        $/GFX/Sound/DepictionOperator_MovementSound_SM_Infanterie_Crew_SOVIET,
         DepictionOperator_SoundProbe,
         DepictionOperator_CriticalEffects,
         DepictionOperator_Turret_1_Aim,
@@ -25757,7 +25776,7 @@ Gfx_Mortier_2B14_82mm_SOV_Autogen is TacticVehicleDepictionTemplate
 
     Operators = 
     [
-        $/GFX/Sound/DepictionOperator_MovementSound_SM_Infanterie_Crew_GER,
+        $/GFX/Sound/DepictionOperator_MovementSound_SM_Infanterie_Crew_SOVIET,
         DepictionOperator_SoundProbe,
         DepictionOperator_CriticalEffects,
         DepictionOperator_Turret_1_Aim,
@@ -26546,7 +26565,7 @@ Gfx_OT_65_DDR_Autogen is TacticVehicleDepictionTemplate
     Operators = 
     [
         DepictionOperator_CropFlattening,
-        $/GFX/Sound/DepictionOperator_MovementSound_SM_BRDM,
+        $/GFX/Sound/DepictionOperator_MovementSound_SM_BTR_152,
         DepictionOperator_SoundProbe,
         DepictionOperator_CriticalEffects,
         DepictionOperator_Chassis_Vehicle,
@@ -26948,7 +26967,7 @@ Gfx_PTS_M_supply_DDR_Autogen is TacticVehicleDepictionTemplate
     Operators = 
     [
         DepictionOperator_CropFlattening,
-        $/GFX/Sound/DepictionOperator_MovementSound_SM_T55,
+        $/GFX/Sound/DepictionOperator_MovementSound_SM_MTLB,
         DepictionOperator_SoundProbe,
         DepictionOperator_CriticalEffects,
         DepictionOperator_Chassis_MediumTank_NoCanonRecoil,
@@ -27225,50 +27244,6 @@ Gfx_SPW_152K_DDR_Autogen is TacticVehicleDepictionTemplate
     ]
 
     SubDepictionGenerators = [ TransportedInfantrySubGenerator(Mesh = $/GFX/DepictionResources/Modele_SPW_152K_DDR) ]
-)
-// Dépiction de l'unité SVO_TCH
-DepictionOperator_SVO_TCH_Weapon1 is DepictionOperator_WeaponInstantFire
-(
-    FireEffectTag = "weapon_effet_tag1"
-    Anchors = ["fx_tourelle1_tir_01", "fx_tourelle1_tir_02"]
-    WeaponShootDataPropertyName = ["WeaponShootData_0_1", "WeaponShootData_1_1", ]
-    NbProj = 2
-)
-Gfx_SVO_TCH_Autogen is TacticVehicleDepictionTemplate
-(
-    CoatingName = 'SVO_TCH'
-    Selector = Selector_SVO_TCH
-    Alternatives = Alternatives_SVO_TCH
-
-    Operators = 
-    [
-        DepictionOperator_CropFlattening,
-        $/GFX/Sound/DepictionOperator_MovementSound_SM_PT76,
-        DepictionOperator_SoundProbe,
-        DepictionOperator_CriticalEffects,
-        DepictionOperator_Chassis_HeavyTank,
-        DepictionOperator_Propulsion_ContinuousTrack,
-        DepictionOperator_Turret_1_Aim,
-        DepictionOperator_SVO_TCH_Weapon1,
-        DepictionOperator_MovementFX_Amphibious,
-        DepictionOperator_EjectableProps_Vehicle,
-    ]
-
-    Actions = MAP[
-                ( [ "weapon_effet_tag1" ], Weapon_RocketArt_PW_LWD ),
-            ]
-            + DepictionAction_Stress_And_Wrecked
-            + DepictionAction_MovementFX_Tracked
-            + DepictionAction_CriticalFX_Tank
-            + DepictionAction_FX_Amphibious_NoPropulsion
-
-    SubDepictionGenerators = [ RocketSubDepictionTemplate(
-            UnitMeshDescriptor = $/GFX/DepictionResources/Modele_SVO_TCH
-            RocketMeshDescriptor = $/GFX/DepictionResources/Modele_Missile_PW_LWD
-            RocketCount = 2
-            WeaponIndex = 1
-            PhysicalProperty = "Tourelle1_MissileCount"
-        ) ]
 )
 // Dépiction de l'unité Saxon_CMD_UK
 DepictionOperator_Saxon_CMD_UK_Weapon1 is DepictionOperator_WeaponContinuousFire

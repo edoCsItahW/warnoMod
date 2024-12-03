@@ -255,9 +255,9 @@ Gfx_AH1F_HeavyHog_US_Showroom_Autogen is ShowroomAerialDepictionTemplate
         SubGenerators_Showroom_AH1F_HeavyHog_US,
     ]
 )
-Gfx_AH1S_Cobra_US_Showroom_Autogen is ShowroomAerialDepictionTemplate
+Gfx_AH1F_Hog_US_Showroom_Autogen is ShowroomAerialDepictionTemplate
 (
-    MeshDescriptor = $/GFX/DepictionResources/Modele_AH1S_Cobra_US
+    MeshDescriptor = $/GFX/DepictionResources/Modele_AH1F_Hog_US
     Operators = 
     [
         DepictionOperator_Reset_Generic,
@@ -276,7 +276,7 @@ Gfx_AH1S_Cobra_US_Showroom_Autogen is ShowroomAerialDepictionTemplate
     ]
     SubDepictionGenerators = 
     [
-        SubGenerators_Showroom_AH1S_Cobra_US,
+        SubGenerators_Showroom_AH1F_Hog_US,
     ]
 )
 Gfx_AH64_Apache_ATAS_US_Showroom_Autogen is ShowroomAerialDepictionTemplate
@@ -3718,6 +3718,26 @@ Gfx_Mi_2_trans_DDR_Showroom_Autogen is ShowroomAerialDepictionTemplate
 Gfx_Mi_2_trans_SOV_Showroom_Autogen is ShowroomAerialDepictionTemplate
 (
     MeshDescriptor = $/GFX/DepictionResources/Modele_Mi_2_trans_SOV
+    Operators = 
+    [
+        DepictionOperator_Reset_Generic,
+        TCosmeticFixedBoneRotationOperatorDesc
+        (
+            BoneName = "bloc_moteur_1"
+            RotationAxis = float3[0, 0, 1]
+            RotationInDegree = -30
+        ),
+        TCosmeticFixedBoneRotationOperatorDesc
+        (
+            BoneName = "bloc_moteur_2"
+            RotationAxis = float3[0, 1, 0]
+            RotationInDegree = -30
+        ),
+    ]
+)
+Gfx_Mi_4AV_130mm_TCH_Showroom_Autogen is ShowroomAerialDepictionTemplate
+(
+    MeshDescriptor = $/GFX/DepictionResources/Modele_Mi_4AV_130mm_TCH
     Operators = 
     [
         DepictionOperator_Reset_Generic,

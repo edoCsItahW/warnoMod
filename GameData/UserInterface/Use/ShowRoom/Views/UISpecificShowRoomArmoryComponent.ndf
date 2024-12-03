@@ -439,6 +439,24 @@ ArmoryDivisionFilterButtonDescriptor is BUCKButtonDescriptor
             )
             ResizeMode = ~/TextureResizeMode/UserDefined
         ),
+        BUCKTextureDescriptor
+        (
+            ElementName = "ButtonDlcLock"
+            TextureToken = "OutgameTexture_Division_Dlc_Corner"
+
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+            )
+
+            TextureFrame = TUIFramePropertyRTTI
+            (
+                AlignementToAnchor = [0.5, 0.5]
+                AlignementToFather = [0.5, 0.5]
+            )
+
+            ResizeMode = ~/TextureResizeMode/FitToParentConservingRatio
+        ),
         BUCKSpecificHintableArea
         (
             ElementName = "FilterHintableArea"

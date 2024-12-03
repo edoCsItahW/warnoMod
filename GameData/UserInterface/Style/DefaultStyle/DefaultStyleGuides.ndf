@@ -2115,14 +2115,6 @@ DefaultStyleGuide is TUIStyleGuide
                                                             ( ~/ComponentState/ToggleHighlighted,     TColorRTTI( Color = [220,220,220,255] ) ),
                                                         ]),
 
-        ("playerHelper/texte/Otan_background",                      MAP [
-                                                            ( ~/ComponentState/Grayed,                TColorRTTI( Color = [120,120,120,128] ) ),
-                                                            ( ~/ComponentState/Normal,                TColorRTTI( Color = [30,54,104,153] ) ),
-                                                            ( ~/ComponentState/Highlighted,           TColorRTTI( Color = [30,54,104,153] ) ),
-                                                            ( ~/ComponentState/Clicked,               TColorRTTI( Color = Blanc7 ) ),
-                                                            ( ~/ComponentState/Toggled,               TColorRTTI( Color = Blanc7 ) ),
-                                                            ( ~/ComponentState/ToggleHighlighted,     TColorRTTI( Color = [30,54,104,153] ) ),
-                                                        ]),
         ("playerHelper/texte/Otan_element",                      MAP [
                                                             ( ~/ComponentState/Grayed,                TColorRTTI( Color = [120,120,120,128] ) ),
                                                             ( ~/ComponentState/Normal,                TColorRTTI( Color = [255,255,255,255] ) ),
@@ -2130,14 +2122,6 @@ DefaultStyleGuide is TUIStyleGuide
                                                             ( ~/ComponentState/Clicked,               TColorRTTI( Color = Blanc7 ) ),
                                                             ( ~/ComponentState/Toggled,               TColorRTTI( Color = Otan_fond ) ),
                                                             ( ~/ComponentState/ToggleHighlighted,     TColorRTTI( Color = Otan ) ),
-                                                        ]),
-        ("playerHelper/texte/Otan_line",                      MAP [
-                                                            ( ~/ComponentState/Grayed,                TColorRTTI( Color = [120,120,120,128] ) ),
-                                                            ( ~/ComponentState/Normal,                TColorRTTI( Color = [90,150,180,255] ) ),
-                                                            ( ~/ComponentState/Highlighted,           TColorRTTI( Color = Blanc7 ) ),
-                                                            ( ~/ComponentState/Clicked,               TColorRTTI( Color = Blanc7 ) ),
-                                                            ( ~/ComponentState/Toggled,               TColorRTTI( Color = [0,0,180,255] ) ),
-                                                            ( ~/ComponentState/ToggleHighlighted,     TColorRTTI( Color = [0,0,180,255] ) ),
                                                         ]),
         ("playerHelper/texte/Otan_line2",                      MAP [
                                                             ( ~/ComponentState/Grayed,                TColorRTTI( Color = [120,120,120,128] ) ),
@@ -2148,14 +2132,6 @@ DefaultStyleGuide is TUIStyleGuide
                                                             ( ~/ComponentState/ToggleHighlighted,     TColorRTTI( Color = [0,0,180,255] ) ),
                                                         ]),
         // VERT
-        ("playerHelper/texte/Vert/Otan_background",                      MAP [
-                                                            ( ~/ComponentState/Grayed,                TColorRTTI( Color = [120,120,120,128] ) ),
-                                                            ( ~/ComponentState/Normal,                TColorRTTI( Color = Otan_fond_vert ) ),
-                                                            ( ~/ComponentState/Highlighted,           TColorRTTI( Color = Otan_fond_vert ) ),
-                                                            ( ~/ComponentState/Clicked,               TColorRTTI( Color = Blanc7 ) ),
-                                                            ( ~/ComponentState/Toggled,               TColorRTTI( Color = Blanc7 ) ),
-                                                            ( ~/ComponentState/ToggleHighlighted,     TColorRTTI( Color = Otan_fond_vert ) ),
-                                                        ]),
         ("playerHelper/texte/Vert/Otan_element",                      MAP [
                                                             ( ~/ComponentState/Grayed,                TColorRTTI( Color = [120,120,120,128] ) ),
                                                             ( ~/ComponentState/Normal,                TColorRTTI( Color = Blanc7 ) ),
@@ -2163,14 +2139,6 @@ DefaultStyleGuide is TUIStyleGuide
                                                             ( ~/ComponentState/Clicked,               TColorRTTI( Color = Blanc7 ) ),
                                                             ( ~/ComponentState/Toggled,               TColorRTTI( Color = Otan_vert ) ),
                                                             ( ~/ComponentState/ToggleHighlighted,     TColorRTTI( Color = Otan_vert ) ),
-                                                        ]),
-        ("playerHelper/texte/Vert/Otan_line",                      MAP [
-                                                            ( ~/ComponentState/Grayed,                TColorRTTI( Color = [120,120,120,128] ) ),
-                                                            ( ~/ComponentState/Normal,                TColorRTTI( Color = [90,150,180,255] ) ),
-                                                            ( ~/ComponentState/Highlighted,           TColorRTTI( Color = Blanc7 ) ),
-                                                            ( ~/ComponentState/Clicked,               TColorRTTI( Color = Blanc7 ) ),
-                                                            ( ~/ComponentState/Toggled,               TColorRTTI( Color = [0,0,180,255] ) ),
-                                                            ( ~/ComponentState/ToggleHighlighted,     TColorRTTI( Color = [0,0,180,255] ) ),
                                                         ]),
 
 
@@ -2211,14 +2179,6 @@ DefaultStyleGuide is TUIStyleGuide
                                                             ( ~/ComponentState/ToggleHighlighted,     TColorRTTI( Color = [180,0,0,255] ) ),
                                                         ]),
         // ORANGE
-        ("playerHelper/texte/Orange/Pact_background",                MAP [
-                                                            ( ~/ComponentState/Grayed,                TColorRTTI( Color = [120,120,120,128] ) ),
-                                                            ( ~/ComponentState/Normal,                TColorRTTI( Color = Pact_fond_orange ) ),
-                                                            ( ~/ComponentState/Highlighted,           TColorRTTI( Color = Pact_fond_orange ) ),
-                                                            ( ~/ComponentState/Clicked,               TColorRTTI( Color = Blanc7 ) ),
-                                                            ( ~/ComponentState/Toggled,               TColorRTTI( Color = Blanc7 ) ),
-                                                            ( ~/ComponentState/ToggleHighlighted,     TColorRTTI( Color = Pact_fond_orange ) ),
-                                                        ]),
         ("playerHelper/texte/Orange/Pact_element",                      MAP [
                                                             ( ~/ComponentState/Grayed,                TColorRTTI( Color = [120,120,120,128] ) ),
                                                             ( ~/ComponentState/Normal,                TColorRTTI( Color = Blanc7 ) ),
@@ -2226,14 +2186,6 @@ DefaultStyleGuide is TUIStyleGuide
                                                             ( ~/ComponentState/Clicked,               TColorRTTI( Color = Blanc7 ) ),
                                                             ( ~/ComponentState/Toggled,               TColorRTTI( Color = Pact_orange ) ),
                                                             ( ~/ComponentState/ToggleHighlighted,     TColorRTTI( Color = Pact_orange ) ),
-                                                        ]),
-        ("playerHelper/texte/Orange/Pact_line",                      MAP [
-                                                            ( ~/ComponentState/Grayed,                TColorRTTI( Color = [120,120,120,128] ) ),
-                                                            ( ~/ComponentState/Normal,                TColorRTTI( Color = [255,0,0,255] ) ),
-                                                            ( ~/ComponentState/Highlighted,           TColorRTTI( Color = Blanc7 ) ),
-                                                            ( ~/ComponentState/Clicked,               TColorRTTI( Color = Blanc7 ) ),
-                                                            ( ~/ComponentState/Toggled,               TColorRTTI( Color = [180,0,0,255] ) ),
-                                                            ( ~/ComponentState/ToggleHighlighted,     TColorRTTI( Color = [180,0,0,255] ) ),
                                                         ]),
         ("GameDebrief/TeamStats/PlayerLine/Nato",       MAP [ ( ~/ComponentState/Normal, TColorRTTI( Color = BleuSombre ) ), ]),
 
@@ -3138,14 +3090,6 @@ DefaultStyleGuide is TUIStyleGuide
                                                             ( ~/ComponentState/ToggleHighlighted, TColorRTTI( Color = BlancPur ) ),
                                                             ( ~/ComponentState/ToggleClicked,     TColorRTTI( Color = BlancPur ) ),
                                                             ( ~/ComponentState/Grayed,            TColorRTTI( Color = GrayMineShaft ) ),
-                                                        ]),
-        ("SD2_PreCo",                                   MAP [
-                                                            ( ~/ComponentState/Normal,            TColorRTTI( Color = JauneLeger ) ),
-                                                            ( ~/ComponentState/Highlighted,       TColorRTTI( Color = Jaune ) ),
-                                                            ( ~/ComponentState/Clicked,           TColorRTTI( Color = JauneLeger ) ),
-                                                            ( ~/ComponentState/Toggled,           TColorRTTI( Color = Jaune ) ),
-                                                            ( ~/ComponentState/ToggleHighlighted, TColorRTTI( Color = Jaune ) ),
-                                                            ( ~/ComponentState/ToggleClicked,     TColorRTTI( Color = Jaune ) ),
                                                         ]),
 
         ("ConfirmButton/BigBorder",    MAP [

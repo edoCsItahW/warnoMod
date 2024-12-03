@@ -4,7 +4,7 @@ export InGameHUDResource is TUISpecificInGameHUDResource
 
     HUDReplayResource               = ~/HUDReplayResource
     HUDAlertPanelDescriptor         = ~/UISpecificHUDAlertPanelViewDescriptor
-    CameraMoverTargetClient             = $/Camera/CameraMoverTargetClient
+    CameraManipulator                   = $/Camera/CameraManipulator
 
     PerformanceAlertViewDescriptor      = ~/PerformanceAlertViewDescriptor
 

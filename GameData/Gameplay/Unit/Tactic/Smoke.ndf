@@ -13,7 +13,7 @@ export ModernWarfareModularUnitSmokeDescriptorForTestIA is TEntityDescriptor
         (
             InGeoDb              = false
         ),
-        TApparenceModelModuleDescriptor
+        TApparenceModuleDescriptor
         (
             Depiction  = Template_DescriptorSmoke_Depiction
             (

@@ -2020,6 +2020,206 @@ DefaultTextFormatScript is TTextFormatScriptRTTI
             )
         ),
         //-------------------------------------------------------------------------------------
+
+        (
+            "US_1AD",
+            TemplateTFS_Division(TextureToken = "CommonTexture_division_US_1AD")
+        ),
+        (
+            "US_2AD",
+            TemplateTFS_Division(TextureToken = "CommonTexture_division_US_2AD")
+        ),
+        (
+            "US_3AD",
+            TemplateTFS_Division(TextureToken = "CommonTexture_division_US_3AD")
+        ),
+        (
+            "US_3ID",
+            TemplateTFS_Division(TextureToken = "CommonTexture_division_US_3ID")
+        ),
+        (
+            "US_8ID",
+            TemplateTFS_Division(TextureToken = "CommonTexture_division_US_8ID")
+        ),
+        (
+            "US_17AF",
+            TemplateTFS_Division(TextureToken = "CommonTexture_division_US_17AF")
+        ),
+        (
+            "US_11ACR",
+            TemplateTFS_Division(TextureToken = "CommonTexture_division_US_11ACR")
+        ),
+        (
+            "US_4ATAF",
+            TemplateTFS_Division(TextureToken = "CommonTexture_division_US_4ATAF")
+        ),
+        (
+            "US_2ATAF",
+            TemplateTFS_Division(TextureToken = "CommonTexture_division_US_2ATAF")
+        ),
+        (
+            "UK_3armoured",
+            TemplateTFS_Division(TextureToken = "CommonTexture_division_UK_3armoured")
+        ),
+        (
+            "UK_1AD",
+            TemplateTFS_Division(TextureToken = "CommonTexture_division_UK_1AD")
+        ),
+        (
+            "UK_2ID",
+            TemplateTFS_Division(TextureToken = "CommonTexture_division_UK_2ID")
+        ),
+        (
+            "UK_4AD",
+            TemplateTFS_Division(TextureToken = "CommonTexture_division_UK_4AD")
+        ),
+        (
+            "BEL_16mec",
+            TemplateTFS_Division(TextureToken = "CommonTexture_division_BEL_16mec")
+        ),
+        (
+            "BEL_1corps",
+            TemplateTFS_Division(TextureToken = "CommonTexture_division_BEL_1corps")
+        ),
+        (
+            "BEL_1_INFDIV",
+            TemplateTFS_Division(TextureToken = "CommonTexture_division_BEL_1_INFDIV")
+        ),
+        (
+            "RFA_26llb",
+            TemplateTFS_Division(TextureToken = "CommonTexture_division_RFA_26llb")
+        ),
+        (
+            "RFA_5PZ",
+            TemplateTFS_Division(TextureToken = "CommonTexture_division_RFA_5PZ")
+        ),
+        (
+            "RFA_2PZ",
+            TemplateTFS_Division(TextureToken = "CommonTexture_division_RFA_2PZ")
+        ),
+        (
+            "RFA_3PZ",
+            TemplateTFS_Division(TextureToken = "CommonTexture_division_RFA_3PZ")
+        ),
+        (
+            "RFA_12PZ",
+            TemplateTFS_Division(TextureToken = "CommonTexture_division_RFA_12PZ")
+        ),
+        (
+            "RFA_1PZ",
+            TemplateTFS_Division(TextureToken = "CommonTexture_division_RFA_1PZ")
+        ),
+        (
+            "RFA_terrkdo",
+            TemplateTFS_Division(TextureToken = "CommonTexture_division_RFA_terrkdo")
+        ),
+        (
+            "RFA_2Luft",
+            TemplateTFS_Division(TextureToken = "CommonTexture_division_RFA_2Luft")
+        ),
+        (
+            "NL_1D",
+            TemplateTFS_Division(TextureToken = "CommonTexture_division_NL_1D")
+        ),
+        (
+            "NL_4D",
+            TemplateTFS_Division(TextureToken = "CommonTexture_division_NL_4D")
+        ),
+        (
+            "NL_KLu",
+            TemplateTFS_Division(TextureToken = "CommonTexture_division_NL_KLu")
+        ),
+        (
+            "DDR_7PZD",
+            TemplateTFS_Division(TextureToken = "CommonTexture_division_DDR_7PZD")
+        ),
+        (
+            "DDR_4MSD",
+            TemplateTFS_Division(TextureToken = "CommonTexture_division_DDR_4MSD")
+        ),
+        (
+            "DDR_11MSD",
+            TemplateTFS_Division(TextureToken = "CommonTexture_division_DDR_11MSD")
+        ),
+        (
+            "DDR_17MSD",
+            TemplateTFS_Division(TextureToken = "CommonTexture_division_DDR_17MSD")
+        ),
+        (
+            "DDR_19MSD",
+            TemplateTFS_Division(TextureToken = "CommonTexture_division_DDR_19MSD")
+        ),
+        (
+            "DDR_20MSD",
+            TemplateTFS_Division(TextureToken = "CommonTexture_division_DDR_20MSD")
+        ),
+        (
+            "DDR_8MSD",
+            TemplateTFS_Division(TextureToken = "CommonTexture_division_DDR_8MSD")
+        ),
+        (
+            "DDR_9PZD",
+            TemplateTFS_Division(TextureToken = "CommonTexture_division_DDR_9PZD")
+        ),
+        (
+            "DDR_Luft",
+            TemplateTFS_Division(TextureToken = "CommonTexture_division_DDR_Luft")
+        ),
+        (
+            "SOV_18_ZRB",
+            TemplateTFS_Division(TextureToken = "CommonTexture_division_SOV_18_ZRB")
+        ),
+        (
+            "SOV_53_ZRB",
+            TemplateTFS_Division(TextureToken = "CommonTexture_division_SOV_53_ZRB")
+        ),
+        (
+            "SOV_27_GVMSD",
+            TemplateTFS_Division(TextureToken = "CommonTexture_division_SOV_27_GVMSD")
+        ),
+        (
+            "SOV_39_GVMSD",
+            TemplateTFS_Division(TextureToken = "CommonTexture_division_SOV_39_GVMSD")
+        ),
+        (
+            "SOV_57_GVMSD",
+            TemplateTFS_Division(TextureToken = "CommonTexture_division_SOV_57_GVMSD")
+        ),
+        (
+            "SOV_16_VA",
+            TemplateTFS_Division(TextureToken = "CommonTexture_division_SOV_16_VA")
+        ),
+        (
+            "SOV_35_GvDShB",
+            TemplateTFS_Division(TextureToken = "CommonTexture_division_SOV_35_GvDShB")
+        ),
+        (
+            "SOV_20_GVMD",
+            TemplateTFS_Division(TextureToken = "CommonTexture_division_SOV_20_GVMD")
+        ),
+        (
+            "SOV_79_GVTD",
+            TemplateTFS_Division(TextureToken = "CommonTexture_division_SOV_79_GVTD")
+        ),
+        (
+            "SOV_11_GVTD",
+            TemplateTFS_Division(TextureToken = "CommonTexture_division_SOV_11_GVTD")
+        ),
+        (
+            "SOV_9_TD",
+            TemplateTFS_Division(TextureToken = "CommonTexture_division_SOV_9_TD")
+        ),
+        (
+            "SOV_default",
+            TemplateTFS_Division(TextureToken = "CommonTexture_division_SOV_default")
+        ),
+        (
+            "SOV_guard",
+            TemplateTFS_Division(TextureToken = "CommonTexture_division_SOV_guard")
+        ),
+        //-------------------------------------------------------------------------------------
+
+
         (
             "NATO",
             TemplateTFS_Flag(TextureToken = "CommonTexture_MotherCountryFlag_NATO_small")

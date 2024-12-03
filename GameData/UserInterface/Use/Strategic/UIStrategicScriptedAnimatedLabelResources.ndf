@@ -21,10 +21,10 @@ StrategicScriptedLabelResources is TUIScriptedAnimatedLabelResources
     FlagBorderWidth = 2 // La largeur de la bordure autour du drapeau
     FlagNotchWidth = 0.2 //Par exemple, 0.2 = l'encoche du drapeau fait 20% de la largeur du "FlagContainer"
 
-    NationaliteTextureTokens = MAP
+    CoalitionTextureTokens = MAP
     [
-        (ENationalite/OTAN, "CommonTexture_MotherCountryFlag_NATO_small"),
-        (ENationalite/PACT, "CommonTexture_MotherCountryFlag_PACT_small"),
+        (ECoalition/OTAN, "CommonTexture_MotherCountryFlag_NATO_small"),
+        (ECoalition/PACT, "CommonTexture_MotherCountryFlag_PACT_small"),
     ]
     NoOwnerTexture = "CommonTexture_MotherCountryFlag_NoNation_small"
     NoOwnerPlayerColorIndex = PlayerColor/Gris

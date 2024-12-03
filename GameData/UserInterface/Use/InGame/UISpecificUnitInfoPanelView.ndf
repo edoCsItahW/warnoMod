@@ -1428,29 +1428,60 @@ is TUISpecificUnitInfoPanelViewDescriptor
         ("HelicoSupplier", listeAffichageInfoUnit_HelicoSupply),
     ]
 
-    DivisionEmblemDescriptor = BUCKTextureDescriptor
+    DivisionEmblemDescriptor = BUCKButtonDescriptor
     (
-        ElementName = 'DivisionEmblemTexture'
+        ElementName = 'DivisionEmblemButton'
 
         ComponentFrame = TUIFramePropertyRTTI
         (
             MagnifiableWidthHeight = [36.0, 36.0]
         )
 
-        TextureFrame = TUIFramePropertyRTTI
-        (
-            RelativeWidthHeight = [1.0*Scale, 1.0*Scale]
-        )
-
-        ClipTextureToComponent = true
-
         Components =
         [
+            BUCKTextureDescriptor
+            (
+                ElementName = "DivisionEmblemTexture"
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 1.0]
+                )
+
+                TextureFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0*Scale, 1.0*Scale]
+                    AlignementToAnchor = [0.5, 0.5]
+                    AlignementToFather = [0.5, 0.5]
+                )
+
+                ResizeMode = ~/TextureResizeMode/UserDefined
+                ClipTextureToComponent = true
+            ),
             BUCKSpecificHintableArea
             (
                 ElementName = "DivisionEmblemHint"
                 DicoToken = ~/LocalisationConstantes/dico_units
-            )
+            ),
+            BUCKTextureDescriptor
+            (
+                ElementName = "DivisionEmblemDlcLock"
+                TextureToken = "OutgameTexture_Division_Dlc_Corner"
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 1.0]
+                )
+
+                TextureFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0*Scale, 1.0*Scale]
+                    AlignementToAnchor = [0.5, 0.5]
+                    AlignementToFather = [0.5, 0.5]
+                )
+
+                ResizeMode = ~/TextureResizeMode/UserDefined
+            ),
         ]
     )
 

@@ -466,6 +466,8 @@ private MultiScenarioSelectionMultiListOneLineContent is BUCKListDescriptor
                         TextDico = ~/LocalisationConstantes/dico_interface_ingame
                         TextColor = "noir_listeMission"
 
+                        BigLineAction = ~/BigLineAction/ResizeFont
+
                         Components =
                         [
                             BUCKTextureDescriptor

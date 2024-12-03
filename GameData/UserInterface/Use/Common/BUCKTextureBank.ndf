@@ -88,7 +88,6 @@ Base_AdditionalTextureBank is TBUCKToolAdditionalTextureBank
 
         ("OutgameTexture_GameRoomList_Observable",                                  MAP [(~/ComponentState/Normal, ~/OutgameTexture_GameRoomList_Observable)]),
         ("OutgameTexture_Division_Dlc_Corner",                                      MAP [(~/ComponentState/Normal, ~/OutgameTexture_Division_Dlc_Corner)]),
-        ("OutgameTexture_Division_Dlc_Seal",                                        MAP [(~/ComponentState/Normal, ~/OutgameTexture_Division_Dlc_Seal)]),
 
 
 

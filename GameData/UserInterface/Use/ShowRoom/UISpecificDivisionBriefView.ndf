@@ -99,33 +99,6 @@ is BUCKListDescriptor
 
                         ResizeMode = ~/TextureResizeMode/FitToParentConservingRatio
                     ),
-                    BUCKTextDescriptor
-                    (
-                        ElementName = "DlcName"
-                        ComponentFrame = TUIFramePropertyRTTI
-                        (
-                            RelativeWidthHeight = [0.0, 1.0]
-                            MagnifiableWidthHeight = [250.0, 0.0]
-                        )
-
-                        ParagraphStyle = TParagraphStyle
-                        (
-                            Alignment = UIText_Center
-                            VerticalAlignment = UIText_VerticalCenter
-                        )
-
-                        TextStyle = "Default"
-                        TypefaceToken = "UIMainFont"
-
-                        BigLineAction = ~/BigLineAction/ResizeFont
-
-                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
-
-                        TextColor = "SD2_Blanc184"
-                        TextSize = "14"
-
-                        TextPadding = TRTTILength4(Magnifiable = [5.0, 0.0, 5.0, 0.0])
-                    ),
                 ]
             )
         ),
@@ -337,7 +310,7 @@ private DivisionType is BUCKMultiListContentElementDescriptor
     ComponentFrame = TUIFramePropertyRTTI
     (
         RelativeWidthHeight = [0.0, 1.0]
-        MagnifiableWidthHeight = [DeckListColonne_Type, 0.0]
+        MagnifiableWidthHeight = [DeckListColonne_Type -7 , 0.0]
     )
 
     Components =
@@ -370,25 +343,6 @@ private DivisionType is BUCKMultiListContentElementDescriptor
                     ResizeMode = ~/TextureResizeMode/FitToParentConservingRatio
                     TextureColorToken = "White"
                 ),
-                BUCKTextureDescriptor
-                (
-                    ElementName = "DlcSeal"
-                    ComponentFrame = TUIFramePropertyRTTI
-                    (
-                        RelativeWidthHeight = [0.0, 1.0]
-                        MagnifiableWidthHeight = [50.0, 0.0]
-                        AlignementToAnchor = [0.5, 0.5]
-                        AlignementToFather = [0.5, 0.5]
-                    )
-
-                    ResizeMode = ~/TextureResizeMode/FitToParentConservingRatio
-                    TextureColorToken = "White"
-                    TextureFrame = TUIFramePropertyRTTI
-                    (
-                        AlignementToAnchor = [0.5, 0.5]
-                        AlignementToFather = [0.5, 0.5]
-                    )
-                )
             ]
         )
     ]
@@ -411,29 +365,75 @@ is BUCKMultiListContentElementDescriptor
 
     Components =
     [
-        BUCKTextDescriptor
+        BUCKListDescriptor
         (
-            ElementName = "DivisionName"
+            ElementName = "DivisionNameList"
             ComponentFrame = TUIFramePropertyRTTI
             (
-                MagnifiableWidthHeight = [<DivisionNameWidth>,0]
-                RelativeWidthHeight = [0.0, 1.0]
-                AlignementToFather = [0.5, 0.0]
-                AlignementToAnchor = [0.5, 0.0]
+                MagnifiableWidthHeight = [<DivisionNameWidth>, 0.0]
+                AlignementToAnchor = [0.5, 0.5]
+                AlignementToFather = [0.5, 0.5]
             )
-            ParagraphStyle = paragraphStyleTextCenter
-            TextStyle = "Default"
-            // TextStyle = "TextStyleEcranMoniteur"
 
-            VerticalFitStyle = ~/FitStyle/UserDefined
-            TypefaceToken = "IBM"
-            BigLineAction = ~/BigLineAction/MultiLine
-            TextToken = 'HINT_EX_SP'
-            TextDico = ~/LocalisationConstantes/dico_interface_outgame
-            TextColor = "Multiliste_division_text"
-            TextSize = "24"
+            HasBackground = false
+            Axis = ~/ListAxis/Vertical
 
-            BackgroundBlockColorToken = 'Orange'
+            Elements =
+            [
+                BUCKListElementDescriptor
+                (
+                    ExtendWeight = 0.5
+                    ComponentDescriptor = BUCKTextDescriptor
+                    (
+                        ElementName = "DivisionName"
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableWidthHeight = [<DivisionNameWidth>, 0.0]
+                            RelativeWidthHeight = [0.0, 1.0]
+                            AlignementToFather = [0.5, 0.0]
+                            AlignementToAnchor = [0.5, 0.0]
+                        )
+                        ParagraphStyle = paragraphStyleTextCenter
+                        TextStyle = "Default"
+
+                        VerticalFitStyle = ~/FitStyle/UserDefined
+                        TypefaceToken = "IBM"
+                        BigLineAction = ~/BigLineAction/MultiLine
+                        TextToken = 'HINT_EX_SP'
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                        TextColor = "Multiliste_division_text"
+                        TextSize = "24"
+
+                        BackgroundBlockColorToken = 'Orange'
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    ExtendWeight = 0.5
+                    ComponentDescriptor = BUCKTextDescriptor
+                    (
+                        ElementName = "DlcName"
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 1.0]
+                            AlignementToFather = [0.5, 0.0]
+                            AlignementToAnchor = [0.5, 0.0]
+                        )
+                        ParagraphStyle = paragraphStyleTextCenter
+                        TextStyle = "Default"
+
+                        VerticalFitStyle = ~/FitStyle/UserDefined
+                        TypefaceToken = "IBM"
+                        BigLineAction = ~/BigLineAction/CutByDots
+                        TextToken = 'DIVSEL_DLC'
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                        TextColor = "Multiliste_division_text"
+                        TextSize = "18"
+
+                        BackgroundBlockColorToken = 'Orange'
+                    )
+                ),
+            ]
         )
     ]
 )
@@ -478,17 +478,14 @@ private DivisionInfoEmblem is BUCKMultiListContentElementDescriptor
                 BUCKTextureDescriptor
                 (
                     ElementName = "DlcLock"
+
                     ComponentFrame = TUIFramePropertyRTTI
                     (
-                        RelativeWidthHeight = [0.0, 1.0]
-                        MagnifiableWidthHeight = [65, 0]
-                        MagnifiableOffset = [35.0,-3.0]
+                        RelativeWidthHeight = [1.0, 1.0]
                     )
 
                     TextureFrame = TUIFramePropertyRTTI
                     (
-                        RelativeWidthHeight = [0.0, 0.0]
-                        MagnifiableWidthHeight = [0.0, 0.0]
                         AlignementToAnchor = [0.5, 0.5]
                         AlignementToFather = [0.5, 0.5]
                     )

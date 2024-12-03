@@ -5,7 +5,7 @@ CommonDepictionSelector is TLodSelector
     HighMidLimitInMeter = 100
     MidLowLimitInMeter = 200
     OptionalLimit = $/GraphicOption/ModelQuality
-    CameraMoverManagerModernWarfare = $/Camera/CameraMoverManager
+    CameraMoverManager = $/Camera/CameraMoverManager
 )
 
 Gfx_TestUnit_ModelTank is TTimelyDepictionReceiverFactory
@@ -141,7 +141,7 @@ TacticDepiction_TestUnit_ModelInfantry_Squad is TDepictionTemplate
     (
         HighLowLimitInMeter = LodHighLowLimit_Infantry
         LowNoneLimitInMeter = LodLowNoneLimit_Infantry
-        CameraMoverManagerModernWarfare = $/Camera/CameraMoverManager
+        CameraMoverManager = $/Camera/CameraMoverManager
         OptionalLimit = $/GraphicOption/ModelQuality
     )
     DepictionAlternatives = [

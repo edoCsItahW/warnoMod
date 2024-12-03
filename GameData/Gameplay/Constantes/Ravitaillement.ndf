@@ -1,8 +1,6 @@
 export SpecificDefaultSupplyRangeGRU is 442 //utilisé par le halo également
 export StandardSupply is TSupplyDescriptor
 (
-    // Rayon par défaut de la zone de ravitaillement, cette valeur est utilisée si
-    // aucun rayon n'est défini dans l'ODS
     DefaultSupplyRangeGRU = SpecificDefaultSupplyRangeGRU
 
     // Tous les ravitaillement sont découpé en deux variables

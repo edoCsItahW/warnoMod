@@ -436,7 +436,7 @@ template BUCKCheckBoxListDescriptor
 
     ToggleListButtonText : string = "BTN_FILTER",
 
-    ListData : LIST<PAIR<string,LIST<Pair<string,int>>>> = [], // [ ("CategoryName", [("CheckboxName", DataValue),]),]
+    ListData : LIST<PAIR<string,LIST<PAIR<string,int>>>> = [], // [ ("CategoryName", [("CheckboxName", DataValue),]),]
 
     CheckboxForCategory : bool = false,
     CategorySeparation : int = ~/ECheckBoxListSeparatorConfiguration/ShowLine,

@@ -1,5 +1,4 @@
-//utf-huité
-// TerrainType // A maintenir synchro avec EugIA_Common/MaskSparseDBType.h
+// A maintenir synchro avec TerrainGameplay/TerrainType.h
 ETerrainType is TBaseClass
 (
     None                  is 0x00000000

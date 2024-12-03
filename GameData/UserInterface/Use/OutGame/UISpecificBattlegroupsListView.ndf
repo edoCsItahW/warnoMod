@@ -397,7 +397,7 @@ DeckListScrollbarWidth is 10.0
 DeckListListWidth is 580.0
 
 DeckListColonne_Alliance is 68.0
-DeckListColonne_Flag is 60.0 + 5
+DeckListColonne_Flag is 60.0
 DeckListColonne_Division is 55.0
 DeckListColonne_Power is 50.0
 DeckListColonne_Type is 60.0
@@ -1708,11 +1708,11 @@ is TUISpecificBattlegroupsListViewDescriptor
     ColorForAlliance = MAP
     [
         (
-            ENationalite/OTAN,
+            ECoalition/OTAN,
             "GameDebrief/TeamStats/PlayerLine/Nato"
         ),
         (
-            ENationalite/PACT,
+            ECoalition/PACT,
             "GameDebrief/TeamStats/PlayerLine/Pact"
         ),
     ]
@@ -1720,11 +1720,11 @@ is TUISpecificBattlegroupsListViewDescriptor
     AllianceFlagTexture = MAP
     [
         (
-            ENationalite/OTAN,
+            ECoalition/OTAN,
             "CommonTexture_MotherCountryFlag_NATO_small"
         ),
         (
-            ENationalite/PACT,
+            ECoalition/PACT,
             "CommonTexture_MotherCountryFlag_PACT_small"
         ),
     ]

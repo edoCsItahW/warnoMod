@@ -43,7 +43,7 @@ template TemplateClusterWithNDFLoadedSubCluster
         BaseName        = <BaseName>
         NameSpace       = <NameSpace>
         FillResourceList = <FillResourceList>
-        FileList         = [TNDFTransactionFileList(Files = <Files>)]
+        Files           = <Files>
     )]
 )
 //-----------------------------------------------------------------------------
@@ -64,34 +64,9 @@ template TemplateClusterWithNDFLoadedSubCluster_ReloadableForGameplay
         NameSpace       = <NameSpace>
         Moddable        = <Moddable>
         FillResourceList = <FillResourceList>
-        FileList        = [TNDFTransactionFileList(Files = <Files>)]
+        Files           = <Files>
     )]
     ReloadType = EReloadableType/Gameplay
-)
-//-----------------------------------------------------------------------------
-template TemplateClusterLoadDirectoryNDF
-[
-    Directory   : string       = '' ,
-    BaseName  : string         = '',
-    NameSpace : string         = '',
-    Recursive : bool           = true,
-    FillResourceList : bool    = false,
-] is TClusterNdfTransactions
-(
-    Transactions = [TNDFTransaction
-    (
-        FileList =
-        [
-        TNDFTransactionDirectory
-        (
-            Directory = <Directory>
-            Recursive = <Recursive>
-        )
-        ]
-        BaseName = <BaseName>
-        NameSpace =<NameSpace>
-        FillResourceList = <FillResourceList>
-    )]
 )
 //-----------------------------------------------------------------------------
 //*****************************************************************************
@@ -99,7 +74,8 @@ template TemplateClusterLoadDirectoryNDF
 
 template TemplateClusterLoadNDFForNoFinal
 [
-    FileList     = [] ,
+    Files       = [],
+    Directories = [],
     BaseName  : string       = '',
     NameSpace : string       = '',
     FillResourceList : bool    = false,
@@ -107,7 +83,8 @@ template TemplateClusterLoadNDFForNoFinal
 (
     Transactions = [TNDFTransaction
     (
-        FileList = <FileList>
+        Files = <Files>
+        Directories = <Directories>
         BaseName = "NotFinal/" + <BaseName>
         NameSpace =<NameSpace>
         FillResourceList = <FillResourceList>
@@ -128,13 +105,7 @@ template TemplateClusterLoadNDFForEditor
     (
         Transactions = [TNDFTransaction
         (
-            FileList =
-            [
-            TNDFTransactionFileList
-            (
-                Files = <Files>
-            )
-            ]
+            Files = <Files>
             BaseName = "Editor/" + <BaseName>
             NameSpace =<NameSpace>
             FillResourceList = <FillResourceList>
@@ -154,13 +125,7 @@ template TemplateClusterLoadForNoEditor
     (
         Transactions = [TNDFTransaction
         (
-            FileList =
-            [
-            TNDFTransactionFileList
-            (
-                Files = <Files>
-            )
-            ]
+            Files = <Files>
             FillResourceList = <FillResourceList>
             BaseName = <BaseName>
             NameSpace =<NameSpace>

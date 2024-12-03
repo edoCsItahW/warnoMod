@@ -1584,7 +1584,9 @@ export Capacite_sigint_close is TCapaciteDescriptor
     TagsCibleExcluded = [
         "noSIGINT",
     ]
-
+    Conditions = [
+        ~/ConditionTagNotRaisedInUnit_RadioJammed_1,
+    ]
 )
 export Capacite_sigint_far is TCapaciteDescriptor
 (
@@ -1631,6 +1633,7 @@ export Capacite_sigint_far is TCapaciteDescriptor
         "noSIGINT",
     ]
     Conditions = [
+        ~/ConditionTagNotRaisedInUnit_RadioJammed_1,
         ~/ConditionTagNotRaisedInUnit_sigint_close_1,
     ]
 )

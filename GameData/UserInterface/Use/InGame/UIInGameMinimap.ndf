@@ -70,7 +70,7 @@ MinimapPanelDescriptor is TUISpecificBUCKMinimapDescriptor
 InGameMinimap is TUISpecificInGameMinimapResources
 (
     WorldFloorProxy                     = $/M3D/Scene/WorldFloorForIAProxy
-    CameraMoverTargetClient             = $/Camera/CameraMoverTargetClient
+    CameraManipulator             = $/Camera/CameraManipulator
     CameraMoverHelperProxy              = $/M3D/Scene/IngameCameraMoverHelperProxy
 
     CameraAngleTexture                  = ~/Texture_Minimap_CameraAngle

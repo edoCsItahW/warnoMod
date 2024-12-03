@@ -712,9 +712,9 @@ UISpecificLossesStateViewDescriptor is TUISpecificLossesStateViewDescriptor
 
     PawnLossesViewDescriptor = ~/UISpecificPawnLossesViewDescriptor
 
-    NationaliteTextureTokens = MAP
+    CoalitionTextureTokens = MAP
     [
-        (ENationalite/OTAN, "CommonTexture_MotherCountryFlag_NATO"),
-        (ENationalite/PACT, "CommonTexture_MotherCountryFlag_PACT"),
+        (ECoalition/OTAN, "CommonTexture_MotherCountryFlag_NATO"),
+        (ECoalition/PACT, "CommonTexture_MotherCountryFlag_PACT"),
     ]
 )

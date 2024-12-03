@@ -5,12 +5,12 @@ export Modele_Mortier_Nona_K_120mm_SOV is ModelDescriptor
 
 export Modele_Mortier_Nona_K_120mm_SOV_MID is ModelDescriptor
 (
-    FileName     = 'GameData:/Assets/3D/Units/URSS/Canon/Mortier_Nona_K_120mm/Mortier_Nona_K_120mm.fbx'
+    FileName     = 'GameData:/Assets/3D/Units/URSS/Canon/Mortier_Nona_K_120mm_MID/Mortier_Nona_K_120mm_MID.fbx'
 )
 
 export Modele_Mortier_Nona_K_120mm_SOV_LOW is ModelDescriptor
 (
-    FileName     = 'GameData:/Assets/3D/Units/URSS/Canon/Mortier_Nona_K_120mm/Mortier_Nona_K_120mm.fbx'
+    FileName     = 'GameData:/Assets/3D/Units/URSS/Canon/Mortier_Nona_K_120mm_LOW/Mortier_Nona_K_120mm_LOW.fbx'
 )
 
 

@@ -151,15 +151,6 @@ BUCKSpecificOutGameHostPanelMainComponentDescriptor is SpecificModalWindow
                 DropdownElementName = "SpectateDropdown"
             )
         ),
-        BUCKListElementDescriptor
-        (
-            ComponentDescriptor = SpecificModalDropdown
-            (
-                ElementName = "FilterDeck"
-                TextToken = "GPS_Filter"
-                DropdownElementName = "FilterDeckDropdown"
-            )
-        ),
         BUCKListElementSpacer( Magnifiable = 20.0 ),
         // ligne,
         BUCKListElementDescriptor

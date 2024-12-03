@@ -33,6 +33,8 @@ FXWeapon_AA_R60M_Vympel is FXWeapon_1
 FXWeapon_AA_R60M_Vympel_helo is FXWeapon_1
 FXWeapon_AA_R73_Vympel is FXWeapon_1
 FXWeapon_AA_R77_Vympel is FXWeapon_0
+FXWeapon_AA_R98MR is FXWeapon_0
+FXWeapon_AA_R98MT is FXWeapon_0
 FXWeapon_AA_Skyflash is FXWeapon_0
 FXWeapon_AA_Skyflash_SuperTEMP is FXWeapon_0
 FXWeapon_AGM_9K121_Vikhr is FXWeapon_2
@@ -66,6 +68,8 @@ FXWeapon_AGM_AGM88_HARM is FXWeapon_6
 FXWeapon_AGM_AJ_168_x2 is FXWeapon_6
 FXWeapon_AGM_ALARM is FXWeapon_6
 FXWeapon_AGM_ARMAT is FXWeapon_6
+FXWeapon_AGM_AS11_x2 is FXWeapon_3
+FXWeapon_AGM_AS11_x4 is FXWeapon_3
 FXWeapon_AGM_AS30 is FXWeapon_6
 FXWeapon_AGM_AS30L is FXWeapon_6
 FXWeapon_AGM_AS37_Martel is FXWeapon_6
@@ -92,7 +96,7 @@ FXWeapon_AGM_Kh29L is FXWeapon_6
 FXWeapon_AGM_Kh29T is FXWeapon_6
 FXWeapon_AGM_Kh31P is FXWeapon_6
 FXWeapon_AGM_Kh58U is FXWeapon_6
-FXWeapon_AGM_SS11_x2 is FXWeapon_3
+FXWeapon_AGM_SS11_TCA_x4 is FXWeapon_3
 FXWeapon_AGM_SS11_x4 is FXWeapon_3
 FXWeapon_ATGM_9K111_Fagot is FXWeapon_4
 FXWeapon_ATGM_9K111M_Fagot_M is FXWeapon_4
@@ -116,6 +120,7 @@ FXWeapon_ATGM_9M14_MalyutkaP_x4 is FXWeapon_8
 FXWeapon_ATGM_9M14_MalyutkaP_x6 is FXWeapon_8
 FXWeapon_ATGM_9k111M_Faktoriya is FXWeapon_4
 FXWeapon_ATGM_ADATS is FXWeapon_4
+FXWeapon_ATGM_AS11_x4 is FXWeapon_8
 FXWeapon_ATGM_BGM71_TOW is FXWeapon_4
 FXWeapon_ATGM_BGM71_TOW_x2 is FXWeapon_4
 FXWeapon_ATGM_BGM71_TOW_x4 is FXWeapon_4
@@ -141,7 +146,6 @@ FXWeapon_ATGM_MGM551C_Shillelagh is FXWeapon_4
 FXWeapon_ATGM_MILAN is FXWeapon_4
 FXWeapon_ATGM_MILAN_2 is FXWeapon_4
 FXWeapon_ATGM_MILAN_2_x2 is FXWeapon_4
-FXWeapon_ATGM_SS11_x4 is FXWeapon_8
 FXWeapon_ATGM_Swingfire is FXWeapon_4
 FXWeapon_ATGM_Swingfire_x2 is FXWeapon_4
 FXWeapon_ATGM_Swingfire_x5 is FXWeapon_4
@@ -180,6 +184,7 @@ FXWeapon_MANPAD_FIM92 is FXWeapon_10
 FXWeapon_MANPAD_FIM92_A is FXWeapon_10
 FXWeapon_MANPAD_Javelin is FXWeapon_10
 FXWeapon_MANPAD_Strela2M is FXWeapon_10
+FXWeapon_MANPAD_Strela3 is FXWeapon_10
 FXWeapon_MANPAD_igla is FXWeapon_10
 FXWeapon_Mistral is FXWeapon_10
 FXWeapon_Mistral_Celtic_x4 is FXWeapon_10
