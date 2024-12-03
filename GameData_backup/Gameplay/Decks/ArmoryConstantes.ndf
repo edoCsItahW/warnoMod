@@ -1,5 +1,0 @@
-// Constantes de l'armory
-armoryConstantes is TArmoryConstantes
-(
-    HalfSeparationEntreDeuxUnitSiDeuxUnit = [2* 200.0, 2.8 * 215.0, 0.0]
-)

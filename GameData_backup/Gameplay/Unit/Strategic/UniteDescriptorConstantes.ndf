@@ -1,7 +1,0 @@
-
-StrategicUniteDescriptorConstantes is TEntityDescriptorConstantes
-(
-    TeamUnitDescriptor                = $/GFX/TeamAlliance/Strategic_TeamUnitDescriptor
-    AllianceUnitDescriptor            = $/GFX/TeamAlliance/Strategic_AllianceUnitDescriptor
-    GroupUnitDescriptor               = $/GFX/TeamAlliance/Strategic_ModularUnitGroupDescriptor
-)
