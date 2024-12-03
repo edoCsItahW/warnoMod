@@ -1,0 +1,15 @@
+__pycache__/
+*/__pycache__/
+.idea/
+*/.idea/
+cmake-build-debug/
+*/cmake-build-debug/
+build/
+./build/
+
+GameData_backup/
+*/GameData_backup/
+CommonData_backup/
+*/CommonData_backup/
+Gen/
+*/Gen/

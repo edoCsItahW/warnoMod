@@ -1,5 +1,5 @@
---- Generation times (total: 178ms) --
-           Fill resource lists:    0.121 (1)
+--- Generation times (total: 173ms) --
+           Fill resource lists:    0.110 (1)
             Texture generation:    0.000 (0)
               Non-mesh atlases:    0.000 (0)
                   Mesh atlases:    0.000 (0)
@@ -8,9 +8,9 @@
           Animation generation:    0.000 (0)
               Sound generation:    0.000 (0)
               Video generation:    0.000 (0)
-  Localisation dico generation:    0.050 (6)
+  Localisation dico generation:    0.054 (6)
    Localisation ini generation:    0.001 (0)
-           Texture proxy packs:    0.003 (1)
-                    Mesh packs:    0.003 (1)
+           Texture proxy packs:    0.004 (1)
+                    Mesh packs:    0.004 (1)
         Sound descriptor packs:    0.000 (0)
        Python descriptor packs:    0.000 (0)
