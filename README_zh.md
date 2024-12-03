@@ -97,41 +97,47 @@ WARNO Mod是游戏WARNO的模组.
 
 你可以打开有冲突的文件,找到该文件中形如:
 
-```ndf
-<<<<<<<
-    ModulesDescriptors =
-    [
-        TAllianceDescriptionModuleDescriptor
-        (
-        ),
-        TAllianceScoreModuleDescriptor
-        (
-        ),
-        TAllianceIncomeBonusModuleDescriptor
-        (
-        ),
-        TAllianceRelationsModuleDescriptor
-        (
-        ),
-|||||||
-    ModulesDescriptors =
-    [
-        TAllianceDescriptionModuleDescriptor
-        (
-        ),
-        TAllianceScoreModuleDescriptor
-        (
-        ),
-        TAllianceRelationsModuleDescriptor
-        (
-        ),
-=======
-    ModulesDescriptors = [
-        TAllianceDescriptionModuleDescriptor(),
-        TAllianceScoreModuleDescriptor(),
-        TAllianceRelationsModuleDescriptor(),
->>>>>>>
-```
+<details>
+
+   <summary>由于冗长而被收起,点击展开示例...</summary>
+   
+   ```ndf
+   <<<<<<<
+       ModulesDescriptors =
+       [
+           TAllianceDescriptionModuleDescriptor
+           (
+           ),
+           TAllianceScoreModuleDescriptor
+           (
+           ),
+           TAllianceIncomeBonusModuleDescriptor
+           (
+           ),
+           TAllianceRelationsModuleDescriptor
+           (
+           ),
+   |||||||
+       ModulesDescriptors =
+       [
+           TAllianceDescriptionModuleDescriptor
+           (
+           ),
+           TAllianceScoreModuleDescriptor
+           (
+           ),
+           TAllianceRelationsModuleDescriptor
+           (
+           ),
+   =======
+       ModulesDescriptors = [
+           TAllianceDescriptionModuleDescriptor(),
+           TAllianceScoreModuleDescriptor(),
+           TAllianceRelationsModuleDescriptor(),
+   >>>>>>>
+   ```
+</details>
+
 的位置,这里
 
 * `<<<<<<<`到`|||||||`中间的内容是欧根更新的代码
@@ -156,6 +162,8 @@ WARNO Mod是游戏WARNO的模组.
 
 ## 开发该模组
 
+<mark>欢迎做出贡献!</mark>
+
 > [!TIP]
 > 如果使用`vscode`作为IDE,可以安装我的插件`NDF Language Support`(搜ndf)插件,其项目地址: [https://github.com/edoCsItahW/ndf](https://github.com/edoCsItahW/ndf),该插件可以提供NDF语言的语法高亮,但还不具有自动补全,格式化和代码检查等功能.
 
@@ -169,9 +177,9 @@ Fork + PR.
    在修改代码的开头写一个注释包含修改的功能和意图,形如:
    ```ndf
    // ANCHOR - ---------------- MODIFY: Implemented functions and intentions(实现功能和意图) --------------
-
+   
       // You code here...
-
+   
    // ------------------------- END MODIFY -------------------------
    ```
 
@@ -181,6 +189,7 @@ Fork + PR.
    (YouCodeHere, 2),  // ANCHOR - MODIFY: foo, bar(original value is 1)
    ```
    
+
 这样最大的好处是当由于欧根更新而产生冲突时,可以很容易地知道哪些代码是人为修改的,同时也方便其它开发者了解修改意图.
 
 > [!NOTE]
@@ -215,3 +224,6 @@ Fork + PR.
 * [ ] (1). 通过解析NDF脚本中的特定注释作为插槽,以方便通过AST向NDF脚本中的指定位置插入代码.
 * [ ] (2). 通过`Pybind11`提供基于C++实现的NDF语言解析器的Python接口,以方便进行NDF脚本的解析与修改.
 * [ ] 基于(1),实现一个模组功能开关,并提供用户界面,以方便玩家进行模组功能的启用与禁用.
+
+
+最后,享受游戏吧!

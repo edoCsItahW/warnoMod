@@ -92,41 +92,47 @@ be based on the latest version of the game.
 
 You can open the conflicting files to find sections marked like:
 
-```ndf
-<<<<<<<
-    ModulesDescriptors =
-    [
-        TAllianceDescriptionModuleDescriptor
-        (
-        ),
-        TAllianceScoreModuleDescriptor
-        (
-        ),
-        TAllianceIncomeBonusModuleDescriptor
-        (
-        ),
-        TAllianceRelationsModuleDescriptor
-        (
-        ),
-|||||||
-    ModulesDescriptors =
-    [
-        TAllianceDescriptionModuleDescriptor
-        (
-        ),
-        TAllianceScoreModuleDescriptor
-        (
-        ),
-        TAllianceRelationsModuleDescriptor
-        (
-        ),
-=======
-    ModulesDescriptors = [
-        TAllianceDescriptionModuleDescriptor(),
-        TAllianceScoreModuleDescriptor(),
-        TAllianceRelationsModuleDescriptor(),
->>>>>>>
-```
+<details>
+
+   <summary>Due to being lengthy and collapsed, click to expand the example...</summary>
+   
+   ```ndf
+   <<<<<<<
+       ModulesDescriptors =
+       [
+           TAllianceDescriptionModuleDescriptor
+           (
+           ),
+           TAllianceScoreModuleDescriptor
+           (
+           ),
+           TAllianceIncomeBonusModuleDescriptor
+           (
+           ),
+           TAllianceRelationsModuleDescriptor
+           (
+           ),
+   |||||||
+       ModulesDescriptors =
+       [
+           TAllianceDescriptionModuleDescriptor
+           (
+           ),
+           TAllianceScoreModuleDescriptor
+           (
+           ),
+           TAllianceRelationsModuleDescriptor
+           (
+           ),
+   =======
+       ModulesDescriptors = [
+           TAllianceDescriptionModuleDescriptor(),
+           TAllianceScoreModuleDescriptor(),
+           TAllianceRelationsModuleDescriptor(),
+   >>>>>>>
+   ```
+</details>
+
 
 In this section:
 
@@ -151,6 +157,8 @@ If you cannot resolve the issue, you can:
 3. Publish an issue describing the problem in detail. If any specific steps caused the issue, please include those as well.
 
 ## Developing the Mod
+
+<mark>Welcome to contribute to this project!</mark>
 
 > [!TIP]
 > If using `vscode` as your IDE, you can install my plugin `NDF Language Support`(search ndf) found here: [https://github.com/edoCsItahW/ndf](https://github.com/edoCsItahW/ndf). This plugin provides syntax highlighting for the NDF language, but does not yet offer auto-completion, formatting, or code checking features.
@@ -199,4 +207,4 @@ See [Toolset File Structure and Explanation](./utils/utilsFileStruc.md)
 * [ ] (2). Provide a Python interface for a C++ implemented NDF language parser using `Pybind11` for easier NDF script parsing and modification.
 * [ ] Based on (1), implement a mod function toggle and provide a user interface to allow players to enable or disable mod functions.
 
-
+Finally, Enjoy the game!
