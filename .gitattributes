@@ -1,2 +1,7 @@
 docs/* linguist-detectable=false
 */docs/* linguist-detectable=false
+docs/* linguist-language=plaintext
+*/docs/* linguist-detectable=plaintext
+docs export-ignore
+docs/* export-ignore
+*/docs/* export-ignore
