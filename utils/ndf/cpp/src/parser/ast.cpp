@@ -18,8 +18,6 @@
 #include <sstream>
 
 namespace ast {
-    std::string idt(int indent) { return std::string(indent * 4, ' '); }
-
     std::string Program::toString() const {
         std::ostringstream oss;
 
@@ -39,7 +37,7 @@ namespace ast {
     }
 
     std::string Assignment::toString() const {
-        return idt(indent) + identifier->toString() + " is " + expression->toString() + '\n';
+        return identifier->toString() + " is " + expression->toString() + '\n';
     }
 
     std::string Assignment::toJson() const {
@@ -52,10 +50,10 @@ namespace ast {
     std::string ObjectDef::toString() const {
         std::ostringstream oss;
 
-        oss << idt(indent) << identifier->toString() << " is " << type->toString() << "(" << std::endl;
+        oss << identifier->toString() << " is " << type->toString() << "(" << std::endl;
 
         for (int i = 0; i < memberList.size(); i++)
-            oss << idt(indent + 1) << memberList[i]->toString() << (i == memberList.size() - 1 ? "" : ",") << std::endl;
+            oss << memberList[i]->toString() << (i == memberList.size() - 1 ? "" : ",") << std::endl;
 
         oss << ")" << std::endl;
 
@@ -80,7 +78,7 @@ namespace ast {
 
         oss << "MAP [" << std::endl;
 
-        for (const auto &pair: pairList) oss << idt(indent + 1) << pair->toString() << "," << std::endl;
+        for (const auto &pair: pairList) oss << pair->toString() << "," << std::endl;
 
         oss << "]" << std::endl;
 
@@ -114,17 +112,17 @@ namespace ast {
     std::string TemplateDef::toString() const {
         std::ostringstream oss;
 
-        oss << idt(indent) << "template " << identifier->toString() << "[" << std::endl;
+        oss  << "template " << identifier->toString() << "[" << std::endl;
 
         for (int i = 0; i < parameterList.size(); i++)
-            oss << idt(indent + 1) << parameterList[i]->toString() << (i == parameterList.size() - 1 ? "" : ",")
+            oss << parameterList[i]->toString() << (i == parameterList.size() - 1 ? "" : ",")
                 << std::endl;
 
         oss << "] is " << type->toString() << "(" << std::endl;
 
-        for (const auto &member: memberList) oss << idt(indent + 1) << member->toString() << std::endl;
+        for (const auto &member: memberList) oss << member->toString() << std::endl;
 
-        oss << idt(indent) << ")" << std::endl;
+        oss << ")" << std::endl;
 
         return oss.str();
     }
@@ -205,10 +203,10 @@ namespace ast {
         oss << "[" << std::endl;
 
         for (int i = 0; i < expressionList.size(); i++)
-            oss << idt(indent + 1) << " " << expressionList[i]->toString()
+            oss << " " << expressionList[i]->toString()
                 << (i == expressionList.size() - 1 ? "" : ", ");
 
-        oss << idt(indent) << "]";
+        oss << "]";
 
         return oss.str();
     }
@@ -252,11 +250,11 @@ namespace ast {
     std::string ObjectIns::toString() const {
         std::ostringstream oss;
 
-        oss << idt(indent) << identifier->toString() << '(' << std::endl;
+        oss << identifier->toString() << '(' << std::endl;
 
-        for (const auto &member: memberList) oss << idt(indent + 1) << member->toString() << std::endl;
+        for (const auto &member: memberList) oss << member->toString() << std::endl;
 
-        oss << idt(indent) << ")" << std::endl;
+        oss << ")" << std::endl;
 
         return oss.str();
     }
@@ -278,9 +276,9 @@ namespace ast {
         oss << "MAP [" << std::endl;
 
         for (int i = 0; i < pairList.size(); i++)
-            oss << idt(indent + 1) << pairList[i]->toString() << (i == pairList.size() - 1 ? "" : ", \n");
+            oss << pairList[i]->toString() << (i == pairList.size() - 1 ? "" : ", \n");
 
-        oss << idt(indent) << "]";
+        oss << "]";
 
         return oss.str();
     }

@@ -1,0 +1,8 @@
+<map id="Parser::skip" name="Parser::skip">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,97,32"/>
+<area shape="rect" id="Node000002" href="$class_parser.html#a79effe340e553af34199add8c348bcf1" title=" " alt="" coords="307,5,396,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="97,16,291,16,291,21,97,21"/>
+<area shape="rect" id="Node000003" href="$class_parser.html#a8d039313bd369122ddd6613bcbe25c9d" title=" " alt="" coords="145,31,259,57"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="98,24,130,29,129,34,97,29"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="259,32,291,26,292,31,260,37"/>
+</map>

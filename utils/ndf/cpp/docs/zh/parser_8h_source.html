@@ -1,0 +1,318 @@
+<!-- HTML header for doxygen 1.12.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.12.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>NDF抽象语法树生成器: src/parser/parser.h 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+</script>
+<!-- 明暗模式按钮 -->
+<script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeFragmentCopyButton.init()
+</script>
+<!-- 代码片段复制按钮 -->
+<script type="text/javascript" src="doxygen-awesome-paragraph-link.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeParagraphLink.init()
+</script>
+<!-- 标题链接按钮 -->
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<!-- 目录树按钮 -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" />
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<script type="text/javascript">
+    const orgWarn = console.warn;
+    console.warn = function() {
+        if (typeof arguments[0] === 'string' && arguments[0].includes('LaTeX')) {}
+        else orgWarn.apply(console, arguments);
+    };
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+            delimiters: [
+                {left: '@f$', right: '@f$', display: false},
+                {left: '@f[', right: '@f]', display: true},
+                {left: '\\f$', right: '\\f$', display: false},
+                {left: '\\f[', right: '\\f]', display: true},
+                {left: '\$', right: '\$', display: false},
+                {left: '@$', right: '@$', display: true}
+            ]
+        });
+    });
+</script>
+<!-- 公式渲染 -->
+<script type="text/javascript">
+    let lastUrl = null;  // 记录聚焦前的页面
+    let lastPos = null;  // 记录聚焦前的位置
+    window.addEventListener('resize', function() {
+        // 调整页面大小时,同步更新html的宽高
+        const html = document.querySelector('html');
+        if (html) {
+            html.style.width = window.innerWidth + 'px';
+            html.style.height = window.innerHeight + 'px';
+        }
+    })
+    window.addEventListener('popstate', function(event) {
+        // 当检测到用户点击标题聚焦后,记录当前页面和位置
+        const [org, _] = location.href.split('#');
+        if (_) {
+            lastUrl = org;
+            lastPos = document.getElementById('doc-content').scrollTop;
+        }
+    })
+    document.addEventListener('DOMContentLoaded', function() {
+        // 用户不在需要聚焦标题时,还原原来的页面和位置
+        const container = document.getElementById('doc-content');
+        container?.addEventListener('scroll', function () {
+            const scrollY = container.scrollTop;
+            if (Math.abs(scrollY - lastPos) > container.offsetHeight / 2) {
+                if (lastUrl) {
+                    location.href = lastUrl;
+                    lastUrl = null;
+                }
+            }
+        })
+    })
+</script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">NDF抽象语法树生成器<span id="projectnumber">&#160;1.0.0</span>
+   </div>
+   <div id="projectbrief">一个基于C++的NDF语言解析器，用于生成抽象语法树。</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.12.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('parser_8h_source.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">parser.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="parser_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">// Copyright (c) 2024. All rights reserved.</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">// This source code is licensed under the CC BY-NC-SA</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">// (Creative Commons Attribution-NonCommercial-NoDerivatives) License, By Xiao Songtao.</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment">// This software is protected by copyright law. Reproduction, distribution, or use for commercial</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment">// purposes is prohibited without the author&#39;s permission. If you have any questions or require</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment">// permission, please contact the author: 2207150234@st.sziit.edu.cn</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#ifndef NDF_PARSER_H</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#define NDF_PARSER_H</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="preprocessor">#include &quot;<a class="code" href="lexer_8h.html">../lexer/lexer.h</a>&quot;</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="preprocessor">#include &quot;<a class="code" href="ast_8h.html">ast.h</a>&quot;</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="preprocessor">#include &lt;source_location&gt;</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="preprocessor">#include &lt;variant&gt;</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="keyword">struct </span><a class="code hl_struct" href="struct_f_u_e_kwargs.html">FUEKwargs</a> {</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    <span class="keywordtype">bool</span> <a class="code hl_variable" href="struct_f_u_e_kwargs.html#a4ab761db34c3e0dfe2d7371b9d989397">firstStop</a>   = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    <span class="keywordtype">bool</span> <a class="code hl_variable" href="struct_f_u_e_kwargs.html#a8873b31d0ebcd6256c30d2146d7b20ab">skipNewLine</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>    <span class="keywordtype">bool</span> <a class="code hl_variable" href="struct_f_u_e_kwargs.html#a9cf1476278553ac8c0c87aba1063e88b">debug</a>       = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>};</div>
+<div class="foldopen" id="foldopen00132" data-start="{" data-end="};">
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno"><a class="line" href="class_parser.html">  132</a></span> </div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span><span class="keyword">class </span><a class="code hl_class" href="class_parser.html">Parser</a> {</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno"><a class="line" href="class_parser.html#a1e3a134f067369793fcda34f2875f4b6">  134</a></span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno"><a class="line" href="class_parser.html#a9a8337c8e5149e61c4c8aa36b76f3909">  135</a></span>    <a class="code hl_typedef" href="token_8h.html#a5be25cc520cf8b50fdeb3aecdd7453df">TokenPtrs</a> <a class="code hl_variable" href="class_parser.html#a1e3a134f067369793fcda34f2875f4b6">_tokens</a>;</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno"><a class="line" href="class_parser.html#af207632666b060effa3b466332a7fd05">  136</a></span>    <span class="keywordtype">size_t</span> <a class="code hl_variable" href="class_parser.html#a9a8337c8e5149e61c4c8aa36b76f3909">_idx</a>;</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>    <span class="keywordtype">bool</span> <a class="code hl_variable" href="class_parser.html#af207632666b060effa3b466332a7fd05">_debug</a>;</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>    [[nodiscard]] <a class="code hl_typedef" href="token_8h.html#a53222a717f244b19359fca5596f624ee">TokenPtr</a> <a class="code hl_function" href="class_parser.html#a79effe340e553af34199add8c348bcf1">curr</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_parser.html#ab6e75ce961419517b64d645bb9cab628">skip</a>();</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>    <a class="code hl_typedef" href="token_8h.html#a53222a717f244b19359fca5596f624ee">TokenPtr</a> <a class="code hl_function" href="class_parser.html#a36613bfe9ca541d030ab9297cf17482d">expect</a>(<a class="code hl_enumeration" href="token_8h.html#aa520fbf142ba1e7e659590c07da31921">TokenType</a> type, <span class="keywordtype">bool</span> skipNewLine = <span class="keyword">true</span>, <span class="keyword">const</span> std::source_location&amp; loc = std::source_location::current());</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_parser.html#af34b7b7133a5fedc501778d2daa1ea51">fromUntilExpect</a>(std::variant&lt;int, size_t&gt; start, std::variant&lt;int, size_t&gt; end, <a class="code hl_enumeration" href="token_8h.html#aa520fbf142ba1e7e659590c07da31921">TokenType</a> type, <span class="keyword">const</span> <a class="code hl_struct" href="struct_f_u_e_kwargs.html">FUEKwargs</a>&amp; kwargs = <a class="code hl_struct" href="struct_f_u_e_kwargs.html">FUEKwargs</a>());</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>    <a class="code hl_typedef" href="token_8h.html#a53222a717f244b19359fca5596f624ee">TokenPtr</a> <a class="code hl_function" href="class_parser.html#a36613bfe9ca541d030ab9297cf17482d">expect</a>(std::initializer_list&lt;TokenType&gt; types);</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>    [[nodiscard]] <span class="keywordtype">bool</span> <a class="code hl_function" href="class_parser.html#a8d039313bd369122ddd6613bcbe25c9d">inScope</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span> </div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>    std::shared_ptr&lt;ast::Nil&gt; <a class="code hl_function" href="class_parser.html#a2e82d4de17a14944b15c77b09df9c596">parseNil</a>();</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>    std::shared_ptr&lt;ast::Pair&gt; <a class="code hl_function" href="class_parser.html#a4ac11c977a6dbf1104b2b776913d4eae">parsePair</a>();</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>    std::shared_ptr&lt;ast::GUID&gt; <a class="code hl_function" href="class_parser.html#aa481a288fe6ca6e51da507f31493bab7">parseGuid</a>();</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>    std::shared_ptr&lt;ast::Path&gt; <a class="code hl_function" href="class_parser.html#ae858b0c5d40947f2207e03babd10e64f">parsePath</a>();</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>    std::shared_ptr&lt;ast::Float&gt; <a class="code hl_function" href="class_parser.html#a2800805bfaee8d45ea462b29261d1395">parseFloat</a>();</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>    std::shared_ptr&lt;ast::String&gt; <a class="code hl_function" href="class_parser.html#a38f20f0422ef16f4858c0a0bb8985f29">parseString</a>();</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>    std::shared_ptr&lt;ast::Member&gt; <a class="code hl_function" href="class_parser.html#ae7c46037b51bbff8cefae0a73223efbd">parseMember</a>();</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>    std::shared_ptr&lt;ast::MapDef&gt; <a class="code hl_function" href="class_parser.html#a0a6d02e1f009d5aeea684ed8874e3704">parseMapDef</a>();</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>    std::shared_ptr&lt;ast::Vector&gt; <a class="code hl_function" href="class_parser.html#ad815687cd161bb798be88500f2b53027">parseVector</a>();</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>    std::shared_ptr&lt;ast::MapRef&gt; <a class="code hl_function" href="class_parser.html#a3af15f9ef8e436afafbcef81aa926549">parseMapRef</a>();</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>    std::shared_ptr&lt;ast::Export&gt; <a class="code hl_function" href="class_parser.html#a0783692048021fae9a9644e9aff63b20">parseExport</a>();</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>    std::shared_ptr&lt;ast::Literal&gt; <a class="code hl_function" href="class_parser.html#a40eade4e6d25e0613782e31215044f70">parseLiteral</a>();</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>    std::shared_ptr&lt;ast::Boolean&gt; <a class="code hl_function" href="class_parser.html#a9cea5a54966880c96c17bdf1665a5877">parseBoolean</a>();</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>    std::shared_ptr&lt;ast::Integer&gt; <a class="code hl_function" href="class_parser.html#a71fafae8db9e92eecf2e5ef78e522fd4">parseInteger</a>();</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>    std::shared_ptr&lt;ast::EnumRef&gt; <a class="code hl_function" href="class_parser.html#ac2152c3996386f8638f2bab350509826">parseEnumRef</a>();</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>    std::shared_ptr&lt;ast::Statement&gt; <a class="code hl_function" href="class_parser.html#abd0160c02ddef823944955428b4e0b61">parseStatement</a>();</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>    std::shared_ptr&lt;ast::ObjectDef&gt; <a class="code hl_function" href="class_parser.html#a5d83d2d315e36cbd8c5725b8a3087a64">parseObjectDef</a>();</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>    std::shared_ptr&lt;ast::Parameter&gt; <a class="code hl_function" href="class_parser.html#ac1e2b9141b3e84e372b279cebe912d72">parseParameter</a>();</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>    std::shared_ptr&lt;ast::ObjectRef&gt; <a class="code hl_function" href="class_parser.html#a8a761d5b345550f4eac076924b910dbe">parseObjectRef</a>();</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>    std::shared_ptr&lt;ast::ObjectIns&gt; <a class="code hl_function" href="class_parser.html#a3ee75a5349103cb6c2a2eae11ae4a9b0">parseObjectIns</a>();</div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>    std::shared_ptr&lt;ast::Assignment&gt; <a class="code hl_function" href="class_parser.html#a75fb4a17709c99630d36ad3e83e5d75c">parseAssignment</a>();</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>    std::shared_ptr&lt;ast::Expression&gt; <a class="code hl_function" href="class_parser.html#ae9172dfc975b47bf026de84653dfb6bf">parseExpression</a>();</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>    std::shared_ptr&lt;ast::Identifier&gt; <a class="code hl_function" href="class_parser.html#a40173a2c3e490fd244759df6383e87ff">parseIdentifier</a>();</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>    std::shared_ptr&lt;ast::TemplateDef&gt; <a class="code hl_function" href="class_parser.html#aa3344675f3c01440189b008d55d00503">parseTemplateDef</a>();</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>    std::shared_ptr&lt;ast::TemplateRef&gt; <a class="code hl_function" href="class_parser.html#ae378b65b269eda1d15b4753349ded5d5">parseTemplateRef</a>();</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>    std::shared_ptr&lt;ast::TemplateParam&gt; <a class="code hl_function" href="class_parser.html#a9457e88c9df2f08e7c7070f892586b51">parseTemplateParam</a>();</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>    std::shared_ptr&lt;ast::Expression&gt; <a class="code hl_function" href="class_parser.html#a8b2aa34ca5c0e8239863aac2050e9309">parseExprInParenthese</a>();</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>    std::shared_ptr&lt;ast::Expression&gt; <a class="code hl_function" href="class_parser.html#acbd575c4c84c38c28bc819956a3aeadc">parsePrimaryExpression</a>();</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>    std::shared_ptr&lt;ast::Expression&gt; <a class="code hl_function" href="class_parser.html#aba52aab9990fdba8bed1e97cf3becd4d">parseOperation</a>(<span class="keywordtype">int</span> precedence);</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>    <span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code hl_function" href="class_parser.html#ad3da4c6dc0b5cb4a0fed403e8b5ccbec">getPrecedence</a>(<a class="code hl_enumeration" href="token_8h.html#aa520fbf142ba1e7e659590c07da31921">TokenType</a> type);</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span> </div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>    <span class="keyword">explicit</span> <a class="code hl_function" href="class_parser.html#a0092da35cb80737ad4551bda20bd9560">Parser</a>(<a class="code hl_typedef" href="token_8h.html#a5be25cc520cf8b50fdeb3aecdd7453df">TokenPtrs</a> tokens);</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>    std::shared_ptr&lt;ast::Program&gt; <a class="code hl_function" href="class_parser.html#a64bb668d60a7f11e2df5eeede7cda662">parse</a>(<span class="keywordtype">bool</span> <a class="code hl_function" href="parser_8h.html#a39af09038ade497785e0d2b8e493695c">debug</a> = <span class="keyword">false</span>);</div>
+</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>};</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span> </div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span><span class="keywordtype">void</span> <a class="code hl_function" href="parser_8h.html#a39af09038ade497785e0d2b8e493695c">debug</a>(<span class="keyword">const</span> std::string&amp; msg, <span class="keyword">const</span> <a class="code hl_typedef" href="token_8h.html#a53222a717f244b19359fca5596f624ee">TokenPtr</a>&amp; token);</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span> </div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span><span class="preprocessor">#endif  </span><span class="comment">// NDF_PARSER_H</span></div>
+<div class="ttc" id="aast_8h_html"><div class="ttname"><a href="ast_8h.html">ast.h</a></div><div class="ttdoc">该文件定义了AST节点的抽象类和具体类.</div></div>
+<div class="ttc" id="aclass_parser_html"><div class="ttname"><a href="class_parser.html">Parser</a></div><div class="ttdef"><b>定义</b> parser.h:132</div></div>
+<div class="ttc" id="aclass_parser_html_a0092da35cb80737ad4551bda20bd9560"><div class="ttname"><a href="class_parser.html#a0092da35cb80737ad4551bda20bd9560">Parser::Parser</a></div><div class="ttdeci">Parser(TokenPtrs tokens)</div><div class="ttdef"><b>定义</b> parser.cpp:22</div></div>
+<div class="ttc" id="aclass_parser_html_a0783692048021fae9a9644e9aff63b20"><div class="ttname"><a href="class_parser.html#a0783692048021fae9a9644e9aff63b20">Parser::parseExport</a></div><div class="ttdeci">std::shared_ptr&lt; ast::Export &gt; parseExport()</div><div class="ttdef"><b>定义</b> parser.cpp:221</div></div>
+<div class="ttc" id="aclass_parser_html_a0a6d02e1f009d5aeea684ed8874e3704"><div class="ttname"><a href="class_parser.html#a0a6d02e1f009d5aeea684ed8874e3704">Parser::parseMapDef</a></div><div class="ttdeci">std::shared_ptr&lt; ast::MapDef &gt; parseMapDef()</div><div class="ttdef"><b>定义</b> parser.cpp:163</div></div>
+<div class="ttc" id="aclass_parser_html_a1e3a134f067369793fcda34f2875f4b6"><div class="ttname"><a href="class_parser.html#a1e3a134f067369793fcda34f2875f4b6">Parser::_tokens</a></div><div class="ttdeci">TokenPtrs _tokens</div><div class="ttdef"><b>定义</b> parser.h:134</div></div>
+<div class="ttc" id="aclass_parser_html_a2800805bfaee8d45ea462b29261d1395"><div class="ttname"><a href="class_parser.html#a2800805bfaee8d45ea462b29261d1395">Parser::parseFloat</a></div><div class="ttdeci">std::shared_ptr&lt; ast::Float &gt; parseFloat()</div><div class="ttdef"><b>定义</b> parser.cpp:454</div></div>
+<div class="ttc" id="aclass_parser_html_a2e82d4de17a14944b15c77b09df9c596"><div class="ttname"><a href="class_parser.html#a2e82d4de17a14944b15c77b09df9c596">Parser::parseNil</a></div><div class="ttdeci">std::shared_ptr&lt; ast::Nil &gt; parseNil()</div><div class="ttdef"><b>定义</b> parser.cpp:589</div></div>
+<div class="ttc" id="aclass_parser_html_a36613bfe9ca541d030ab9297cf17482d"><div class="ttname"><a href="class_parser.html#a36613bfe9ca541d030ab9297cf17482d">Parser::expect</a></div><div class="ttdeci">TokenPtr expect(TokenType type, bool skipNewLine=true, const std::source_location &amp;loc=std::source_location::current())</div><div class="ttdef"><b>定义</b> parser.cpp:37</div></div>
+<div class="ttc" id="aclass_parser_html_a38f20f0422ef16f4858c0a0bb8985f29"><div class="ttname"><a href="class_parser.html#a38f20f0422ef16f4858c0a0bb8985f29">Parser::parseString</a></div><div class="ttdeci">std::shared_ptr&lt; ast::String &gt; parseString()</div><div class="ttdef"><b>定义</b> parser.cpp:434</div></div>
+<div class="ttc" id="aclass_parser_html_a3af15f9ef8e436afafbcef81aa926549"><div class="ttname"><a href="class_parser.html#a3af15f9ef8e436afafbcef81aa926549">Parser::parseMapRef</a></div><div class="ttdeci">std::shared_ptr&lt; ast::MapRef &gt; parseMapRef()</div><div class="ttdef"><b>定义</b> parser.cpp:505</div></div>
+<div class="ttc" id="aclass_parser_html_a3ee75a5349103cb6c2a2eae11ae4a9b0"><div class="ttname"><a href="class_parser.html#a3ee75a5349103cb6c2a2eae11ae4a9b0">Parser::parseObjectIns</a></div><div class="ttdeci">std::shared_ptr&lt; ast::ObjectIns &gt; parseObjectIns()</div><div class="ttdef"><b>定义</b> parser.cpp:554</div></div>
+<div class="ttc" id="aclass_parser_html_a40173a2c3e490fd244759df6383e87ff"><div class="ttname"><a href="class_parser.html#a40173a2c3e490fd244759df6383e87ff">Parser::parseIdentifier</a></div><div class="ttdeci">std::shared_ptr&lt; ast::Identifier &gt; parseIdentifier()</div><div class="ttdef"><b>定义</b> parser.cpp:485</div></div>
+<div class="ttc" id="aclass_parser_html_a40eade4e6d25e0613782e31215044f70"><div class="ttname"><a href="class_parser.html#a40eade4e6d25e0613782e31215044f70">Parser::parseLiteral</a></div><div class="ttdeci">std::shared_ptr&lt; ast::Literal &gt; parseLiteral()</div><div class="ttdef"><b>定义</b> parser.cpp:304</div></div>
+<div class="ttc" id="aclass_parser_html_a4ac11c977a6dbf1104b2b776913d4eae"><div class="ttname"><a href="class_parser.html#a4ac11c977a6dbf1104b2b776913d4eae">Parser::parsePair</a></div><div class="ttdeci">std::shared_ptr&lt; ast::Pair &gt; parsePair()</div><div class="ttdef"><b>定义</b> parser.cpp:364</div></div>
+<div class="ttc" id="aclass_parser_html_a5d83d2d315e36cbd8c5725b8a3087a64"><div class="ttname"><a href="class_parser.html#a5d83d2d315e36cbd8c5725b8a3087a64">Parser::parseObjectDef</a></div><div class="ttdeci">std::shared_ptr&lt; ast::ObjectDef &gt; parseObjectDef()</div><div class="ttdef"><b>定义</b> parser.cpp:136</div></div>
+<div class="ttc" id="aclass_parser_html_a64bb668d60a7f11e2df5eeede7cda662"><div class="ttname"><a href="class_parser.html#a64bb668d60a7f11e2df5eeede7cda662">Parser::parse</a></div><div class="ttdeci">std::shared_ptr&lt; ast::Program &gt; parse(bool debug=false)</div><div class="ttdef"><b>定义</b> parser.cpp:63</div></div>
+<div class="ttc" id="aclass_parser_html_a71fafae8db9e92eecf2e5ef78e522fd4"><div class="ttname"><a href="class_parser.html#a71fafae8db9e92eecf2e5ef78e522fd4">Parser::parseInteger</a></div><div class="ttdeci">std::shared_ptr&lt; ast::Integer &gt; parseInteger()</div><div class="ttdef"><b>定义</b> parser.cpp:444</div></div>
+<div class="ttc" id="aclass_parser_html_a75fb4a17709c99630d36ad3e83e5d75c"><div class="ttname"><a href="class_parser.html#a75fb4a17709c99630d36ad3e83e5d75c">Parser::parseAssignment</a></div><div class="ttdeci">std::shared_ptr&lt; ast::Assignment &gt; parseAssignment()</div><div class="ttdef"><b>定义</b> parser.cpp:120</div></div>
+<div class="ttc" id="aclass_parser_html_a79effe340e553af34199add8c348bcf1"><div class="ttname"><a href="class_parser.html#a79effe340e553af34199add8c348bcf1">Parser::curr</a></div><div class="ttdeci">TokenPtr curr() const</div><div class="ttdef"><b>定义</b> parser.cpp:26</div></div>
+<div class="ttc" id="aclass_parser_html_a8a761d5b345550f4eac076924b910dbe"><div class="ttname"><a href="class_parser.html#a8a761d5b345550f4eac076924b910dbe">Parser::parseObjectRef</a></div><div class="ttdeci">std::shared_ptr&lt; ast::ObjectRef &gt; parseObjectRef()</div><div class="ttdef"><b>定义</b> parser.cpp:491</div></div>
+<div class="ttc" id="aclass_parser_html_a8b2aa34ca5c0e8239863aac2050e9309"><div class="ttname"><a href="class_parser.html#a8b2aa34ca5c0e8239863aac2050e9309">Parser::parseExprInParenthese</a></div><div class="ttdeci">std::shared_ptr&lt; ast::Expression &gt; parseExprInParenthese()</div><div class="ttdef"><b>定义</b> parser.cpp:271</div></div>
+<div class="ttc" id="aclass_parser_html_a8d039313bd369122ddd6613bcbe25c9d"><div class="ttname"><a href="class_parser.html#a8d039313bd369122ddd6613bcbe25c9d">Parser::inScope</a></div><div class="ttdeci">bool inScope() const</div><div class="ttdef"><b>定义</b> parser.cpp:31</div></div>
+<div class="ttc" id="aclass_parser_html_a9457e88c9df2f08e7c7070f892586b51"><div class="ttname"><a href="class_parser.html#a9457e88c9df2f08e7c7070f892586b51">Parser::parseTemplateParam</a></div><div class="ttdeci">std::shared_ptr&lt; ast::TemplateParam &gt; parseTemplateParam()</div><div class="ttdef"><b>定义</b> parser.cpp:330</div></div>
+<div class="ttc" id="aclass_parser_html_a9a8337c8e5149e61c4c8aa36b76f3909"><div class="ttname"><a href="class_parser.html#a9a8337c8e5149e61c4c8aa36b76f3909">Parser::_idx</a></div><div class="ttdeci">size_t _idx</div><div class="ttdef"><b>定义</b> parser.h:135</div></div>
+<div class="ttc" id="aclass_parser_html_a9cea5a54966880c96c17bdf1665a5877"><div class="ttname"><a href="class_parser.html#a9cea5a54966880c96c17bdf1665a5877">Parser::parseBoolean</a></div><div class="ttdeci">std::shared_ptr&lt; ast::Boolean &gt; parseBoolean()</div><div class="ttdef"><b>定义</b> parser.cpp:422</div></div>
+<div class="ttc" id="aclass_parser_html_aa3344675f3c01440189b008d55d00503"><div class="ttname"><a href="class_parser.html#aa3344675f3c01440189b008d55d00503">Parser::parseTemplateDef</a></div><div class="ttdeci">std::shared_ptr&lt; ast::TemplateDef &gt; parseTemplateDef()</div><div class="ttdef"><b>定义</b> parser.cpp:181</div></div>
+<div class="ttc" id="aclass_parser_html_aa481a288fe6ca6e51da507f31493bab7"><div class="ttname"><a href="class_parser.html#aa481a288fe6ca6e51da507f31493bab7">Parser::parseGuid</a></div><div class="ttdeci">std::shared_ptr&lt; ast::GUID &gt; parseGuid()</div><div class="ttdef"><b>定义</b> parser.cpp:542</div></div>
+<div class="ttc" id="aclass_parser_html_ab6e75ce961419517b64d645bb9cab628"><div class="ttname"><a href="class_parser.html#ab6e75ce961419517b64d645bb9cab628">Parser::skip</a></div><div class="ttdeci">void skip()</div><div class="ttdef"><b>定义</b> parser.cpp:33</div></div>
+<div class="ttc" id="aclass_parser_html_aba52aab9990fdba8bed1e97cf3becd4d"><div class="ttname"><a href="class_parser.html#aba52aab9990fdba8bed1e97cf3becd4d">Parser::parseOperation</a></div><div class="ttdeci">std::shared_ptr&lt; ast::Expression &gt; parseOperation(int precedence)</div><div class="ttdef"><b>定义</b> parser.cpp:345</div></div>
+<div class="ttc" id="aclass_parser_html_abd0160c02ddef823944955428b4e0b61"><div class="ttname"><a href="class_parser.html#abd0160c02ddef823944955428b4e0b61">Parser::parseStatement</a></div><div class="ttdeci">std::shared_ptr&lt; ast::Statement &gt; parseStatement()</div><div class="ttdef"><b>定义</b> parser.cpp:83</div></div>
+<div class="ttc" id="aclass_parser_html_ac1e2b9141b3e84e372b279cebe912d72"><div class="ttname"><a href="class_parser.html#ac1e2b9141b3e84e372b279cebe912d72">Parser::parseParameter</a></div><div class="ttdeci">std::shared_ptr&lt; ast::Parameter &gt; parseParameter()</div><div class="ttdef"><b>定义</b> parser.cpp:384</div></div>
+<div class="ttc" id="aclass_parser_html_ac2152c3996386f8638f2bab350509826"><div class="ttname"><a href="class_parser.html#ac2152c3996386f8638f2bab350509826">Parser::parseEnumRef</a></div><div class="ttdeci">std::shared_ptr&lt; ast::EnumRef &gt; parseEnumRef()</div><div class="ttdef"><b>定义</b> parser.cpp:575</div></div>
+<div class="ttc" id="aclass_parser_html_acbd575c4c84c38c28bc819956a3aeadc"><div class="ttname"><a href="class_parser.html#acbd575c4c84c38c28bc819956a3aeadc">Parser::parsePrimaryExpression</a></div><div class="ttdeci">std::shared_ptr&lt; ast::Expression &gt; parsePrimaryExpression()</div><div class="ttdef"><b>定义</b> parser.cpp:234</div></div>
+<div class="ttc" id="aclass_parser_html_ad3da4c6dc0b5cb4a0fed403e8b5ccbec"><div class="ttname"><a href="class_parser.html#ad3da4c6dc0b5cb4a0fed403e8b5ccbec">Parser::getPrecedence</a></div><div class="ttdeci">static int getPrecedence(TokenType type)</div><div class="ttdef"><b>定义</b> parser.cpp:596</div></div>
+<div class="ttc" id="aclass_parser_html_ad815687cd161bb798be88500f2b53027"><div class="ttname"><a href="class_parser.html#ad815687cd161bb798be88500f2b53027">Parser::parseVector</a></div><div class="ttdeci">std::shared_ptr&lt; ast::Vector &gt; parseVector()</div><div class="ttdef"><b>定义</b> parser.cpp:464</div></div>
+<div class="ttc" id="aclass_parser_html_ae378b65b269eda1d15b4753349ded5d5"><div class="ttname"><a href="class_parser.html#ae378b65b269eda1d15b4753349ded5d5">Parser::parseTemplateRef</a></div><div class="ttdeci">std::shared_ptr&lt; ast::TemplateRef &gt; parseTemplateRef()</div><div class="ttdef"><b>定义</b> parser.cpp:530</div></div>
+<div class="ttc" id="aclass_parser_html_ae7c46037b51bbff8cefae0a73223efbd"><div class="ttname"><a href="class_parser.html#ae7c46037b51bbff8cefae0a73223efbd">Parser::parseMember</a></div><div class="ttdeci">std::shared_ptr&lt; ast::Member &gt; parseMember()</div><div class="ttdef"><b>定义</b> parser.cpp:406</div></div>
+<div class="ttc" id="aclass_parser_html_ae858b0c5d40947f2207e03babd10e64f"><div class="ttname"><a href="class_parser.html#ae858b0c5d40947f2207e03babd10e64f">Parser::parsePath</a></div><div class="ttdeci">std::shared_ptr&lt; ast::Path &gt; parsePath()</div><div class="ttdef"><b>定义</b> parser.cpp:548</div></div>
+<div class="ttc" id="aclass_parser_html_ae9172dfc975b47bf026de84653dfb6bf"><div class="ttname"><a href="class_parser.html#ae9172dfc975b47bf026de84653dfb6bf">Parser::parseExpression</a></div><div class="ttdeci">std::shared_ptr&lt; ast::Expression &gt; parseExpression()</div><div class="ttdef"><b>定义</b> parser.cpp:296</div></div>
+<div class="ttc" id="aclass_parser_html_af207632666b060effa3b466332a7fd05"><div class="ttname"><a href="class_parser.html#af207632666b060effa3b466332a7fd05">Parser::_debug</a></div><div class="ttdeci">bool _debug</div><div class="ttdef"><b>定义</b> parser.h:136</div></div>
+<div class="ttc" id="aclass_parser_html_af34b7b7133a5fedc501778d2daa1ea51"><div class="ttname"><a href="class_parser.html#af34b7b7133a5fedc501778d2daa1ea51">Parser::fromUntilExpect</a></div><div class="ttdeci">bool fromUntilExpect(std::variant&lt; int, size_t &gt; start, std::variant&lt; int, size_t &gt; end, TokenType type, const FUEKwargs &amp;kwargs=FUEKwargs())</div><div class="ttdef"><b>定义</b> parser.cpp:44</div></div>
+<div class="ttc" id="alexer_8h_html"><div class="ttname"><a href="lexer_8h.html">lexer.h</a></div></div>
+<div class="ttc" id="aparser_8h_html_a39af09038ade497785e0d2b8e493695c"><div class="ttname"><a href="parser_8h.html#a39af09038ade497785e0d2b8e493695c">debug</a></div><div class="ttdeci">void debug(const std::string &amp;msg, const TokenPtr &amp;token)</div><div class="ttdef"><b>定义</b> parser.cpp:20</div></div>
+<div class="ttc" id="astruct_f_u_e_kwargs_html"><div class="ttname"><a href="struct_f_u_e_kwargs.html">FUEKwargs</a></div><div class="ttdoc">函数Parser::fromUntilExpect() 的可变关键字 参数</div><div class="ttdef"><b>定义</b> parser.h:79</div></div>
+<div class="ttc" id="astruct_f_u_e_kwargs_html_a4ab761db34c3e0dfe2d7371b9d989397"><div class="ttname"><a href="struct_f_u_e_kwargs.html#a4ab761db34c3e0dfe2d7371b9d989397">FUEKwargs::firstStop</a></div><div class="ttdeci">bool firstStop</div><div class="ttdoc">是否当遍历到的第一个Token类型不是期望的类型时停止</div><div class="ttdef"><b>定义</b> parser.h:95</div></div>
+<div class="ttc" id="astruct_f_u_e_kwargs_html_a8873b31d0ebcd6256c30d2146d7b20ab"><div class="ttname"><a href="struct_f_u_e_kwargs.html#a8873b31d0ebcd6256c30d2146d7b20ab">FUEKwargs::skipNewLine</a></div><div class="ttdeci">bool skipNewLine</div><div class="ttdoc">是否跳过换行符</div><div class="ttdef"><b>定义</b> parser.h:113</div></div>
+<div class="ttc" id="astruct_f_u_e_kwargs_html_a9cf1476278553ac8c0c87aba1063e88b"><div class="ttname"><a href="struct_f_u_e_kwargs.html#a9cf1476278553ac8c0c87aba1063e88b">FUEKwargs::debug</a></div><div class="ttdeci">bool debug</div><div class="ttdoc">是否打印调试信息</div><div class="ttdef"><b>定义</b> parser.h:129</div></div>
+<div class="ttc" id="atoken_8h_html_a53222a717f244b19359fca5596f624ee"><div class="ttname"><a href="token_8h.html#a53222a717f244b19359fca5596f624ee">TokenPtr</a></div><div class="ttdeci">std::shared_ptr&lt; Token &gt; TokenPtr</div><div class="ttdef"><b>定义</b> token.h:138</div></div>
+<div class="ttc" id="atoken_8h_html_a5be25cc520cf8b50fdeb3aecdd7453df"><div class="ttname"><a href="token_8h.html#a5be25cc520cf8b50fdeb3aecdd7453df">TokenPtrs</a></div><div class="ttdeci">std::vector&lt; TokenPtr &gt; TokenPtrs</div><div class="ttdef"><b>定义</b> token.h:139</div></div>
+<div class="ttc" id="atoken_8h_html_aa520fbf142ba1e7e659590c07da31921"><div class="ttname"><a href="token_8h.html#aa520fbf142ba1e7e659590c07da31921">TokenType</a></div><div class="ttdeci">TokenType</div><div class="ttdef"><b>定义</b> token.h:26</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_6cd8491d143eb218b70983dbdb3c58bc.html">parser</a></li><li class="navelem"><a class="el" href="parser_8h.html">parser.h</a></li>
+    <li class="footer">制作者 <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
+  </ul>
+</div>
+</body>
+</html>

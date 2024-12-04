@@ -1,0 +1,25 @@
+<map id="ast::Literal" name="ast::Literal">
+<area shape="rect" id="Node000001" title="AST节点Literal" alt="" coords="741,293,901,363"/>
+<area shape="rect" id="Node000004" href="$structast_1_1_boolean.html" title="AST节点Boolean" alt="" coords="5,437,165,581"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="727,336,589,345,429,360,282,382,222,397,179,413,142,440,138,436,176,408,221,391,281,377,429,355,588,340,727,331"/>
+<area shape="rect" id="Node000005" href="$structast_1_1_float.html" title="AST节点Float" alt="" coords="189,437,349,581"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="727,332,645,337,551,350,454,375,407,392,363,413,326,440,323,436,360,408,405,387,453,370,550,345,644,332,726,326"/>
+<area shape="rect" id="Node000006" href="$structast_1_1_g_u_i_d.html" title="AST节点GUID" alt="" coords="373,427,533,592"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="728,347,637,372,590,390,547,413,524,429,521,425,544,408,588,385,635,367,726,342"/>
+<area shape="rect" id="Node000007" href="$structast_1_1_integer.html" title="AST节点Integer" alt="" coords="557,437,717,581"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="773,374,731,413,704,440,701,436,727,409,769,370"/>
+<area shape="rect" id="Node000008" href="$structast_1_1_nil.html" title="AST节点Nil" alt="" coords="741,437,901,581"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="824,378,824,438,819,438,819,378"/>
+<area shape="rect" id="Node000009" href="$structast_1_1_pair.html" title="AST节点Pair" alt="" coords="926,411,1114,608"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="872,370,915,409,928,420,925,424,912,413,869,374"/>
+<area shape="rect" id="Node000010" href="$structast_1_1_path.html" title="AST节点Path" alt="" coords="1139,427,1299,592"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="917,338,1022,363,1076,383,1128,408,1151,425,1148,429,1125,413,1074,388,1020,368,915,343"/>
+<area shape="rect" id="Node000011" href="$structast_1_1_string.html" title="AST节点String" alt="" coords="1323,437,1483,581"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="917,335,1021,347,1135,363,1239,383,1280,395,1312,408,1349,436,1346,440,1309,413,1279,400,1238,389,1134,368,1020,352,916,341"/>
+<area shape="rect" id="Node000012" href="$structast_1_1_vector.html" title="AST节点Vector" alt="" coords="1507,429,1741,589"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="916,332,1059,342,1227,358,1384,380,1447,393,1496,408,1532,427,1530,432,1494,413,1446,399,1383,385,1226,364,1059,348,916,337"/>
+<area shape="rect" id="Node000002" href="$structast_1_1_expression.html" title="AST节点Expression" alt="" coords="741,176,901,245"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="824,260,824,294,819,294,819,260"/>
+<area shape="rect" id="Node000003" href="$structast_1_1_a_s_t.html" title="AST节点AST" alt="" coords="741,5,901,128"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="824,143,824,176,819,176,819,143"/>
+</map>

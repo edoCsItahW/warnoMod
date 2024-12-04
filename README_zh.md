@@ -29,6 +29,7 @@ WARNO Mod是游戏WARNO的模组.
 ### 作为项目
 
 1. 具有NDF语言词法与语法分析器,可以解析NDF脚本为JSON格式抽象语法树(以下简称AST),以提供程序化NDF脚本修改能力.
+   * [docs](./utils/ndf/cpp/docs/zh/index.html)
 
 2. 对于将JSON格式抽象语法树转换为抽象语法树类的功能提供了Python接口,可以方便地进行AST的操作.
 
@@ -100,7 +101,7 @@ WARNO Mod是游戏WARNO的模组.
 <details>
 
    <summary>由于冗长而被收起,点击展开示例...</summary>
-   
+
    ```ndf
    <<<<<<<
        ModulesDescriptors =
@@ -117,6 +118,7 @@ WARNO Mod是游戏WARNO的模组.
            TAllianceRelationsModuleDescriptor
            (
            ),
+       ]
    |||||||
        ModulesDescriptors =
        [
@@ -129,11 +131,13 @@ WARNO Mod是游戏WARNO的模组.
            TAllianceRelationsModuleDescriptor
            (
            ),
+       ]
    =======
        ModulesDescriptors = [
            TAllianceDescriptionModuleDescriptor(),
            TAllianceScoreModuleDescriptor(),
            TAllianceRelationsModuleDescriptor(),
+       ]
    >>>>>>>
    ```
 </details>

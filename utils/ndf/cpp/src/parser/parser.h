@@ -17,13 +17,18 @@
 #pragma once
 
 /**
- * page bnf BNF描述
+ * @if zh
+ * @page bnf BNF描述
+ * @else
+ * @page bnf BNF Description
+ * @endif
+ *
+ * @code{.bnf}
  * - [x] <program> ::= <statement>*
  * - [x] <statement> ::= <assignment> | <objectDef> | <mapDef> | <templateDef> | <comment> | <export>
  * - [x] <export> ::= "export" <statement>
  * - [x] <assignment> ::= <identifier> "is" <expression>
- * - [x] <objectDef> ::= <identifier> "is" <type> "(" <member_list>? ")"  // 由于@ref
- * "类型（几乎？）总是以大写字母“T”开头。它们代表游戏的内部数据结构，其定义不可用。"因此,我们将<type>改为<identifier>。
+ * - [x] <objectDef> ::= <identifier> "is" <type> "(" <member_list>? ")"
  * - [x] <object_instance> ::= <identifier> "(" <member_list>? ")"
  * - [x] <map_def> ::= "MAP" "[" <pair_list>? "]"
  * - [\] <pair_list> ::= <pair> ("," <pair>)*
@@ -50,102 +55,7 @@
  * - [x] <map_ref> ::= "MAP[" <pair_list> "]"
  * - [x] <template_ref> ::= "template" <identifier>
  * - [x] <enum_ref> ::= <identifier> '/' <identifier>
- * */
-
-/**
- * @page antlr ANTLR描述
- * grammar MyLanguage;
- * Program      : Statement* ;
- *
- * Statement    : Assignment
- *              | ObjectDef
- *              | MapDef
- *              | TemplateDef
- *              | Export ;
- *
- * Assignment   : Identifier 'is' Expression ;
- *
- * ObjectDef   : Identifier 'is' Identifier '(' Member* ')' ;
- *
- * MapDef      : 'MAP' '[' Pair* ']' ;
- *
- * TemplateDef : 'template' Identifier '[' Parameter* ']' 'is' Identifier '(' Member* ')' ;
- *
- * comment      : '//' text
- *              | '*' text '*';
- *
- * Export       : 'export' Statement ;
- *
- * Expression   : Literal
- *              | Identifier
- *              | Operation
- *              | ObjectRef
- *              | MapRef
- *              | TemplateRef
- *              | ObjectIns
- *              | TemplateParam ;
- *
- * Literal      : Boolean
- *              | String
- *              | Integer
- *              | Float
- *              | Vector
- *              | Pair ;
- *
- * Identifier   : LETTER (LETTER | DIGIT)* ;
- *
- * Operation    : Expression Operator Expression ;
- *
- * ObjectRef   : '$' '/' Identifier ;
- *
- * MapRef      : 'MAP' '[' Pair* ']' ;
- *
- * ObjectIns   : Identifier '(' Member* ')' ;
- *
- * TemplateParam : '<' Identifier '>'
- *
- * Pair         : '(' Expression ',' Expression ')' ;
- *
- * parameter    : Identifier [':' Identifier] ['=' Expression] ;
- *
- * Member       : Identifier '=' Expression ;
- *
- * Boolean      : 'true'
- *              | 'false'
- *              | 'True'
- *              | 'False' ;
- *
- * String       : '\'' text '\''
- *              | '\"' text '\"' ;
- *
- * Integer      : DIGIT+ ;
- *
- * float        : DIGIT* '.' DIGIT+ ;
- *
- * vector       : '[' Expression_list? ']' ;
- *
- * Expression_list: Expression (',' Expression)* ;
- *
- * operator     : '+'
- *              | '-'
- *              | '*'
- *              | '/'
- *              | '%'
- *              | 'div'
- *              | '<'
- *              | '>'
- *              | '<='
- *              | '>='
- *              | '=='
- *              | '!='
- *              | '|' ;
- *
- * template_ref : 'template' Identifier ;
- *
- * // 词法规则
- * DIGIT        : [0-9] ;
- * LETTER       : [a-zA-Z] ;
- * text         : (LETTER | DIGIT | ' ' | ',' | ';' | ':' | '-' | '_' | '.' | '!' | '?' | '@')* ;
+ * @endcode
  * */
 
 #include "../lexer/lexer.h"
@@ -153,9 +63,70 @@
 #include <source_location>
 #include <variant>
 
-struct FUE_Kwargs {
+/** @struct FUEKwargs
+ *
+ * @if zh
+ * @brief 函数@ref Parser::fromUntilExpect() 的@b 可变关键字 参数
+ * @details 用于控制@ref Parser::fromUntilExpect() 函数的行为，其包括: firstStop, skipNewLine, debug
+ *
+ * @else
+ * @brief The keyword arguments of function @ref Parser::fromUntilExpect()
+ * @details It is used to control the behavior of function @ref Parser::fromUntilExpect(). It includes: firstStop, skipNewLine, debug
+ *
+ * @endif
+ *
+ * @see Parser::fromUntilExpect()
+ * */
+struct FUEKwargs {
+    /** @var firstStop
+     * @public @memberof FUEKwargs
+     *
+     * @if zh
+     * @brief 是否当遍历到的第一个Token类型不是期望的类型时停止
+     * @details 当@c firstStop 为@b true 时，如果遍历到的第一个Token类型不是期望的类型，则函数@ref Parser::fromUntilExpect() 会立即返回@b false ，而不会继续遍历Token列表。
+     *
+     * @else
+     * @brief Whether to stop when the first token type is not the expected type
+     * @details When @c firstStop is @b true, if the first token type is not the expected type, the function @ref Parser::fromUntilExpect() will immediately return @b false and will not continue to traverse the token list.
+     *
+     * @endif
+     *
+     * @see Parser::fromUntilExpect()
+     * */
     bool firstStop   = false;
+    /** @var skipNewLine
+     * @public @memberof FUEKwargs
+     *
+     * @if zh
+     * @brief 是否跳过换行符
+     * @details 当@c skipNewLine 为@b true 时，如果遍历到换行符，则函数@ref Parser::fromUntilExpect() 会跳过该换行符。
+     * @note 注意,如果期望的Token类型是@ref TokenType::NEWLINE，则即使@c skipNewLine 为@b true 也不会跳过换行符。
+     *
+     * @else
+     * @brief Whether to skip the newline character
+     * @details When @c skipNewLine is @b true, if the function @ref Parser::fromUntilExpect() encounters a newline character, it will skip it.
+     * @note Note that if the expected token type is @ref TokenType::NEWLINE, even if @c skipNewLine is @b true , it will not skip the newline character.
+     *
+     * @endif
+     *
+     * @see Parser::fromUntilExpect()
+     * */
     bool skipNewLine = true;
+    /** @var debug
+     * @public @memberof FUEKwargs
+     *
+     * @if zh
+     * @brief 是否打印调试信息
+     * @details 当@c debug 为@b true 时，函数@ref Parser::fromUntilExpect() 会打印调试信息,形如@e "check: <token>" 。
+     *
+     * @else
+     * @brief Whether to print debugging information
+     * @details When @c debug is @b true, the function @ref Parser::fromUntilExpect() will print debugging information.
+     *
+     * @endif
+     *
+     * @see Parser::fromUntilExpect()
+     * */
     bool debug       = false;
 };
 
@@ -167,7 +138,7 @@ private:
     [[nodiscard]] TokenPtr curr() const;
     void skip();
     TokenPtr expect(TokenType type, bool skipNewLine = true, const std::source_location& loc = std::source_location::current());
-    bool fromUntilExpect(std::variant<int, size_t> start, std::variant<int, size_t> end, TokenType type, const FUE_Kwargs& kwargs = FUE_Kwargs());
+    bool fromUntilExpect(std::variant<int, size_t> start, std::variant<int, size_t> end, TokenType type, const FUEKwargs& kwargs = FUEKwargs());
     TokenPtr expect(std::initializer_list<TokenType> types);
     [[nodiscard]] bool inScope() const;
 

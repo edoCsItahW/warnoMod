@@ -29,6 +29,7 @@ Although it does not directly change the game's update mechanism, it allows user
 ### As a Project
 
 1. It includes a lexer and parser for the NDF language, capable of parsing NDF scripts into JSON format abstract syntax trees (hereinafter referred to as AST), providing the ability to programmatically modify NDF scripts.
+   * [docs](./utils/ndf/cpp/docs/en/index.html)
 
 2. It offers a Python interface for converting JSON format ASTs into AST class objects, making it easy to manipulate the AST.
 
@@ -95,7 +96,7 @@ You can open the conflicting files to find sections marked like:
 <details>
 
    <summary>Due to being lengthy and collapsed, click to expand the example...</summary>
-   
+
    ```ndf
    <<<<<<<
        ModulesDescriptors =
@@ -112,6 +113,7 @@ You can open the conflicting files to find sections marked like:
            TAllianceRelationsModuleDescriptor
            (
            ),
+       ]
    |||||||
        ModulesDescriptors =
        [
@@ -124,11 +126,13 @@ You can open the conflicting files to find sections marked like:
            TAllianceRelationsModuleDescriptor
            (
            ),
+       ]
    =======
        ModulesDescriptors = [
            TAllianceDescriptionModuleDescriptor(),
            TAllianceScoreModuleDescriptor(),
            TAllianceRelationsModuleDescriptor(),
+       ]
    >>>>>>>
    ```
 </details>
@@ -173,9 +177,9 @@ When modifying code, please follow these guidelines:
    At the start of the modification, include a comment specifying the functionality and intent of the change, like so:
    ```ndf
    // ANCHOR - ---------------- MODIFY: Implemented functions and intentions --------------
-
+   
       // Your code here...
-
+   
    // ------------------------- END MODIFY -------------------------
    ```
 

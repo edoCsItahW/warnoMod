@@ -10,7 +10,16 @@
  * @author edocsitahw
  * @version 1.1
  * @date 2024/11/24 下午11:54
- * @brief
+ *
+ * @if zh
+ * @brief 异常处理类头文件
+ *
+ * @else
+ * @brief Header file of exception handling class.
+ *
+ * @endif
+ *
+ * @copyright CC BY-NC-SA 2024. All rights reserved.
  * */
 #ifndef NDF_EXPECTION_H
 #define NDF_EXPECTION_H
@@ -20,11 +29,114 @@
 #include <format>
 #include <iostream>
 
+/**
+ * @if zh
+ * @defgroup Macro 宏定义
+ * @brief 所有宏定义
+ *
+ * @else
+ * @defgroup Macro Macros
+ * @brief All macro definitions.
+ *
+ * @endif
+ *
+ * @{
+ * */
+
+/** @def RAISE
+ *
+ * @if zh
+ * @brief 异常抛出宏
+ * @details 该宏用于简化抛出异常，其参数为异常信息、异常类型、异常相关信息。
+ * @param msg 异常信息
+ * @param type 异常类型
+ *
+ * @else
+ * @brief Macro for raising exceptions.
+ * @details This macro simplifies the process of throwing exceptions by providing the exception message, type, and related information.
+ * @param msg Exception message.
+ * @param type Exception type.
+ *
+ * @endif
+ * */
 #define RAISE(msg, type) Expection(msg, #type, ExpKwargs{__FILE__, __LINE__, __func__})
+
+/** @def SyntaxError
+ *
+ * @if zh
+ * @brief 语法错误异常
+ * @details 该宏用于抛出语法错误异常，抛出的异常信息形如: @e "File <文件名>, line <行号>, in <函数名>: SyntaxError: <异常信息>" 。
+ * @param msg 异常信息
+ *
+ * # 用法
+ * @code{.cpp}
+ * throw SyntaxError("Invalid syntax");
+ * > File <文件名>, line <行号>, in <函数名>: SyntaxError: Invalid syntax
+ * @endcode
+ *
+ * @else
+ * @brief Syntax error exception.
+ * @details This macro is used to throw a syntax error exception, which will result in an exception message in the format of "File <file name>, line <line number>, in <function name>: SyntaxError: <exception message>".
+ * @param msg Exception message.
+ *
+ * # Usage
+ * @code{.cpp}
+ * throw SyntaxError("Invalid syntax");
+ * > File <file name>, line <line number>, in <function name>: SyntaxError: Invalid syntax
+ * @endcode
+ *
+ * @endif
+ *
+ * @see RAISE
+ * */
 #define SyntaxError(msg) RAISE(msg, SyntaxError)
+
+/**
+ * @def TypeError
+ *
+ * @if zh
+ * @brief 类型错误异常，与@ref SyntaxError 类似.
+ *
+ * @else
+ * @brief Type error exception, similar to @ref SyntaxError.
+ *
+ * @endif
+ *
+ * @see SyntaxError
+ * */
 #define TypeError(msg) RAISE(msg, "TypeError")
+
+/**
+ * @def ValueError
+ *
+ * @if zh
+ * @brief 值错误异常，与@ref SyntaxError 类似.
+ *
+ * @else
+ * @brief Value error exception, similar to @ref SyntaxError.
+ *
+ * @endif
+ *
+ * @see SyntaxError
+ * */
 #define ValueError(msg) RAISE(msg, "ValueError")
+
+/**
+ * @def RuntimeError
+ *
+ * @if zh
+ * @brief 运行时错误异常，与@ref SyntaxError 类似.
+ *
+ * @else
+ * @brief Runtime error exception, similar to @ref SyntaxError.
+ *
+ * @endif
+ *
+ * @see SyntaxError
+ * */
 #define RuntimeError(msg) RAISE(msg, "RuntimeError")
+
+/** @} */
 
 struct ExpKwargs {
     const char* file;
@@ -40,7 +152,7 @@ private:
     mutable std::string _what;
 
 public:
-    (Expection)(std::string msg, std::string type, const ExpKwargs& kwargs)
+    Expection(std::string msg, std::string type, const ExpKwargs& kwargs)
         : std::exception()
         , _msg(std::move(msg))
         , _type(std::move(type))

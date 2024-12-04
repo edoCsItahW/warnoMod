@@ -1,0 +1,217 @@
+<!-- HTML header for doxygen 1.12.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.12.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>NDF AST Generator: Member List</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+</script>
+<!-- 明暗模式按钮 -->
+<script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeFragmentCopyButton.init()
+</script>
+<!-- 代码片段复制按钮 -->
+<script type="text/javascript" src="doxygen-awesome-paragraph-link.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeParagraphLink.init()
+</script>
+<!-- 标题链接按钮 -->
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<!-- 目录树按钮 -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" />
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<script type="text/javascript">
+    const orgWarn = console.warn;
+    console.warn = function() {
+        if (typeof arguments[0] === 'string' && arguments[0].includes('LaTeX')) {}
+        else orgWarn.apply(console, arguments);
+    };
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+            delimiters: [
+                {left: '@f$', right: '@f$', display: false},
+                {left: '@f[', right: '@f]', display: true},
+                {left: '\\f$', right: '\\f$', display: false},
+                {left: '\\f[', right: '\\f]', display: true},
+                {left: '\$', right: '\$', display: false},
+                {left: '@$', right: '@$', display: true}
+            ]
+        });
+    });
+</script>
+<!-- 公式渲染 -->
+<script type="text/javascript">
+    let lastUrl = null;  // 记录聚焦前的页面
+    let lastPos = null;  // 记录聚焦前的位置
+    window.addEventListener('resize', function() {
+        // 调整页面大小时,同步更新html的宽高
+        const html = document.querySelector('html');
+        if (html) {
+            html.style.width = window.innerWidth + 'px';
+            html.style.height = window.innerHeight + 'px';
+        }
+    })
+    window.addEventListener('popstate', function(event) {
+        // 当检测到用户点击标题聚焦后,记录当前页面和位置
+        const [org, _] = location.href.split('#');
+        if (_) {
+            lastUrl = org;
+            lastPos = document.getElementById('doc-content').scrollTop;
+        }
+    })
+    document.addEventListener('DOMContentLoaded', function() {
+        // 用户不在需要聚焦标题时,还原原来的页面和位置
+        const container = document.getElementById('doc-content');
+        container?.addEventListener('scroll', function () {
+            const scrollY = container.scrollTop;
+            if (Math.abs(scrollY - lastPos) > container.offsetHeight / 2) {
+                if (lastUrl) {
+                    location.href = lastUrl;
+                    lastUrl = null;
+                }
+            }
+        })
+    })
+</script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">NDF AST Generator<span id="projectnumber">&#160;1.0.0</span>
+   </div>
+   <div id="projectbrief">A C++based NDF language parser for generating AST.</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.12.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('class_pos.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Pos Member List</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>This is the complete list of members for <a class="el" href="class_pos.html">Pos</a>, including all inherited members.</p>
+<table class="directory">
+  <tr class="even"><td class="entry"><a class="el" href="class_pos.html#a68d4d874f522b8442ac7b258430e3dce">_col</a></td><td class="entry"><a class="el" href="class_pos.html">Pos</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="class_pos.html#a514acdad85fc30c1d378b9f6ea3af8c0">_line</a></td><td class="entry"><a class="el" href="class_pos.html">Pos</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_pos.html#a7e5b53a20850a3c18422519b83b9556c">_value</a></td><td class="entry"><a class="el" href="class_pos.html">Pos</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="class_pos.html#a8130b6c767b9155e3b0f5d7201e002e5">col</a>() const</td><td class="entry"><a class="el" href="class_pos.html">Pos</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_pos.html#a4ce607220496968d3a9281d56a0e7cb8">line</a>() const</td><td class="entry"><a class="el" href="class_pos.html">Pos</a></td><td class="entry"></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="class_pos.html#a557be407d72755022e4c8eea8c4cb2f9">newLine</a>()</td><td class="entry"><a class="el" href="class_pos.html">Pos</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_pos.html#aef539581eb1afde6ee423f568780ac5c">operator!=</a>(const T &amp;other) const</td><td class="entry"><a class="el" href="class_pos.html">Pos</a></td><td class="entry"></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="class_pos.html#afef9219d041cb84a1440fd322688464b">operator()</a>() const</td><td class="entry"><a class="el" href="class_pos.html">Pos</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_pos.html#a158a88cd809e038507fa159eb85608af">operator+</a>(int other) const</td><td class="entry"><a class="el" href="class_pos.html">Pos</a></td><td class="entry"></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="class_pos.html#a979785595233f45a3f4058f2e84c1e9e">operator++</a>()</td><td class="entry"><a class="el" href="class_pos.html">Pos</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_pos.html#af52ca8dd5820e73e5bfc5c1b28c9dcee">operator++</a>(int)</td><td class="entry"><a class="el" href="class_pos.html">Pos</a></td><td class="entry"></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="class_pos.html#a617d92dbd48e4b516ceaccf12e46b2bd">operator+=</a>(int other)</td><td class="entry"><a class="el" href="class_pos.html">Pos</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_pos.html#a5ecb06b301cc2a2fbea1a8e8a58da731">operator-</a>(int other) const</td><td class="entry"><a class="el" href="class_pos.html">Pos</a></td><td class="entry"></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="class_pos.html#ab6c483880e1d1a559fe6312c22a68a61">operator--</a>()</td><td class="entry"><a class="el" href="class_pos.html">Pos</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_pos.html#a739df32727a4851b0e22bade71ab3409">operator--</a>(int)</td><td class="entry"><a class="el" href="class_pos.html">Pos</a></td><td class="entry"></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="class_pos.html#a8abbb60093e8b31e3d56a0feb968e9be">operator-=</a>(int other)</td><td class="entry"><a class="el" href="class_pos.html">Pos</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_pos.html#a81653de058be294f01c2a4fdbaaeae20">operator&lt;</a>(const T &amp;other) const</td><td class="entry"><a class="el" href="class_pos.html">Pos</a></td><td class="entry"></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="class_pos.html#a1acd4d4ddfa02b5ead45d0b5ef9fda3c">operator&lt;=</a>(const T &amp;other) const</td><td class="entry"><a class="el" href="class_pos.html">Pos</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_pos.html#a21b66cff00e92fc559720744474e55df">operator==</a>(const T &amp;other) const</td><td class="entry"><a class="el" href="class_pos.html">Pos</a></td><td class="entry"></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="class_pos.html#a03407334284d609355e07cea9b15d38d">operator&gt;</a>(const T &amp;other) const</td><td class="entry"><a class="el" href="class_pos.html">Pos</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_pos.html#a80f8051410490ac9e8738f798094c9ec">operator&gt;=</a>(const T &amp;other) const</td><td class="entry"><a class="el" href="class_pos.html">Pos</a></td><td class="entry"></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="class_pos.html#a149dcf49bd749a88dd462f198617c279">Pos</a>()=default</td><td class="entry"><a class="el" href="class_pos.html">Pos</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_pos.html#a567878606cb87778db5f7a1e28fe7e17">Pos</a>(size_t line, size_t col, size_t value)</td><td class="entry"><a class="el" href="class_pos.html">Pos</a></td><td class="entry"></td></tr>
+</table></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
+  </ul>
+</div>
+</body>
+</html>

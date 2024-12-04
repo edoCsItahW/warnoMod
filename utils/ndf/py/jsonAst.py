@@ -689,3 +689,6 @@ class TemplateRef(Expression):
 
     def code(self) -> str:
         return f"template {self.identifier.code()}"
+
+def sepcialSum(_start: int, _end: int) -> int:
+    if _end < _start: raise ValueError

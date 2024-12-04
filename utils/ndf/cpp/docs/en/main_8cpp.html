@@ -1,0 +1,350 @@
+<!-- HTML header for doxygen 1.12.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.12.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>NDF AST Generator: main.cpp File Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+</script>
+<!-- 明暗模式按钮 -->
+<script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeFragmentCopyButton.init()
+</script>
+<!-- 代码片段复制按钮 -->
+<script type="text/javascript" src="doxygen-awesome-paragraph-link.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeParagraphLink.init()
+</script>
+<!-- 标题链接按钮 -->
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<!-- 目录树按钮 -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" />
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<script type="text/javascript">
+    const orgWarn = console.warn;
+    console.warn = function() {
+        if (typeof arguments[0] === 'string' && arguments[0].includes('LaTeX')) {}
+        else orgWarn.apply(console, arguments);
+    };
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+            delimiters: [
+                {left: '@f$', right: '@f$', display: false},
+                {left: '@f[', right: '@f]', display: true},
+                {left: '\\f$', right: '\\f$', display: false},
+                {left: '\\f[', right: '\\f]', display: true},
+                {left: '\$', right: '\$', display: false},
+                {left: '@$', right: '@$', display: true}
+            ]
+        });
+    });
+</script>
+<!-- 公式渲染 -->
+<script type="text/javascript">
+    let lastUrl = null;  // 记录聚焦前的页面
+    let lastPos = null;  // 记录聚焦前的位置
+    window.addEventListener('resize', function() {
+        // 调整页面大小时,同步更新html的宽高
+        const html = document.querySelector('html');
+        if (html) {
+            html.style.width = window.innerWidth + 'px';
+            html.style.height = window.innerHeight + 'px';
+        }
+    })
+    window.addEventListener('popstate', function(event) {
+        // 当检测到用户点击标题聚焦后,记录当前页面和位置
+        const [org, _] = location.href.split('#');
+        if (_) {
+            lastUrl = org;
+            lastPos = document.getElementById('doc-content').scrollTop;
+        }
+    })
+    document.addEventListener('DOMContentLoaded', function() {
+        // 用户不在需要聚焦标题时,还原原来的页面和位置
+        const container = document.getElementById('doc-content');
+        container?.addEventListener('scroll', function () {
+            const scrollY = container.scrollTop;
+            if (Math.abs(scrollY - lastPos) > container.offsetHeight / 2) {
+                if (lastUrl) {
+                    location.href = lastUrl;
+                    lastUrl = null;
+                }
+            }
+        })
+    })
+</script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">NDF AST Generator<span id="projectnumber">&#160;1.0.0</span>
+   </div>
+   <div id="projectbrief">A C++based NDF language parser for generating AST.</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.12.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('main_8cpp.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Functions</a>  </div>
+  <div class="headertitle"><div class="title">main.cpp File Reference</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;confunc.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="token_proc_8h_source.html">src\lexer\tokenProc.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="parser_8h_source.html">src\parser\parser.h</a>&quot;</code><br />
+<code>#include &lt;codecvt&gt;</code><br />
+<code>#include &lt;fstream&gt;</code><br />
+<code>#include &lt;iostream&gt;</code><br />
+<code>#include &lt;locale&gt;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Include dependency graph for main.cpp:</div>
+<div class="dyncontent">
+<div class="center"><img src="main_8cpp__incl.png" border="0" usemap="#amain_8cpp" alt=""/></div>
+<map name="amain_8cpp" id="amain_8cpp">
+<area shape="rect" title=" " alt="" coords="564,5,638,32"/>
+<area shape="rect" title=" " alt="" coords="125,80,203,107"/>
+<area shape="poly" title=" " alt="" coords="564,28,417,49,219,82,218,77,416,43,564,22"/>
+<area shape="rect" href="token_proc_8h.html" title=" " alt="" coords="227,80,373,107"/>
+<area shape="poly" title=" " alt="" coords="564,32,368,78,367,73,563,26"/>
+<area shape="rect" title=" " alt="" coords="524,304,596,331"/>
+<area shape="poly" title=" " alt="" coords="602,33,566,289,561,288,597,32"/>
+<area shape="rect" href="parser_8h.html" title=" " alt="" coords="396,80,526,107"/>
+<area shape="poly" title=" " alt="" coords="578,35,501,75,498,70,576,30"/>
+<area shape="rect" title=" " alt="" coords="638,80,706,107"/>
+<area shape="poly" title=" " alt="" coords="616,31,651,67,647,71,612,34"/>
+<area shape="rect" title=" " alt="" coords="730,80,795,107"/>
+<area shape="poly" title=" " alt="" coords="631,30,722,71,720,76,628,35"/>
+<area shape="rect" title=" " alt="" coords="819,80,874,107"/>
+<area shape="poly" title=" " alt="" coords="640,28,805,76,803,81,638,33"/>
+<area shape="rect" href="lexer_8h.html" title=" " alt="" coords="231,155,292,181"/>
+<area shape="poly" title=" " alt="" coords="296,108,277,142,273,140,291,106"/>
+<area shape="rect" href="token_8h.html" title=" " alt="" coords="268,229,332,256"/>
+<area shape="poly" title=" " alt="" coords="270,181,289,214,284,217,266,183"/>
+<area shape="rect" title=" " alt="" coords="204,229,244,256"/>
+<area shape="poly" title=" " alt="" coords="257,183,240,217,235,214,252,181"/>
+<area shape="rect" title=" " alt="" coords="185,304,250,331"/>
+<area shape="poly" title=" " alt="" coords="287,259,245,296,241,292,284,255"/>
+<area shape="rect" title=" " alt="" coords="432,304,501,331"/>
+<area shape="poly" title=" " alt="" coords="330,254,425,295,423,300,328,259"/>
+<area shape="rect" title=" " alt="" coords="273,304,327,331"/>
+<area shape="poly" title=" " alt="" coords="303,257,303,288,297,288,297,257"/>
+<area shape="rect" title=" " alt="" coords="351,304,409,331"/>
+<area shape="poly" title=" " alt="" coords="316,255,357,292,353,296,312,259"/>
+<area shape="rect" title=" " alt="" coords="5,304,59,331"/>
+<area shape="poly" title=" " alt="" coords="268,256,257,259,74,306,73,301,255,253,267,250"/>
+<area shape="poly" title=" " alt="" coords="333,250,510,299,508,305,332,256"/>
+<area shape="rect" href="token_8hpp.html" title=" " alt="" coords="82,304,160,331"/>
+<area shape="poly" title=" " alt="" coords="270,259,168,300,166,295,268,254"/>
+<area shape="poly" title=" " alt="" coords="427,110,307,153,305,148,426,105"/>
+<area shape="rect" href="ast_8h.html" title="This file defines the abstract class and concrete class of the AST node. ." alt="" coords="399,229,449,256"/>
+<area shape="poly" title=" " alt="" coords="419,110,384,128,369,141,357,156,353,173,360,189,373,204,390,218,387,222,369,208,355,192,348,173,352,154,365,137,381,123,417,105"/>
+<area shape="rect" title=" " alt="" coords="366,155,479,181"/>
+<area shape="poly" title=" " alt="" coords="457,108,439,142,434,140,452,106"/>
+<area shape="rect" title=" " alt="" coords="503,155,564,181"/>
+<area shape="poly" title=" " alt="" coords="476,105,512,142,508,145,472,109"/>
+<area shape="poly" title=" " alt="" coords="434,255,454,289,449,292,429,258"/>
+<area shape="poly" title=" " alt="" coords="419,258,398,292,393,289,414,255"/>
+<area shape="poly" title=" " alt="" coords="449,254,524,294,522,299,446,259"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a7119e389d4fdd2ece6b28262cf218292" id="r_a7119e389d4fdd2ece6b28262cf218292"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7119e389d4fdd2ece6b28262cf218292">wstr2str</a> (const std::wstring &amp;wstr)</td></tr>
+<tr class="separator:a7119e389d4fdd2ece6b28262cf218292"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7926e5c5ab7df12e0b8a2d86803e017" id="r_ab7926e5c5ab7df12e0b8a2d86803e017"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab7926e5c5ab7df12e0b8a2d86803e017">writeToFile</a> (const std::string &amp;text, const std::string &amp;path)</td></tr>
+<tr class="separator:ab7926e5c5ab7df12e0b8a2d86803e017"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae66f6b31b5ad750f1fe042a706a4e3d4" id="r_ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a> ()</td></tr>
+<tr class="separator:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><dl class="section author"><dt>Author</dt><dd>edocsitahw </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>1.1 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2024\11\24 上午1:33 </dd></dl>
+</div><h2 class="groupheader">Function Documentation</h2>
+<a id="ae66f6b31b5ad750f1fe042a706a4e3d4" name="ae66f6b31b5ad750f1fe042a706a4e3d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae66f6b31b5ad750f1fe042a706a4e3d4">&#9670;&#160;</a></span>main()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int main </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4_cgraph.png" border="0" usemap="#amain_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4_cgraph" alt=""/></div>
+<map name="amain_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4_cgraph" id="amain_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4_cgraph">
+<area shape="rect" title=" " alt="" coords="5,56,55,83"/>
+<area shape="rect" href="class_token_processor.html#ae8c59eb1a0bd8f457ca32a7f9b7734d6" title=" " alt="" coords="103,5,272,32"/>
+<area shape="poly" title=" " alt="" coords="54,58,102,41,124,34,125,40,104,47,56,63"/>
+<area shape="rect" href="class_lexer.html#a26712ee1e6617c2fead62c9f42117793" title=" " alt="" coords="132,56,242,83"/>
+<area shape="poly" title=" " alt="" coords="55,67,117,67,117,72,55,72"/>
+<area shape="rect" href="main_8cpp.html#ab7926e5c5ab7df12e0b8a2d86803e017" title=" " alt="" coords="145,107,230,133"/>
+<area shape="poly" title=" " alt="" coords="56,76,104,92,131,101,130,106,102,97,54,81"/>
+<area shape="rect" href="class_token_processor.html#a43cf56afeb565268e2dd678f0422b383" title=" " alt="" coords="320,5,537,32"/>
+<area shape="poly" title=" " alt="" coords="272,16,304,16,304,21,272,21"/>
+<area shape="rect" href="class_lexer.html#a19d3c701df7e890bb78924e341c73a6d" title=" " alt="" coords="374,56,483,83"/>
+<area shape="poly" title=" " alt="" coords="243,67,359,67,359,72,243,72"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ab7926e5c5ab7df12e0b8a2d86803e017" name="ab7926e5c5ab7df12e0b8a2d86803e017"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab7926e5c5ab7df12e0b8a2d86803e017">&#9670;&#160;</a></span>writeToFile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int writeToFile </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>text</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>path</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="main_8cpp_ab7926e5c5ab7df12e0b8a2d86803e017_icgraph.png" border="0" usemap="#amain_8cpp_ab7926e5c5ab7df12e0b8a2d86803e017_icgraph" alt=""/></div>
+<map name="amain_8cpp_ab7926e5c5ab7df12e0b8a2d86803e017_icgraph" id="amain_8cpp_ab7926e5c5ab7df12e0b8a2d86803e017_icgraph">
+<area shape="rect" title=" " alt="" coords="103,5,187,32"/>
+<area shape="rect" href="main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="5,5,55,32"/>
+<area shape="poly" title=" " alt="" coords="87,21,55,21,55,16,87,16"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a7119e389d4fdd2ece6b28262cf218292" name="a7119e389d4fdd2ece6b28262cf218292"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7119e389d4fdd2ece6b28262cf218292">&#9670;&#160;</a></span>wstr2str()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string wstr2str </td>
+          <td>(</td>
+          <td class="paramtype">const std::wstring &amp;</td>          <td class="paramname"><span class="paramname"><em>wstr</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="main_8cpp.html">main.cpp</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -41,7 +41,7 @@ TokenPtr Parser::expect(TokenType type, bool skipNewLine, const std::source_loca
     else throw SyntaxError(std::format("Expected [{}] but got '{}' line {} in <{}>", enumToStr(type), curr()->toString(), loc.line(), loc.function_name()));
 }
 
-bool Parser::fromUntilExpect(std::variant<int, size_t> _start, std::variant<int, size_t> _end, TokenType type, const FUE_Kwargs& kwargs) {
+bool Parser::fromUntilExpect(std::variant<int, size_t> _start, std::variant<int, size_t> _end, TokenType type, const FUEKwargs& kwargs) {
     int start = std::holds_alternative<int>(_start) ? std::get<int>(_start) : static_cast<int>(std::get<size_t>(_start));
     int end   = std::holds_alternative<int>(_end) ? std::get<int>(_end) : static_cast<int>(std::get<size_t>(_end));
 

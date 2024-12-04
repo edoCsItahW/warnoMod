@@ -1,0 +1,373 @@
+<!-- HTML header for doxygen 1.12.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.12.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>NDF抽象语法树生成器: src/expection.h 文件参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+</script>
+<!-- 明暗模式按钮 -->
+<script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeFragmentCopyButton.init()
+</script>
+<!-- 代码片段复制按钮 -->
+<script type="text/javascript" src="doxygen-awesome-paragraph-link.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeParagraphLink.init()
+</script>
+<!-- 标题链接按钮 -->
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<!-- 目录树按钮 -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" />
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<script type="text/javascript">
+    const orgWarn = console.warn;
+    console.warn = function() {
+        if (typeof arguments[0] === 'string' && arguments[0].includes('LaTeX')) {}
+        else orgWarn.apply(console, arguments);
+    };
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+            delimiters: [
+                {left: '@f$', right: '@f$', display: false},
+                {left: '@f[', right: '@f]', display: true},
+                {left: '\\f$', right: '\\f$', display: false},
+                {left: '\\f[', right: '\\f]', display: true},
+                {left: '\$', right: '\$', display: false},
+                {left: '@$', right: '@$', display: true}
+            ]
+        });
+    });
+</script>
+<!-- 公式渲染 -->
+<script type="text/javascript">
+    let lastUrl = null;  // 记录聚焦前的页面
+    let lastPos = null;  // 记录聚焦前的位置
+    window.addEventListener('resize', function() {
+        // 调整页面大小时,同步更新html的宽高
+        const html = document.querySelector('html');
+        if (html) {
+            html.style.width = window.innerWidth + 'px';
+            html.style.height = window.innerHeight + 'px';
+        }
+    })
+    window.addEventListener('popstate', function(event) {
+        // 当检测到用户点击标题聚焦后,记录当前页面和位置
+        const [org, _] = location.href.split('#');
+        if (_) {
+            lastUrl = org;
+            lastPos = document.getElementById('doc-content').scrollTop;
+        }
+    })
+    document.addEventListener('DOMContentLoaded', function() {
+        // 用户不在需要聚焦标题时,还原原来的页面和位置
+        const container = document.getElementById('doc-content');
+        container?.addEventListener('scroll', function () {
+            const scrollY = container.scrollTop;
+            if (Math.abs(scrollY - lastPos) > container.offsetHeight / 2) {
+                if (lastUrl) {
+                    location.href = lastUrl;
+                    lastUrl = null;
+                }
+            }
+        })
+    })
+</script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">NDF抽象语法树生成器<span id="projectnumber">&#160;1.0.0</span>
+   </div>
+   <div id="projectbrief">一个基于C++的NDF语言解析器，用于生成抽象语法树。</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.12.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('expection_8h.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">类</a> &#124;
+<a href="#define-members">宏定义</a> &#124;
+<a href="#enum-members">枚举</a> &#124;
+<a href="#func-members">函数</a>  </div>
+  <div class="headertitle"><div class="title">expection.h 文件参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>异常处理类头文件  
+<a href="#details">更多...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="utils_8h_source.html">utils.h</a>&quot;</code><br />
+<code>#include &lt;format&gt;</code><br />
+<code>#include &lt;iostream&gt;</code><br />
+</div><div class="textblock"><div class="dynheader">
+expection.h 的引用(Include)关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="expection_8h__incl.png" border="0" usemap="#asrc_2expection_8h" alt=""/></div>
+<map name="asrc_2expection_8h" id="asrc_2expection_8h">
+<area shape="rect" title="异常处理类头文件" alt="" coords="161,5,271,32"/>
+<area shape="rect" href="utils_8h.html" title=" " alt="" coords="107,80,163,107"/>
+<area shape="poly" title=" " alt="" coords="204,35,162,72,158,68,200,31"/>
+<area shape="rect" title=" " alt="" coords="187,80,245,107"/>
+<area shape="poly" title=" " alt="" coords="219,33,219,64,214,64,214,33"/>
+<area shape="rect" title=" " alt="" coords="270,80,341,107"/>
+<area shape="poly" title=" " alt="" coords="233,30,280,68,277,72,230,35"/>
+<area shape="rect" title=" " alt="" coords="5,155,70,181"/>
+<area shape="poly" title=" " alt="" coords="119,109,68,148,65,143,116,105"/>
+<area shape="rect" title=" " alt="" coords="94,155,176,181"/>
+<area shape="poly" title=" " alt="" coords="138,107,138,139,132,139,132,107"/>
+<area shape="rect" href="utils_8hpp.html" title=" " alt="" coords="200,155,270,181"/>
+<area shape="poly" title=" " alt="" coords="154,105,207,143,203,147,151,109"/>
+<area shape="rect" title=" " alt="" coords="163,229,213,256"/>
+<area shape="poly" title=" " alt="" coords="229,183,207,218,202,215,224,180"/>
+<area shape="rect" title=" " alt="" coords="238,229,325,256"/>
+<area shape="poly" title=" " alt="" coords="245,180,268,215,263,218,241,183"/>
+</map>
+</div>
+</div><div class="textblock"><div class="dynheader">
+此图展示该文件被哪些文件直接或间接地引用了:</div>
+<div class="dyncontent">
+<div class="center"><img src="expection_8h__dep__incl.png" border="0" usemap="#asrc_2expection_8hdep" alt=""/></div>
+<map name="asrc_2expection_8hdep" id="asrc_2expection_8hdep">
+<area shape="rect" title="异常处理类头文件" alt="" coords="22,5,133,32"/>
+<area shape="rect" href="parser_8cpp.html" title=" " alt="" coords="5,80,150,107"/>
+<area shape="poly" title=" " alt="" coords="80,48,80,80,75,80,75,48"/>
+</map>
+</div>
+</div>
+<p><a href="expection_8h_source.html">浏览该文件的源代码.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+类</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_exp_kwargs.html">ExpKwargs</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_expection.html">Expection</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+宏定义</h2></td></tr>
+<tr class="memitem:ga838a6f222b314f20556b68eacab640d1" id="r_ga838a6f222b314f20556b68eacab640d1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___macro.html#ga838a6f222b314f20556b68eacab640d1">RAISE</a>(msg,  type)</td></tr>
+<tr class="memdesc:ga838a6f222b314f20556b68eacab640d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">异常抛出宏  <br /></td></tr>
+<tr class="separator:ga838a6f222b314f20556b68eacab640d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga242f0465ea35c6d85d8082ecfaa8c1b1" id="r_ga242f0465ea35c6d85d8082ecfaa8c1b1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___macro.html#ga242f0465ea35c6d85d8082ecfaa8c1b1">SyntaxError</a>(msg)</td></tr>
+<tr class="memdesc:ga242f0465ea35c6d85d8082ecfaa8c1b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">语法错误异常  <br /></td></tr>
+<tr class="separator:ga242f0465ea35c6d85d8082ecfaa8c1b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac9102470dd4121c21a1c9311720cba5f" id="r_gac9102470dd4121c21a1c9311720cba5f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___macro.html#gac9102470dd4121c21a1c9311720cba5f">TypeError</a>(msg)</td></tr>
+<tr class="memdesc:gac9102470dd4121c21a1c9311720cba5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">类型错误异常，与<a class="el" href="group___macro.html#ga242f0465ea35c6d85d8082ecfaa8c1b1">SyntaxError</a> 类似.  <br /></td></tr>
+<tr class="separator:gac9102470dd4121c21a1c9311720cba5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7dc806fa533df2c69bf5b20b42f8ca20" id="r_ga7dc806fa533df2c69bf5b20b42f8ca20"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___macro.html#ga7dc806fa533df2c69bf5b20b42f8ca20">ValueError</a>(msg)</td></tr>
+<tr class="memdesc:ga7dc806fa533df2c69bf5b20b42f8ca20"><td class="mdescLeft">&#160;</td><td class="mdescRight">值错误异常，与<a class="el" href="group___macro.html#ga242f0465ea35c6d85d8082ecfaa8c1b1">SyntaxError</a> 类似.  <br /></td></tr>
+<tr class="separator:ga7dc806fa533df2c69bf5b20b42f8ca20"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae28be598b8d2bc5c6ef954077794202d" id="r_gae28be598b8d2bc5c6ef954077794202d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___macro.html#gae28be598b8d2bc5c6ef954077794202d">RuntimeError</a>(msg)</td></tr>
+<tr class="memdesc:gae28be598b8d2bc5c6ef954077794202d"><td class="mdescLeft">&#160;</td><td class="mdescRight">运行时错误异常，与<a class="el" href="group___macro.html#ga242f0465ea35c6d85d8082ecfaa8c1b1">SyntaxError</a> 类似.  <br /></td></tr>
+<tr class="separator:gae28be598b8d2bc5c6ef954077794202d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
+枚举</h2></td></tr>
+<tr class="memitem:af6ea07812363481c623a23ea26fbf8ed" id="r_af6ea07812363481c623a23ea26fbf8ed"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af6ea07812363481c623a23ea26fbf8ed">Warning</a> { <br />
+&#160;&#160;<a class="el" href="#af6ea07812363481c623a23ea26fbf8eda14639123141fc313c8518c518fe88bbb">UserWarning</a>
+, <a class="el" href="#af6ea07812363481c623a23ea26fbf8edadf946995d0b760b93cfe833222beeb73">BytesWarning</a>
+, <a class="el" href="#af6ea07812363481c623a23ea26fbf8edaf1c53c2d9f46837442a9cb9dc441b88a">FutureWarning</a>
+, <a class="el" href="#af6ea07812363481c623a23ea26fbf8eda016f38b6eacf4ec6b280c382daa86fae">DeprecationWarning</a>
+, <br />
+&#160;&#160;<a class="el" href="#af6ea07812363481c623a23ea26fbf8eda02c3c37c2482d290b0d10eca46760e5d">PendingDeprecationWarning</a>
+, <a class="el" href="#af6ea07812363481c623a23ea26fbf8eda7dbee92a7f5871e2ae0ef2d62cf6a0f5">SyntaxWarning</a>
+, <a class="el" href="#af6ea07812363481c623a23ea26fbf8eda9bc46be65289aacaa6448d711c1a5ea2">EncodingWarning</a>
+, <a class="el" href="#af6ea07812363481c623a23ea26fbf8edaadafe4ff0a4019c14b59c3e6701fdb87">ImportWarning</a>
+, <br />
+&#160;&#160;<a class="el" href="#af6ea07812363481c623a23ea26fbf8eda34fac1552fa419234492496587967ff5">ResourceWarning</a>
+, <a class="el" href="#af6ea07812363481c623a23ea26fbf8eda982487883b014c6edeff0cc3a97fb90a">RuntimeWarning</a>
+, <a class="el" href="#af6ea07812363481c623a23ea26fbf8eda5661cea3743f7dc081d0367a8cf37fc8">UnicodeWarning</a>
+<br />
+ }</td></tr>
+<tr class="separator:af6ea07812363481c623a23ea26fbf8ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+函数</h2></td></tr>
+<tr class="memitem:afd8911c43b1e684f03d0113ff252dba6" id="r_afd8911c43b1e684f03d0113ff252dba6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afd8911c43b1e684f03d0113ff252dba6">warn</a> (const std::string &amp;msg, <a class="el" href="#af6ea07812363481c623a23ea26fbf8ed">Warning</a> cotegory=<a class="el" href="#af6ea07812363481c623a23ea26fbf8eda14639123141fc313c8518c518fe88bbb">UserWarning</a>)</td></tr>
+<tr class="separator:afd8911c43b1e684f03d0113ff252dba6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>异常处理类头文件 </p>
+<dl class="section author"><dt>作者</dt><dd>edocsitahw </dd></dl>
+<dl class="section version"><dt>版本</dt><dd>1.1 </dd></dl>
+<dl class="section date"><dt>日期</dt><dd>2024/11/24 下午11:54</dd></dl>
+<dl class="section copyright"><dt>版权所有</dt><dd>CC BY-NC-SA 2024. All rights reserved. </dd></dl>
+</div><h2 class="groupheader">枚举类型说明</h2>
+<a id="af6ea07812363481c623a23ea26fbf8ed" name="af6ea07812363481c623a23ea26fbf8ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af6ea07812363481c623a23ea26fbf8ed">&#9670;&#160;</a></span>Warning</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#af6ea07812363481c623a23ea26fbf8ed">Warning</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">枚举值</th></tr><tr><td class="fieldname"><a id="af6ea07812363481c623a23ea26fbf8eda14639123141fc313c8518c518fe88bbb" name="af6ea07812363481c623a23ea26fbf8eda14639123141fc313c8518c518fe88bbb"></a>UserWarning&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="af6ea07812363481c623a23ea26fbf8edadf946995d0b760b93cfe833222beeb73" name="af6ea07812363481c623a23ea26fbf8edadf946995d0b760b93cfe833222beeb73"></a>BytesWarning&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="af6ea07812363481c623a23ea26fbf8edaf1c53c2d9f46837442a9cb9dc441b88a" name="af6ea07812363481c623a23ea26fbf8edaf1c53c2d9f46837442a9cb9dc441b88a"></a>FutureWarning&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="af6ea07812363481c623a23ea26fbf8eda016f38b6eacf4ec6b280c382daa86fae" name="af6ea07812363481c623a23ea26fbf8eda016f38b6eacf4ec6b280c382daa86fae"></a>DeprecationWarning&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="af6ea07812363481c623a23ea26fbf8eda02c3c37c2482d290b0d10eca46760e5d" name="af6ea07812363481c623a23ea26fbf8eda02c3c37c2482d290b0d10eca46760e5d"></a>PendingDeprecationWarning&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="af6ea07812363481c623a23ea26fbf8eda7dbee92a7f5871e2ae0ef2d62cf6a0f5" name="af6ea07812363481c623a23ea26fbf8eda7dbee92a7f5871e2ae0ef2d62cf6a0f5"></a>SyntaxWarning&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="af6ea07812363481c623a23ea26fbf8eda9bc46be65289aacaa6448d711c1a5ea2" name="af6ea07812363481c623a23ea26fbf8eda9bc46be65289aacaa6448d711c1a5ea2"></a>EncodingWarning&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="af6ea07812363481c623a23ea26fbf8edaadafe4ff0a4019c14b59c3e6701fdb87" name="af6ea07812363481c623a23ea26fbf8edaadafe4ff0a4019c14b59c3e6701fdb87"></a>ImportWarning&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="af6ea07812363481c623a23ea26fbf8eda34fac1552fa419234492496587967ff5" name="af6ea07812363481c623a23ea26fbf8eda34fac1552fa419234492496587967ff5"></a>ResourceWarning&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="af6ea07812363481c623a23ea26fbf8eda982487883b014c6edeff0cc3a97fb90a" name="af6ea07812363481c623a23ea26fbf8eda982487883b014c6edeff0cc3a97fb90a"></a>RuntimeWarning&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="af6ea07812363481c623a23ea26fbf8eda5661cea3743f7dc081d0367a8cf37fc8" name="af6ea07812363481c623a23ea26fbf8eda5661cea3743f7dc081d0367a8cf37fc8"></a>UnicodeWarning&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<h2 class="groupheader">函数说明</h2>
+<a id="afd8911c43b1e684f03d0113ff252dba6" name="afd8911c43b1e684f03d0113ff252dba6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd8911c43b1e684f03d0113ff252dba6">&#9670;&#160;</a></span>warn()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void warn </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>msg</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="#af6ea07812363481c623a23ea26fbf8ed">Warning</a></td>          <td class="paramname"><span class="paramname"><em>cotegory</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="#af6ea07812363481c623a23ea26fbf8eda14639123141fc313c8518c518fe88bbb">UserWarning</a></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="expection_8h_afd8911c43b1e684f03d0113ff252dba6_cgraph.png" border="0" usemap="#aexpection_8h_afd8911c43b1e684f03d0113ff252dba6_cgraph" alt=""/></div>
+<map name="aexpection_8h_afd8911c43b1e684f03d0113ff252dba6_cgraph" id="aexpection_8h_afd8911c43b1e684f03d0113ff252dba6_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,55,32"/>
+<area shape="rect" href="utils_8hpp.html#a060c1189e0693cab3816e11156f27a82" title=" " alt="" coords="103,5,187,32"/>
+<area shape="poly" title=" " alt="" coords="55,16,87,16,87,21,55,21"/>
+</map>
+</div>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="expection_8h_afd8911c43b1e684f03d0113ff252dba6_icgraph.png" border="0" usemap="#aexpection_8h_afd8911c43b1e684f03d0113ff252dba6_icgraph" alt=""/></div>
+<map name="aexpection_8h_afd8911c43b1e684f03d0113ff252dba6_icgraph" id="aexpection_8h_afd8911c43b1e684f03d0113ff252dba6_icgraph">
+<area shape="rect" title=" " alt="" coords="595,56,645,83"/>
+<area shape="rect" href="class_parser.html#abd0160c02ddef823944955428b4e0b61" title=" " alt="" coords="388,56,547,83"/>
+<area shape="poly" title=" " alt="" coords="580,72,548,72,548,67,580,67"/>
+<area shape="rect" href="class_parser.html#a64bb668d60a7f11e2df5eeede7cda662" title=" " alt="" coords="222,5,321,32"/>
+<area shape="poly" title=" " alt="" coords="398,54,321,34,322,29,399,49"/>
+<area shape="rect" href="class_parser.html#a0783692048021fae9a9644e9aff63b20" title=" " alt="" coords="203,56,340,83"/>
+<area shape="poly" title=" " alt="" coords="372,81,340,81,340,75,372,76"/>
+<area shape="rect" href="build_8cpp.html#a5d2adbf158d596abdc2b780ae2604cff" title=" " alt="" coords="5,5,155,32"/>
+<area shape="poly" title=" " alt="" coords="206,21,155,21,155,16,206,16"/>
+<area shape="poly" title=" " alt="" coords="356,58,388,58,388,63,356,63"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="expection_8h.html">expection.h</a></li>
+    <li class="footer">制作者 <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,998 @@
+<!-- HTML header for doxygen 1.12.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.12.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>NDF AST Generator: Lexer Class Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+</script>
+<!-- 明暗模式按钮 -->
+<script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeFragmentCopyButton.init()
+</script>
+<!-- 代码片段复制按钮 -->
+<script type="text/javascript" src="doxygen-awesome-paragraph-link.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeParagraphLink.init()
+</script>
+<!-- 标题链接按钮 -->
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<!-- 目录树按钮 -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" />
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<script type="text/javascript">
+    const orgWarn = console.warn;
+    console.warn = function() {
+        if (typeof arguments[0] === 'string' && arguments[0].includes('LaTeX')) {}
+        else orgWarn.apply(console, arguments);
+    };
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+            delimiters: [
+                {left: '@f$', right: '@f$', display: false},
+                {left: '@f[', right: '@f]', display: true},
+                {left: '\\f$', right: '\\f$', display: false},
+                {left: '\\f[', right: '\\f]', display: true},
+                {left: '\$', right: '\$', display: false},
+                {left: '@$', right: '@$', display: true}
+            ]
+        });
+    });
+</script>
+<!-- 公式渲染 -->
+<script type="text/javascript">
+    let lastUrl = null;  // 记录聚焦前的页面
+    let lastPos = null;  // 记录聚焦前的位置
+    window.addEventListener('resize', function() {
+        // 调整页面大小时,同步更新html的宽高
+        const html = document.querySelector('html');
+        if (html) {
+            html.style.width = window.innerWidth + 'px';
+            html.style.height = window.innerHeight + 'px';
+        }
+    })
+    window.addEventListener('popstate', function(event) {
+        // 当检测到用户点击标题聚焦后,记录当前页面和位置
+        const [org, _] = location.href.split('#');
+        if (_) {
+            lastUrl = org;
+            lastPos = document.getElementById('doc-content').scrollTop;
+        }
+    })
+    document.addEventListener('DOMContentLoaded', function() {
+        // 用户不在需要聚焦标题时,还原原来的页面和位置
+        const container = document.getElementById('doc-content');
+        container?.addEventListener('scroll', function () {
+            const scrollY = container.scrollTop;
+            if (Math.abs(scrollY - lastPos) > container.offsetHeight / 2) {
+                if (lastUrl) {
+                    location.href = lastUrl;
+                    lastUrl = null;
+                }
+            }
+        })
+    })
+</script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">NDF AST Generator<span id="projectnumber">&#160;1.0.0</span>
+   </div>
+   <div id="projectbrief">A C++based NDF language parser for generating AST.</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.12.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('class_lexer.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#pro-types">Protected Types</a> &#124;
+<a href="#pro-methods">Protected Member Functions</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
+<a href="class_lexer-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">Lexer Class Reference</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;<a class="el" href="lexer_8h_source.html">lexer.h</a>&gt;</code></p>
+<div class="dynheader">
+Collaboration diagram for Lexer:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_lexer__coll__graph.png" border="0" usemap="#a_lexer_coll__map" alt="Collaboration graph"/></div>
+<map name="a_lexer_coll__map" id="a_lexer_coll__map">
+<area shape="rect" title=" " alt="" coords="5,779,205,1152"/>
+<area shape="rect" href="class_pos.html" title=" " alt="" coords="30,5,181,715"/>
+<area shape="poly" title=" " alt="" coords="108,715,108,762,103,762,103,715"/>
+</map>
+</div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a5d1f14bb0012e44f55dfab229a31a50b" id="r_a5d1f14bb0012e44f55dfab229a31a50b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5d1f14bb0012e44f55dfab229a31a50b">Lexer</a> (std::string source)</td></tr>
+<tr class="separator:a5d1f14bb0012e44f55dfab229a31a50b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa010f3e5af6717c09dd4ab7cbf703727" id="r_aa010f3e5af6717c09dd4ab7cbf703727"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_token.html">Token</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa010f3e5af6717c09dd4ab7cbf703727">operator*</a> ()</td></tr>
+<tr class="separator:aa010f3e5af6717c09dd4ab7cbf703727"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:a26712ee1e6617c2fead62c9f42117793" id="r_a26712ee1e6617c2fead62c9f42117793"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="token_8h.html#a5be25cc520cf8b50fdeb3aecdd7453df">TokenPtrs</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a26712ee1e6617c2fead62c9f42117793">tokenize</a> (const std::string &amp;text)</td></tr>
+<tr class="separator:a26712ee1e6617c2fead62c9f42117793"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-types" name="pro-types"></a>
+Protected Types</h2></td></tr>
+<tr class="memitem:a2e68ff4db626fb4621dbcb33c5c96111" id="r_a2e68ff4db626fb4621dbcb33c5c96111"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2e68ff4db626fb4621dbcb33c5c96111">Type</a> = <a class="el" href="token_8h.html#aa520fbf142ba1e7e659590c07da31921">TokenType</a></td></tr>
+<tr class="separator:a2e68ff4db626fb4621dbcb33c5c96111"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
+Protected Member Functions</h2></td></tr>
+<tr class="memitem:a8d2585d70adce01584a505a25c3e179d" id="r_a8d2585d70adce01584a505a25c3e179d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8d2585d70adce01584a505a25c3e179d">skip</a> ()</td></tr>
+<tr class="separator:a8d2585d70adce01584a505a25c3e179d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b5b7bfdea126bc29300c8916491adce" id="r_a3b5b7bfdea126bc29300c8916491adce"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_token.html">Token</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3b5b7bfdea126bc29300c8916491adce">extractNumber</a> ()</td></tr>
+<tr class="separator:a3b5b7bfdea126bc29300c8916491adce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae73b6d7ea1be5a5fc8e39a15b823d0fe" id="r_ae73b6d7ea1be5a5fc8e39a15b823d0fe"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_token.html">Token</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae73b6d7ea1be5a5fc8e39a15b823d0fe">extractString</a> ()</td></tr>
+<tr class="separator:ae73b6d7ea1be5a5fc8e39a15b823d0fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7cac296497417d099f2d1baf98f3bee8" id="r_a7cac296497417d099f2d1baf98f3bee8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_token.html">Token</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7cac296497417d099f2d1baf98f3bee8">extractLiteral</a> ()</td></tr>
+<tr class="separator:a7cac296497417d099f2d1baf98f3bee8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a51977199e3e0b0846bad90622333da40" id="r_a51977199e3e0b0846bad90622333da40"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_token.html">Token</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a51977199e3e0b0846bad90622333da40">extractOperator</a> ()</td></tr>
+<tr class="separator:a51977199e3e0b0846bad90622333da40"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9c9afc58bcc29c42c80fb9ec8302990" id="r_af9c9afc58bcc29c42c80fb9ec8302990"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_token.html">Token</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af9c9afc58bcc29c42c80fb9ec8302990">extractComment</a> ()</td></tr>
+<tr class="separator:af9c9afc58bcc29c42c80fb9ec8302990"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a89bee08cdd814bbb98d60a8abbc16245" id="r_a89bee08cdd814bbb98d60a8abbc16245"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_token.html">Token</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a89bee08cdd814bbb98d60a8abbc16245">extractBlockComment</a> ()</td></tr>
+<tr class="separator:a89bee08cdd814bbb98d60a8abbc16245"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a910a018a8094f0205af9bdb90d4a5ea7" id="r_a910a018a8094f0205af9bdb90d4a5ea7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_token.html">Token</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a910a018a8094f0205af9bdb90d4a5ea7">extractPath</a> ()</td></tr>
+<tr class="separator:a910a018a8094f0205af9bdb90d4a5ea7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d03a1b0a7f8489eb6fc33c06068323d" id="r_a2d03a1b0a7f8489eb6fc33c06068323d"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2d03a1b0a7f8489eb6fc33c06068323d">curr</a> () const</td></tr>
+<tr class="separator:a2d03a1b0a7f8489eb6fc33c06068323d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a19d3c701df7e890bb78924e341c73a6d" id="r_a19d3c701df7e890bb78924e341c73a6d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a19d3c701df7e890bb78924e341c73a6d">inScope</a> () const</td></tr>
+<tr class="separator:a19d3c701df7e890bb78924e341c73a6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:afcec206caef45676e6aaa82035495b80" id="r_afcec206caef45676e6aaa82035495b80"><td class="memItemLeft" align="right" valign="top">const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afcec206caef45676e6aaa82035495b80">_source</a></td></tr>
+<tr class="separator:afcec206caef45676e6aaa82035495b80"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ee7c272694e2cdd885c7ebe434ece6b" id="r_a9ee7c272694e2cdd885c7ebe434ece6b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_pos.html">Pos</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9ee7c272694e2cdd885c7ebe434ece6b">_pos</a></td></tr>
+<tr class="separator:a9ee7c272694e2cdd885c7ebe434ece6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Member Typedef Documentation</h2>
+<a id="a2e68ff4db626fb4621dbcb33c5c96111" name="a2e68ff4db626fb4621dbcb33c5c96111"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e68ff4db626fb4621dbcb33c5c96111">&#9670;&#160;</a></span>Type</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="token_8h.html#aa520fbf142ba1e7e659590c07da31921">Lexer::Type</a> = <a class="el" href="token_8h.html#aa520fbf142ba1e7e659590c07da31921">TokenType</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a5d1f14bb0012e44f55dfab229a31a50b" name="a5d1f14bb0012e44f55dfab229a31a50b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5d1f14bb0012e44f55dfab229a31a50b">&#9670;&#160;</a></span>Lexer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Lexer::Lexer </td>
+          <td>(</td>
+          <td class="paramtype">std::string</td>          <td class="paramname"><span class="paramname"><em>source</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a2d03a1b0a7f8489eb6fc33c06068323d" name="a2d03a1b0a7f8489eb6fc33c06068323d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d03a1b0a7f8489eb6fc33c06068323d">&#9670;&#160;</a></span>curr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">char Lexer::curr </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">nodiscard</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_lexer_a2d03a1b0a7f8489eb6fc33c06068323d_cgraph.png" border="0" usemap="#aclass_lexer_a2d03a1b0a7f8489eb6fc33c06068323d_cgraph" alt=""/></div>
+<map name="aclass_lexer_a2d03a1b0a7f8489eb6fc33c06068323d_cgraph" id="aclass_lexer_a2d03a1b0a7f8489eb6fc33c06068323d_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,89,32"/>
+<area shape="rect" href="class_lexer.html#a19d3c701df7e890bb78924e341c73a6d" title=" " alt="" coords="137,5,245,32"/>
+<area shape="poly" title=" " alt="" coords="89,16,121,16,121,21,89,21"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_lexer_a2d03a1b0a7f8489eb6fc33c06068323d_icgraph.png" border="0" usemap="#aclass_lexer_a2d03a1b0a7f8489eb6fc33c06068323d_icgraph" alt=""/></div>
+<map name="aclass_lexer_a2d03a1b0a7f8489eb6fc33c06068323d_icgraph" id="aclass_lexer_a2d03a1b0a7f8489eb6fc33c06068323d_icgraph">
+<area shape="rect" title=" " alt="" coords="406,208,489,235"/>
+<area shape="rect" href="class_lexer.html#a89bee08cdd814bbb98d60a8abbc16245" title=" " alt="" coords="167,5,358,32"/>
+<area shape="poly" title=" " alt="" coords="436,194,425,161,409,123,386,85,356,53,325,35,328,30,360,49,390,82,413,121,430,159,441,192"/>
+<area shape="rect" href="class_lexer.html#aa010f3e5af6717c09dd4ab7cbf703727" title=" " alt="" coords="5,208,119,235"/>
+<area shape="poly" title=" " alt="" coords="434,195,405,142,383,116,357,97,306,76,263,69,219,76,168,97,134,121,106,151,85,183,72,209,67,206,81,180,102,148,130,117,165,92,218,71,263,64,308,70,359,92,387,113,409,139,438,192"/>
+<area shape="rect" href="class_lexer.html#af9c9afc58bcc29c42c80fb9ec8302990" title=" " alt="" coords="183,107,342,133"/>
+<area shape="poly" title=" " alt="" coords="422,199,392,172,357,148,330,136,332,131,359,143,396,168,425,195"/>
+<area shape="rect" href="class_lexer.html#a7cac296497417d099f2d1baf98f3bee8" title=" " alt="" coords="194,157,330,184"/>
+<area shape="poly" title=" " alt="" coords="390,208,357,199,315,187,317,182,359,193,392,203"/>
+<area shape="rect" href="class_lexer.html#a3b5b7bfdea126bc29300c8916491adce" title=" " alt="" coords="189,208,336,235"/>
+<area shape="poly" title=" " alt="" coords="390,224,336,224,336,219,390,219"/>
+<area shape="rect" href="class_lexer.html#a51977199e3e0b0846bad90622333da40" title=" " alt="" coords="187,259,338,285"/>
+<area shape="poly" title=" " alt="" coords="392,240,359,249,317,261,315,256,357,244,390,235"/>
+<area shape="rect" href="class_lexer.html#a910a018a8094f0205af9bdb90d4a5ea7" title=" " alt="" coords="198,309,326,336"/>
+<area shape="poly" title=" " alt="" coords="425,248,396,275,359,300,328,312,326,307,357,295,392,271,422,244"/>
+<area shape="rect" href="class_lexer.html#ae73b6d7ea1be5a5fc8e39a15b823d0fe" title=" " alt="" coords="195,360,330,387"/>
+<area shape="poly" title=" " alt="" coords="436,250,406,301,385,328,359,350,331,364,329,359,357,346,381,324,402,298,432,248"/>
+<area shape="rect" href="class_lexer.html#a8d2585d70adce01584a505a25c3e179d" title=" " alt="" coords="220,411,305,437"/>
+<area shape="poly" title=" " alt="" coords="442,251,432,285,415,326,391,366,360,401,334,415,306,423,304,418,332,410,356,397,387,363,410,324,427,284,437,249"/>
+<area shape="poly" title=" " alt="" coords="187,41,168,53,132,91,103,135,83,177,70,209,65,207,78,175,99,132,128,87,165,49,184,37"/>
+<area shape="poly" title=" " alt="" coords="183,141,168,148,118,178,80,210,77,205,115,174,165,143,181,136"/>
+<area shape="poly" title=" " alt="" coords="192,191,118,210,117,205,191,186"/>
+<area shape="poly" title=" " alt="" coords="173,224,119,224,119,219,173,219"/>
+<area shape="poly" title=" " alt="" coords="191,257,117,238,118,233,192,252"/>
+<area shape="poly" title=" " alt="" coords="182,307,165,300,115,269,77,237,80,233,118,264,168,295,184,302"/>
+<area shape="poly" title=" " alt="" coords="179,358,165,350,132,323,105,292,68,237,73,234,109,289,136,320,168,346,182,353"/>
+<area shape="poly" title=" " alt="" coords="204,419,184,412,165,401,126,361,97,314,77,269,65,236,70,234,81,267,102,311,130,357,168,397,186,407,205,414"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a89bee08cdd814bbb98d60a8abbc16245" name="a89bee08cdd814bbb98d60a8abbc16245"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a89bee08cdd814bbb98d60a8abbc16245">&#9670;&#160;</a></span>extractBlockComment()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_token.html">Token</a> Lexer::extractBlockComment </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_lexer_a89bee08cdd814bbb98d60a8abbc16245_cgraph.png" border="0" usemap="#aclass_lexer_a89bee08cdd814bbb98d60a8abbc16245_cgraph" alt=""/></div>
+<map name="aclass_lexer_a89bee08cdd814bbb98d60a8abbc16245_cgraph" id="aclass_lexer_a89bee08cdd814bbb98d60a8abbc16245_cgraph">
+<area shape="rect" title=" " alt="" coords="5,56,197,83"/>
+<area shape="rect" href="class_lexer.html#a2d03a1b0a7f8489eb6fc33c06068323d" title=" " alt="" coords="253,5,336,32"/>
+<area shape="poly" title=" " alt="" coords="154,53,238,31,239,36,156,58"/>
+<area shape="rect" href="class_lexer.html#a19d3c701df7e890bb78924e341c73a6d" title=" " alt="" coords="393,31,501,57"/>
+<area shape="poly" title=" " alt="" coords="197,60,378,46,378,52,197,65"/>
+<area shape="rect" href="class_pos.html#a557be407d72755022e4c8eea8c4cb2f9" title=" " alt="" coords="245,107,345,133"/>
+<area shape="poly" title=" " alt="" coords="156,81,230,100,229,106,154,86"/>
+<area shape="poly" title=" " alt="" coords="338,23,378,30,377,35,337,28"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_lexer_a89bee08cdd814bbb98d60a8abbc16245_icgraph.png" border="0" usemap="#aclass_lexer_a89bee08cdd814bbb98d60a8abbc16245_icgraph" alt=""/></div>
+<map name="aclass_lexer_a89bee08cdd814bbb98d60a8abbc16245_icgraph" id="aclass_lexer_a89bee08cdd814bbb98d60a8abbc16245_icgraph">
+<area shape="rect" title=" " alt="" coords="167,5,358,32"/>
+<area shape="rect" href="class_lexer.html#aa010f3e5af6717c09dd4ab7cbf703727" title=" " alt="" coords="5,5,119,32"/>
+<area shape="poly" title=" " alt="" coords="151,21,119,21,119,16,151,16"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="af9c9afc58bcc29c42c80fb9ec8302990" name="af9c9afc58bcc29c42c80fb9ec8302990"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af9c9afc58bcc29c42c80fb9ec8302990">&#9670;&#160;</a></span>extractComment()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_token.html">Token</a> Lexer::extractComment </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_lexer_af9c9afc58bcc29c42c80fb9ec8302990_cgraph.png" border="0" usemap="#aclass_lexer_af9c9afc58bcc29c42c80fb9ec8302990_cgraph" alt=""/></div>
+<map name="aclass_lexer_af9c9afc58bcc29c42c80fb9ec8302990_cgraph" id="aclass_lexer_af9c9afc58bcc29c42c80fb9ec8302990_cgraph">
+<area shape="rect" title=" " alt="" coords="5,31,164,57"/>
+<area shape="rect" href="class_lexer.html#a2d03a1b0a7f8489eb6fc33c06068323d" title=" " alt="" coords="212,5,295,32"/>
+<area shape="poly" title=" " alt="" coords="164,29,196,25,197,30,164,35"/>
+<area shape="rect" href="class_lexer.html#a19d3c701df7e890bb78924e341c73a6d" title=" " alt="" coords="343,31,451,57"/>
+<area shape="poly" title=" " alt="" coords="164,41,327,41,327,47,164,47"/>
+<area shape="poly" title=" " alt="" coords="296,23,328,29,327,34,295,29"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_lexer_af9c9afc58bcc29c42c80fb9ec8302990_icgraph.png" border="0" usemap="#aclass_lexer_af9c9afc58bcc29c42c80fb9ec8302990_icgraph" alt=""/></div>
+<map name="aclass_lexer_af9c9afc58bcc29c42c80fb9ec8302990_icgraph" id="aclass_lexer_af9c9afc58bcc29c42c80fb9ec8302990_icgraph">
+<area shape="rect" title=" " alt="" coords="167,5,325,32"/>
+<area shape="rect" href="class_lexer.html#aa010f3e5af6717c09dd4ab7cbf703727" title=" " alt="" coords="5,5,119,32"/>
+<area shape="poly" title=" " alt="" coords="151,21,119,21,119,16,151,16"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a7cac296497417d099f2d1baf98f3bee8" name="a7cac296497417d099f2d1baf98f3bee8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7cac296497417d099f2d1baf98f3bee8">&#9670;&#160;</a></span>extractLiteral()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_token.html">Token</a> Lexer::extractLiteral </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_lexer_a7cac296497417d099f2d1baf98f3bee8_cgraph.png" border="0" usemap="#aclass_lexer_a7cac296497417d099f2d1baf98f3bee8_cgraph" alt=""/></div>
+<map name="aclass_lexer_a7cac296497417d099f2d1baf98f3bee8_cgraph" id="aclass_lexer_a7cac296497417d099f2d1baf98f3bee8_cgraph">
+<area shape="rect" title=" " alt="" coords="5,31,142,57"/>
+<area shape="rect" href="class_lexer.html#a2d03a1b0a7f8489eb6fc33c06068323d" title=" " alt="" coords="190,5,273,32"/>
+<area shape="poly" title=" " alt="" coords="142,30,174,25,175,30,142,36"/>
+<area shape="rect" href="class_lexer.html#a19d3c701df7e890bb78924e341c73a6d" title=" " alt="" coords="321,31,429,57"/>
+<area shape="poly" title=" " alt="" coords="142,41,305,41,305,47,142,47"/>
+<area shape="poly" title=" " alt="" coords="274,23,306,29,305,34,273,29"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_lexer_a7cac296497417d099f2d1baf98f3bee8_icgraph.png" border="0" usemap="#aclass_lexer_a7cac296497417d099f2d1baf98f3bee8_icgraph" alt=""/></div>
+<map name="aclass_lexer_a7cac296497417d099f2d1baf98f3bee8_icgraph" id="aclass_lexer_a7cac296497417d099f2d1baf98f3bee8_icgraph">
+<area shape="rect" title=" " alt="" coords="167,5,303,32"/>
+<area shape="rect" href="class_lexer.html#aa010f3e5af6717c09dd4ab7cbf703727" title=" " alt="" coords="5,5,119,32"/>
+<area shape="poly" title=" " alt="" coords="151,21,119,21,119,16,151,16"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a3b5b7bfdea126bc29300c8916491adce" name="a3b5b7bfdea126bc29300c8916491adce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3b5b7bfdea126bc29300c8916491adce">&#9670;&#160;</a></span>extractNumber()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_token.html">Token</a> Lexer::extractNumber </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_lexer_a3b5b7bfdea126bc29300c8916491adce_cgraph.png" border="0" usemap="#aclass_lexer_a3b5b7bfdea126bc29300c8916491adce_cgraph" alt=""/></div>
+<map name="aclass_lexer_a3b5b7bfdea126bc29300c8916491adce_cgraph" id="aclass_lexer_a3b5b7bfdea126bc29300c8916491adce_cgraph">
+<area shape="rect" title=" " alt="" coords="5,31,153,57"/>
+<area shape="rect" href="class_lexer.html#a2d03a1b0a7f8489eb6fc33c06068323d" title=" " alt="" coords="201,5,284,32"/>
+<area shape="poly" title=" " alt="" coords="153,30,185,25,185,30,154,35"/>
+<area shape="rect" href="class_lexer.html#a19d3c701df7e890bb78924e341c73a6d" title=" " alt="" coords="332,31,440,57"/>
+<area shape="poly" title=" " alt="" coords="153,41,316,41,316,47,153,47"/>
+<area shape="poly" title=" " alt="" coords="285,23,317,29,316,34,284,29"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_lexer_a3b5b7bfdea126bc29300c8916491adce_icgraph.png" border="0" usemap="#aclass_lexer_a3b5b7bfdea126bc29300c8916491adce_icgraph" alt=""/></div>
+<map name="aclass_lexer_a3b5b7bfdea126bc29300c8916491adce_icgraph" id="aclass_lexer_a3b5b7bfdea126bc29300c8916491adce_icgraph">
+<area shape="rect" title=" " alt="" coords="167,5,314,32"/>
+<area shape="rect" href="class_lexer.html#aa010f3e5af6717c09dd4ab7cbf703727" title=" " alt="" coords="5,5,119,32"/>
+<area shape="poly" title=" " alt="" coords="151,21,119,21,119,16,151,16"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a51977199e3e0b0846bad90622333da40" name="a51977199e3e0b0846bad90622333da40"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51977199e3e0b0846bad90622333da40">&#9670;&#160;</a></span>extractOperator()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_token.html">Token</a> Lexer::extractOperator </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_lexer_a51977199e3e0b0846bad90622333da40_cgraph.png" border="0" usemap="#aclass_lexer_a51977199e3e0b0846bad90622333da40_cgraph" alt=""/></div>
+<map name="aclass_lexer_a51977199e3e0b0846bad90622333da40_cgraph" id="aclass_lexer_a51977199e3e0b0846bad90622333da40_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,157,32"/>
+<area shape="rect" href="class_lexer.html#a2d03a1b0a7f8489eb6fc33c06068323d" title=" " alt="" coords="205,5,288,32"/>
+<area shape="poly" title=" " alt="" coords="157,16,189,16,189,21,157,21"/>
+<area shape="rect" href="class_lexer.html#a19d3c701df7e890bb78924e341c73a6d" title=" " alt="" coords="336,5,444,32"/>
+<area shape="poly" title=" " alt="" coords="288,16,320,16,320,21,288,21"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_lexer_a51977199e3e0b0846bad90622333da40_icgraph.png" border="0" usemap="#aclass_lexer_a51977199e3e0b0846bad90622333da40_icgraph" alt=""/></div>
+<map name="aclass_lexer_a51977199e3e0b0846bad90622333da40_icgraph" id="aclass_lexer_a51977199e3e0b0846bad90622333da40_icgraph">
+<area shape="rect" title=" " alt="" coords="167,5,318,32"/>
+<area shape="rect" href="class_lexer.html#aa010f3e5af6717c09dd4ab7cbf703727" title=" " alt="" coords="5,5,119,32"/>
+<area shape="poly" title=" " alt="" coords="151,21,119,21,119,16,151,16"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a910a018a8094f0205af9bdb90d4a5ea7" name="a910a018a8094f0205af9bdb90d4a5ea7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a910a018a8094f0205af9bdb90d4a5ea7">&#9670;&#160;</a></span>extractPath()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_token.html">Token</a> Lexer::extractPath </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_lexer_a910a018a8094f0205af9bdb90d4a5ea7_cgraph.png" border="0" usemap="#aclass_lexer_a910a018a8094f0205af9bdb90d4a5ea7_cgraph" alt=""/></div>
+<map name="aclass_lexer_a910a018a8094f0205af9bdb90d4a5ea7_cgraph" id="aclass_lexer_a910a018a8094f0205af9bdb90d4a5ea7_cgraph">
+<area shape="rect" title=" " alt="" coords="5,31,134,57"/>
+<area shape="rect" href="class_lexer.html#a2d03a1b0a7f8489eb6fc33c06068323d" title=" " alt="" coords="182,5,265,32"/>
+<area shape="poly" title=" " alt="" coords="134,31,166,25,167,31,135,36"/>
+<area shape="rect" href="class_lexer.html#a19d3c701df7e890bb78924e341c73a6d" title=" " alt="" coords="313,31,421,57"/>
+<area shape="poly" title=" " alt="" coords="134,41,298,41,298,47,134,47"/>
+<area shape="poly" title=" " alt="" coords="266,23,298,29,297,34,265,29"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_lexer_a910a018a8094f0205af9bdb90d4a5ea7_icgraph.png" border="0" usemap="#aclass_lexer_a910a018a8094f0205af9bdb90d4a5ea7_icgraph" alt=""/></div>
+<map name="aclass_lexer_a910a018a8094f0205af9bdb90d4a5ea7_icgraph" id="aclass_lexer_a910a018a8094f0205af9bdb90d4a5ea7_icgraph">
+<area shape="rect" title=" " alt="" coords="167,5,295,32"/>
+<area shape="rect" href="class_lexer.html#aa010f3e5af6717c09dd4ab7cbf703727" title=" " alt="" coords="5,5,119,32"/>
+<area shape="poly" title=" " alt="" coords="151,21,119,21,119,16,151,16"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ae73b6d7ea1be5a5fc8e39a15b823d0fe" name="ae73b6d7ea1be5a5fc8e39a15b823d0fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae73b6d7ea1be5a5fc8e39a15b823d0fe">&#9670;&#160;</a></span>extractString()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_token.html">Token</a> Lexer::extractString </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_lexer_ae73b6d7ea1be5a5fc8e39a15b823d0fe_cgraph.png" border="0" usemap="#aclass_lexer_ae73b6d7ea1be5a5fc8e39a15b823d0fe_cgraph" alt=""/></div>
+<map name="aclass_lexer_ae73b6d7ea1be5a5fc8e39a15b823d0fe_cgraph" id="aclass_lexer_ae73b6d7ea1be5a5fc8e39a15b823d0fe_cgraph">
+<area shape="rect" title=" " alt="" coords="5,31,141,57"/>
+<area shape="rect" href="class_lexer.html#a2d03a1b0a7f8489eb6fc33c06068323d" title=" " alt="" coords="189,5,272,32"/>
+<area shape="poly" title=" " alt="" coords="141,30,173,25,174,30,142,36"/>
+<area shape="rect" href="class_lexer.html#a19d3c701df7e890bb78924e341c73a6d" title=" " alt="" coords="320,31,428,57"/>
+<area shape="poly" title=" " alt="" coords="141,41,304,41,304,47,141,47"/>
+<area shape="poly" title=" " alt="" coords="273,23,305,29,304,34,272,29"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_lexer_ae73b6d7ea1be5a5fc8e39a15b823d0fe_icgraph.png" border="0" usemap="#aclass_lexer_ae73b6d7ea1be5a5fc8e39a15b823d0fe_icgraph" alt=""/></div>
+<map name="aclass_lexer_ae73b6d7ea1be5a5fc8e39a15b823d0fe_icgraph" id="aclass_lexer_ae73b6d7ea1be5a5fc8e39a15b823d0fe_icgraph">
+<area shape="rect" title=" " alt="" coords="167,5,302,32"/>
+<area shape="rect" href="class_lexer.html#aa010f3e5af6717c09dd4ab7cbf703727" title=" " alt="" coords="5,5,119,32"/>
+<area shape="poly" title=" " alt="" coords="151,21,119,21,119,16,151,16"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a19d3c701df7e890bb78924e341c73a6d" name="a19d3c701df7e890bb78924e341c73a6d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a19d3c701df7e890bb78924e341c73a6d">&#9670;&#160;</a></span>inScope()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Lexer::inScope </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">nodiscard</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_lexer_a19d3c701df7e890bb78924e341c73a6d_icgraph.png" border="0" usemap="#aclass_lexer_a19d3c701df7e890bb78924e341c73a6d_icgraph" alt=""/></div>
+<map name="aclass_lexer_a19d3c701df7e890bb78924e341c73a6d_icgraph" id="aclass_lexer_a19d3c701df7e890bb78924e341c73a6d_icgraph">
+<area shape="rect" title=" " alt="" coords="564,219,673,245"/>
+<area shape="rect" href="class_lexer.html#a2d03a1b0a7f8489eb6fc33c06068323d" title=" " alt="" coords="420,244,503,271"/>
+<area shape="poly" title=" " alt="" coords="550,246,504,253,503,248,549,241"/>
+<area shape="rect" href="class_lexer.html#a89bee08cdd814bbb98d60a8abbc16245" title=" " alt="" coords="167,447,358,473"/>
+<area shape="poly" title=" " alt="" coords="607,261,572,320,547,352,518,379,479,404,437,424,354,449,352,444,435,419,477,400,515,375,543,348,568,317,602,258"/>
+<area shape="rect" href="class_lexer.html#aa010f3e5af6717c09dd4ab7cbf703727" title=" " alt="" coords="5,219,119,245"/>
+<area shape="poly" title=" " alt="" coords="601,206,566,151,542,121,515,95,475,68,442,52,405,42,357,32,302,19,258,9,237,8,216,11,193,18,168,32,144,50,124,73,95,127,77,180,68,219,63,218,72,178,90,125,120,70,141,46,165,27,191,13,215,6,237,3,259,4,304,14,359,27,406,36,444,47,478,63,518,91,546,118,571,147,606,203"/>
+<area shape="rect" href="class_lexer.html#af9c9afc58bcc29c42c80fb9ec8302990" title=" " alt="" coords="183,41,342,68"/>
+<area shape="poly" title=" " alt="" coords="594,208,559,172,515,138,471,115,425,97,337,71,338,66,427,92,474,110,518,134,563,168,598,205"/>
+<area shape="rect" href="class_lexer.html#a7cac296497417d099f2d1baf98f3bee8" title=" " alt="" coords="194,92,330,119"/>
+<area shape="poly" title=" " alt="" coords="583,212,515,176,419,143,330,121,331,116,421,138,517,171,586,208"/>
+<area shape="rect" href="class_lexer.html#a3b5b7bfdea126bc29300c8916491adce" title=" " alt="" coords="189,143,336,169"/>
+<area shape="poly" title=" " alt="" coords="558,216,516,205,336,170,337,165,517,200,559,211"/>
+<area shape="rect" href="class_lexer.html#a910a018a8094f0205af9bdb90d4a5ea7" title=" " alt="" coords="198,193,326,220"/>
+<area shape="poly" title=" " alt="" coords="548,230,327,214,327,209,549,224"/>
+<area shape="rect" href="class_lexer.html#ae73b6d7ea1be5a5fc8e39a15b823d0fe" title=" " alt="" coords="195,345,330,372"/>
+<area shape="poly" title=" " alt="" coords="580,255,517,285,439,313,359,336,318,347,316,342,357,331,437,308,515,280,578,251"/>
+<area shape="rect" href="class_lexer.html#a8d2585d70adce01584a505a25c3e179d" title=" " alt="" coords="220,396,305,423"/>
+<area shape="poly" title=" " alt="" coords="597,258,562,293,518,326,463,355,406,377,306,404,305,399,404,371,461,350,515,322,558,289,594,255"/>
+<area shape="rect" href="class_lexer.html#a26712ee1e6617c2fead62c9f42117793" title=" " alt="" coords="406,497,516,524"/>
+<area shape="poly" title=" " alt="" coords="610,261,575,350,549,403,518,455,480,499,476,495,514,452,544,401,570,348,605,259"/>
+<area shape="poly" title=" " alt="" coords="454,286,441,321,421,361,394,402,360,437,340,448,337,444,356,433,390,399,416,359,436,319,449,284"/>
+<area shape="poly" title=" " alt="" coords="404,256,119,238,119,233,404,251"/>
+<area shape="poly" title=" " alt="" coords="449,231,436,196,416,156,390,116,356,82,337,71,340,66,360,78,394,113,421,153,441,194,454,229"/>
+<area shape="poly" title=" " alt="" coords="443,232,408,181,384,155,357,133,330,120,332,115,359,128,387,151,412,178,447,229"/>
+<area shape="poly" title=" " alt="" coords="433,236,398,209,357,184,327,172,329,167,359,179,401,204,436,232"/>
+<area shape="rect" href="class_lexer.html#a51977199e3e0b0846bad90622333da40" title=" " alt="" coords="187,295,338,321"/>
+<area shape="poly" title=" " alt="" coords="405,274,318,297,317,292,404,269"/>
+<area shape="poly" title=" " alt="" coords="404,246,317,223,318,218,405,241"/>
+<area shape="poly" title=" " alt="" coords="429,282,408,298,385,318,359,336,330,347,328,342,357,331,381,314,404,294,426,278"/>
+<area shape="poly" title=" " alt="" coords="447,286,412,337,387,364,359,386,333,399,306,407,305,401,331,394,357,382,384,360,408,334,443,283"/>
+<area shape="poly" title=" " alt="" coords="171,441,165,437,142,415,123,390,93,336,74,284,64,247,69,245,79,283,98,334,128,387,146,412,168,433,174,437"/>
+<area shape="poly" title=" " alt="" coords="176,77,168,82,133,115,105,153,71,219,66,217,101,150,129,111,165,78,173,73"/>
+<area shape="poly" title=" " alt="" coords="181,127,168,133,139,153,113,177,75,220,71,217,109,173,136,149,165,128,179,122"/>
+<area shape="poly" title=" " alt="" coords="188,177,168,184,89,221,87,216,166,179,187,172"/>
+<area shape="poly" title=" " alt="" coords="202,292,166,279,93,248,95,243,168,274,204,287"/>
+<area shape="poly" title=" " alt="" coords="183,219,119,228,119,222,182,214"/>
+<area shape="poly" title=" " alt="" coords="179,342,165,336,136,315,109,291,71,248,75,244,113,287,139,311,168,331,181,338"/>
+<area shape="poly" title=" " alt="" coords="203,404,165,386,129,353,101,314,66,247,71,245,105,311,133,349,168,382,206,399"/>
+<area shape="rect" href="main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="238,497,287,524"/>
+<area shape="poly" title=" " alt="" coords="391,513,287,513,287,508,391,508"/>
+<area shape="rect" href="build_8cpp.html#a5d2adbf158d596abdc2b780ae2604cff" title=" " alt="" coords="188,548,337,575"/>
+<area shape="poly" title=" " alt="" coords="392,531,318,550,317,545,390,526"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aa010f3e5af6717c09dd4ab7cbf703727" name="aa010f3e5af6717c09dd4ab7cbf703727"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa010f3e5af6717c09dd4ab7cbf703727">&#9670;&#160;</a></span>operator*()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_token.html">Token</a> Lexer::operator* </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_lexer_aa010f3e5af6717c09dd4ab7cbf703727_cgraph.png" border="0" usemap="#aclass_lexer_aa010f3e5af6717c09dd4ab7cbf703727_cgraph" alt=""/></div>
+<map name="aclass_lexer_aa010f3e5af6717c09dd4ab7cbf703727_cgraph" id="aclass_lexer_aa010f3e5af6717c09dd4ab7cbf703727_cgraph">
+<area shape="rect" title=" " alt="" coords="5,277,119,304"/>
+<area shape="rect" href="class_lexer.html#a2d03a1b0a7f8489eb6fc33c06068323d" title=" " alt="" coords="414,328,498,354"/>
+<area shape="poly" title=" " alt="" coords="114,302,167,313,291,328,399,336,399,341,291,334,166,318,113,307"/>
+<area shape="rect" href="class_lexer.html#a19d3c701df7e890bb78924e341c73a6d" title=" " alt="" coords="554,277,663,304"/>
+<area shape="poly" title=" " alt="" coords="62,276,71,234,88,178,102,148,119,119,140,93,165,72,211,44,254,23,295,9,336,3,377,5,418,15,462,33,508,60,532,80,552,104,581,159,598,215,607,262,602,262,593,217,576,161,548,107,528,84,505,65,459,38,417,20,376,10,336,9,297,15,256,28,213,49,168,77,144,97,123,122,107,150,93,180,76,236,68,277"/>
+<area shape="rect" href="class_lexer.html#a89bee08cdd814bbb98d60a8abbc16245" title=" " alt="" coords="167,125,358,152"/>
+<area shape="poly" title=" " alt="" coords="68,275,105,220,132,188,165,161,175,156,177,161,168,166,136,192,109,223,73,278"/>
+<area shape="rect" href="class_pos.html#a557be407d72755022e4c8eea8c4cb2f9" title=" " alt="" coords="406,74,506,101"/>
+<area shape="poly" title=" " alt="" coords="64,276,75,241,95,195,124,149,143,128,165,111,192,97,221,86,280,74,339,71,391,75,390,80,339,77,281,79,222,91,194,101,168,115,147,132,128,152,99,198,80,243,69,277"/>
+<area shape="rect" href="class_lexer.html#af9c9afc58bcc29c42c80fb9ec8302990" title=" " alt="" coords="183,480,342,506"/>
+<area shape="poly" title=" " alt="" coords="70,303,81,336,102,380,130,426,168,466,175,470,172,474,165,470,126,430,97,383,77,338,65,305"/>
+<area shape="rect" href="class_lexer.html#a7cac296497417d099f2d1baf98f3bee8" title=" " alt="" coords="194,530,330,557"/>
+<area shape="poly" title=" " alt="" coords="68,304,77,345,95,403,125,464,145,492,168,516,181,525,178,530,165,520,141,496,120,467,90,405,72,347,63,305"/>
+<area shape="rect" href="class_lexer.html#a3b5b7bfdea126bc29300c8916491adce" title=" " alt="" coords="189,176,336,202"/>
+<area shape="poly" title=" " alt="" coords="77,274,115,243,165,212,181,205,183,210,168,217,118,247,80,279"/>
+<area shape="rect" href="class_lexer.html#a51977199e3e0b0846bad90622333da40" title=" " alt="" coords="187,378,338,405"/>
+<area shape="poly" title=" " alt="" coords="82,302,121,329,168,357,199,370,197,375,165,362,118,334,79,306"/>
+<area shape="rect" href="class_lexer.html#a910a018a8094f0205af9bdb90d4a5ea7" title=" " alt="" coords="198,226,326,253"/>
+<area shape="poly" title=" " alt="" coords="117,274,191,255,193,260,119,279"/>
+<area shape="rect" href="class_lexer.html#ae73b6d7ea1be5a5fc8e39a15b823d0fe" title=" " alt="" coords="195,277,330,304"/>
+<area shape="poly" title=" " alt="" coords="119,288,179,288,179,293,119,293"/>
+<area shape="rect" href="class_lexer.html#a8d2585d70adce01584a505a25c3e179d" title=" " alt="" coords="220,429,305,456"/>
+<area shape="poly" title=" " alt="" coords="73,303,109,358,136,389,168,415,206,431,204,436,165,419,132,392,105,361,68,306"/>
+<area shape="poly" title=" " alt="" coords="498,325,551,307,553,312,499,330"/>
+<area shape="poly" title=" " alt="" coords="340,150,360,162,393,196,419,237,437,277,450,312,445,314,432,279,414,239,389,199,356,166,337,154"/>
+<area shape="poly" title=" " alt="" coords="331,150,417,174,463,191,508,212,548,238,583,265,579,269,545,242,505,217,461,196,416,179,330,155"/>
+<area shape="poly" title=" " alt="" coords="316,122,390,102,392,107,317,127"/>
+<area shape="poly" title=" " alt="" coords="334,477,357,465,383,444,406,418,439,367,443,370,410,421,387,447,359,470,337,482"/>
+<area shape="poly" title=" " alt="" coords="341,477,424,452,466,433,505,410,531,388,554,363,589,315,593,318,558,366,534,392,508,414,468,438,426,457,343,482"/>
+<area shape="poly" title=" " alt="" coords="330,531,356,516,389,483,414,443,432,403,445,368,450,370,437,405,419,445,393,486,360,520,332,535"/>
+<area shape="poly" title=" " alt="" coords="330,534,373,525,419,511,464,491,505,464,537,430,563,391,582,351,596,318,601,319,587,353,567,393,541,433,508,468,467,496,421,516,374,530,332,539"/>
+<area shape="poly" title=" " alt="" coords="337,200,359,212,387,235,410,261,443,312,439,315,406,264,383,238,357,217,334,205"/>
+<area shape="poly" title=" " alt="" coords="337,200,419,219,507,244,566,268,564,273,505,249,418,224,336,205"/>
+<area shape="poly" title=" " alt="" coords="316,375,399,353,400,358,317,380"/>
+<area shape="poly" title=" " alt="" coords="328,250,359,263,399,288,432,315,428,319,396,292,357,267,326,255"/>
+<area shape="poly" title=" " alt="" coords="328,244,507,269,539,275,538,280,506,274,327,250"/>
+<area shape="poly" title=" " alt="" coords="317,302,400,324,399,329,316,307"/>
+<area shape="poly" title=" " alt="" coords="330,288,539,288,539,293,330,293"/>
+<area shape="poly" title=" " alt="" coords="305,432,357,415,424,362,427,366,359,419,306,437"/>
+<area shape="poly" title=" " alt="" coords="305,432,399,407,453,388,505,364,545,339,579,312,583,316,548,343,508,369,455,393,401,412,306,437"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a8d2585d70adce01584a505a25c3e179d" name="a8d2585d70adce01584a505a25c3e179d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8d2585d70adce01584a505a25c3e179d">&#9670;&#160;</a></span>skip()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Lexer::skip </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_lexer_a8d2585d70adce01584a505a25c3e179d_cgraph.png" border="0" usemap="#aclass_lexer_a8d2585d70adce01584a505a25c3e179d_cgraph" alt=""/></div>
+<map name="aclass_lexer_a8d2585d70adce01584a505a25c3e179d_cgraph" id="aclass_lexer_a8d2585d70adce01584a505a25c3e179d_cgraph">
+<area shape="rect" title=" " alt="" coords="5,31,91,57"/>
+<area shape="rect" href="class_lexer.html#a2d03a1b0a7f8489eb6fc33c06068323d" title=" " alt="" coords="139,5,222,32"/>
+<area shape="poly" title=" " alt="" coords="91,33,123,27,124,32,92,38"/>
+<area shape="rect" href="class_lexer.html#a19d3c701df7e890bb78924e341c73a6d" title=" " alt="" coords="270,31,378,57"/>
+<area shape="poly" title=" " alt="" coords="91,41,254,41,254,47,91,47"/>
+<area shape="poly" title=" " alt="" coords="223,23,255,29,254,34,222,29"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_lexer_a8d2585d70adce01584a505a25c3e179d_icgraph.png" border="0" usemap="#aclass_lexer_a8d2585d70adce01584a505a25c3e179d_icgraph" alt=""/></div>
+<map name="aclass_lexer_a8d2585d70adce01584a505a25c3e179d_icgraph" id="aclass_lexer_a8d2585d70adce01584a505a25c3e179d_icgraph">
+<area shape="rect" title=" " alt="" coords="167,5,252,32"/>
+<area shape="rect" href="class_lexer.html#aa010f3e5af6717c09dd4ab7cbf703727" title=" " alt="" coords="5,5,119,32"/>
+<area shape="poly" title=" " alt="" coords="151,21,119,21,119,16,151,16"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a26712ee1e6617c2fead62c9f42117793" name="a26712ee1e6617c2fead62c9f42117793"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a26712ee1e6617c2fead62c9f42117793">&#9670;&#160;</a></span>tokenize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="token_8h.html#a5be25cc520cf8b50fdeb3aecdd7453df">TokenPtrs</a> Lexer::tokenize </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>text</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_lexer_a26712ee1e6617c2fead62c9f42117793_cgraph.png" border="0" usemap="#aclass_lexer_a26712ee1e6617c2fead62c9f42117793_cgraph" alt=""/></div>
+<map name="aclass_lexer_a26712ee1e6617c2fead62c9f42117793_cgraph" id="aclass_lexer_a26712ee1e6617c2fead62c9f42117793_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,116,32"/>
+<area shape="rect" href="class_lexer.html#a19d3c701df7e890bb78924e341c73a6d" title=" " alt="" coords="164,5,272,32"/>
+<area shape="poly" title=" " alt="" coords="116,16,148,16,148,21,116,21"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_lexer_a26712ee1e6617c2fead62c9f42117793_icgraph.png" border="0" usemap="#aclass_lexer_a26712ee1e6617c2fead62c9f42117793_icgraph" alt=""/></div>
+<map name="aclass_lexer_a26712ee1e6617c2fead62c9f42117793_icgraph" id="aclass_lexer_a26712ee1e6617c2fead62c9f42117793_icgraph">
+<area shape="rect" title=" " alt="" coords="203,31,313,57"/>
+<area shape="rect" href="main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="55,5,105,32"/>
+<area shape="poly" title=" " alt="" coords="187,37,105,25,105,19,188,31"/>
+<area shape="rect" href="build_8cpp.html#a5d2adbf158d596abdc2b780ae2604cff" title=" " alt="" coords="5,56,155,83"/>
+<area shape="poly" title=" " alt="" coords="187,57,155,61,155,56,187,51"/>
+</map>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a9ee7c272694e2cdd885c7ebe434ece6b" name="a9ee7c272694e2cdd885c7ebe434ece6b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ee7c272694e2cdd885c7ebe434ece6b">&#9670;&#160;</a></span>_pos</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_pos.html">Pos</a> Lexer::_pos</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afcec206caef45676e6aaa82035495b80" name="afcec206caef45676e6aaa82035495b80"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afcec206caef45676e6aaa82035495b80">&#9670;&#160;</a></span>_source</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::string Lexer::_source</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
+<li>src/lexer/<a class="el" href="lexer_8h_source.html">lexer.h</a></li>
+<li>src/lexer/<a class="el" href="lexer_8cpp.html">lexer.cpp</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="class_lexer.html">Lexer</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
+  </ul>
+</div>
+</body>
+</html>
