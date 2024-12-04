@@ -6,3 +6,4 @@ docs export-ignore
 docs/* export-ignore
 */docs/* export-ignore
 *.html linguist-language=c++
+/utils/ndf/cpp/docs/* linguist-detectable=false
