@@ -13,53 +13,62 @@
 # data: 2023/10/20 20:01
 # desc:
 # -------------------------<edocsitahw>----------------------------
-from jsonAst import AST, Program, Member, ObjectDef, readJson, SyncList
+import jsonAst as jast
+from _types import ProgramJson
+from json import dumps
 
 
-def modifyByJson(_ast: dict) -> str:
-    divDict = {}
+def findAllDecks(_ast: ProgramJson) -> list:
+    decks = set()
 
-    for s in _ast['statements']:
-        for m in s['members']:
-            if m['identifier']['name'] == 'PackList':
-                for p in m['expression']['pairs']:
-                    divDict[p['first']['value']] = p
+    ast = jast.Program(_ast)
 
-    _ast['statements'][0]['members'][7]['expression']['pairs'] = []
-
-    for i, p in enumerate(divDict.values(), 1):
-        p['second']['value'] = i
-        _ast['statements'][0]['members'][7]['expression']['pairs'].append(p)
-
-    _ast = Program(_ast)
-
-    return _ast.code()
-
-
-def modifyByAst(_ast: dict) -> str:
-    _ast = Program(_ast)
-
-    divDict = {}
-
-    for s in _ast.statements:
-        if isinstance(s, ObjectDef):
+    for s in ast.statements:
+        if isinstance(s, jast.ObjectDef):
             for m in s.members:
                 if m.identifier.name == 'PackList':
                     for p in m.expression.pairs:
-                        divDict[p.first.value] = p
+                        decks.add(p.first.value)
 
-    _ast.statements[0].members[7].expression.pairs = []
+    return list(decks)
 
-    for i, p in enumerate(divDict.values(), 1):
-        p.second.value = i
-        _ast.statements[0].members[7].expression.pairs.append(p)
 
-    return _ast.code()
+def findReleationOfDeckAndUnit(_ast: ProgramJson) -> dict:
+    relaDict = {}
+
+    ast = jast.Program(_ast)
+
+    for s in ast.statements:
+        key = None
+        if isinstance(s, jast.ObjectDef):
+            key = s.identifier.name
+            for m in s.members:
+                if m.identifier.name == 'Unit' and isinstance(m.expression, jast.Path):
+                    relaDict[key] = m.expression.value
+
+    return relaDict
 
 
 if __name__ == '__main__':
-    ast = readJson(r"..\Temp.json")
+    from ndfPyAPI import parseAST
 
-    prog = Program(ast)
+    # decks = list(map(lambda x: x.replace('~/', ''), findAllDecks(eval(parseAST(r"E:\codeSpace\codeSet\ndf\warnoMod\GameData\Generated\Gameplay\Decks\Divisions.ndf")))))
 
-    print(prog.code())
+    maps = findReleationOfDeckAndUnit(eval(parseAST(r"E:\codeSpace\codeSet\ndf\warnoMod\GameData\Generated\Gameplay\Decks\DivisionPacks.ndf")))
+
+    # with open('releationOfDeckAndUnit.json', 'w', encoding='utf-8') as file:
+    #     file.write(dumps(maps, indent=4))
+
+    # for deck in decks:
+    #     if deck not in maps:
+    #         print(f"deck {deck} not found in maps")
+
+    for v in maps.values():
+        node = jast.ObjectIns(identifier=jast.Identifier(name='TDeckUniteRule'), members=[
+            jast.Member(identifier=jast.Identifier(name='UnitDescriptor'), expression=jast.Path(value=v)),
+            jast.Member(identifier=jast.Identifier(name='AvailableWithoutTransport'), expression=jast.Boolen(value=True)),
+            jast.Member(identifier=jast.Identifier(name='NumberOfUnitInPack'), expression=jast.Integer(value=999)),
+            jast.Member(identifier=jast.Identifier(name='NumberOfUnitInPackXPMultiplier'), expression=jast.Vector(expressions=[jast.Integer(value=1)] * 4))
+        ])
+
+        print(node.code())

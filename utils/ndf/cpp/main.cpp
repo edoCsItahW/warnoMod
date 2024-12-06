@@ -16,15 +16,10 @@
 #include "confunc.h"
 #include "src\lexer\tokenProc.h"
 #include "src\parser\parser.h"
-#include <codecvt>
+#include "src\expection.h"
 #include <fstream>
 #include <iostream>
-#include <locale>
-
-std::string wstr2str(const std::wstring& wstr) {
-    std::wstring_convert<std::codecvt_utf8<wchar_t>> conv;
-    return conv.to_bytes(wstr);
-}
+#include <filesystem>
 
 
 int writeToFile(const std::string& text, const std::string& path) {
@@ -43,9 +38,30 @@ int writeToFile(const std::string& text, const std::string& path) {
 }
 
 
-int main() {
-//    auto text = std::get<std::string>(os::readFile(R"(..\..\..\..\GameData\Generated\Gameplay\Decks\Divisions.ndf)", os::Type::UTF8));
-    auto text = std::get<std::string>(os::readFile(R"(..\..\..\..\CommonData\Gameplay\Unit\TemplateDescriptorFireAndSmoke.ndf)", os::Type::UTF8));
+int main(int argc, char* argv[]) {
+
+    // -t=--target 目标文件路径(必选参数)
+    // -o=--output 输出文件路径(可选参数)
+    // -d=--debug 调试模式(可选参数)
+
+//    std::string target;
+//    std::string output;
+//    bool debug = false;
+//
+//    for (int i = 1; i < argc; i++) {
+//        std::string arg = argv[i];
+//        if (arg == "-t" || arg == "--target")
+//            target = argv[++i];
+//        else if (arg == "-o" || arg == "--output")
+//            output = argv[++i];
+//        else if (arg == "-d" || arg == "--debug")
+//            debug = true;
+//    }
+//
+//    if (target.empty())
+//        throw ArgumentError("Target file is not specified.");
+
+    auto text = std::get<std::string>(os::readFile(R"(.\CommonData\Gameplay\Unit\TemplateDescriptorFireAndSmoke.ndf)", os::Type::UTF8, R"(E:\codeSpace\codeSet\ndf\warnoMod)"));
 
     auto tokens = TokenProcessor::process(Lexer::tokenize(text));
 

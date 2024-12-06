@@ -1,6 +1,0 @@
-GameData:/Gameplay/Unit/Names/UNITNAMES_ALLMUTIL.csv
-GameData:/Localisation/mymod/COMPANIES.csv
-GameData:/Localisation/mymod/INTERFACE_INGAME.csv
-GameData:/Localisation/mymod/INTERFACE_OUTGAME.csv
-GameData:/Localisation/mymod/PLATOONS.csv
-GameData:/Localisation/mymod/UNITS.csv

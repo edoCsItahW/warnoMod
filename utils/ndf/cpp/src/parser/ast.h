@@ -587,8 +587,6 @@ namespace ast {
         const char *nodeName = "GUID";
         std::string value;
 
-        explicit GUID(std::string value);
-
         [[nodiscard]] std::string toJson() const override;
 
         [[nodiscard]] std::string toString() const override;
@@ -616,8 +614,6 @@ namespace ast {
     struct Path : public Literal {
         const char *nodeName = "Path";
         std::string value;
-
-        explicit Path(std::string value);
 
         [[nodiscard]] std::string toJson() const override;
 
@@ -873,8 +869,6 @@ namespace ast {
         const char *nodeName = "Identifier";
         std::string name;
 
-        explicit Identifier(std::string name);
-
         [[nodiscard]] std::string toJson() const override;
 
         [[nodiscard]] std::string toString() const override;
@@ -905,9 +899,6 @@ namespace ast {
         std::shared_ptr<Operator> operator_;
         std::shared_ptr<Expression> right;
 
-        explicit Operation(std::shared_ptr<Expression> left, std::shared_ptr<Operator> operator_,
-                           std::shared_ptr<Expression> right);
-
         [[nodiscard]] std::string toJson() const override;
 
         [[nodiscard]] std::string toString() const override;
@@ -935,8 +926,6 @@ namespace ast {
     struct Operator : public Expression {
         const char *nodeName = "Operator";
         std::string value;
-
-        explicit Operator(std::string value);
 
         [[nodiscard]] std::string toJson() const override;
 

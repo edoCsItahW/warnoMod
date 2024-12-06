@@ -14,6 +14,39 @@
 # desc:
 # -------------------------<edocsitahw>----------------------------
 
+
+__all__ = [
+    'AST',
+    'Program',
+    'Statement',
+    'Expression',
+    'Literal',
+    'Identifier',
+    'ObjectDef',
+    'Member',
+    'Pair',
+    'Vector',
+    'MapRef',
+    'ObjectIns',
+    'TemplateRef',
+    'TemplateDef',
+    'TemplateParam',
+    'Operator',
+    'Operation',
+    'Boolen',
+    'Integer',
+    'Float',
+    'String',
+    'Nil',
+    'EnumRef',
+    'Assignment',
+    'GUID',
+    'Parameter',
+    'Export',
+    'ObjectRef'
+]
+
+
 from json import loads
 from typing import Literal as TLiteral, Self, final, Type, Callable, List, ForwardRef, Any, overload, Iterable, NoReturn
 from abc import ABC, abstractmethod
@@ -120,14 +153,11 @@ class AST(ABC):
         if len(args) == 1 and isinstance(args[0], dict):
             self.__dict__['_orgData'] = self._orgData = args[0]
         elif len(kwargs) > 0:
-            if any(not isinstance(v, AST) for v in kwargs.values()):
-                raise TypeError(
-                    f"All values in the keyword arguments must be instances of 'AST' but got {kwargs}.")
-            else:
-                self.__dict__['_orgData'] = self._orgData = {}
-                for k, v in kwargs.items():
-                    setattr(self, k, v)
-                    self._orgData[k] = v.data
+            self.__dict__['_orgData'] = self._orgData = {}
+            for k, v in kwargs.items():
+                setattr(self, k, v)
+                self._orgData[k] = v.data if isinstance(v, AST) else v
+            self._orgData['nodeName'] = self.__class__.__name__
         else:
             raise TypeError(
                 "Either a json data or keyword arguments must be provided.")
@@ -136,7 +166,9 @@ class AST(ABC):
 
     @final
     def __getitem__(self, item: str) -> Self | list[Self]:
-        return self.parse(item)
+        if item in (v := self.__dict__['_orgData']):
+            return self.parse(item)
+        return getattr(self, item)
 
     @final
     def __getattr__(self, item: str) -> Self | list[Self]:
@@ -205,8 +237,8 @@ class AST(ABC):
                     res.indent = self._indent()
                 return res  # {nodeName: 'Identifier', name: 'foo'}
 
-        elif key in dir(self):
-            return getattr(self, key)
+        elif key in (v := self.__dict__['_orgData']):
+            return v[key]
 
         else:
             raise AttributeError(

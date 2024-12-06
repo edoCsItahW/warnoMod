@@ -14,6 +14,7 @@
  * */
 
 #include <utility>
+#include <confunc.h>
 
 #include "../src/lexer/tokenProc.h"
 #include "../src/parser/ast.h"
@@ -175,141 +176,16 @@ PYBIND11_MODULE(ndfPyAPI, m) {
 
     // ------------------------------- AST ----------------------------------
 
-    py::class_<ast::AST>(m, "AST");
 
-    py::class_<ast::Program>(m, "Program")
-        .def_readwrite("indent", &ast::Program::indent, "Indent of the program")
-        .def_readwrite("statements", &ast::Program::statements, "Get the statements of the program")
-        .def_readonly("parent", &ast::Program::parent, "Get the parent of the program")
-        .def_readonly("children", &ast::Program::children, "Get the children of the program");
+    m.def("parseAST", [](const std::string& target, const std::string& cwd = ".") {
+        auto text = std::get<std::string>(os::readFile(target, os::Type::UTF8, cwd));
 
-    py::class_<ast::Statement>(m, "Statement")
-        .def_readwrite("indent", &ast::Statement::indent, "Indent of the statement");
-
-    py::class_<ast::Assignment>(m, "Assignment")
-        .def_readwrite("indent", &ast::Assignment::indent, "Indent of the assignment")
-        .def_readwrite("identifier", &ast::Assignment::identifier, "Get the identifier of the assignment")
-        .def_readwrite("expression", &ast::Assignment::expression, "Get the expression of the assignment");
-
-    py::class_<ast::ObjectDef>(m, "ObjectDef")
-        .def_readwrite("indent", &ast::ObjectDef::indent, "Indent of the object definition")
-        .def_readwrite("identifier", &ast::ObjectDef::identifier, "Get the identifier of the object definition")
-        .def_readwrite("type", &ast::ObjectDef::type, "Get the type of the object definition")
-        .def_readwrite("members", &ast::ObjectDef::memberList, "Get the member list of the object definition");
-
-    py::class_<ast::MapDef>(m, "MapDef")
-        .def_readwrite("indent", &ast::MapDef::indent, "Indent of the map definition")
-        .def_readwrite("pairs", &ast::MapDef::pairList, "Get the pairs of the map definition");
-
-    py::class_<ast::TemplateDef>(m, "TemplateDef")
-        .def_readwrite("indent", &ast::TemplateDef::indent, "Indent of the template definition")
-        .def_readwrite("identifier", &ast::TemplateDef::identifier, "Get the identifier of the template definition")
-        .def_readwrite("type", &ast::TemplateDef::type, "Get the type of the template definition")
-        .def_readwrite("members", &ast::TemplateDef::memberList, "Get the member list of the template definition");
-
-    py::class_<ast::Export>(m, "Export")
-        .def_readwrite("indent", &ast::Export::indent, "Indent of the export")
-        .def_readwrite("statement", &ast::Export::statement, "Get the statement of the export");
-
-    py::class_<ast::Parameter>(m, "Parameter")
-        .def_readwrite("indent", &ast::Parameter::indent, "Indent of the parameter")
-        .def_readwrite("identifier", &ast::Parameter::identifier, "Get the identifier of the parameter")
-        .def_readwrite("type", &ast::Parameter::type, "Get the type of the parameter")
-        .def_readwrite("expression", &ast::Parameter::expression, "Get the expression of the parameter");
-
-    py::class_<ast::Member>(m, "Member")
-        .def_readwrite("indent", &ast::Member::indent, "Indent of the member")
-        .def_readwrite("identifier", &ast::Member::identifier, "Get the identifier of the member")
-        .def_readwrite("expression", &ast::Member::expression, "Get the expression of the member");
-
-    py::class_<ast::Expression>(m, "Expression")
-        .def_readwrite("indent", &ast::Expression::indent, "Indent of the expression");
-
-    py::class_<ast::Literal>(m, "Literal")
-        .def_readwrite("indent", &ast::Literal::indent, "Indent of the literal");
-
-    py::class_<ast::GUID>(m, "Guid")
-        .def_readwrite("indent", &ast::GUID::indent, "Indent of the GUID")
-        .def_readwrite("value", &ast::GUID::value, "Get the value of the GUID");
-
-    py::class_<ast::Path>(m, "Path")
-        .def_readwrite("indent", &ast::Path::indent, "Indent of the path")
-        .def_readwrite("value", &ast::Path::value, "Get the value of the path");
-
-    py::class_<ast::Pair>(m, "Pair")
-        .def_readwrite("indent", &ast::Pair::indent, "Indent of the pair")
-        .def_readwrite("first", &ast::Pair::first, "Get the first element of the pair")
-        .def_readwrite("second", &ast::Pair::second, "Get the second element of the pair");
-
-    py::class_<ast::Boolean>(m, "Boolean")
-        .def_readwrite("indent", &ast::Boolean::indent, "Indent of the boolean")
-        .def_readwrite("value", &ast::Boolean::value, "Get the value of the boolean");
-
-    py::class_<ast::String>(m, "String")
-        .def_readwrite("indent", &ast::String::indent, "Indent of the string")
-        .def_readwrite("value", &ast::String::value, "Get the value of the string");
-
-    py::class_<ast::Integer>(m, "Integer")
-        .def_readwrite("indent", &ast::Integer::indent, "Indent of the integer")
-        .def_readwrite("value", &ast::Integer::value, "Get the value of the integer");
-
-    py::class_<ast::Float>(m, "Float")
-        .def_readwrite("indent", &ast::Float::indent, "Indent of the float")
-        .def_readwrite("value", &ast::Float::value, "Get the value of the float");
-
-    py::class_<ast::Nil>(m, "Nil")
-        .def_readwrite("indent", &ast::Nil::indent, "Indent of the nil");
-
-    py::class_<ast::TemplateParam>(m, "TemplateParam")
-        .def_readwrite("indent", &ast::TemplateParam::indent, "Indent of the template parameter")
-        .def_readwrite("identifier", &ast::TemplateParam::identifier, "Get the identifier of the template parameter");
-
-    py::class_<ast::Vector>(m, "Vector")
-        .def_readwrite("indent", &ast::Vector::indent, "Indent of the vector")
-        .def_readwrite("expressions", &ast::Vector::expressionList, "Get the expressions of the vector");
-
-    py::class_<ast::Identifier>(m, "Identifier")
-        .def_readwrite("indent", &ast::Identifier::indent, "Indent of the identifier")
-        .def_readwrite("name", &ast::Identifier::name, "Get the name of the identifier");
-
-    py::class_<ast::Operation>(m, "Operation")
-        .def_readwrite("indent", &ast::Operation::indent, "Indent of the operation")
-        .def_readwrite("left", &ast::Operation::left, "Get the left operand of the operation")
-        .def_readwrite("operator", &ast::Operation::operator_, "Get the operator of the operation")
-        .def_readwrite("right", &ast::Operation::right, "Get the right operand of the operation");
-
-    py::class_<ast::Operator>(m, "Operator")
-        .def_readwrite("indent", &ast::Operator::indent, "Indent of the operator")
-        .def_readwrite("value", &ast::Operator::value, "Get the value of the operator");
-
-    py::class_<ast::ObjectRef>(m, "ObjectRef")
-        .def_readwrite("indent", &ast::ObjectRef::indent, "Indent of the object reference")
-        .def_readwrite("identifier", &ast::ObjectRef::identifier, "Get the identifier of the object reference");
-
-    py::class_<ast::ObjectIns>(m, "ObjectIns")
-        .def_readwrite("indent", &ast::ObjectIns::indent, "Indent of the object instantiation")
-        .def_readwrite("identifier", &ast::ObjectIns::identifier, "Get the identifier of the object instantiation")
-        .def_readwrite("members", &ast::ObjectIns::memberList, "Get the member list of the object instantiation");
-
-    py::class_<ast::MapRef>(m, "MapRef")
-        .def_readwrite("indent", &ast::MapRef::indent, "Indent of the map reference")
-        .def_readwrite("pairs", &ast::MapRef::pairList, "Get the pairs of the map reference");
-
-    py::class_<ast::EnumRef>(m, "EnumRef")
-        .def_readwrite("indent", &ast::EnumRef::indent, "Indent of the enum reference")
-        .def_readwrite("enumName", &ast::EnumRef::enumName, "Get the name of the enum reference")
-        .def_readwrite("enumValue", &ast::EnumRef::enumValue, "Get the value of the enum reference");
-
-    py::class_<ast::TemplateRef>(m, "TemplateRef")
-        .def_readwrite("indent", &ast::TemplateRef::indent, "Indent of the template reference")
-        .def_readwrite("identifier", &ast::TemplateRef::identifier, "Get the identifier of the template reference");
-
-    py::class_<Parser>(m, "Parser")
-        .def(py::init<TokenPtrs>(), "Constructor of Parser class", py::arg("tokens"))
-        .def("parse", &Parser::parse, "Parse the token list and return the AST", py::arg("debug"));
-
-    m.def("parse", [](const std::string& text) -> std::shared_ptr<ast::Program> {
         auto tokens = TokenProcessor::process(Lexer::tokenize(text));
-        return Parser(tokens).parse();
-    }, "Parse the text and return the AST", py::arg("text"));
+
+        auto parser = Parser(tokens);
+
+        auto result = parser.parse();
+
+        return result->toJson();
+    }, "Parse the NDF code and return the AST in JSON format", py::arg("target"), py::arg("cwd") = ".");
 }

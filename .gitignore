@@ -4,12 +4,16 @@ __pycache__/
 */.idea/
 cmake-build-debug/
 */cmake-build-debug/
+cmake-build-dmingw/
+*/cmake-build-dmingw/
+cmake-build-dmsvc/
+*/cmake-build-dmsvc/
 build/
 ./build/
 
-GameData_backup/
-*/GameData_backup/
 CommonData_backup/
 */CommonData_backup/
+GameData_backup/
+*/GameData_backup/
 Gen/
 */Gen/

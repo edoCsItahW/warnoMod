@@ -311,21 +311,4 @@ namespace ast {
     std::string TemplateParam::toJson() const {
         return std::format(R"({{"nodeName": "TemplateParam", "identifier": {}}})", identifier->toJson());
     }
-
-    Identifier::Identifier(std::string name)
-            : name(std::move(name)) {}
-
-    Operator::Operator(std::string value)
-            : value(std::move(value)) {}
-
-    Operation::Operation(std::shared_ptr<Expression> left, std::shared_ptr<Operator> operator_,
-                         std::shared_ptr<Expression> right)
-            : left(std::move(left)), operator_(std::move(operator_)), right(std::move(right)) {}
-
-    GUID::GUID(std::string value)
-            : value(std::move(value)) {}
-
-    Path::Path(std::string value)
-            : value(std::move(value)) {}
-
 }  // namespace ast

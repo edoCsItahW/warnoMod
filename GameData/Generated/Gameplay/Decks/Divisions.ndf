@@ -15,7 +15,7 @@ Descriptor_Deck_Division_All_multi is TDeckDivisionDescriptor (
     DivisionCoalition = ECoalition/Allied
     DivisionTags = ['DEFAULT', 'US', 'Allied', 'armored', 'DC_PWR1']
     DescriptionHintTitleToken = 'ALLMULTI'
-    PackList = MAP  // 至59
+    PackList = MAP
     [
         (~/Descriptor_Deck_Pack_FOB_US, 1),
         (~/Descriptor_Deck_Pack_M113A2_supply_US, 2),

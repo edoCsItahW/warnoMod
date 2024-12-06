@@ -136,6 +136,34 @@
  * */
 #define RuntimeError(msg) RAISE(msg, "RuntimeError")
 
+/** @def ArgumentError
+ *
+ * @if zh
+ * @brief 参数错误异常, 与@ref SyntaxError 类似.
+ *
+ * @else
+ * @brief Argument error exception, similar to @ref SyntaxError.
+ *
+ * @endif
+ *
+ * @see SyntaxError
+ * */
+#define ArgumentError(msg) RAISE(msg, "ArgumentError")
+
+/** @def KeyError
+ *
+ * @if zh
+ * @brief 键错误异常, 与@ref SyntaxError 类似.
+ *
+ * @else
+ * @brief Key error exception, similar to @ref SyntaxError.
+ *
+ * @endif
+ *
+ * @see SyntaxError
+ * */
+#define KeyError(msg) RAISE(msg, "KeyError")
+
 /** @} */
 
 struct ExpKwargs {

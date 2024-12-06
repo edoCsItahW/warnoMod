@@ -17,11 +17,12 @@
 #include "debuger.h"
 #include <algorithm>  // mscv编译所需
 
-void debug(const std::string& msg, const TokenPtr& token) { std::cout << token->toString() << " -- " << msg << std::endl; }
+void debug(const std::string &msg, const TokenPtr &token) {
+    std::cout << token->toString() << " -- " << msg << std::endl;
+}
 
 Parser::Parser(TokenPtrs tokens)
-    : _tokens(std::move(tokens))
-    , _idx(0) {}
+        : _tokens(std::move(tokens)), _idx(0) {}
 
 TokenPtr Parser::curr() const {
     if (_idx < _tokens.size()) return _tokens[_idx];
@@ -34,16 +35,20 @@ void Parser::skip() {
     while (inScope() && (curr()->type == TokenType::NEWLINE || curr()->type == TokenType::COMMENT)) _idx++;
 }
 
-TokenPtr Parser::expect(TokenType type, bool skipNewLine, const std::source_location& loc) {
+TokenPtr Parser::expect(TokenType type, bool skipNewLine, const std::source_location &loc) {
     if (skipNewLine && type != TokenType::NEWLINE) skip();
 
     if (inScope() && curr()->type == type) return _tokens[_idx++];
-    else throw SyntaxError(std::format("Expected [{}] but got '{}' line {} in <{}>", enumToStr(type), curr()->toString(), loc.line(), loc.function_name()));
+    else
+        throw SyntaxError(std::format("Expected [{}] but got '{}' line {} in <{}>", enumToStr(type), curr()->toString(),
+                                      loc.line(), loc.function_name()));
 }
 
-bool Parser::fromUntilExpect(std::variant<int, size_t> _start, std::variant<int, size_t> _end, TokenType type, const FUEKwargs& kwargs) {
-    int start = std::holds_alternative<int>(_start) ? std::get<int>(_start) : static_cast<int>(std::get<size_t>(_start));
-    int end   = std::holds_alternative<int>(_end) ? std::get<int>(_end) : static_cast<int>(std::get<size_t>(_end));
+bool Parser::fromUntilExpect(std::variant<int, size_t> _start, std::variant<int, size_t> _end, TokenType type,
+                             const FUEKwargs &kwargs) {
+    int start = std::holds_alternative<int>(_start) ? std::get<int>(_start) : static_cast<int>(std::get<size_t>(
+            _start));
+    int end = std::holds_alternative<int>(_end) ? std::get<int>(_end) : static_cast<int>(std::get<size_t>(_end));
 
     for (int i = start; i < end; i++) {
         if (kwargs.debug) std::cout << "check: " << _tokens[i]->toString() << std::endl;
@@ -56,7 +61,9 @@ bool Parser::fromUntilExpect(std::variant<int, size_t> _start, std::variant<int,
 }
 
 TokenPtr Parser::expect(std::initializer_list<TokenType> types) {
-    if (inScope() && std::any_of(types.begin(), types.end(), [this](TokenType type) { return curr()->type == type; })) return std::move(_tokens[_idx++]);
+    if (inScope() &&
+        std::any_of(types.begin(), types.end(), [this](TokenType type) { return curr()->type == type; }))
+        return std::move(_tokens[_idx++]);
     else throw SyntaxError(curr()->toString());
 }
 
@@ -97,23 +104,29 @@ std::shared_ptr<ast::Statement> Parser::parseStatement() {
                 if (_tokens[_idx + 2]->type == TokenType::IDENTIFIER) {
                     // 由于这里可以换行,会出现NEWLINE,所以_tokens[_idx + 3]不一定是LPAREN.需要向下检测,直到遇到RPAREN,
                     // 并且要求在找到RPAREN之前只能出现NEWLINE,因为排除<Template_def>的情况,IDENTIFIER is <Token>只有Assignment或者ObjectDef两种情况,所以其余我们抛出SyntaxError
-                    if (fromUntilExpect(_idx + 3, _tokens.size(), TokenType::LPAREN, {.firstStop = true})) return dbgParseObjDef(this);
+                    if (fromUntilExpect(_idx + 3, _tokens.size(), TokenType::LPAREN, {.firstStop = true}))
+                        return dbgParseObjDef(this);
                     else return dbgParseAssign(this);
-                }
-                else return dbgParseAssign(this);
+                } else return dbgParseAssign(this);
 
             else {
-                warn(std::format("Unexpected token: '{}' line {} in {}", enumToStr(curr()->type), __LINE__, __func__), SyntaxWarning);
+                warn(std::format("Unexpected token: '{}' line {} in {}", enumToStr(curr()->type), __LINE__, __func__),
+                     SyntaxWarning);
                 return nullptr;
             }
         }
-        case TokenType::KW_EXPORT: return dbgParseExport(this);
+        case TokenType::KW_EXPORT:
+            return dbgParseExport(this);
 
-        case TokenType::KW_MAP: return dbgParseMapDef(this);
+        case TokenType::KW_MAP:
+            return dbgParseMapDef(this);
 
-        case TokenType::KW_TEMPLATE: return dbgParseTempDef(this);
+        case TokenType::KW_TEMPLATE:
+            return dbgParseTempDef(this);
 
-        default: throw SyntaxError(std::format("Unexpected token: '{}' line {} in {}", curr()->toString(), __LINE__, __func__));
+        default:
+            throw SyntaxError(
+                    std::format("Unexpected token: '{}' line {} in {}", curr()->toString(), __LINE__, __func__));
     }
 }
 
@@ -124,7 +137,9 @@ std::shared_ptr<ast::Assignment> Parser::parseAssignment() {
 
     auto assign = std::make_shared<ast::Assignment>();
 
-    assign->identifier = std::make_shared<ast::Identifier>(expect(TokenType::IDENTIFIER)->value);
+    assign->identifier = std::make_shared<ast::Identifier>();
+
+    assign->identifier->name = expect(TokenType::IDENTIFIER)->value;
 
     expect(TokenType::KW_IS);
 
@@ -140,11 +155,15 @@ std::shared_ptr<ast::ObjectDef> Parser::parseObjectDef() {
 
     auto obj = std::make_shared<ast::ObjectDef>();
 
-    obj->identifier = std::make_shared<ast::Identifier>(expect(TokenType::IDENTIFIER)->value);
+    obj->identifier = std::make_shared<ast::Identifier>();
+
+    obj->identifier->name = expect(TokenType::IDENTIFIER)->value;
 
     expect(TokenType::KW_IS);
 
-    obj->type = std::make_shared<ast::Identifier>(expect(TokenType::IDENTIFIER)->value);
+    obj->type = std::make_shared<ast::Identifier>();
+
+    obj->type->name = expect(TokenType::IDENTIFIER)->value;
 
     expect(TokenType::LPAREN);
 
@@ -188,7 +207,9 @@ std::shared_ptr<ast::TemplateDef> Parser::parseTemplateDef() {
 
     expect(TokenType::KW_TEMPLATE);
 
-    temp->identifier = std::make_shared<ast::Identifier>(expect(TokenType::IDENTIFIER)->value);
+    temp->identifier = std::make_shared<ast::Identifier>();
+
+    temp->identifier->name = expect(TokenType::IDENTIFIER)->value;
 
     expect(TokenType::LBRACKET);
 
@@ -203,7 +224,9 @@ std::shared_ptr<ast::TemplateDef> Parser::parseTemplateDef() {
 
     expect(TokenType::KW_IS);
 
-    temp->type = std::make_shared<ast::Identifier>(expect(TokenType::IDENTIFIER)->value);
+    temp->type = std::make_shared<ast::Identifier>();
+
+    temp->type->name = expect(TokenType::IDENTIFIER)->value;
 
     expect(TokenType::LPAREN);
 
@@ -254,13 +277,14 @@ std::shared_ptr<ast::Expression> Parser::parsePrimaryExpression() {
     else if (curr()->type == TokenType::KW_MAP) return dbgParseMapRef(this);
     else if (curr()->type == TokenType::KW_TEMPLATE) return dbgParseTempRef(this);
     else if (curr()->super == TokenType::LITERAL
-            || curr()->super == TokenType::NUMBER
-            || curr()->type == TokenType::STRING
-            || curr()->type == TokenType::LBRACKET)
+             || curr()->super == TokenType::NUMBER
+             || curr()->type == TokenType::STRING
+             || curr()->type == TokenType::LBRACKET)
         return dbgParseLiteral(this);
     else if (curr()->type == TokenType::IDENTIFIER)
         if (_tokens[_idx + 1]->type == TokenType::DIV) return dbgParseEnumRef(this);
-        else if (fromUntilExpect(_idx + 1, _tokens.size(), TokenType::LPAREN, {.firstStop = true})) return dbgParseObjIns(this);
+        else if (fromUntilExpect(_idx + 1, _tokens.size(), TokenType::LPAREN, {.firstStop = true}))
+            return dbgParseObjIns(this);
         else return dbgParseIdentifier(this);
     else if (curr()->type == TokenType::DOLLAR) return dbgParseObjRef(this);
     else if (curr()->type == TokenType::PATH) return dbgParsePath(this);
@@ -281,13 +305,11 @@ std::shared_ptr<ast::Expression> Parser::parseExprInParenthese() {
         if (_tokens[i]->type == TokenType::LPAREN) {  // 遇到左括号,入栈
             loyout++;
             stack.push(_tokens[i]);
-        }
-        else if (_tokens[i]->type == TokenType::RPAREN) {  // 遇到右括号,出栈
+        } else if (_tokens[i]->type == TokenType::RPAREN) {  // 遇到右括号,出栈
             stack.pop();
             loyout--;
             if (stack.empty()) break;  // 栈为空,说明括号已经匹配完毕(由于是部分遍历,将栈空的情况视为正常的括号一一对应完毕)
-        }
-        else if (_tokens[i]->type == TokenType::COMMA && loyout == 1) commaNum++;
+        } else if (_tokens[i]->type == TokenType::COMMA && loyout == 1) commaNum++;
 
     if (commaNum == 1) return dbgParsePair(this);
     else return dbgParseExpr(this);
@@ -320,9 +342,10 @@ std::shared_ptr<ast::Literal> Parser::parseLiteral() {
     else if (curr()->super == TokenType::NUMBER) {
         if (curr()->type == TokenType::INT) return dbgParseInteger(this);
         else if (curr()->type == TokenType::FLOAT) return dbgParseFloat(this);
-        else throw SyntaxError(std::format("Unexpected token: '{}' line {} in {}", curr()->toString(), __LINE__, __func__));
-    }
-    else if (curr()->type == TokenType::LBRACKET) return dbgParseVector(this);
+        else
+            throw SyntaxError(
+                    std::format("Unexpected token: '{}' line {} in {}", curr()->toString(), __LINE__, __func__));
+    } else if (curr()->type == TokenType::LBRACKET) return dbgParseVector(this);
     else if (curr()->type == TokenType::LPAREN) return dbgParsePair(this);
     else throw SyntaxError(std::format("Unexpected token: '{}' line {} in {}", curr()->toString(), __LINE__, __func__));
 }
@@ -335,7 +358,9 @@ std::shared_ptr<ast::TemplateParam> Parser::parseTemplateParam() {
 
     expect(TokenType::LT);
 
-    param->identifier = std::make_shared<ast::Identifier>(expect(TokenType::IDENTIFIER)->value);
+    param->identifier = std::make_shared<ast::Identifier>();
+
+    param->identifier->name = expect(TokenType::IDENTIFIER)->value;
 
     expect(TokenType::GT);
 
@@ -350,11 +375,16 @@ std::shared_ptr<ast::Expression> Parser::parseOperation(int precedence) {
 
     auto left = dbgParsePrimaryExpr(this);
     while (inScope() && curr()->super == TokenType::OPERATOR && precedence < getPrecedence(curr()->type)) {
-        auto op = std::make_shared<ast::Operator>(curr()->value);
+        auto op = std::make_shared<ast::Operator>();
+        op->value = curr()->value;
         _idx++;
         auto right = dbgParseOperation(this, getPrecedence(curr()->type));
 
-        auto opt = std::make_shared<ast::Operation>(left, op, right);
+        auto opt = std::make_shared<ast::Operation>();
+
+        opt->left = left;
+        opt->right = right;
+        opt->operator_ = op;
 
         left = opt;
     }
@@ -388,11 +418,15 @@ std::shared_ptr<ast::Parameter> Parser::parseParameter() {
 
     auto param = std::make_shared<ast::Parameter>();
 
-    param->identifier = std::make_shared<ast::Identifier>(expect(TokenType::IDENTIFIER)->value);
+    param->identifier = std::make_shared<ast::Identifier>();
+
+    param->identifier->name = expect(TokenType::IDENTIFIER)->value;
 
     if (inScope() && curr()->type == TokenType::COLON) {
         expect(TokenType::COLON);
-        param->type = std::make_shared<ast::Identifier>(expect(TokenType::IDENTIFIER)->value);
+        param->type = std::make_shared<ast::Identifier>();
+
+        param->type->name = expect(TokenType::IDENTIFIER)->value;
     }
 
     if (inScope() && curr()->type == TokenType::ASSIGN) {
@@ -410,7 +444,9 @@ std::shared_ptr<ast::Member> Parser::parseMember() {
 
     auto member = std::make_shared<ast::Member>();
 
-    member->identifier = std::make_shared<ast::Identifier>(expect(TokenType::IDENTIFIER)->value);
+    member->identifier = std::make_shared<ast::Identifier>();
+
+    member->identifier->name = expect(TokenType::IDENTIFIER)->value;
 
     expect(TokenType::ASSIGN);
 
@@ -485,7 +521,12 @@ std::shared_ptr<ast::Vector> Parser::parseVector() {
 std::shared_ptr<ast::Identifier> Parser::parseIdentifier() {
     if (_debug) debug("ParseIdentifier", curr());
     // <identifier> ::= <letter> (<letter> | <digit>)*
-    return std::make_shared<ast::Identifier>(expect(TokenType::IDENTIFIER)->value);
+
+    auto identifier = std::make_shared<ast::Identifier>();
+
+    identifier->name = expect(TokenType::IDENTIFIER)->value;
+
+    return identifier;
 }
 
 std::shared_ptr<ast::ObjectRef> Parser::parseObjectRef() {
@@ -497,7 +538,9 @@ std::shared_ptr<ast::ObjectRef> Parser::parseObjectRef() {
 
     expect(TokenType::DIV);
 
-    obj_ref->identifier = std::make_shared<ast::Identifier>(expect(TokenType::IDENTIFIER)->value);
+    obj_ref->identifier = std::make_shared<ast::Identifier>();
+
+    obj_ref->identifier->name = expect(TokenType::IDENTIFIER)->value;
 
     return obj_ref;
 }
@@ -534,7 +577,9 @@ std::shared_ptr<ast::TemplateRef> Parser::parseTemplateRef() {
 
     expect(TokenType::KW_TEMPLATE);
 
-    temp_ref->identifier = std::make_shared<ast::Identifier>(expect(TokenType::IDENTIFIER)->value);
+    temp_ref->identifier = std::make_shared<ast::Identifier>();
+
+    temp_ref->identifier->name = expect(TokenType::IDENTIFIER)->value;
 
     return temp_ref;
 }
@@ -542,13 +587,19 @@ std::shared_ptr<ast::TemplateRef> Parser::parseTemplateRef() {
 std::shared_ptr<ast::GUID> Parser::parseGuid() {
     if (_debug) debug("ParseGuid", curr());
     // <guid> ::= <hex_digit>+
-    return std::make_shared<ast::GUID>(expect(TokenType::GUID)->value);
+    auto guid = std::make_shared<ast::GUID>();
+
+    guid->value = expect(TokenType::GUID)->value;
+    return guid;
 }
 
 std::shared_ptr<ast::Path> Parser::parsePath() {
     if (_debug) debug("ParsePath", curr());
     // <path> ::= "$" "/" <identifier> ("/" <identifier>)* | "~" "/" <identifier> ("/" <identifier>)* | "." "/" <identifier> ("/" <identifier>)*
-    return std::make_shared<ast::Path>(expect(TokenType::PATH)->value);
+    auto path = std::make_shared<ast::Path>();
+
+    path->value = expect(TokenType::PATH)->value;
+    return path;
 }
 
 std::shared_ptr<ast::ObjectIns> Parser::parseObjectIns() {
@@ -557,7 +608,9 @@ std::shared_ptr<ast::ObjectIns> Parser::parseObjectIns() {
     // <object_ins> ::= <identifier> "(" <member_list> ")"
     auto objIns = std::make_shared<ast::ObjectIns>();
 
-    objIns->identifier = std::make_shared<ast::Identifier>(expect(TokenType::IDENTIFIER)->value);
+    objIns->identifier = std::make_shared<ast::Identifier>();
+
+    objIns->identifier->name = expect(TokenType::IDENTIFIER)->value;
 
     expect(TokenType::LPAREN);
 
@@ -577,11 +630,15 @@ std::shared_ptr<ast::EnumRef> Parser::parseEnumRef() {
     // <enum_ref> ::= <identifier> '/' <identifier>
     auto enum_ref = std::make_shared<ast::EnumRef>();
 
-    enum_ref->enumName = std::make_shared<ast::Identifier>(expect(TokenType::IDENTIFIER)->value);
+    enum_ref->enumName = std::make_shared<ast::Identifier>();
+
+    enum_ref->enumName->name = expect(TokenType::IDENTIFIER)->value;
 
     expect(TokenType::DIV);
 
-    enum_ref->enumValue = std::make_shared<ast::Identifier>(expect(TokenType::IDENTIFIER)->value);
+    enum_ref->enumValue = std::make_shared<ast::Identifier>();
+
+    enum_ref->enumValue->name = expect(TokenType::IDENTIFIER)->value;
 
     return enum_ref;
 }
@@ -596,17 +653,24 @@ std::shared_ptr<ast::Nil> Parser::parseNil() {
 int Parser::getPrecedence(TokenType type) {
     switch (type) {
         case TokenType::ADD:
-        case TokenType::SUB: return 1;
+        case TokenType::SUB:
+            return 1;
         case TokenType::MUL:
-        case TokenType::DIV: return 2;
-        case TokenType::MOD: return 3;
-        case TokenType::OR: return 5;
+        case TokenType::DIV:
+            return 2;
+        case TokenType::MOD:
+            return 3;
+        case TokenType::OR:
+            return 5;
         case TokenType::EQ:
-        case TokenType::NE: return 7;
+        case TokenType::NE:
+            return 7;
         case TokenType::GT:
         case TokenType::GE:
         case TokenType::LT:
-        case TokenType::LE: return 8;
-        default: return 0;
+        case TokenType::LE:
+            return 8;
+        default:
+            return 0;
     }
 }

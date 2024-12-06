@@ -7,6 +7,7 @@
 
 from enum import Enum
 from typing import Self, Any
+from _types import ProgramJson
 
 class TokenType(Enum):
     NUMBER: int
@@ -122,3 +123,5 @@ class Parser:
 
 
 def parse(text: str) -> Program: ...
+
+def parseAST(_target: str, _cwd: str = ".") -> str: ...

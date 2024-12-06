@@ -1,6 +1,6 @@
 cmake_policy(SET CMP0057 NEW)
 # 3.29是你的cmake版本
-cmake_minimum_required(VERSION 3.29 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.28 FATAL_ERROR)
 project(NdfPyAPI VERSION 0.1.0 LANGUAGES CXX)  # 大小项目名
 
 set(CMAKE_CXX_STANDARD 23)
@@ -12,7 +12,7 @@ include_directories("E:/codeSpace/codeSet/C/cSeries/CPP/conFunc/src" "E:/codeSpa
 
 set(pybind11_DIR "E:/ProgramFiles/Anaconda/Lib/site-packages/pybind11/share/cmake/pybind11")
 
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "E:/codeSpace/codeSet/Python/privateProject/ndf")
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "E:/codeSpace/codeSet/ndf/warnoMod/utils/ndf/py")
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY_RELEASE ${CMAKE_LIBRARY_OUTPUT_DIRECTORY})
 
 # 3.11是你的python解释器版本
