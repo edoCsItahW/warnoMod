@@ -5,7 +5,7 @@ private DivisionList is TDeckDivisionList
     DivisionList =
     [
         ~/Descriptor_Deck_Division_US_3rd_Arm_multi,
-        ~/Descriptor_Deck_Division_All_multi,  // ANCHOR - 将该师添加至创建师显示界面中
+        ~/Descriptor_Deck_Division_All_multi,  // ANCHOR - MODIFY: Add the teacher to the creator display interface(将该师添加至创建师显示界面中)
         ~/Descriptor_Deck_Division_US_8th_Inf_multi,
         ~/Descriptor_Deck_Division_SOV_27_Gds_Rifle_multi,
         ~/Descriptor_Deck_Division_US_24th_Inf_multi,

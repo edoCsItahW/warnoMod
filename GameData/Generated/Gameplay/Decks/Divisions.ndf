@@ -1,11 +1,7 @@
 // Ne pas éditer, ce fichier est généré par DivisionFileWriter
 
-/** 
- * 1. 后缀multi代表多人游戏,solo代表
- * 2. multi后缀的才会显示在遭遇战中
- * */
 
-// ANCHOR - --------------- 开始修改: 添加新的单位 ---------------------
+// ANCHOR - --------------- MODIFY: register new decks All_multi(注册新的卡组All_multi) ---------------------
 
 Descriptor_Deck_Division_All_multi is TDeckDivisionDescriptor (
     DescriptorId = GUID:{69a17806-4fc1-45f2-b7de-af42e681a350}
@@ -1059,7 +1055,7 @@ Descriptor_Deck_Division_All_multi is TDeckDivisionDescriptor (
     CountryId = "US"
 )
 
-// ------------------------ 结束修改 -----------------------------
+// ------------------------ END MODIFY -----------------------------
 
 Descriptor_Deck_Division_FR_11e_Para_multi is TDeckDivisionDescriptor
 (
