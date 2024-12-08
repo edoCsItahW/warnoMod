@@ -109,7 +109,7 @@ unnamed TLocalisationDicoResource
     FileName = "GameData:/Gameplay/Unit/Names/UNITNAMES_ESP.csv"
 )
 
-// ANCHOR - -------------- MODIFY: Add new names to All_mutil(为All_mutil添加新的名称) -------------
+// ANCHOR - -------------- MODIFY: Add new names to Integrate_mutil(为Integrate_mutil添加新的名称) -------------
 
 unnamed TLocalisationDicoResource (
     DicoToken = "ALLMUTIL"

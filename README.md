@@ -58,7 +58,7 @@ Although it does not directly change the game's update mechanism, it allows user
    2. Click *GenerateMod.bat* to generate the mod.
    3. (Optional) If this mod (as a local mod) conflicts with mods downloaded from the Workshop, you can modify the `Name` field in *C:\Users\<username>\Saved Games\EugenSystems\WARNO\mod\Config.ini* to make it different from the name of the local mod.
 
-#### Using Git
+#### Using Git to download
 
 1. Navigate to the *mods* path under the game directory and use the `git clone` command to clone the project:
 
@@ -167,6 +167,9 @@ If you cannot resolve the issue, you can:
 > [!TIP]
 > If using `vscode` as your IDE, you can install my plugin `NDF Language Support`(search ndf) found here: [https://github.com/edoCsItahW/ndf](https://github.com/edoCsItahW/ndf). This plugin provides syntax highlighting for the NDF language, but does not yet offer auto-completion, formatting, or code checking features.
 
+> [!WARNING]
+> Since all matters are in the early stages, I cannot guarantee whether there will be any non-backward-compatible breaking changes. Thank you for your understanding.
+
 Fork + PR.
 
 The specific workflow is not yet determined and will be discussed in the `discussion` section.
@@ -189,7 +192,7 @@ When modifying code, please follow these guidelines:
    (YouCodeHere, 2),  // ANCHOR - MODIFY: foo, bar (original value is 1)
    ```
 
-This way, when conflicts arise due to Eugen's updates, it will be much easier to identify which lines were manually modified. Furthermore, it helps other developers understand the intent behind the modifications.
+This way, when conflicts arise due to Eugen's updates, it will be much easier to identify which lines were manually modified. Furthermore, it helps other developers understand the intent behind the modifications.Of course, you can also use the global search function to find all ANCHOR comments for quick location of modifications
 
 ### Game File Structure and Explanation
 
@@ -210,5 +213,6 @@ See [Toolset File Structure and Explanation](./utils/utilsFileStruc.md)
 * [ ] (1). Implement parsing of specific comments in NDF scripts as slots to facilitate code insertion into designated locations within NDF scripts through AST. -- https://github.com/edoCsItahW/warnoMod/discussions/3
 * [ ] (2). Provide a Python interface for a C++ implemented NDF language parser using `Pybind11` for easier NDF script parsing and modification. -- https://github.com/edoCsItahW/warnoMod/discussions/4
 * [ ] (3). Based on (1), implement a mod function toggle and provide a user interface to allow players to enable or disable mod functions. -- https://github.com/edoCsItahW/warnoMod/discussions/5
+* [ ] (4)Providing a Node.js interface implemented in C++ through Node-addon-api is mainly to facilitate the development of my NDF-related plugin [ndf-language-support](https://github.com/edoCsItahW/ndf).
 
 Finally, Enjoy the game!

@@ -62,7 +62,7 @@ WARNO Mod是游戏WARNO的模组.
    2. 点击*GenerateMod.bat*生成模组
    3. (可选)如果该mod(作为本地模组)与从创意工坊下载的mod冲突,可以修改*C:\Users\<username>\Saved Games\EugenSystems\WARNO\mod\Config.ini*中的`Name`字段,使其与本地模组的名称不同.
 
-#### 使用git
+#### 使用git下载
 
 1. 进入到游戏目录下的*mods*路径下,使用`git clone`命令克隆项目:
 
@@ -150,7 +150,7 @@ WARNO Mod是游戏WARNO的模组.
 
 一般情况下欧根更新的部分在没更新之前你是没有修改的,这样只保留`<<<<<<<`和`|||||||`之间的更新内容即可,但如果欧根确实需要修改你写的代码,那可能确实需要进行复杂的手动合并了.
 
-<mark>如果可以并且你认为已经完全解决了冲突,请提交一个PR,让其它玩家可以尽快使用你的更新.当然,最后能在提交前进入游戏进行游玩测试,以确保没有问题.</mark>
+<mark>如果可以并且你认为已经完全解决了冲突,请提交一个PR,让其它玩家可以尽快使用你的更新.当然,最好能在提交前进入游戏进行游玩测试,以确保没有问题.</mark>
 
 #### 异常错误
 
@@ -170,6 +170,9 @@ WARNO Mod是游戏WARNO的模组.
 
 > [!TIP]
 > 如果使用`vscode`作为IDE,可以安装我的插件`NDF Language Support`(搜ndf)插件,其项目地址: [https://github.com/edoCsItahW/ndf](https://github.com/edoCsItahW/ndf),该插件可以提供NDF语言的语法高亮,但还不具有自动补全,格式化和代码检查等功能.
+
+> [!WARNING]
+> 由于所有事务都处于开始阶段,所以我无法保证是否会进行不向下兼容的破坏性更新,敬请谅解.
 
 Fork + PR.
 
@@ -194,7 +197,7 @@ Fork + PR.
    ```
    
 
-这样最大的好处是当由于欧根更新而产生冲突时,可以很容易地知道哪些代码是人为修改的,同时也方便其它开发者了解修改意图.
+这样最大的好处是当由于欧根更新而产生冲突时,可以很容易地知道哪些代码是人为修改的,同时也方便其它开发者了解修改意图.当然,你还可以通过全局搜索功能查找所有ANCHOR注释,以便快速定位修改的位置.
 
 > [!NOTE]
 > 如果你从<u>gitee</u>克隆项目,则默认远程仓库为<u>gitee</u>仓库,请务必将远程仓库改为<u>github</u>仓库或推往<u>github</u>仓库:
@@ -228,6 +231,7 @@ Fork + PR.
 * [ ] (1). 通过解析NDF脚本中的特定注释作为插槽,以方便通过AST向NDF脚本中的指定位置插入代码. -- https://github.com/edoCsItahW/warnoMod/discussions/3
 * [ ] (2). 通过`Pybind11`提供基于C++实现的NDF语言解析器的Python接口,以方便进行NDF脚本的解析与修改. -- https://github.com/edoCsItahW/warnoMod/discussions/4
 * [ ] (3). 基于(1),实现一个模组功能开关,并提供用户界面,以方便玩家进行模组功能的启用与禁用. -- https://github.com/edoCsItahW/warnoMod/discussions/5
+* [ ] (4). 通过`Node-addon-api`提供基于C++实现的Node.js接口,这主要是为了方便开发我的NDF相关插件[ndf-language-support](https://github.com/edoCsItahW/ndf)而进行的.
 
 
 最后,享受游戏吧!

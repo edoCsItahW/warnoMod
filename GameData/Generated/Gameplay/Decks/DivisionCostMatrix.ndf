@@ -391,8 +391,8 @@ MatrixCostName_WP_Unternehmen_Zentrum_multi is MAP
     (EDefaultFactories/Tanks, [1, 1, 1, 2, 2, 3]),
 ]
 
-// ANCHOR - --------------------- MODIFY: Customize the consumption matrix for All_matil(为All_mutil定制消耗矩阵) ----------
-MatrixCostName_All_mutil is MAP [
+// ANCHOR - --------------------- MODIFY: Customize the consumption matrix for Integrate_mutil(为Integrate_mutil定制消耗矩阵) ----------
+MatrixCostName_Integrate_mutil is MAP [
     (EDefaultFactories/Art, [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]),
     (EDefaultFactories/DCA, [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]),
     (EDefaultFactories/Defense, [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]),

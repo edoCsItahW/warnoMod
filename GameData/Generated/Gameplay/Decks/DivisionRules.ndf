@@ -4,10 +4,10 @@ private DivisionRules is TDeckDivisionRules(
     DivisionRules = MAP
     [
 
-        // ANCHOR - -------------------- MODIFY: Add new unit rules to All_multi (为All_multi添加新的单位规则) ---------------------------------------
+        // ANCHOR - -------------------- MODIFY: Add new unit rules to Integrate_mutil (为Integrate_mutil添加新的单位规则) ---------------------------------------
 
         (
-            ~/Descriptor_Deck_Division_All_multi, TDeckDivisionRule (
+            ~/Descriptor_Deck_Division_Integrate_mutil, TDeckDivisionRule (
                 UnitRuleList = [
 TDeckUniteRule(
 UnitDescriptor = $/GFX/Unit/Descriptor_Unit_2K11_KRUG_DDR
