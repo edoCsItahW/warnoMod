@@ -9,7 +9,9 @@ cmake-build-dmingw/
 cmake-build-dmsvc/
 */cmake-build-dmsvc/
 build/
-./build/
+*/build/
+.vscode/
+*/.vscode/
 
 CommonData_backup/
 */CommonData_backup/
