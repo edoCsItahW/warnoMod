@@ -7,10 +7,23 @@
  * */
 
 #include <iostream>
+#include <codecvt>
+#include <locale>
+#include <windows.h>
 
-//template<typename... Args>
-//void print_args(Args&&... args) {
-//    (std::cout <<... << args) << std::endl;
-//}
+std::string wstr2str(const std::wstring& wstr) {
+    std::wstring_convert<std::codecvt_utf8<wchar_t>> conv;
+    return conv.to_bytes(wstr);
+}
 
+int main() {
+    SetConsoleOutputCP(CP_UTF8);
+    std::setlocale(LC_ALL, "");
 
+    auto text = std::wstring(L"Ne pas éditer, ce fichier est généré par DivisionRulesFileWriter");
+
+    for (wchar_t c : text)
+        std::wcout << c << std::endl;
+
+    return 0;
+}

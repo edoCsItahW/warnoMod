@@ -18,6 +18,13 @@
 
 #include <cstddef>
 #include <type_traits>
+#include <string>
+#if _MSC_VER
+#include <windows.h>
+#elif __GNUC__ || __clang__
+#include <codecvt>
+#include <locale>
+#endif
 
 template<auto Value>
 constexpr auto enumToStr();
@@ -28,6 +35,8 @@ constexpr auto enumMax();
 template<typename T>
     requires std::is_enum_v<T>
 constexpr auto enumToStr(T value);
+
+std::string wstr2str(const std::wstring& wstr, int codepage = CP_UTF8);
 
 #include "utils.hpp"
 

@@ -8,11 +8,11 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 add_compile_options(/wd4819)
 
-include_directories("E:/codeSpace/codeSet/C/cSeries/CPP/conFunc/src" "E:/codeSpace/codeSet/C/cSeries/CPP/debuger/src")
+include_directories(../include)
 
 set(pybind11_DIR "E:/ProgramFiles/Anaconda/Lib/site-packages/pybind11/share/cmake/pybind11")
 
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "E:/codeSpace/codeSet/ndf/warnoMod/utils/ndf/py")
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "../../../py")
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY_RELEASE ${CMAKE_LIBRARY_OUTPUT_DIRECTORY})
 
 # 3.11是你的python解释器版本
@@ -31,10 +31,14 @@ pybind11_add_module(ndfPyAPI
 
 set_target_properties(ndfPyAPI PROPERTIES OUTPUT_NAME "ndfPyAPI" SUFFIX ".pyd")
 
+if (MSVC)
+    target_link_libraries(ndfPyAPI PRIVATE
+            ${CMAKE_SOURCE_DIR}/../lib/confunc_st_MSVC.lib
+            ${CMAKE_SOURCE_DIR}/../lib/Debugger_st_MSVC.lib
+    )
+else()
 target_link_libraries(ndfPyAPI PRIVATE
-#        "E:/codeSpace/codeSet/C/cSeries/CPP/conFunc/lib/libconfunc_MINGW.a"
-        "E:/codeSpace/codeSet/C/cSeries/CPP/conFunc/lib/confunc_MSVC.lib"
-#        "E:/codeSpace/codeSet/C/cSeries/CPP/debuger/lib/libDebugger_st_MINGW.a"
-        "E:/codeSpace/codeSet/C/cSeries/CPP/debuger/lib/Debugger_st_MSVC.lib"
-)
-
+            ${CMAKE_SOURCE_DIR}/../lib/libconfunc_MINGW.a
+            ${CMAKE_SOURCE_DIR}/../lib/libDebugger_st_MINGW.a
+    )
+endif()

@@ -130,7 +130,6 @@ struct Token {
     Pos pos;
     std::string value{};
     TokenType super = TokenType::UNKNOWN;  ///< superordinate,标识符的上级类型
-//    bool isClosure = false;  ///< 是否是(或{或[的闭合符号
     [[nodiscard]] std::string toString() const;
     friend std::ostream& operator<<(std::ostream& os, const Token& token);
 };

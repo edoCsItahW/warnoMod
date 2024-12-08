@@ -139,7 +139,6 @@ private:
     void skip();
     TokenPtr expect(TokenType type, bool skipNewLine = true, const std::source_location& loc = std::source_location::current());
     bool fromUntilExpect(std::variant<int, size_t> start, std::variant<int, size_t> end, TokenType type, const FUEKwargs& kwargs = FUEKwargs());
-    TokenPtr expect(std::initializer_list<TokenType> types);
     [[nodiscard]] bool inScope() const;
 
     std::shared_ptr<ast::Nil> parseNil();
@@ -153,6 +152,7 @@ private:
     std::shared_ptr<ast::Vector> parseVector();
     std::shared_ptr<ast::MapRef> parseMapRef();
     std::shared_ptr<ast::Export> parseExport();
+    std::shared_ptr<ast::Private> parsePrivate();
     std::shared_ptr<ast::Literal> parseLiteral();
     std::shared_ptr<ast::Boolean> parseBoolean();
     std::shared_ptr<ast::Integer> parseInteger();
