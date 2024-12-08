@@ -38,7 +38,8 @@ TokenPtr TokenProcessor::handleNumber() {
 TokenPtr TokenProcessor::handleLiteral() {
     auto litTokenPtr = _tokens[_idx++];
     auto value       = litTokenPtr->value;
-    if (value == "true" || value == "false" || value == "True", value == "False") litTokenPtr->type = TokenType::KW_BOOLEN;
+
+    if (value == "true" || value == "false" || value == "True" || value == "False") litTokenPtr->type = TokenType::KW_BOOLEN;
     else if (value == "nil") litTokenPtr->type = TokenType::KW_NIL;
     else if (value == "is") litTokenPtr->type = TokenType::KW_IS;
     else if (value == "MAP") litTokenPtr->type = TokenType::KW_MAP;
@@ -57,7 +58,8 @@ TokenPtr TokenProcessor::handleLiteral() {
         _idx               = rbracePos + 1;
         litTokenPtr->type  = TokenType::GUID;
         litTokenPtr->value = guidStr;
-    } else litTokenPtr->type = TokenType::IDENTIFIER;
+    }
+    else litTokenPtr->type = TokenType::IDENTIFIER;
 
     // INDENTIFIER 特殊处理,否则有扰后续
     if (litTokenPtr->type != TokenType::IDENTIFIER) litTokenPtr->super = TokenType::LITERAL;

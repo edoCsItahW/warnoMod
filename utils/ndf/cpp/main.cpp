@@ -16,7 +16,6 @@
 #include "confunc.h"
 #include "src\lexer\tokenProc.h"
 #include "src\parser\parser.h"
-#include "src\expection.h"
 #include <fstream>
 #include <iostream>
 #include <filesystem>
@@ -61,16 +60,17 @@ int main(int argc, char* argv[]) {
 //    if (target.empty())
 //        throw ArgumentError("Target file is not specified.");
 
-    auto text = std::get<std::string>(os::readFile(R"(.\CommonData\Gameplay\Unit\TemplateDescriptorFireAndSmoke.ndf)", os::Type::UTF8, R"(E:\codeSpace\codeSet\ndf\warnoMod)"));
+    auto text = std::get<std::string>(os::readFile(R"(.\GameData\Generated\Gameplay\Decks\DivisionRules.ndf)", os::Type::UTF8, R"(E:\codeSpace\codeSet\ndf\warnoMod)"));
+
 
     auto tokens = TokenProcessor::process(Lexer::tokenize(text));
-
+//    for (auto& token : tokens) std::cout << token->toString() << std::endl;
     auto parser = Parser(tokens);
 
     auto result = parser.parse();
 
 //    writeToFile(result->toJson(), R"(..\..\ast.json)");
-    writeToFile(result->toJson(), R"(..\..\Temp.json)");
+    writeToFile(result->toJson(), R"(..\..\DivisionRules.json)");
 
     return 0;
 }

@@ -13,6 +13,7 @@
  * @brief
  * */
 #include "lexer.h"
+#include <vector>
 
 std::set<char> g_Level1Op;
 
@@ -35,10 +36,10 @@ Token Lexer::operator*() {
         return extractNumber();
     else if (isalpha(curr()) || curr() == '_')
         return extractLiteral();
-    else if (curr() == '/' && _source[_pos + 1] == '/')
-        return extractComment();
-    else if (curr() == '/' && _source[_pos + 1] == '*')
-        return extractBlockComment();
+    else if (curr() == '/' )
+        if (_source[_pos + 1] == '/') return extractLineComment();
+        else if (_source[_pos + 1] == '*') return extractBlockComment();
+        else return {TokenType::UNKNOWN, _pos++};
     else if (curr() == '"' || curr() == '\'')
         return extractString();
     else if ((curr() == '$' || curr() == '~' || curr() == '.') && _source[_pos + 1] == '/')
@@ -65,12 +66,12 @@ Token Lexer::extractLiteral() {
     return {TokenType::LITERAL, start, std::move(litStr)};
 }
 
-Token Lexer::extractComment() {
+Token Lexer::extractLineComment() {
     std::string commentStr;
     auto start = _pos;
     _pos += 2;
     while (inScope() && curr() != '\n') commentStr += _source[_pos++()];
-    return {TokenType::COMMENT_LINE, start, std::move(commentStr)};
+    return {TokenType::COMMENT_LINE, start, std::move(commentStr), TokenType::COMMENT};
 }
 
 Token Lexer::extractBlockComment() {
@@ -82,7 +83,7 @@ Token Lexer::extractBlockComment() {
         if (curr() == '\n') _pos.newLine();
     }
     _pos += 2;
-    return {TokenType::COMMENT_BLOCK, start, std::move(blockCommentStr)};
+    return {TokenType::COMMENT_BLOCK, start, std::move(blockCommentStr), TokenType::COMMENT};
 }
 
 Token Lexer::extractString() {

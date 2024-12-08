@@ -1,7 +1,6 @@
 // Ne pas éditer, ce fichier est généré par DivisionRulesFileWriter
 
-private DivisionRules is TDeckDivisionRules
-(
+private DivisionRules is TDeckDivisionRules(
     DivisionRules = MAP
     [
 

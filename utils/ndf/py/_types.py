@@ -116,6 +116,10 @@ class ExportJson(ASTJson):
     statement: ObjectDefJson | AssignmentJson | MapDefJson | TemplateDefJson | ForwardRef('ExportJson')
 
 
+class PrivateJson(ASTJson):
+    statement: ObjectDefJson | AssignmentJson | MapDefJson | TemplateDefJson | ForwardRef('PrivateJson')
+
+
 class ProgramJson(ASTJson):
     statements: ObjectDefJson | AssignmentJson | MapDefJson | TemplateDefJson | ExportJson
 

@@ -33,7 +33,7 @@ __all__ = [
     'TemplateParam',
     'Operator',
     'Operation',
-    'Boolen',
+    'Boolean',
     'Integer',
     'Float',
     'String',
@@ -344,7 +344,7 @@ class Member(AST):
         return self.indent
 
     def code(self) -> str:
-        return f"{self._idt()}{self.identifier.code()} = {self.expression.code()}"
+        return f"{self._idt()}{self.identifier.code()} = {self.expression.code() if hasattr(self.expression, 'code') else self.expression}"
 
 
 class ObjectDef(Statement):
@@ -589,7 +589,23 @@ class Export(Statement):
         return f"export {self.statement.code()}"
 
 
-class Boolen(Literal):
+class Private(Statement):
+    statement: Statement
+
+    @overload
+    def __init__(self, jsonData: PrivateJson): ...
+
+    @overload
+    def __init__(self, *, statement: Statement): ...
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+    def code(self) -> str:
+        return f"private {self.statement.code()}"
+
+
+class Boolean(Literal):
     value: bool
 
     @overload

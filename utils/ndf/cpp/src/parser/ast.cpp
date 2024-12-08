@@ -21,7 +21,7 @@ namespace ast {
     std::string Program::toString() const {
         std::ostringstream oss;
 
-        for (const auto &stmt: statements) oss << stmt->toString() << std::endl;
+        for (const auto &stmt : statements) oss << stmt->toString() << std::endl;
 
         return oss.str();
     }
@@ -29,16 +29,13 @@ namespace ast {
     std::string Program::toJson() const {
         std::ostringstream oss;
         oss << R"({"nodeName":"Program", "statements":[)";
-        for (int i = 0; i < statements.size(); i++)
-            oss << statements[i]->toJson() << (i == statements.size() - 1 ? "" : ",");
+        for (int i = 0; i < statements.size(); i++) oss << statements[i]->toJson() << (i == statements.size() - 1 ? "" : ",");
         oss << "]}";
 
         return oss.str();
     }
 
-    std::string Assignment::toString() const {
-        return identifier->toString() + " is " + expression->toString() + '\n';
-    }
+    std::string Assignment::toString() const { return identifier->toString() + " is " + expression->toString() + '\n'; }
 
     std::string Assignment::toJson() const {
         std::ostringstream oss;
@@ -52,8 +49,7 @@ namespace ast {
 
         oss << identifier->toString() << " is " << type->toString() << "(" << std::endl;
 
-        for (int i = 0; i < memberList.size(); i++)
-            oss << memberList[i]->toString() << (i == memberList.size() - 1 ? "" : ",") << std::endl;
+        for (int i = 0; i < memberList.size(); i++) oss << memberList[i]->toString() << (i == memberList.size() - 1 ? "" : ",") << std::endl;
 
         oss << ")" << std::endl;
 
@@ -62,11 +58,9 @@ namespace ast {
 
     std::string ObjectDef::toJson() const {
         std::ostringstream oss;
-        oss << R"({"nodeName": "ObjectDef", "identifier": )" << identifier->toJson() << "," << R"("type":)"
-            << type->toJson() << "," << R"("members": [)";
+        oss << R"({"nodeName": "ObjectDef", "identifier": )" << identifier->toJson() << "," << R"("type":)" << type->toJson() << "," << R"("members": [)";
 
-        for (int i = 0; i < memberList.size(); i++)
-            oss << memberList[i]->toJson() << (i == memberList.size() - 1 ? "" : ",");
+        for (int i = 0; i < memberList.size(); i++) oss << memberList[i]->toJson() << (i == memberList.size() - 1 ? "" : ",");
 
         oss << "]}";
 
@@ -78,7 +72,7 @@ namespace ast {
 
         oss << "MAP [" << std::endl;
 
-        for (const auto &pair: pairList) oss << pair->toString() << "," << std::endl;
+        for (const auto &pair : pairList) oss << pair->toString() << "," << std::endl;
 
         oss << "]" << std::endl;
 
@@ -95,15 +89,11 @@ namespace ast {
         return oss.str();
     }
 
-    std::string Parameter::toString() const {
-        return identifier->toString() + (type ? ": " + type->toString() : "") +
-               (expression ? " = " + expression->toString() : "");
-    }
+    std::string Parameter::toString() const { return identifier->toString() + (type ? ": " + type->toString() : "") + (expression ? " = " + expression->toString() : ""); }
 
     std::string Parameter::toJson() const {
         std::ostringstream oss;
-        oss << R"({"nodeName":"Parameter", "identifier":)" << identifier->toJson() << "," << R"("type":)"
-            << (type ? type->toJson() : "null") << "," << R"("expression":)"
+        oss << R"({"nodeName":"Parameter", "identifier":)" << identifier->toJson() << "," << R"("type":)" << (type ? type->toJson() : "null") << "," << R"("expression":)"
             << (expression ? expression->toJson() : "null") << "}";
 
         return oss.str();
@@ -112,15 +102,13 @@ namespace ast {
     std::string TemplateDef::toString() const {
         std::ostringstream oss;
 
-        oss  << "template " << identifier->toString() << "[" << std::endl;
+        oss << "template " << identifier->toString() << "[" << std::endl;
 
-        for (int i = 0; i < parameterList.size(); i++)
-            oss << parameterList[i]->toString() << (i == parameterList.size() - 1 ? "" : ",")
-                << std::endl;
+        for (int i = 0; i < parameterList.size(); i++) oss << parameterList[i]->toString() << (i == parameterList.size() - 1 ? "" : ",") << std::endl;
 
         oss << "] is " << type->toString() << "(" << std::endl;
 
-        for (const auto &member: memberList) oss << member->toString() << std::endl;
+        for (const auto &member : memberList) oss << member->toString() << std::endl;
 
         oss << ")" << std::endl;
 
@@ -131,12 +119,10 @@ namespace ast {
         std::ostringstream oss;
         oss << R"({"nodeName":"TemplateDef", "identifier":)" << identifier->toJson() << "," << R"("parameters":[)";
 
-        for (int i = 0; i < parameterList.size(); i++)
-            oss << parameterList[i]->toJson() << (i == parameterList.size() - 1 ? "" : ",");
+        for (int i = 0; i < parameterList.size(); i++) oss << parameterList[i]->toJson() << (i == parameterList.size() - 1 ? "" : ",");
         oss << "]," << R"("type":)" << type->toJson() << "," << R"("members":[)";
 
-        for (int i = 0; i < memberList.size(); i++)
-            oss << memberList[i]->toJson() << (i == memberList.size() - 1 ? "" : ",");
+        for (int i = 0; i < memberList.size(); i++) oss << memberList[i]->toJson() << (i == memberList.size() - 1 ? "" : ",");
 
         oss << "]}";
         return oss.str();
@@ -144,11 +130,11 @@ namespace ast {
 
     std::string Export::toString() const { return "export " + statement->toString(); }
 
-    std::string Export::toJson() const {
-        std::ostringstream oss;
-        oss << R"({"nodeName":"Export", "statement":)" << statement->toJson() << "}";
-        return oss.str();
-    }
+    std::string Export::toJson() const { return R"({"nodeName":"Export", "statement":)" + statement->toJson() + "}"; }
+
+    std::string Private::toString() const { return "private " + statement->toString(); }
+
+    std::string Private::toJson() const { return R"({"nodeName":"Private", "statement":)" + statement->toJson() + "}"; }
 
     std::string Nil::toString() const { return "nil"; }
 
@@ -158,8 +144,7 @@ namespace ast {
 
     std::string Member::toJson() const {
         std::ostringstream oss;
-        oss << R"({"nodeName": "Member", "identifier":)" << identifier->toJson() << "," << R"("expression": )"
-            << expression->toJson() << "}";
+        oss << R"({"nodeName": "Member", "identifier":)" << identifier->toJson() << "," << R"("expression": )" << expression->toJson() << "}";
         return oss.str();
     }
 
@@ -173,9 +158,7 @@ namespace ast {
 
     std::string Pair::toString() const { return "(" + first->toString() + ", " + second->toString() + ")"; }
 
-    std::string Pair::toJson() const {
-        return R"({"nodeName": "Pair", "first":)" + first->toJson() + R"(, "second":)" + second->toJson() + "}";
-    }
+    std::string Pair::toJson() const { return R"({"nodeName": "Pair", "first":)" + first->toJson() + R"(, "second":)" + second->toJson() + "}"; }
 
     std::string Boolean::toString() const { return value ? "true" : "false"; }
 
@@ -202,9 +185,7 @@ namespace ast {
 
         oss << "[" << std::endl;
 
-        for (int i = 0; i < expressionList.size(); i++)
-            oss << " " << expressionList[i]->toString()
-                << (i == expressionList.size() - 1 ? "" : ", ");
+        for (int i = 0; i < expressionList.size(); i++) oss << " " << expressionList[i]->toString() << (i == expressionList.size() - 1 ? "" : ", ");
 
         oss << "]";
 
@@ -214,8 +195,7 @@ namespace ast {
     std::string Vector::toJson() const {
         std::ostringstream oss;
         oss << R"({"nodeName": "Vector", "expressions": [)";
-        for (int i = 0; i < expressionList.size(); i++)
-            oss << expressionList[i]->toJson() << (i == expressionList.size() - 1 ? "" : ",");
+        for (int i = 0; i < expressionList.size(); i++) oss << expressionList[i]->toJson() << (i == expressionList.size() - 1 ? "" : ",");
         oss << "]}";
         return oss.str();
     }
@@ -228,14 +208,9 @@ namespace ast {
         return oss.str();
     }
 
-    std::string Operation::toString() const {
-        return left->toString() + " " + operator_->toString() + " " + right->toString();
-    }
+    std::string Operation::toString() const { return left->toString() + " " + operator_->toString() + " " + right->toString(); }
 
-    std::string Operation::toJson() const {
-        return std::format(R"({{"nodeName": "Operation", "left": {}, "operator": {}, "right": {}}})", left->toJson(),
-                           operator_->toJson(), right->toJson());
-    }
+    std::string Operation::toJson() const { return std::format(R"({{"nodeName": "Operation", "left": {}, "operator": {}, "right": {}}})", left->toJson(), operator_->toJson(), right->toJson()); }
 
     std::string Operator::toString() const { return value; }
 
@@ -243,16 +218,14 @@ namespace ast {
 
     std::string ObjectRef::toString() const { return "$/" + identifier->toString(); }
 
-    std::string ObjectRef::toJson() const {
-        return std::format(R"({{"nodeName": "ObjectRef", "identifier": {}}})", identifier->toJson());
-    }
+    std::string ObjectRef::toJson() const { return std::format(R"({{"nodeName": "ObjectRef", "identifier": {}}})", identifier->toJson()); }
 
     std::string ObjectIns::toString() const {
         std::ostringstream oss;
 
         oss << identifier->toString() << '(' << std::endl;
 
-        for (const auto &member: memberList) oss << member->toString() << std::endl;
+        for (const auto &member : memberList) oss << member->toString() << std::endl;
 
         oss << ")" << std::endl;
 
@@ -263,8 +236,7 @@ namespace ast {
         std::ostringstream oss;
         oss << R"({"nodeName":"ObjectIns", "identifier":)" << identifier->toJson() << "," << R"("members":[)";
 
-        for (int i = 0; i < memberList.size(); i++)
-            oss << memberList[i]->toJson() << (i == memberList.size() - 1 ? "" : ",");
+        for (int i = 0; i < memberList.size(); i++) oss << memberList[i]->toJson() << (i == memberList.size() - 1 ? "" : ",");
 
         oss << "]}";
         return oss.str();
@@ -275,8 +247,7 @@ namespace ast {
 
         oss << "MAP [" << std::endl;
 
-        for (int i = 0; i < pairList.size(); i++)
-            oss << pairList[i]->toString() << (i == pairList.size() - 1 ? "" : ", \n");
+        for (int i = 0; i < pairList.size(); i++) oss << pairList[i]->toString() << (i == pairList.size() - 1 ? "" : ", \n");
 
         oss << "]";
 
@@ -295,20 +266,13 @@ namespace ast {
 
     std::string TemplateRef::toString() const { return "template " + identifier->toString(); }
 
-    std::string TemplateRef::toJson() const {
-        return std::format(R"({{"nodeName": "TemplateRef", "identifier": {}}})", identifier->toJson());
-    }
+    std::string TemplateRef::toJson() const { return std::format(R"({{"nodeName": "TemplateRef", "identifier": {}}})", identifier->toJson()); }
 
     std::string EnumRef::toString() const { return enumName->toString() + "/" + enumValue->toString(); }
 
-    std::string EnumRef::toJson() const {
-        return std::format(R"({{"nodeName": "EnumRef", "enumName": {}, "enumValue": {}}})", enumName->toJson(),
-                           enumValue->toJson());
-    }
+    std::string EnumRef::toJson() const { return std::format(R"({{"nodeName": "EnumRef", "enumName": {}, "enumValue": {}}})", enumName->toJson(), enumValue->toJson()); }
 
     std::string TemplateParam::toString() const { return '<' + identifier->toString() + '>'; }
 
-    std::string TemplateParam::toJson() const {
-        return std::format(R"({{"nodeName": "TemplateParam", "identifier": {}}})", identifier->toJson());
-    }
+    std::string TemplateParam::toJson() const { return std::format(R"({{"nodeName": "TemplateParam", "identifier": {}}})", identifier->toJson()); }
 }  // namespace ast

@@ -63,7 +63,7 @@ protected:
     Token extractString();
     Token extractLiteral();
     Token extractOperator();
-    Token extractComment();
+    Token extractLineComment();
     Token extractBlockComment();
     Token extractPath();
     [[nodiscard]] char curr() const;

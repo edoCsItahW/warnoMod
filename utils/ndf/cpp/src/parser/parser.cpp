@@ -35,7 +35,7 @@ void Parser::skip() {
     while (inScope() && (curr()->type == TokenType::NEWLINE || curr()->type == TokenType::COMMENT)) _idx++;
 }
 
-TokenPtr Parser::expect(TokenType type, bool skipNewLine, const std::source_location &loc) {
+TokenPtr Parser::expect(enum TokenType type, bool skipNewLine, const std::source_location &loc) {
     if (skipNewLine && type != TokenType::NEWLINE) skip();
 
     if (inScope() && curr()->type == type) return _tokens[_idx++];
@@ -44,7 +44,7 @@ TokenPtr Parser::expect(TokenType type, bool skipNewLine, const std::source_loca
                                       loc.line(), loc.function_name()));
 }
 
-bool Parser::fromUntilExpect(std::variant<int, size_t> _start, std::variant<int, size_t> _end, TokenType type,
+bool Parser::fromUntilExpect(std::variant<int, size_t> _start, std::variant<int, size_t> _end, enum TokenType type,
                              const FUEKwargs &kwargs) {
     int start = std::holds_alternative<int>(_start) ? std::get<int>(_start) : static_cast<int>(std::get<size_t>(
             _start));
@@ -58,13 +58,6 @@ bool Parser::fromUntilExpect(std::variant<int, size_t> _start, std::variant<int,
     }
 
     return false;
-}
-
-TokenPtr Parser::expect(std::initializer_list<TokenType> types) {
-    if (inScope() &&
-        std::any_of(types.begin(), types.end(), [this](TokenType type) { return curr()->type == type; }))
-        return std::move(_tokens[_idx++]);
-    else throw SyntaxError(curr()->toString());
 }
 
 std::shared_ptr<ast::Program> Parser::parse(bool dbg) {
@@ -94,6 +87,7 @@ std::shared_ptr<ast::Statement> Parser::parseStatement() {
     dbg::Debugger dbgParseMapDef(&Parser::parseMapDef);
     dbg::Debugger dbgParseTempDef(&Parser::parseTemplateDef);
     dbg::Debugger dbgParseExport(&Parser::parseExport);
+    dbg::Debugger dbgParsePrivate(&Parser::parsePrivate);
     // <statement> ::= <assignment> | <object_def> | <map_def> | <template_def> | <comment>  // comment已在TokenProcessor中剔除
 
     if (!curr()) return nullptr;
@@ -117,6 +111,9 @@ std::shared_ptr<ast::Statement> Parser::parseStatement() {
         }
         case TokenType::KW_EXPORT:
             return dbgParseExport(this);
+
+        case TokenType::KW_PRIVATE:
+            return dbgParsePrivate(this);
 
         case TokenType::KW_MAP:
             return dbgParseMapDef(this);
@@ -242,6 +239,7 @@ std::shared_ptr<ast::TemplateDef> Parser::parseTemplateDef() {
 }
 
 std::shared_ptr<ast::Export> Parser::parseExport() {
+    if (_debug) debug("ParseExport", curr());
     dbg::Debugger dbgParseStatement(&Parser::parseStatement);
     // <export> ::= "export" <statement>
 
@@ -252,6 +250,20 @@ std::shared_ptr<ast::Export> Parser::parseExport() {
     export_->statement = dbgParseStatement(this);
 
     return export_;
+}
+
+std::shared_ptr<ast::Private> Parser::parsePrivate() {
+    if (_debug) debug("ParsePrivate", curr());
+    dbg::Debugger dbgParseStatement(&Parser::parseStatement);
+    // <private> ::= "private" <identifier>
+
+    auto private_ = std::make_shared<ast::Private>();
+
+    expect(TokenType::KW_PRIVATE);
+
+    private_->statement = dbgParseStatement(this);
+
+    return private_;
 }
 
 std::shared_ptr<ast::Expression> Parser::parsePrimaryExpression() {
@@ -276,10 +288,7 @@ std::shared_ptr<ast::Expression> Parser::parsePrimaryExpression() {
         return dbgParseExprInParen(this);
     else if (curr()->type == TokenType::KW_MAP) return dbgParseMapRef(this);
     else if (curr()->type == TokenType::KW_TEMPLATE) return dbgParseTempRef(this);
-    else if (curr()->super == TokenType::LITERAL
-             || curr()->super == TokenType::NUMBER
-             || curr()->type == TokenType::STRING
-             || curr()->type == TokenType::LBRACKET)
+    else if (curr()->super == TokenType::LITERAL || curr()->super == TokenType::NUMBER || curr()->type == TokenType::STRING || curr()->type == TokenType::LBRACKET)
         return dbgParseLiteral(this);
     else if (curr()->type == TokenType::IDENTIFIER)
         if (_tokens[_idx + 1]->type == TokenType::DIV) return dbgParseEnumRef(this);
@@ -305,11 +314,13 @@ std::shared_ptr<ast::Expression> Parser::parseExprInParenthese() {
         if (_tokens[i]->type == TokenType::LPAREN) {  // 遇到左括号,入栈
             loyout++;
             stack.push(_tokens[i]);
-        } else if (_tokens[i]->type == TokenType::RPAREN) {  // 遇到右括号,出栈
+        }
+        else if (_tokens[i]->type == TokenType::RPAREN) {  // 遇到右括号,出栈
             stack.pop();
             loyout--;
             if (stack.empty()) break;  // 栈为空,说明括号已经匹配完毕(由于是部分遍历,将栈空的情况视为正常的括号一一对应完毕)
-        } else if (_tokens[i]->type == TokenType::COMMA && loyout == 1) commaNum++;
+        }
+        else if (_tokens[i]->type == TokenType::COMMA && loyout == 1) commaNum++;
 
     if (commaNum == 1) return dbgParsePair(this);
     else return dbgParseExpr(this);
@@ -460,7 +471,7 @@ std::shared_ptr<ast::Boolean> Parser::parseBoolean() {
     // <boolean> ::= "true" | "false"
     auto boolean = std::make_shared<ast::Boolean>();
 
-    boolean->value = curr()->value == "true";
+    boolean->value = (curr()->value == "true" || curr()->value == "True");
 
     expect(TokenType::KW_BOOLEN);
 
@@ -616,7 +627,8 @@ std::shared_ptr<ast::ObjectIns> Parser::parseObjectIns() {
 
     while (inScope() && curr()->type != TokenType::RPAREN) {
         objIns->memberList.push_back(dbgParseMember(this));
-        if (curr()->type == TokenType::RPAREN) break;
+//        if (curr()->type == TokenType::RPAREN) break;
+        if (fromUntilExpect(_idx, _tokens.size(), TokenType::RPAREN, {.firstStop = true})) break;
         else expect(TokenType::NEWLINE, false);
     }
 
@@ -650,7 +662,7 @@ std::shared_ptr<ast::Nil> Parser::parseNil() {
     return std::make_shared<ast::Nil>();
 }
 
-int Parser::getPrecedence(TokenType type) {
+int Parser::getPrecedence(enum TokenType type) {
     switch (type) {
         case TokenType::ADD:
         case TokenType::SUB:

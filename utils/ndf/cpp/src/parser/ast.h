@@ -434,6 +434,34 @@ namespace ast {
         [[nodiscard]] std::string toString() const override;
     };
 
+    /** @struct Private
+     *
+     * @if zh
+     * @brief AST节点Private
+     * @details Private节点表示私有语句,包含一个Statement节点.
+     * @remark 这是一个具体的节点,其包括有子节点.
+     *
+     * @else
+     * @brief AST node Private
+     * @details The Private node represents a private statement, which contains a Statement node.
+     * @remark This is a concrete node that includes child nodes.
+     * @endif
+     *
+     * @code{.antlr}
+     * Private : 'private' Statement ;
+     * @endcode
+     *
+     * @see Statement
+     * */
+    struct Private : public Statement {
+        const char *nodeName = "Private";
+        std::shared_ptr<Statement> statement;
+
+        [[nodiscard]] std::string toJson() const override;
+
+        [[nodiscard]] std::string toString() const override;
+    };
+
     /** @struct Parameter
      *
      * @if zh
@@ -464,9 +492,9 @@ namespace ast {
         std::shared_ptr<Identifier> type;
         std::shared_ptr<Expression> expression;
 
-        [[nodiscard]] std::string toJson() const;
+        [[nodiscard]] std::string toJson() const override;
 
-        [[nodiscard]] std::string toString() const;
+        [[nodiscard]] std::string toString() const override;
     };
 
     /** @struct Member
@@ -493,9 +521,9 @@ namespace ast {
         std::shared_ptr<Identifier> identifier;
         std::shared_ptr<Expression> expression;
 
-        [[nodiscard]] std::string toJson() const;
+        [[nodiscard]] std::string toJson() const override;
 
-        [[nodiscard]] std::string toString() const;
+        [[nodiscard]] std::string toString() const override;
     };
 
     /** @struct Expression

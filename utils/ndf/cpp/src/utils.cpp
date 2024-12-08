@@ -14,3 +14,16 @@
  * */
 #include "utils.h"
 
+std::string wstr2str(const std::wstring& wstr, int codepage) {
+#if __GUNC__ || __clang__
+    std::wstring_convert<std::codecvt_utf8<wchar_t>> conv;
+    return conv.to_bytes(wstr);
+#elif _MSC_VER
+    int size = WideCharToMultiByte(codepage, 0, wstr.c_str(), -1, NULL, 0, NULL, NULL);
+    char* mbstr = new char[size];
+    WideCharToMultiByte(codepage, 0, wstr.c_str(), -1, mbstr, size, NULL, NULL);
+    std::string str(mbstr);
+    delete[] mbstr;
+    return str;
+#endif
+}
