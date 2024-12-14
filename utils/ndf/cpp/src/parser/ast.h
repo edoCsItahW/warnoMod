@@ -144,13 +144,7 @@ namespace ast {
 
     class Pair;
 
-    class Parameter;
-
-    class Member;
-
     class Expression;
-
-    class Literal;
 
     class Identifier;
 
@@ -189,6 +183,8 @@ namespace ast {
          * @pure
          * */
         const char *nodeName = "AST";
+
+        [[nodiscard]] virtual std::string getNodeName() const = 0;
 
         /**
          * @if zh
@@ -245,6 +241,77 @@ namespace ast {
         const char *nodeName = "Program";  ///< @see AST
         std::vector<std::shared_ptr<Statement>> statements;
 
+        [[nodiscard]] std::string getNodeName() const override;
+
+        [[nodiscard]] std::string toJson() const override;
+
+        [[nodiscard]] std::string toString() const override;
+    };
+
+    /** @struct Member
+     *
+     * @if zh
+     * @brief AST节点Member
+     * @details Member节点表示对象成员,包含一个Identifier节点和一个Expression节点.
+     * @remark 这是一个具体的节点,其包括有子节点.
+     *
+     * @else
+     * @brief AST node Member
+     * @details The Member node represents an object member, which contains an Identifier node and an Expression node.
+     * @remark This is a concrete node that includes child nodes.
+     * @endif
+     *
+     * @code{.antlr}
+     * Member : Identifier '=' Expression ;
+     * @endcode
+     *
+     * @see AST
+     * */
+    struct Member : public AST {
+        const char *nodeName = "Member";
+        std::shared_ptr<Identifier> identifier;
+        std::shared_ptr<Expression> expression;
+
+        [[nodiscard]] std::string getNodeName() const override;
+
+        [[nodiscard]] std::string toJson() const override;
+
+        [[nodiscard]] std::string toString() const override;
+    };
+
+    /** @struct Parameter
+     *
+     * @if zh
+     * @brief AST节点Parameter
+     * @details Parameter节点表示模板参数,包含一个Identifier节点,一个Identifier节点,一个Expression节点.
+     * @remark 这是一个具体的节点,其包括有子节点.
+     * @note
+     * 注意: 由于@c "类型（几乎？）总是以大写字母“T”开头。它们代表游戏的内部数据结构，其定义不可用。"因此，我们将<type>更改为<identifier>。
+     *
+     * @else
+     * @brief AST node Parameter
+     * @details The Parameter node represents a template parameter, which contains an Identifier node, an Identifier node, and an Expression node.
+     * @remark This is a concrete node that includes child nodes.
+     * @note
+     * Note: Since `"types (almost?) always start with a capital letter "T", they represent internal data structures of the game, which cannot be defined."` Therefore, we changed \<type> to
+     * \<identifier>.
+     * @endif
+     *
+     * @code{.antlr}
+     * Parameter : Identifier [':' Identifier] ['=' Expression] ;
+     * @endcode
+     *
+     * @see AST
+     * @see \warnoMod\utils\usefulInfo\Modding Manual.pdf
+     * */
+    struct Parameter : public AST {
+        const char *nodeName = "Parameter";
+        std::shared_ptr<Identifier> identifier;
+        std::shared_ptr<Identifier> type;
+        std::shared_ptr<Expression> expression;
+
+        [[nodiscard]] std::string getNodeName() const override;
+
         [[nodiscard]] std::string toJson() const override;
 
         [[nodiscard]] std::string toString() const override;
@@ -284,63 +351,30 @@ namespace ast {
         const char *nodeName = "Statement";
     };
 
-    /** @struct Assignment
+    /** @struct Export
      *
      * @if zh
-     * @brief AST节点Assignment
-     * @details Assignment节点表示赋值语句,包含一个Identifier节点和一个Expression节点.
+     * @brief AST节点Export
+     * @details Export节点表示导出语句,包含一个Statement节点.
      * @remark 这是一个具体的节点,其包括有子节点.
      *
      * @else
-     * @brief AST node Assignment
-     * @details The Assignment node represents an assignment statement, which contains an Identifier node and an Expression node.
+     * @brief AST node Export
+     * @details The Export node represents an export statement, which contains a Statement node.
      * @remark This is a concrete node that includes child nodes.
      * @endif
      *
      * @code{.antlr}
-     * Assignment : Identifier 'is' Expression ;
+     * Export : 'export' Statement ;
      * @endcode
      *
      * @see Statement
      * */
-    struct Assignment : public Statement {
-        const char *nodeName = "Assignment";
-        std::shared_ptr<Identifier> identifier;
-        std::shared_ptr<Expression> expression;
+    struct Export : public Statement {
+        const char *nodeName = "Export";
+        std::shared_ptr<Statement> statement;
 
-        [[nodiscard]] std::string toJson() const override;
-
-        [[nodiscard]] std::string toString() const override;
-    };
-
-    /** @struct ObjectDef
-     *
-     * @if zh
-     * @brief AST节点ObjectDef
-     * @details ObjectDef节点表示对象定义语句,包含一个Identifier节点,一个Identifier节点,一个Member节点的列表.
-     * @remark 这是一个具体的节点,其包括有子节点.
-     * @warning
-     * 注意: 由于@c "类型(几乎?)总是以大写字母"T"开头.它们代表游戏的内部数据结构,其定义不可用." 因此,我们将<type>改为<identifier>。
-     *
-     * @else
-     * @brief AST node ObjectDef
-     * @details The ObjectDef node represents an object definition statement, which contains an Identifier node, an Identifier node, and a list of Member nodes.
-     * @remark This is a concrete node that includes child nodes.
-     * @warning
-     * Note: Since `"types (almost?) always start with a capital letter "T", they represent internal data structures of the game, which cannot be defined."` Therefore, we changed \<type> to \<identifier>.
-     * @endif
-     *
-     * @code{.antlr}
-     * ObjectDef : Identifier 'is' Identifier '(' Member* ')' ;
-     * @endcode
-     *
-     * @see Statement
-     * */
-    struct ObjectDef : public Statement {
-        const char *nodeName = "ObjectDef";
-        std::shared_ptr<Identifier> identifier;
-        std::shared_ptr<Identifier> type;
-        std::vector<std::shared_ptr<Member>> memberList;
+        [[nodiscard]] std::string getNodeName() const override;
 
         [[nodiscard]] std::string toJson() const override;
 
@@ -368,7 +402,77 @@ namespace ast {
      * */
     struct MapDef : public Statement {
         const char *nodeName = "MapDef";
-        std::vector<std::shared_ptr<Pair>> pairList;
+        std::vector<std::shared_ptr<Pair>> pairs;
+
+        [[nodiscard]] std::string getNodeName() const override;
+
+        [[nodiscard]] std::string toJson() const override;
+
+        [[nodiscard]] std::string toString() const override;
+    };
+
+    /** @struct ObjectDef
+     *
+     * @if zh
+     * @brief AST节点ObjectDef
+     * @details ObjectDef节点表示对象定义语句,包含一个Identifier节点,一个Identifier节点,一个Member节点的列表.
+     * @remark 这是一个具体的节点,其包括有子节点.
+     * @warning
+     * 注意: 由于@c "类型(几乎?)总是以大写字母"T"开头.它们代表游戏的内部数据结构,其定义不可用." 因此,我们将<type>改为<identifier>。
+     *
+     * @else
+     * @brief AST node ObjectDef
+     * @details The ObjectDef node represents an object definition statement, which contains an Identifier node, an Identifier node, and a list of Member nodes.
+     * @remark This is a concrete node that includes child nodes.
+     * @warning
+     * Note: Since `"types (almost?) always start with a capital letter "T", they represent internal data structures of the game, which cannot be defined."` Therefore, we changed \<type> to
+     * \<identifier>.
+     * @endif
+     *
+     * @code{.antlr}
+     * ObjectDef : Identifier 'is' Identifier '(' Member* ')' ;
+     * @endcode
+     *
+     * @see Statement
+     * */
+    struct ObjectDef : public Statement {
+        const char *nodeName = "ObjectDef";
+        std::shared_ptr<Identifier> identifier;
+        std::shared_ptr<Identifier> type;
+        std::vector<std::shared_ptr<Member>> members;
+
+        [[nodiscard]] std::string getNodeName() const override;
+
+        [[nodiscard]] std::string toJson() const override;
+
+        [[nodiscard]] std::string toString() const override;
+    };
+
+    /** @struct Assignment
+     *
+     * @if zh
+     * @brief AST节点Assignment
+     * @details Assignment节点表示赋值语句,包含一个Identifier节点和一个Expression节点.
+     * @remark 这是一个具体的节点,其包括有子节点.
+     *
+     * @else
+     * @brief AST node Assignment
+     * @details The Assignment node represents an assignment statement, which contains an Identifier node and an Expression node.
+     * @remark This is a concrete node that includes child nodes.
+     * @endif
+     *
+     * @code{.antlr}
+     * Assignment : Identifier 'is' Expression ;
+     * @endcode
+     *
+     * @see Statement
+     * */
+    struct Assignment : public Statement {
+        const char *nodeName = "Assignment";
+        std::shared_ptr<Identifier> identifier;
+        std::shared_ptr<Expression> expression;
+
+        [[nodiscard]] std::string getNodeName() const override;
 
         [[nodiscard]] std::string toJson() const override;
 
@@ -397,37 +501,11 @@ namespace ast {
     struct TemplateDef : public Statement {
         const char *nodeName = "TemplateDef";
         std::shared_ptr<Identifier> identifier;
-        std::vector<std::shared_ptr<Parameter>> parameterList;
+        std::vector<std::shared_ptr<Parameter>> parameters;
         std::shared_ptr<Identifier> type;
-        std::vector<std::shared_ptr<Member>> memberList;
+        std::vector<std::shared_ptr<Member>> members;
 
-        [[nodiscard]] std::string toJson() const override;
-
-        [[nodiscard]] std::string toString() const override;
-    };
-
-    /** @struct Export
-     *
-     * @if zh
-     * @brief AST节点Export
-     * @details Export节点表示导出语句,包含一个Statement节点.
-     * @remark 这是一个具体的节点,其包括有子节点.
-     *
-     * @else
-     * @brief AST node Export
-     * @details The Export node represents an export statement, which contains a Statement node.
-     * @remark This is a concrete node that includes child nodes.
-     * @endif
-     *
-     * @code{.antlr}
-     * Export : 'export' Statement ;
-     * @endcode
-     *
-     * @see Statement
-     * */
-    struct Export : public Statement {
-        const char *nodeName = "Export";
-        std::shared_ptr<Statement> statement;
+        [[nodiscard]] std::string getNodeName() const override;
 
         [[nodiscard]] std::string toJson() const override;
 
@@ -457,69 +535,7 @@ namespace ast {
         const char *nodeName = "Private";
         std::shared_ptr<Statement> statement;
 
-        [[nodiscard]] std::string toJson() const override;
-
-        [[nodiscard]] std::string toString() const override;
-    };
-
-    /** @struct Parameter
-     *
-     * @if zh
-     * @brief AST节点Parameter
-     * @details Parameter节点表示模板参数,包含一个Identifier节点,一个Identifier节点,一个Expression节点.
-     * @remark 这是一个具体的节点,其包括有子节点.
-     * @note
-     * 注意: 由于@c "类型（几乎？）总是以大写字母“T”开头。它们代表游戏的内部数据结构，其定义不可用。"因此，我们将<type>更改为<identifier>。
-     *
-     * @else
-     * @brief AST node Parameter
-     * @details The Parameter node represents a template parameter, which contains an Identifier node, an Identifier node, and an Expression node.
-     * @remark This is a concrete node that includes child nodes.
-     * @note
-     * Note: Since `"types (almost?) always start with a capital letter "T", they represent internal data structures of the game, which cannot be defined."` Therefore, we changed \<type> to \<identifier>.
-     * @endif
-     *
-     * @code{.antlr}
-     * Parameter : Identifier [':' Identifier] ['=' Expression] ;
-     * @endcode
-     *
-     * @see AST
-     * @see \warnoMod\utils\usefulInfo\Modding Manual.pdf
-     * */
-    struct Parameter : public AST {
-        const char *nodeName = "Parameter";
-        std::shared_ptr<Identifier> identifier;
-        std::shared_ptr<Identifier> type;
-        std::shared_ptr<Expression> expression;
-
-        [[nodiscard]] std::string toJson() const override;
-
-        [[nodiscard]] std::string toString() const override;
-    };
-
-    /** @struct Member
-     *
-     * @if zh
-     * @brief AST节点Member
-     * @details Member节点表示对象成员,包含一个Identifier节点和一个Expression节点.
-     * @remark 这是一个具体的节点,其包括有子节点.
-     *
-     * @else
-     * @brief AST node Member
-     * @details The Member node represents an object member, which contains an Identifier node and an Expression node.
-     * @remark This is a concrete node that includes child nodes.
-     * @endif
-     *
-     * @code{.antlr}
-     * Member : Identifier '=' Expression ;
-     * @endcode
-     *
-     * @see AST
-     * */
-    struct Member : public AST {
-        const char *nodeName = "Member";
-        std::shared_ptr<Identifier> identifier;
-        std::shared_ptr<Expression> expression;
+        [[nodiscard]] std::string getNodeName() const override;
 
         [[nodiscard]] std::string toJson() const override;
 
@@ -559,321 +575,6 @@ namespace ast {
         const char *nodeName = "Expression";
     };
 
-    /** @struct Literal
-     *
-     * @if zh
-     * @brief AST节点Literal
-     * @details Literal节点表示字面值.
-     * @remark 这是一个抽象的节点,其不包括子节点.
-     *
-     * @else
-     * @brief AST node Literal
-     * @details The Literal node represents a literal, which contains a GUID node, a Path node, a Pair node, a Boolean node, a String node, an Integer node, a Float node, a Nil node, and a Vector node.
-     * @remark This is an abstract node that does not include child nodes.
-     * @endif
-     *
-     * @pure
-     *
-     * @code{.antlr}
-     * Literal : GUID
-     *         | Path
-     *         | Pair
-     *         | Boolean
-     *         | String
-     *         | Integer
-     *         | Float
-     *         | Nil
-     *         | Vector ;
-     * @endcode
-     *
-     * @see Expression
-     * */
-    struct Literal : public Expression {
-        const char *nodeName = "Literal";
-    };
-
-    /** @struct GUID
-     *
-     * @if zh
-     * @brief AST节点GUID
-     * @details GUID节点表示全局唯一标识符.其包含一个字符串值.
-     * @remark 这是一个具体的节点,其不包括子节点.
-     *
-     * @else
-     * @brief AST node GUID
-     * @details The GUID node represents a global unique identifier, which contains a string value.
-     * @remark This is a concrete node that does not include child nodes.
-     * @endif
-     *
-     * @code{.antlr}
-     * GUID : 'GUID' ':' '{' (DIGIT | LETTER | '-'){32,36} '}' ;
-     * @endcode
-     *
-     * @see Literal
-     * */
-    struct GUID : public Literal {
-        const char *nodeName = "GUID";
-        std::string value;
-
-        [[nodiscard]] std::string toJson() const override;
-
-        [[nodiscard]] std::string toString() const override;
-    };
-
-    /** @struct Path
-     *
-     * @if zh
-     * @brief AST节点Path
-     * @details Path节点表示路径.其包含一个字符串值.
-     * @remark 这是一个具体的节点,其不包括子节点.
-     *
-     * @else
-     * @brief AST node Path
-     * @details The Path node represents a path, which contains a string value.
-     * @remark This is a concrete node that does not include child nodes.
-     * @endif
-     *
-     * @code{.antlr}
-     * Path : ('$' | '~' | '.') '/' (LETTER | DIGIT | '_')+ ;
-     * @endcode
-     *
-     * @see Literal
-     * */
-    struct Path : public Literal {
-        const char *nodeName = "Path";
-        std::string value;
-
-        [[nodiscard]] std::string toJson() const override;
-
-        [[nodiscard]] std::string toString() const override;
-    };
-
-    /** @struct Pair
-     *
-     * @if zh
-     * @brief AST节点Pair
-     * @details Pair节点表示键值对.其包含两个Expression节点.
-     * @remark 这是一个具体的节点,其包括有子节点.
-     *
-     * @else
-     * @brief AST node Pair
-     * @details The Pair node represents a key-value pair, which contains two Expression nodes.
-     * @remark This is a concrete node that includes child nodes.
-     * @endif
-     *
-     * @code{.antlr}
-     * Pair : '(' Expression ',' Expression ')' ;
-     * @endcode
-     *
-     * @see Literal
-     * */
-    struct Pair : public Literal {
-        const char *nodeName = "Pair";
-        std::shared_ptr<Expression> first;
-        std::shared_ptr<Expression> second;
-
-        [[nodiscard]] std::string toJson() const override;
-
-        [[nodiscard]] std::string toString() const override;
-    };
-
-    /** @struct Boolean
-     *
-     * @if zh
-     * @brief AST节点Boolean
-     * @details Boolean节点表示布尔值.其包含一个布尔值.
-     * @remark 这是一个具体的节点,其不包括子节点.
-     *
-     * @else
-     * @brief AST node Boolean
-     * @details The Boolean node represents a boolean value, which contains a boolean value.
-     * @remark This is a concrete node that does not include child nodes.
-     * @endif
-     *
-     * @code{.antlr}
-     * Boolean : 'true' | 'false' 'True' | 'False' ;
-     * @endcode
-     *
-     * @see Literal
-     * */
-    struct Boolean : public Literal {
-        bool value;
-        const char *nodeName = "Boolean";
-
-        [[nodiscard]] std::string toJson() const override;
-
-        [[nodiscard]] std::string toString() const override;
-    };
-
-    /** @struct String
-     *
-     * @if zh
-     * @brief AST节点String
-     * @details String节点表示字符串.其包含一个字符串值.
-     * @remark 这是一个具体的节点,其不包括子节点.
-     *
-     * @else
-     * @brief AST node String
-     * @details The String node represents a string, which contains a string value.
-     * @remark This is a concrete node that does not include child nodes.
-     * @endif
-     *
-     * @code{.antlr}
-     * String : '\'' text '\''
-     *        | '\"' text '\"' ;
-     * @endcode
-     *
-     * @see Literal
-     */
-    struct String : public Literal {
-        const char *nodeName = "String";
-        std::string value;
-
-        [[nodiscard]] std::string toJson() const override;
-
-        [[nodiscard]] std::string toString() const override;
-    };
-
-    /** @struct Integer
-     *
-     * @if zh
-     * @brief AST节点Integer
-     * @details Integer节点表示整数.其包含一个整数值.
-     * @remark 这是一个具体的节点,其不包括子节点.
-     *
-     * @else
-     * @brief AST node Integer
-     * @details The Integer node represents an integer, which contains an integer value.
-     * @remark This is a concrete node that does not include child nodes.
-     * @endif
-     *
-     * @code{.antlr}
-     * Integer : DIGIT+ ;
-     * @endcode
-     *
-     * @see Literal
-     */
-    struct Integer : public Literal {
-        const char *nodeName = "Integer";
-        int value;
-
-        [[nodiscard]] std::string toJson() const override;
-
-        [[nodiscard]] std::string toString() const override;
-    };
-
-    /** @struct Float
-     *
-     * @if zh
-     * @brief AST节点Float
-     * @details Float节点表示浮点数.其包含一个浮点数值.
-     * @remark 这是一个具体的节点,其不包括子节点.
-     *
-     * @else
-     * @brief AST node Float
-     * @details The Float node represents a float, which contains a float value.
-     * @remark This is a concrete node that does not include child nodes.
-     * @endif
-     *
-     * @code{.antlr}
-     * Float : DIGIT+ '.' DIGIT+ ;
-     * @endcode
-     *
-     * @see Literal
-     * */
-    struct Float : public Literal {
-        const char *nodeName = "Float";
-        double value;
-
-        [[nodiscard]] std::string toJson() const override;
-
-        [[nodiscard]] std::string toString() const override;
-    };
-
-    /** @struct Nil
-     *
-     * @if zh
-     * @brief AST节点Nil
-     * @details Nil节点表示空值.其包含一个字符串值.
-     * @remark 这是一个具体的节点,其不包括子节点.
-     *
-     * @else
-     * @brief AST node Nil
-     * @details The Nil node represents a nil value, which contains a string value.
-     * @remark This is a concrete node that does not include child nodes.
-     * @endif
-     *
-     * @code{.antlr}
-     * Nil : 'nil' ;
-     * @endcode
-     *
-     * @see Literal
-     * */
-    struct Nil : public Literal {
-        const char *nodeName = "Nil";
-        std::string value = "nil";
-
-        [[nodiscard]] std::string toJson() const override;
-
-        [[nodiscard]] std::string toString() const override;
-    };
-
-    /** @struct TemplateParam
-     *
-     * @if zh
-     * @brief AST节点TemplateParam
-     * @details TemplateParam节点表示模板参数.其包含一个Identifier节点.
-     * @remark 这是一个具体的节点,其包括有子节点.
-     *
-     * @else
-     * @brief AST node TemplateParam
-     * @details The TemplateParam node represents a template parameter, which contains an Identifier node.
-     * @remark This is a concrete node that includes child nodes.
-     * @endif
-     *
-     * @code{.antlr}
-     * TemplateParam : '<' Identifier '>' ;
-     * @endcode
-     *
-     * @see Expression
-     * */
-    struct TemplateParam : public Expression {
-        const char *nodeName = "TemplateParam";
-        std::shared_ptr<Identifier> identifier;
-
-        [[nodiscard]] std::string toJson() const override;
-
-        [[nodiscard]] std::string toString() const override;
-    };
-
-    /** @struct Vector
-     *
-     * @if zh
-     * @brief AST节点Vector
-     * @details Vector节点表示向量.其包含一个Expression节点的列表.
-     * @remark 这是一个具体的节点,其包括有子节点.
-     *
-     * @else
-     * @brief AST node Vector
-     * @details The Vector node represents a vector, which contains a list of Expression nodes.
-     * @remark This is a concrete node that includes child nodes.
-     * @endif
-     *
-     * @code{.antlr}
-     * Vector : '[' Expression* ']' ;
-     * @endcode
-     *
-     * @see Literal
-     * */
-    struct Vector : public Literal {
-        const char *nodeName = "Vector";
-        std::vector<std::shared_ptr<Expression>> expressionList;
-
-        [[nodiscard]] std::string toJson() const override;
-
-        [[nodiscard]] std::string toString() const override;
-    };
-
     /** @struct Identifier
      *
      * @if zh
@@ -896,6 +597,130 @@ namespace ast {
     struct Identifier : public Expression {
         const char *nodeName = "Identifier";
         std::string name;
+
+        [[nodiscard]] std::string getNodeName() const override;
+
+        [[nodiscard]] std::string toJson() const override;
+
+        [[nodiscard]] std::string toString() const override;
+    };
+
+    /** @struct EnumRef
+     *
+     * @if zh
+     * @brief AST节点EnumRef
+     * @details EnumRef节点表示枚举引用.其包含一个Identifier节点和一个Identifier节点.
+     * @remark 这是一个具体的节点,其包括有子节点.
+     *
+     * @else
+     * @brief AST node EnumRef
+     * @details The EnumRef node represents an enum reference, which contains an Identifier node and an Identifier node.
+     * @remark This is a concrete node that includes child nodes.
+     * @endif
+     *
+     * @code{.antlr}
+     * EnumRef : Identifier '/' Identifier ;
+     * @endcode
+     *
+     * @see Expression
+     * */
+    struct EnumRef : public Expression {
+        const char *nodeName = "EnumRef";
+        std::shared_ptr<Identifier> enumName;
+        std::shared_ptr<Identifier> enumValue;
+
+        [[nodiscard]] std::string getNodeName() const override;
+
+        [[nodiscard]] std::string toJson() const override;
+
+        [[nodiscard]] std::string toString() const override;
+    };
+
+    /** @struct MapRef
+     *
+     * @if zh
+     * @brief AST节点MapRef
+     * @details MapRef节点表示映射引用.其包含一个Pair节点的列表.
+     * @remark 这是一个具体的节点,其包括有子节点.
+     *
+     * @else
+     * @brief AST node MapRef
+     * @details The MapRef node represents a map reference, which contains a list of Pair nodes.
+     * @remark This is a concrete node that includes child nodes.
+     * @endif
+     *
+     * @code{.antlr}
+     * MapRef : 'MAP' '[' Pair* ']' ;
+     * @endcode
+     *
+     * @see Expression
+     * */
+    struct MapRef : public Expression {
+        const char *nodeName = "MapRef";
+        std::vector<std::shared_ptr<Pair>> pairs;
+
+        [[nodiscard]] std::string getNodeName() const override;
+
+        [[nodiscard]] std::string toJson() const override;
+
+        [[nodiscard]] std::string toString() const override;
+    };
+
+    /** @struct ObjectIns
+     *
+     * @if zh
+     * @brief AST节点ObjectIns
+     * @details ObjectIns节点表示对象实例化.其包含一个Identifier节点和一个Member节点的列表.
+     * @remark 这是一个具体的节点,其包括有子节点.
+     *
+     * @else
+     * @brief AST node ObjectIns
+     * @details The ObjectIns node represents an object instantiation, which contains an Identifier node and a list of Member nodes.
+     * @remark This is a concrete node that includes child nodes.
+     * @endif
+     *
+     * @code{.antlr}
+     * ObjectIns : Identifier '(' Member* ')' ;
+     * @endcode
+     *
+     * @see Expression
+     * */
+    struct ObjectIns : public Expression {
+        const char *nodeName = "ObjectIns";
+        std::shared_ptr<Identifier> identifier;
+        std::vector<std::shared_ptr<Member>> members;
+
+        [[nodiscard]] std::string getNodeName() const override;
+
+        [[nodiscard]] std::string toJson() const override;
+
+        [[nodiscard]] std::string toString() const override;
+    };
+
+    /** @struct ObjectRef
+     *
+     * @if zh
+     * @brief AST节点ObjectRef
+     * @details ObjectRef节点表示对象引用.其包含一个Identifier节点.
+     * @remark 这是一个具体的节点,其包括有子节点.
+     *
+     * @else
+     * @brief AST node ObjectRef
+     * @details The ObjectRef node represents an object reference, which contains an Identifier node.
+     * @remark This is a concrete node that includes child nodes.
+     * @endif
+     *
+     * @code{.antlr}
+     * ObjectRef : '$' '/' Identifier ;
+     * @endcode
+     *
+     * @see Expression
+     * */
+    struct ObjectRef : public Expression {
+        const char *nodeName = "ObjectRef";
+        std::shared_ptr<Identifier> identifier;
+
+        [[nodiscard]] std::string getNodeName() const override;
 
         [[nodiscard]] std::string toJson() const override;
 
@@ -927,6 +752,8 @@ namespace ast {
         std::shared_ptr<Operator> operator_;
         std::shared_ptr<Expression> right;
 
+        [[nodiscard]] std::string getNodeName() const override;
+
         [[nodiscard]] std::string toJson() const override;
 
         [[nodiscard]] std::string toString() const override;
@@ -955,119 +782,37 @@ namespace ast {
         const char *nodeName = "Operator";
         std::string value;
 
+        [[nodiscard]] std::string getNodeName() const override;
+
         [[nodiscard]] std::string toJson() const override;
 
         [[nodiscard]] std::string toString() const override;
     };
 
-    /** @struct ObjectRef
+    /** @struct TemplateParam
      *
      * @if zh
-     * @brief AST节点ObjectRef
-     * @details ObjectRef节点表示对象引用.其包含一个Identifier节点.
+     * @brief AST节点TemplateParam
+     * @details TemplateParam节点表示模板参数.其包含一个Identifier节点.
      * @remark 这是一个具体的节点,其包括有子节点.
      *
      * @else
-     * @brief AST node ObjectRef
-     * @details The ObjectRef node represents an object reference, which contains an Identifier node.
+     * @brief AST node TemplateParam
+     * @details The TemplateParam node represents a template parameter, which contains an Identifier node.
      * @remark This is a concrete node that includes child nodes.
      * @endif
      *
      * @code{.antlr}
-     * ObjectRef : '$' '/' Identifier ;
+     * TemplateParam : '<' Identifier '>' ;
      * @endcode
      *
      * @see Expression
      * */
-    struct ObjectRef : public Expression {
-        const char *nodeName = "ObjectRef";
+    struct TemplateParam : public Expression {
+        const char *nodeName = "TemplateParam";
         std::shared_ptr<Identifier> identifier;
 
-        [[nodiscard]] std::string toJson() const override;
-
-        [[nodiscard]] std::string toString() const override;
-    };
-
-    /** @struct ObjectIns
-     *
-     * @if zh
-     * @brief AST节点ObjectIns
-     * @details ObjectIns节点表示对象实例化.其包含一个Identifier节点和一个Member节点的列表.
-     * @remark 这是一个具体的节点,其包括有子节点.
-     *
-     * @else
-     * @brief AST node ObjectIns
-     * @details The ObjectIns node represents an object instantiation, which contains an Identifier node and a list of Member nodes.
-     * @remark This is a concrete node that includes child nodes.
-     * @endif
-     *
-     * @code{.antlr}
-     * ObjectIns : Identifier '(' Member* ')' ;
-     * @endcode
-     *
-     * @see Expression
-     * */
-    struct ObjectIns : public Expression {
-        const char *nodeName = "ObjectIns";
-        std::shared_ptr<Identifier> identifier;
-        std::vector<std::shared_ptr<Member>> memberList;
-
-        [[nodiscard]] std::string toJson() const override;
-
-        [[nodiscard]] std::string toString() const override;
-    };
-
-    /** @struct MapRef
-     *
-     * @if zh
-     * @brief AST节点MapRef
-     * @details MapRef节点表示映射引用.其包含一个Pair节点的列表.
-     * @remark 这是一个具体的节点,其包括有子节点.
-     *
-     * @else
-     * @brief AST node MapRef
-     * @details The MapRef node represents a map reference, which contains a list of Pair nodes.
-     * @remark This is a concrete node that includes child nodes.
-     * @endif
-     *
-     * @code{.antlr}
-     * MapRef : 'MAP' '[' Pair* ']' ;
-     * @endcode
-     *
-     * @see Expression
-     * */
-    struct MapRef : public Expression {
-        const char *nodeName = "MapRef";
-        std::vector<std::shared_ptr<Pair>> pairList;
-
-        [[nodiscard]] std::string toJson() const override;
-
-        [[nodiscard]] std::string toString() const override;
-    };
-
-    /** @struct EnumRef
-     *
-     * @if zh
-     * @brief AST节点EnumRef
-     * @details EnumRef节点表示枚举引用.其包含一个Identifier节点和一个Identifier节点.
-     * @remark 这是一个具体的节点,其包括有子节点.
-     *
-     * @else
-     * @brief AST node EnumRef
-     * @details The EnumRef node represents an enum reference, which contains an Identifier node and an Identifier node.
-     * @remark This is a concrete node that includes child nodes.
-     * @endif
-     *
-     * @code{.antlr}
-     * EnumRef : Identifier '/' Identifier ;
-     * @endcode
-     *
-     * @see Expression
-     * */
-    struct EnumRef : public Expression {
-        const char *nodeName = "EnumRef";
-        std::shared_ptr<Identifier> enumName;
-        std::shared_ptr<Identifier> enumValue;
+        [[nodiscard]] std::string getNodeName() const override;
 
         [[nodiscard]] std::string toJson() const override;
 
@@ -1096,6 +841,314 @@ namespace ast {
     struct TemplateRef : public Expression {
         const char *nodeName = "TemplateRef";
         std::shared_ptr<Identifier> identifier;
+
+        [[nodiscard]] std::string getNodeName() const override;
+
+        [[nodiscard]] std::string toJson() const override;
+
+        [[nodiscard]] std::string toString() const override;
+    };
+
+    /** @struct Literal
+     *
+     * @if zh
+     * @brief AST节点Literal
+     * @details Literal节点表示字面值.
+     * @remark 这是一个抽象的节点,其不包括子节点.
+     *
+     * @else
+     * @brief AST node Literal
+     * @details The Literal node represents a literal, which contains a GUID node, a Path node, a Pair node, a Boolean node, a String node, an Integer node, a Float node, a Nil node, and a Vector
+     * node.
+     * @remark This is an abstract node that does not include child nodes.
+     * @endif
+     *
+     * @pure
+     *
+     * @code{.antlr}
+     * Literal : GUID
+     *         | Path
+     *         | Pair
+     *         | Boolean
+     *         | String
+     *         | Integer
+     *         | Float
+     *         | Nil
+     *         | Vector ;
+     * @endcode
+     *
+     * @see Expression
+     * */
+    struct Literal : public Expression {
+        const char *nodeName = "Literal";
+    };
+
+    /** @struct Boolean
+     *
+     * @if zh
+     * @brief AST节点Boolean
+     * @details Boolean节点表示布尔值.其包含一个布尔值.
+     * @remark 这是一个具体的节点,其不包括子节点.
+     *
+     * @else
+     * @brief AST node Boolean
+     * @details The Boolean node represents a boolean value, which contains a boolean value.
+     * @remark This is a concrete node that does not include child nodes.
+     * @endif
+     *
+     * @code{.antlr}
+     * Boolean : 'true' | 'false' 'True' | 'False' ;
+     * @endcode
+     *
+     * @see Literal
+     * */
+    struct Boolean : public Literal {
+        bool value;
+        const char *nodeName = "Boolean";
+
+        [[nodiscard]] std::string getNodeName() const override;
+
+        [[nodiscard]] std::string toJson() const override;
+
+        [[nodiscard]] std::string toString() const override;
+    };
+
+    /** @struct Float
+     *
+     * @if zh
+     * @brief AST节点Float
+     * @details Float节点表示浮点数.其包含一个浮点数值.
+     * @remark 这是一个具体的节点,其不包括子节点.
+     *
+     * @else
+     * @brief AST node Float
+     * @details The Float node represents a float, which contains a float value.
+     * @remark This is a concrete node that does not include child nodes.
+     * @endif
+     *
+     * @code{.antlr}
+     * Float : DIGIT+ '.' DIGIT+ ;
+     * @endcode
+     *
+     * @see Literal
+     * */
+    struct Float : public Literal {
+        const char *nodeName = "Float";
+        double value;
+
+        [[nodiscard]] std::string getNodeName() const override;
+
+        [[nodiscard]] std::string toJson() const override;
+
+        [[nodiscard]] std::string toString() const override;
+    };
+
+    /** @struct Integer
+     *
+     * @if zh
+     * @brief AST节点Integer
+     * @details Integer节点表示整数.其包含一个整数值.
+     * @remark 这是一个具体的节点,其不包括子节点.
+     *
+     * @else
+     * @brief AST node Integer
+     * @details The Integer node represents an integer, which contains an integer value.
+     * @remark This is a concrete node that does not include child nodes.
+     * @endif
+     *
+     * @code{.antlr}
+     * Integer : DIGIT+ ;
+     * @endcode
+     *
+     * @see Literal
+     */
+    struct Integer : public Literal {
+        const char *nodeName = "Integer";
+        int value;
+
+        [[nodiscard]] std::string getNodeName() const override;
+
+        [[nodiscard]] std::string toJson() const override;
+
+        [[nodiscard]] std::string toString() const override;
+    };
+
+    /** @struct GUID
+     *
+     * @if zh
+     * @brief AST节点GUID
+     * @details GUID节点表示全局唯一标识符.其包含一个字符串值.
+     * @remark 这是一个具体的节点,其不包括子节点.
+     *
+     * @else
+     * @brief AST node GUID
+     * @details The GUID node represents a global unique identifier, which contains a string value.
+     * @remark This is a concrete node that does not include child nodes.
+     * @endif
+     *
+     * @code{.antlr}
+     * GUID : 'GUID' ':' '{' (DIGIT | LETTER | '-'){32,36} '}' ;
+     * @endcode
+     *
+     * @see Literal
+     * */
+    struct GUID : public Literal {
+        const char *nodeName = "GUID";
+        std::string value;
+
+        [[nodiscard]] std::string getNodeName() const override;
+
+        [[nodiscard]] std::string toJson() const override;
+
+        [[nodiscard]] std::string toString() const override;
+    };
+
+    /** @struct Nil
+     *
+     * @if zh
+     * @brief AST节点Nil
+     * @details Nil节点表示空值.其包含一个字符串值.
+     * @remark 这是一个具体的节点,其不包括子节点.
+     *
+     * @else
+     * @brief AST node Nil
+     * @details The Nil node represents a nil value, which contains a string value.
+     * @remark This is a concrete node that does not include child nodes.
+     * @endif
+     *
+     * @code{.antlr}
+     * Nil : 'nil' ;
+     * @endcode
+     *
+     * @see Literal
+     * */
+    struct Nil : public Literal {
+        const char *nodeName = "Nil";
+        std::string value    = "nil";
+
+        [[nodiscard]] std::string getNodeName() const override;
+
+        [[nodiscard]] std::string toJson() const override;
+
+        [[nodiscard]] std::string toString() const override;
+    };
+
+    /** @struct Pair
+     *
+     * @if zh
+     * @brief AST节点Pair
+     * @details Pair节点表示键值对.其包含两个Expression节点.
+     * @remark 这是一个具体的节点,其包括有子节点.
+     *
+     * @else
+     * @brief AST node Pair
+     * @details The Pair node represents a key-value pair, which contains two Expression nodes.
+     * @remark This is a concrete node that includes child nodes.
+     * @endif
+     *
+     * @code{.antlr}
+     * Pair : '(' Expression ',' Expression ')' ;
+     * @endcode
+     *
+     * @see Literal
+     * */
+    struct Pair : public Literal {
+        const char *nodeName = "Pair";
+        std::shared_ptr<Expression> first;
+        std::shared_ptr<Expression> second;
+
+        [[nodiscard]] std::string getNodeName() const override;
+
+        [[nodiscard]] std::string toJson() const override;
+
+        [[nodiscard]] std::string toString() const override;
+    };
+
+    /** @struct Path
+     *
+     * @if zh
+     * @brief AST节点Path
+     * @details Path节点表示路径.其包含一个字符串值.
+     * @remark 这是一个具体的节点,其不包括子节点.
+     *
+     * @else
+     * @brief AST node Path
+     * @details The Path node represents a path, which contains a string value.
+     * @remark This is a concrete node that does not include child nodes.
+     * @endif
+     *
+     * @code{.antlr}
+     * Path : ('$' | '~' | '.') '/' (LETTER | DIGIT | '_')+ ;
+     * @endcode
+     *
+     * @see Literal
+     * */
+    struct Path : public Literal {
+        const char *nodeName = "Path";
+        std::string value;
+
+        [[nodiscard]] std::string getNodeName() const override;
+
+        [[nodiscard]] std::string toJson() const override;
+
+        [[nodiscard]] std::string toString() const override;
+    };
+
+    /** @struct String
+     *
+     * @if zh
+     * @brief AST节点String
+     * @details String节点表示字符串.其包含一个字符串值.
+     * @remark 这是一个具体的节点,其不包括子节点.
+     *
+     * @else
+     * @brief AST node String
+     * @details The String node represents a string, which contains a string value.
+     * @remark This is a concrete node that does not include child nodes.
+     * @endif
+     *
+     * @code{.antlr}
+     * String : '\'' text '\''
+     *        | '\"' text '\"' ;
+     * @endcode
+     *
+     * @see Literal
+     */
+    struct String : public Literal {
+        const char *nodeName = "String";
+        std::string value;
+
+        [[nodiscard]] std::string getNodeName() const override;
+
+        [[nodiscard]] std::string toJson() const override;
+
+        [[nodiscard]] std::string toString() const override;
+    };
+
+    /** @struct Vector
+     *
+     * @if zh
+     * @brief AST节点Vector
+     * @details Vector节点表示向量.其包含一个Expression节点的列表.
+     * @remark 这是一个具体的节点,其包括有子节点.
+     *
+     * @else
+     * @brief AST node Vector
+     * @details The Vector node represents a vector, which contains a list of Expression nodes.
+     * @remark This is a concrete node that includes child nodes.
+     * @endif
+     *
+     * @code{.antlr}
+     * Vector : '[' Expression* ']' ;
+     * @endcode
+     *
+     * @see Literal
+     * */
+    struct Vector : public Literal {
+        const char *nodeName = "Vector";
+        std::vector<std::shared_ptr<Expression>> expressions;
+
+        [[nodiscard]] std::string getNodeName() const override;
 
         [[nodiscard]] std::string toJson() const override;
 

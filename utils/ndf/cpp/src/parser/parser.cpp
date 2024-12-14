@@ -14,7 +14,6 @@
  * */
 #include "parser.h"
 #include "../expection.h"
-#include "debuger.h"
 #include <algorithm>  // mscv编译所需
 
 void debug(const std::string &msg, const TokenPtr &token) {
@@ -165,7 +164,7 @@ std::shared_ptr<ast::ObjectDef> Parser::parseObjectDef() {
     expect(TokenType::LPAREN);
 
     while (inScope() && curr()->type != TokenType::RPAREN) {
-        obj->memberList.push_back(dbgParseMember(this));
+        obj->members.push_back(dbgParseMember(this));
 
         if (curr()->type == TokenType::RPAREN) break;
         else expect(TokenType::NEWLINE, false);
@@ -187,7 +186,7 @@ std::shared_ptr<ast::MapDef> Parser::parseMapDef() {
 
     expect(TokenType::LBRACKET);
 
-    while (inScope() && curr()->type != TokenType::RBRACKET) map->pairList.push_back(dbgParsePair(this));
+    while (inScope() && curr()->type != TokenType::RBRACKET) map->pairs.push_back(dbgParsePair(this));
 
     expect(TokenType::RBRACKET);
 
@@ -211,7 +210,7 @@ std::shared_ptr<ast::TemplateDef> Parser::parseTemplateDef() {
     expect(TokenType::LBRACKET);
 
     while (inScope() && curr()->type != TokenType::RBRACKET) {
-        temp->parameterList.push_back(dbgParseParam(this));
+        temp->parameters.push_back(dbgParseParam(this));
         if (curr()->type == TokenType::RBRACKET) break;
         else expect(TokenType::COMMA, false);
         skip();
@@ -228,7 +227,7 @@ std::shared_ptr<ast::TemplateDef> Parser::parseTemplateDef() {
     expect(TokenType::LPAREN);
 
     while (inScope() && curr()->type != TokenType::RPAREN) {
-        temp->memberList.push_back(dbgParseMember(this));
+        temp->members.push_back(dbgParseMember(this));
         if (curr()->type == TokenType::RPAREN) break;
         else expect(TokenType::NEWLINE, false);
     }
@@ -518,7 +517,7 @@ std::shared_ptr<ast::Vector> Parser::parseVector() {
     expect(TokenType::LBRACKET);
 
     while (inScope() && curr()->type != TokenType::RBRACKET) {
-        vector->expressionList.push_back(bdgParseExpr(this));
+        vector->expressions.push_back(bdgParseExpr(this));
         if (curr()->type == TokenType::RBRACKET) break;
         else expect(TokenType::COMMA);
         skip();
@@ -568,7 +567,7 @@ std::shared_ptr<ast::MapRef> Parser::parseMapRef() {
     expect(TokenType::LBRACKET);
 
     while (inScope() && curr()->type != TokenType::RBRACKET) {
-        map_ref->pairList.push_back(dbgParsePair(this));
+        map_ref->pairs.push_back(dbgParsePair(this));
         skip();
 
         if (curr()->type == TokenType::RBRACKET) break;
@@ -626,7 +625,7 @@ std::shared_ptr<ast::ObjectIns> Parser::parseObjectIns() {
     expect(TokenType::LPAREN);
 
     while (inScope() && curr()->type != TokenType::RPAREN) {
-        objIns->memberList.push_back(dbgParseMember(this));
+        objIns->members.push_back(dbgParseMember(this));
 //        if (curr()->type == TokenType::RPAREN) break;
         if (fromUntilExpect(_idx, _tokens.size(), TokenType::RPAREN, {.firstStop = true})) break;
         else expect(TokenType::NEWLINE, false);

@@ -1,8 +1,0 @@
-digraph G {
-    label="AST类继承关系图"
-    fontname="FangSong"
-    node [shape=record, fontname="FangSong"]
-    edge [fontname="FangSong"]
-
-    AST [label="AST\nnodeName: const char*"]
-}
