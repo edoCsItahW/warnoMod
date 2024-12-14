@@ -39,7 +39,7 @@ Token Lexer::operator*() {
     else if (curr() == '/' )
         if (_source[_pos + 1] == '/') return extractLineComment();
         else if (_source[_pos + 1] == '*') return extractBlockComment();
-        else return {TokenType::UNKNOWN, _pos++};
+        else return extractOperator();
     else if (curr() == '"' || curr() == '\'')
         return extractString();
     else if ((curr() == '$' || curr() == '~' || curr() == '.') && _source[_pos + 1] == '/')

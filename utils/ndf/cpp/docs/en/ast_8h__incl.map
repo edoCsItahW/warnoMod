@@ -1,9 +1,0 @@
-<map id="src/parser/ast.h" name="src/parser/ast.h">
-<area shape="rect" id="Node000001" title="This file defines the abstract class and concrete class of the AST node. ." alt="" coords="78,5,190,32"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="5,80,77,107"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="120,35,71,73,67,68,116,30"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="100,80,168,107"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="137,33,137,64,132,64,132,33"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="192,80,250,107"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="151,30,196,68,193,72,148,35"/>
-</map>

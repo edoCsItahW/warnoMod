@@ -13,17 +13,56 @@
  * @brief
  * */
 #include "utils.h"
+#include <filesystem>
+#include <fstream>
 
-std::string wstr2str(const std::wstring& wstr, int codepage) {
-#if __GUNC__ || __clang__
-    std::wstring_convert<std::codecvt_utf8<wchar_t>> conv;
-    return conv.to_bytes(wstr);
-#elif _MSC_VER
-    int size = WideCharToMultiByte(codepage, 0, wstr.c_str(), -1, NULL, 0, NULL, NULL);
-    char* mbstr = new char[size];
-    WideCharToMultiByte(codepage, 0, wstr.c_str(), -1, mbstr, size, NULL, NULL);
-    std::string str(mbstr);
-    delete[] mbstr;
-    return str;
-#endif
-}
+namespace dbg {
+    bool First = true;
+    bool DEBUG = false;
+}  // namespace dbg
+
+
+namespace os {
+    std::string completePath(const std::string& _str) {
+        std::filesystem::path path(_str);
+
+        if (!path.is_absolute())  // 不是绝对路径,对于相对路径和文件名都可以转成绝对路径
+            path = std::filesystem::absolute(path);
+
+        if (!std::filesystem::exists(path)) throw std::filesystem::filesystem_error("File not found: " + _str, std::make_error_code(std::errc::no_such_file_or_directory));
+
+        return path.string();
+    }
+
+    AnyStr readFile(const std::string& _filePath, Type _type, std::string cwd) {
+        if (!cwd.empty()) std::filesystem::current_path(cwd);
+
+        const auto filePath = completePath(_filePath);
+        switch (_type) {
+            using enum Type;
+            case UTF8: {
+                std::ifstream file(filePath, std::ios::in);
+                if (file.is_open()) {
+                    std::string content((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>());
+                    file.close();
+                    return content;
+                } else {
+                    file.close();
+                    throw std::runtime_error("Failed to open file: " + filePath);
+                }
+            }
+            case GBK: {
+                std::wifstream file(filePath, std::ios::in);
+                if (file.is_open()) {
+                    std::wstring content((std::istreambuf_iterator<wchar_t>(file)), std::istreambuf_iterator<wchar_t>());
+                    file.close();
+                    return content;
+                } else {
+                    file.close();
+                    throw std::runtime_error("Failed to open file: " + filePath);
+                }
+            }
+            default: throw std::runtime_error("Unsupported encoding type!");
+        }
+    }
+}  // namespace os

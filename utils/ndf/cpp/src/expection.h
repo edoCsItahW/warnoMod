@@ -92,7 +92,7 @@
 #define SyntaxError(msg) RAISE(msg, SyntaxError)
 
 /**
- * @def TypeError
+ * @def TypeError_
  *
  * @if zh
  * @brief 类型错误异常，与@ref SyntaxError 类似.
@@ -104,7 +104,7 @@
  *
  * @see SyntaxError
  * */
-#define TypeError(msg) RAISE(msg, "TypeError")
+#define TypeError_(msg) RAISE(msg, "TypeError")
 
 /**
  * @def ValueError

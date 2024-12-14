@@ -12,6 +12,8 @@ build/
 */build/
 .vscode/
 */.vscode/
+docs/
+*/docs/
 
 CommonData_backup/
 */CommonData_backup/

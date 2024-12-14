@@ -20,16 +20,3 @@ add_executable(${PROJECT_NAME}
         src/utils.cpp
         main.cpp
 )
-
-if (MSVC)
-target_link_libraries(${PROJECT_NAME} 
-    ${CMAKE_SOURCE_DIR}/lib/confunc_st_MSVC_debug.lib
-    ${CMAKE_SOURCE_DIR}/lib/debugger_st_MSVC_debug.lib
-)
-
-else()
-target_link_libraries(${PROJECT_NAME}
-    ${CMAKE_SOURCE_DIR}/lib/libconfunc_MINGW.a
-    ${CMAKE_SOURCE_DIR}/lib/libDebugger_st_MINGW.a
-)
-endif()

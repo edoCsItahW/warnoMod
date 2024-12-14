@@ -1,7 +1,0 @@
-<map id="Pos::col" name="Pos::col">
-<area shape="rect" id="Node000001" title=" " alt="" coords="203,31,272,57"/>
-<area shape="rect" id="Node000002" href="$build_8cpp.html#a5d2adbf158d596abdc2b780ae2604cff" title=" " alt="" coords="5,5,155,32"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="187,39,155,33,156,28,188,33"/>
-<area shape="rect" id="Node000003" href="$struct_token.html#a6f1c3f5f607e9b576b4202b108f13c60" title=" " alt="" coords="25,56,135,83"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="187,55,136,63,135,58,187,49"/>
-</map>
