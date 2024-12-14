@@ -60,7 +60,7 @@ int main(int argc, char* argv[]) {
 //    if (target.empty())
 //        throw ArgumentError("Target file is not specified.");
 
-    auto text = std::get<std::string>(os::readFile(R"(.\GameData\Generated\Gameplay\Decks\DivisionRules.ndf)", os::Type::UTF8, R"(E:\codeSpace\codeSet\ndf\warnoMod)"));
+    auto text = std::get<std::string>(os::readFile(R"(.\GameData\Generated\Gameplay\Decks\Divisions.ndf)", os::Type::UTF8, R"(E:\codeSpace\codeSet\ndf\warnoMod)"));
 
 
     auto tokens = TokenProcessor::process(Lexer::tokenize(text));
