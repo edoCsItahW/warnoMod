@@ -6,11 +6,11 @@
 Descriptor_Deck_Division_Integrate_mutil is TDeckDivisionDescriptor (
     DescriptorId = GUID:{69a17806-4fc1-45f2-b7de-af42e681a350}
     CfgName = 'US_3rd_Arm_multi'
-    DivisionName = 'INTEGRATE_MUTIL'
+    DivisionName = 'INTEGMUTIL'
     DivisionPowerClassification = 'DC_PWR1'
     DivisionCoalition = ECoalition/Allied
     DivisionTags = ['DEFAULT', 'US', 'Allied', 'armored', 'DC_PWR1']
-    DescriptionHintTitleToken = 'INTEGRATE_MUTIL'
+    DescriptionHintTitleToken = 'INTEGMUTIL'
     PackList = MAP
     [
         (~/Descriptor_Deck_Pack_FOB_US, 1),
