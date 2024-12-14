@@ -1,7 +1,0 @@
-<map id="ast::TemplateDef" name="ast::TemplateDef">
-<area shape="rect" id="Node000001" title="AST node TemplateDef." alt="" coords="5,293,229,565"/>
-<area shape="rect" id="Node000002" href="$structast_1_1_statement.html" title="AST node Statement." alt="" coords="37,176,197,245"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="120,260,120,293,115,293,115,260"/>
-<area shape="rect" id="Node000003" href="$structast_1_1_a_s_t.html" title="AST node AST." alt="" coords="37,5,197,128"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="120,143,120,176,115,176,115,143"/>
-</map>

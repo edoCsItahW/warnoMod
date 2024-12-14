@@ -1,9 +1,0 @@
-<map id="ast::Vector" name="ast::Vector">
-<area shape="rect" id="Node000001" title="AST node Vector." alt="" coords="5,411,240,571"/>
-<area shape="rect" id="Node000002" href="$structast_1_1_literal.html" title="AST node Literal." alt="" coords="43,293,203,363"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="125,378,125,411,120,411,120,378"/>
-<area shape="rect" id="Node000003" href="$structast_1_1_expression.html" title="AST node Expression." alt="" coords="43,176,203,245"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="125,260,125,294,120,294,120,260"/>
-<area shape="rect" id="Node000004" href="$structast_1_1_a_s_t.html" title="AST node AST." alt="" coords="43,5,203,128"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="125,143,125,176,120,176,120,143"/>
-</map>

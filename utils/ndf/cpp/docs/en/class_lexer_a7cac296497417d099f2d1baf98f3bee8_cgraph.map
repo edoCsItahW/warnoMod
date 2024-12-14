@@ -1,8 +1,0 @@
-<map id="Lexer::extractLiteral" name="Lexer::extractLiteral">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,142,57"/>
-<area shape="rect" id="Node000002" href="$class_lexer.html#a2d03a1b0a7f8489eb6fc33c06068323d" title=" " alt="" coords="190,5,273,32"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="142,30,174,25,175,30,142,36"/>
-<area shape="rect" id="Node000003" href="$class_lexer.html#a19d3c701df7e890bb78924e341c73a6d" title=" " alt="" coords="321,31,429,57"/>
-<area shape="poly" id="edge3_Node000001_Node000003" title=" " alt="" coords="142,41,305,41,305,47,142,47"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="274,23,306,29,305,34,273,29"/>
-</map>

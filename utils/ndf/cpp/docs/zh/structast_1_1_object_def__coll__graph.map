@@ -1,7 +1,0 @@
-<map id="ast::ObjectDef" name="ast::ObjectDef">
-<area shape="rect" id="Node000001" title="AST节点ObjectDef" alt="" coords="5,293,205,528"/>
-<area shape="rect" id="Node000002" href="$structast_1_1_statement.html" title="AST节点Statement" alt="" coords="25,176,185,245"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="108,260,108,294,103,294,103,260"/>
-<area shape="rect" id="Node000003" href="$structast_1_1_a_s_t.html" title="AST节点AST" alt="" coords="25,5,185,128"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="108,143,108,176,103,176,103,143"/>
-</map>

@@ -1,9 +1,0 @@
-<map id="TokenProcessor::operator*" name="TokenProcessor::operator*">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,56,181,83"/>
-<area shape="rect" id="Node000002" href="$class_token_processor.html#a0a65454dc8981bebf0ddf92b16956e08" title=" " alt="" coords="236,5,432,32"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="160,53,252,33,253,38,161,58"/>
-<area shape="rect" id="Node000003" href="$class_token_processor.html#aad4c353ce269d7464d270111c14cd23f" title=" " alt="" coords="231,56,438,83"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="181,67,215,67,215,72,181,72"/>
-<area shape="rect" id="Node000004" href="$class_token_processor.html#aa32cb91a55a0679bece4532e513b0b68" title=" " alt="" coords="229,107,440,133"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="161,81,253,100,252,106,160,86"/>
-</map>
