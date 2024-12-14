@@ -357,36 +357,6 @@ namespace astNodeApi {
     CONST_ABC(Expression)
     INIT_ABC(Expression)
 
-    //    node::Object ExpressionWrapper::trans(const node::Env& env, const std::shared_ptr<ast::Expression>& obj) {
-    //        if (DEBUG) std::cout << "[Trans] " << "Expression" << " -> CPP" << std::endl;
-    //        if (std::strcmp(obj->nodeName, "EnumRef") == 0)
-    //            return EnumRefWrapper::trans(env, std::static_pointer_cast<ast::EnumRef>(obj));
-    //        else if (std::strcmp(obj->nodeName, "Identifier") == 0)
-    //            return IdentifierWrapper::trans(env, std::static_pointer_cast<ast::Identifier>(obj));
-    //        else if (std::strcmp(obj->nodeName, "MapRef") == 0)
-    //            return MapRefWrapper::trans(env, std::static_pointer_cast<ast::MapRef>(obj));
-    //        else if (std::strcmp(obj->nodeName, "ObjectIns") == 0)
-    //            return ObjectInsWrapper::trans(env, std::static_pointer_cast<ast::ObjectIns>(obj));
-    //        else if (std::strcmp(obj->nodeName, "ObjectRef") == 0)
-    //            return ObjectRefWrapper::trans(env, std::static_pointer_cast<ast::ObjectRef>(obj));
-    //        else if (std::strcmp(obj->nodeName, "Operation") == 0)
-    //            return OperationWrapper::trans(env, std::static_pointer_cast<ast::Operation>(obj));
-    //        else if (std::strcmp(obj->nodeName, "Operator") == 0)
-    //            return OperatorWrapper::trans(env, std::static_pointer_cast<ast::Operator>(obj));
-    //        else if (std::strcmp(obj->nodeName, "TemplateParam") == 0)
-    //            return TemplateParamWrapper::trans(env, std::static_pointer_cast<ast::TemplateParam>(obj));
-    //        else if (std::strcmp(obj->nodeName, "TemplateRef") == 0)
-    //            return TemplateRefWrapper::trans(env, std::static_pointer_cast<ast::TemplateRef>(obj));
-    //        else if (std::ranges::find(literalTypes, obj->nodeName) != literalTypes.end()) {
-    //            if (DEBUG) std::cout << "trans literal: " << obj->nodeName << std::endl;
-    //            return LiteralWrapper::trans(env, std::static_pointer_cast<ast::Literal>(obj));
-    //        }
-    //        else {
-    //            std::cout << obj->toString() << std::endl;
-    //            node::Error::New(env, std::format("Unknown literal type: {}", obj->nodeName)).ThrowAsJavaScriptException();
-    //        }
-    //    }
-
     TRANS_ABC_CPP(Expression,
                   TRANS_ABC_ATTR_CPP(EnumRef) else TRANS_ABC_ATTR_CPP(Identifier
                   ) else if (std::ranges::find(literalTypes, obj->getNodeName()) != literalTypes.end()) return LiteralWrapper::trans(env, std::static_pointer_cast<ast::Literal>(obj));
