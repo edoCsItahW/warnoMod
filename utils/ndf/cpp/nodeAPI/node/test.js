@@ -6,6 +6,6 @@ fs.readFile("./node/test.ndf", (err, data) => {
     if (err) throw err;
     const ndfData = ndf.parse(data.toString())
     for (stmt of ndfData.statements)
-        console.log(stmt.toString())
+        stmt.toString()
 })
 
