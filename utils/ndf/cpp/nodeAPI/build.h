@@ -74,7 +74,7 @@ namespace astNodeApi {
 
     AST_WRAP_SPEC(MapDef, AST_WRAP_ATTR(pairs))
 
-    AST_WRAP_SPEC(ObjectDef, AST_WRAP_ATTR(identifier) AST_WRAP_ATTR(members))
+    AST_WRAP_SPEC(ObjectDef, AST_WRAP_ATTR(identifier) AST_WRAP_ATTR(type) AST_WRAP_ATTR(members))
 
     AST_WRAP_SPEC(Assignment, AST_WRAP_ATTR(identifier) AST_WRAP_ATTR(expression))
 

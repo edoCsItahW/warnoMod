@@ -197,10 +197,16 @@
 #define TRANS_ABC_ATTR_CPP_END(clsName) node::TypeError::New(env, #clsName "Wrapper::trans: Invalid object type '" + std::string(obj->nodeName) + "'!").ThrowAsJavaScriptException();
 
 #define TO_STRING(clsName)                                                                                                                                                                             \
-    node::Value clsName##Wrapper::toString(const node::CallbackInfo& info) { return node::String::New(info.Env(), instance->toString()); }
+    node::Value clsName##Wrapper::toString(const node::CallbackInfo& info) {                                                                                                                           \
+        if (DEBUG) std::cout << "[ToString] " << #clsName << std::endl;                                                                                                                                \
+        return node::String::New(info.Env(), instance->toString());                                                                                                                                    \
+    }
 
 #define TO_JSON(clsName)                                                                                                                                                                               \
-    node::Value clsName##Wrapper::toJson(const node::CallbackInfo& info) { return node::String::New(info.Env(), instance->toJson()); }
+    node::Value clsName##Wrapper::toJson(const node::CallbackInfo& info) {                                                                                                                             \
+        if (DEBUG) std::cout << "[ToJson] " << #clsName << std::endl;                                                                                                                                  \
+        return node::String::New(info.Env(), instance->toJson());                                                                                                                                      \
+    }
 
 node::Function getConstructor(const node::Env& env, std::string name) {
     if (auto constructor = env.Global().Get(name); constructor.IsFunction()) return constructor.As<node::Function>();
@@ -298,13 +304,14 @@ namespace astNodeApi {
 
     // --------------------------------------- ObjectDef ---------------------------------------
 
-    CONST_SPEC(ObjectDef, CONST_ATTR_TRANS(ObjectDef, identifier, Identifier) CONST_ATTR_ARR(ObjectDef, members, Member))
-    INIT_SPEC(ObjectDef, INIT_INS_ACC(ObjectDef, identifier), INIT_INS_ACC(ObjectDef, members))
+    CONST_SPEC(ObjectDef, CONST_ATTR_TRANS(ObjectDef, identifier, Identifier) CONST_ATTR_TRANS(ObjectDef, type, Identifier) CONST_ATTR_ARR(ObjectDef, members, Member))
+    INIT_SPEC(ObjectDef, INIT_INS_ACC(ObjectDef, identifier), INIT_INS_ACC(ObjectDef, type), INIT_INS_ACC(ObjectDef, members))
 
-    TRANS_SPEC_CPP(ObjectDef, TRANS_SPEC_ATTR_CPP_TRANS(identifier, Identifier) TRANS_SPEC_ATTR_CPP_ARR(members, Member))
-    TRANS_SPEC_JS(ObjectDef, TRANS_SPEC_ATTR_JS_TRANS(identifier, Identifier) TRANS_SPEC_ATTR_JS_ARR_TRANS(members, Member))
+    TRANS_SPEC_CPP(ObjectDef, TRANS_SPEC_ATTR_CPP_TRANS(identifier, Identifier) TRANS_SPEC_ATTR_CPP_TRANS(type, Identifier) TRANS_SPEC_ATTR_CPP_ARR(members, Member))
+    TRANS_SPEC_JS(ObjectDef, TRANS_SPEC_ATTR_JS_TRANS(identifier, Identifier) TRANS_SPEC_ATTR_JS_TRANS(type, Identifier) TRANS_SPEC_ATTR_JS_ARR_TRANS(members, Member))
 
     ATTR_VALUE(ObjectDef, identifier, Identifier)
+    ATTR_VALUE(ObjectDef, type, Identifier)
     ATTR_ARR(ObjectDef, members, Member)
 
     TO_STRING(ObjectDef)
@@ -667,8 +674,7 @@ namespace astNodeApi {
             auto tokens = TokenProcessor::process(Lexer::tokenize(info[0].ToString().Utf8Value()));
             auto parser = Parser(tokens);
 
-            if (info.Length() == 2 && info[1].IsBoolean())
-                DEBUG = info[1].ToBoolean().Value();
+            if (info.Length() == 2 && info[1].IsBoolean()) DEBUG = info[1].ToBoolean().Value();
 
             return ProgramWrapper::trans(info.Env(), parser.parse());
         }
@@ -676,8 +682,6 @@ namespace astNodeApi {
         return info.Env().Undefined();
     }
 }  // namespace astNodeApi
-
-
 
 node::Object Init(Napi::Env env, Napi::Object exports) {
     using namespace astNodeApi;
