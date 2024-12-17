@@ -28,8 +28,11 @@
         : node::ObjectWrap<clsName##Wrapper>(info)                                                                                                                                                     \
         , instance(std::make_shared<ast::clsName>()) {                                                                                                                                                 \
         if (DEBUG) std::cout << "[Constructor] " << #clsName << std::endl;                                                                                                                             \
-        info.This().As<node::Object>().Set("nodeName", node::String::New(info.Env(), #clsName));                                                                                                       \
+        auto obj = info.This().As<node::Object>();                                                                                                                                                     \
+        obj.Set("nodeName", node::String::New(info.Env(), #clsName));                                                                                                                                  \
         if (info.Length() == 1 && info[0].IsObject()) {                                                                                                                                                \
+            instance->_pos = info[0].As<node::Object>().Has("_pos") ? info[0].As<node::Object>().Get("_pos").As<node::Number>().Int32Value() : 0;                                                      \
+            obj.Set("_pos", node::Number::New(info.Env(), instance->_pos));                                                                                                                            \
             attrCode                                                                                                                                                                                   \
         } else                                                                                                                                                                                         \
             node::Error::New(info.Env(), "Invalid arguments for '" #clsName "' constructor.").ThrowAsJavaScriptException();                                                                            \
@@ -61,7 +64,7 @@
             {StaticAccessor(                                                                                                                                                                           \
                  "nodeName", [](const node::CallbackInfo& info) -> node::Value { return node::String::New(info.Env(), #clsName); }, nullptr                                                            \
              ),                                                                                                                                                                                        \
-             InstanceMethod("toString", &clsName##Wrapper::toString), InstanceMethod("toJson", &clsName##Wrapper::toJson), __VA_ARGS__}                                                                \
+             InstanceMethod("pos", &clsName##Wrapper::posGet), InstanceMethod("toString", &clsName##Wrapper::toString), InstanceMethod("toJson", &clsName##Wrapper::toJson), __VA_ARGS__}              \
         );                                                                                                                                                                                             \
         constructor = Persistent(func);                                                                                                                                                                \
         constructor.SuppressDestruct();                                                                                                                                                                \
@@ -147,7 +150,8 @@
 #define TRANS_SPEC_JS(clsName, attrCode)                                                                                                                                                               \
     std::shared_ptr<ast::clsName> clsName##Wrapper::trans(const node::Object& obj) {                                                                                                                   \
         if (DEBUG) std::cout << "[Trans] " << #clsName << " -> JS" << std::endl;                                                                                                                       \
-        auto ins = std::make_shared<ast::clsName>();                                                                                                                                                   \
+        auto ins  = std::make_shared<ast::clsName>();                                                                                                                                                  \
+        ins->_pos = obj.Get("_pos").As<node::Number>().Int32Value();                                                                                                                                   \
         attrCode return ins;                                                                                                                                                                           \
     }
 
@@ -176,6 +180,7 @@
     node::Object clsName##Wrapper::trans(const node::Env& env, const std::shared_ptr<ast::clsName>& obj) {                                                                                             \
         if (DEBUG) std::cout << "[Trans] " << #clsName << " -> CPP" << std::endl;                                                                                                                      \
         auto arg = node::Object::New(env);                                                                                                                                                             \
+        arg.Set("_pos", node::Number::New(env, obj->getPos()));                                                                                                                                        \
         attrCode return getConstructor(env, #clsName).New({arg}).As<node::Object>();                                                                                                                   \
     }
 
@@ -208,6 +213,9 @@
         return node::String::New(info.Env(), instance->toJson());                                                                                                                                      \
     }
 
+#define ATTR_POS(clsName)                                                                                                                                                                              \
+    node::Value clsName##Wrapper::posGet(const node::CallbackInfo& info) { return node::Number::New(info.Env(), instance->getPos()); }
+
 node::Function getConstructor(const node::Env& env, std::string name) {
     if (auto constructor = env.Global().Get(name); constructor.IsFunction()) return constructor.As<node::Function>();
     node::Error::New(env, std::format("Constructor of class {} not found or not export to global scope!", name)).ThrowAsJavaScriptException();
@@ -226,6 +234,7 @@ namespace astNodeApi {
     TRANS_SPEC_JS(Program, TRANS_SPEC_ATTR_JS_ARR_TRANS(statements, Statement))
 
     ATTR_ARR(Program, statements, Statement)
+    ATTR_POS(Program)
 
     TO_STRING(Program)
     TO_JSON(Program)
@@ -240,6 +249,7 @@ namespace astNodeApi {
 
     ATTR_VALUE(Member, identifier, Identifier)
     ATTR_VALUE(Member, expression, Expression)
+    ATTR_POS(Member)
 
     TO_STRING(Member)
     TO_JSON(Member)
@@ -255,6 +265,7 @@ namespace astNodeApi {
     ATTR_VALUE(Parameter, identifier, Identifier)
     ATTR_VALUE(Parameter, type, Identifier)
     ATTR_VALUE(Parameter, expression, Expression)
+    ATTR_POS(Parameter)
 
     TO_STRING(Parameter)
     TO_JSON(Parameter)
@@ -285,6 +296,7 @@ namespace astNodeApi {
     TRANS_SPEC_JS(Export, TRANS_SPEC_ATTR_JS_TRANS(statement, Statement))
 
     ATTR_VALUE(Export, statement, Statement)
+    ATTR_POS(Export)
 
     TO_STRING(Export)
     TO_JSON(Export)
@@ -298,6 +310,7 @@ namespace astNodeApi {
     TRANS_SPEC_JS(MapDef, TRANS_SPEC_ATTR_JS_ARR_TRANS(pairs, Pair))
 
     ATTR_ARR(MapDef, pairs, Pair)
+    ATTR_POS(MapDef)
 
     TO_STRING(MapDef)
     TO_JSON(MapDef)
@@ -313,6 +326,7 @@ namespace astNodeApi {
     ATTR_VALUE(ObjectDef, identifier, Identifier)
     ATTR_VALUE(ObjectDef, type, Identifier)
     ATTR_ARR(ObjectDef, members, Member)
+    ATTR_POS(ObjectDef)
 
     TO_STRING(ObjectDef)
     TO_JSON(ObjectDef)
@@ -327,12 +341,13 @@ namespace astNodeApi {
 
     ATTR_VALUE(Assignment, identifier, Identifier)
     ATTR_VALUE(Assignment, expression, Expression)
+    ATTR_POS(Assignment)
 
     TO_STRING(Assignment)
     TO_JSON(Assignment)
 
     // --------------------------------------- TemplateDef ---------------------------------------
-
+    // instance->identifier = IdentifierWrapper::trans(arg.Get("identifier").As<node::Object>());
     CONST_SPEC(TemplateDef, CONST_ATTR_TRANS(TemplateDef, identifier, Identifier) CONST_ATTR_ARR(TemplateDef, parameters, Parameter) CONST_ATTR_ARR(TemplateDef, members, Member))
     INIT_SPEC(TemplateDef, INIT_INS_ACC(TemplateDef, identifier), INIT_INS_ACC(TemplateDef, parameters), INIT_INS_ACC(TemplateDef, members))
 
@@ -342,6 +357,7 @@ namespace astNodeApi {
     ATTR_VALUE(TemplateDef, identifier, Identifier)
     ATTR_ARR(TemplateDef, parameters, Parameter)
     ATTR_ARR(TemplateDef, members, Member)
+    ATTR_POS(TemplateDef)
 
     TO_STRING(TemplateDef)
     TO_JSON(TemplateDef)
@@ -355,6 +371,7 @@ namespace astNodeApi {
     TRANS_SPEC_JS(Private, TRANS_SPEC_ATTR_JS_TRANS(statement, Statement))
 
     ATTR_VALUE(Private, statement, Statement)
+    ATTR_POS(Private)
 
     TO_STRING(Private)
     TO_JSON(Private)
@@ -384,6 +401,7 @@ namespace astNodeApi {
 
     ATTR_GET_VALUE_SIMPLE(Identifier, name, String)
     ATTR_SET_VALUE_CONST(Identifier, name, String, .Utf8Value())
+    ATTR_POS(Identifier)
 
     TO_STRING(Identifier)
     TO_JSON(Identifier)
@@ -398,6 +416,7 @@ namespace astNodeApi {
 
     ATTR_VALUE(EnumRef, enumName, Identifier)
     ATTR_VALUE(EnumRef, enumValue, Identifier)
+    ATTR_POS(EnumRef)
 
     TO_STRING(EnumRef)
     TO_JSON(EnumRef)
@@ -411,6 +430,7 @@ namespace astNodeApi {
     TRANS_SPEC_JS(MapRef, TRANS_SPEC_ATTR_JS_ARR_TRANS(pairs, Pair))
 
     ATTR_ARR(MapRef, pairs, Pair)
+    ATTR_POS(MapRef)
 
     TO_STRING(MapRef)
     TO_JSON(MapRef)
@@ -425,6 +445,7 @@ namespace astNodeApi {
 
     ATTR_VALUE(ObjectIns, identifier, Identifier)
     ATTR_ARR(ObjectIns, members, Member)
+    ATTR_POS(ObjectIns)
 
     TO_STRING(ObjectIns)
     TO_JSON(ObjectIns)
@@ -438,6 +459,7 @@ namespace astNodeApi {
     TRANS_SPEC_JS(ObjectRef, TRANS_SPEC_ATTR_JS_TRANS(identifier, Identifier))
 
     ATTR_VALUE(ObjectRef, identifier, Identifier)
+    ATTR_POS(ObjectRef)
 
     TO_STRING(ObjectRef)
     TO_JSON(ObjectRef)
@@ -453,6 +475,7 @@ namespace astNodeApi {
     ATTR_VALUE(Operation, left, Expression)
     ATTR_VALUE(Operation, right, Expression)
     ATTR_VALUE(Operation, operator_, Operator)
+    ATTR_POS(Operation)
 
     TO_STRING(Operation)
     TO_JSON(Operation)
@@ -467,6 +490,7 @@ namespace astNodeApi {
 
     ATTR_GET_VALUE_SIMPLE(Operator, value, String)
     ATTR_SET_VALUE_CONST(Operator, value, String, .Utf8Value())
+    ATTR_POS(Operator)
 
     TO_STRING(Operator)
     TO_JSON(Operator)
@@ -480,6 +504,7 @@ namespace astNodeApi {
     TRANS_SPEC_JS(TemplateParam, TRANS_SPEC_ATTR_JS_TRANS(identifier, Identifier))
 
     ATTR_VALUE(TemplateParam, identifier, Identifier)
+    ATTR_POS(TemplateParam)
 
     TO_STRING(TemplateParam)
     TO_JSON(TemplateParam)
@@ -493,6 +518,7 @@ namespace astNodeApi {
     TRANS_SPEC_JS(TemplateRef, TRANS_SPEC_ATTR_JS_TRANS(identifier, Identifier))
 
     ATTR_VALUE(TemplateRef, identifier, Identifier)
+    ATTR_POS(TemplateRef)
 
     TO_STRING(TemplateRef)
     TO_JSON(TemplateRef)
@@ -516,13 +542,29 @@ namespace astNodeApi {
     // --------------------------------------- Boolean ---------------------------------------
 
     CONST_SPEC(Boolean, CONST_ATTR(Boolean, value, arg.Get("value").ToBoolean()))
-    INIT_SPEC(Boolean, INIT_INS_ACC(Boolean, value))
+
+    //    INIT_SPEC(Boolean, INIT_INS_ACC(Boolean, value))
+    node::Object BooleanWrapper::Init(node::Env env, node::Object exports) {
+        node::Function func = DefineClass(
+            env, "Bool",
+            {StaticAccessor(
+                 "nodeName", [](const node::CallbackInfo& info) -> node::Value { return node::String::New(info.Env(), "Boolean"); }, nullptr
+             ),
+             InstanceMethod("toString", &BooleanWrapper::toString), InstanceMethod("toJson", &BooleanWrapper::toJson), InstanceAccessor("value", &BooleanWrapper::valueGet, &BooleanWrapper::valueSet)}
+        );
+        constructor = Persistent(func);
+        constructor.SuppressDestruct();
+        env.Global().Set("Bool", func);
+        exports.Set("Bool", func);
+        return exports;
+    }
 
     TRANS_SPEC_CPP(Boolean, TRANS_SPEC_ATTR_CPP(value, node::Boolean::New(env, obj->value)))
     TRANS_SPEC_JS(Boolean, TRANS_SPEC_ATTR_JS(value, obj.Get("value").ToBoolean()))
 
     ATTR_GET_VALUE_SIMPLE(Boolean, value, Boolean)
     ATTR_SET_VALUE_CONST(Boolean, value, Boolean, )
+    ATTR_POS(Boolean)
 
     TO_STRING(Boolean)
     TO_JSON(Boolean)
@@ -537,6 +579,7 @@ namespace astNodeApi {
 
     ATTR_GET_VALUE_SIMPLE(Float, value, Number)
     ATTR_SET_VALUE_CONST(Float, value, Number, )
+    ATTR_POS(Float)
 
     TO_STRING(Float)
     TO_JSON(Float)
@@ -551,6 +594,7 @@ namespace astNodeApi {
 
     ATTR_GET_VALUE_SIMPLE(Integer, value, Number)
     ATTR_SET_VALUE_CONST(Integer, value, Number, )
+    ATTR_POS(Integer)
 
     TO_STRING(Integer)
     TO_JSON(Integer)
@@ -565,6 +609,7 @@ namespace astNodeApi {
 
     ATTR_GET_VALUE_SIMPLE(GUID, value, String)
     ATTR_SET_VALUE_CONST(GUID, value, String, .Utf8Value())
+    ATTR_POS(GUID)
 
     TO_STRING(GUID)
     TO_JSON(GUID)
@@ -579,6 +624,7 @@ namespace astNodeApi {
 
     ATTR_GET_VALUE_SIMPLE(Nil, value, String)
     ATTR_SET_VALUE_CONST(Nil, value, String, .Utf8Value())
+    ATTR_POS(Nil)
 
     TO_STRING(Nil)
     TO_JSON(Nil)
@@ -593,6 +639,7 @@ namespace astNodeApi {
 
     ATTR_VALUE(Pair, first, Expression)
     ATTR_VALUE(Pair, second, Expression)
+    ATTR_POS(Pair)
 
     TO_STRING(Pair)
     TO_JSON(Pair)
@@ -607,6 +654,7 @@ namespace astNodeApi {
 
     ATTR_GET_VALUE_SIMPLE(Path, value, String)
     ATTR_SET_VALUE_CONST(Path, value, String, .Utf8Value())
+    ATTR_POS(Path)
 
     TO_STRING(Path)
     TO_JSON(Path)
@@ -621,6 +669,7 @@ namespace astNodeApi {
 
     ATTR_GET_VALUE_SIMPLE(String, value, String)
     ATTR_SET_VALUE_CONST(String, value, String, .Utf8Value())
+    ATTR_POS(String)
 
     TO_STRING(String)
     TO_JSON(String)
@@ -634,6 +683,7 @@ namespace astNodeApi {
     TRANS_SPEC_JS(Vector, TRANS_SPEC_ATTR_JS_ARR_TRANS(expressions, Expression))
 
     ATTR_ARR(Vector, expressions, Expression)
+    ATTR_POS(Vector)
 
     TO_STRING(Vector)
     TO_JSON(Vector)

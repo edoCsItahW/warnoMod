@@ -60,7 +60,7 @@ int main(int argc, char* argv[]) {
 //    if (target.empty())
 //        throw ArgumentError("Target file is not specified.");
 
-    auto text = std::get<std::string>(os::readFile("./nodeAPI/node/test.ndf", os::Type::UTF8, R"(E:\codeSpace\codeSet\ndf\warnoMod\utils\ndf\cpp)"));
+    auto text = std::get<std::string>(os::readFile("./nodeAPI/test/test.ndf", os::Type::UTF8, R"(E:\codeSpace\codeSet\ndf\warnoMod\utils\ndf\cpp)"));
 
 
     auto tokens = TokenProcessor::process(Lexer::tokenize(text));
@@ -70,7 +70,12 @@ int main(int argc, char* argv[]) {
     auto result = parser.parse();
 
 //    writeToFile(result->toJson(), R"(..\..\ast.json)");
-    writeToFile(result->toJson(), R"(E:\codeSpace\codeSet\ndf\warnoMod\utils\ndf\cpp\test.json)");
+//    writeToFile(result->toJson(), R"(E:\codeSpace\codeSet\ndf\warnoMod\utils\ndf\cpp\test.json)");
+
+    for (auto& stmt : result->statements)
+        if (stmt->getNodeName() == "ObjectDef")
+            for (auto& meb : std::dynamic_pointer_cast<ast::ObjectDef>(stmt)->members)
+                std::cout << meb->getPos() << std::endl;
 
     return 0;
 }

@@ -11,13 +11,32 @@ importers:
       node-addon-api:
         specifier: ^8.3.0
         version: 8.3.0
+    devDependencies:
+      '@types/node':
+        specifier: ^22.10.2
+        version: 22.10.2
+      ndf-node-api:
+        specifier: link:E:/codeSpace/codeSet/ndf/warnoMod/utils/ndf/cpp/nodeAPI/ndfNodeAPI
+        version: link:ndfNodeAPI
 
 packages:
+
+  '@types/node@22.10.2':
+    resolution: {integrity: sha512-Xxr6BBRCAOQixvonOye19wnzyDiUtTeqldOOmj3CkeblonbccA12PFwlufvRdrpjXxqnmUaeiU5EOA+7s5diUQ==}
 
   node-addon-api@8.3.0:
     resolution: {integrity: sha512-8VOpLHFrOQlAH+qA0ZzuGRlALRA6/LVh8QJldbrC4DY0hXoMP0l4Acq8TzFC018HztWiRqyCEj2aTWY2UvnJUg==}
     engines: {node: ^18 || ^20 || >= 21}
 
+  undici-types@6.20.0:
+    resolution: {integrity: sha512-Ny6QZ2Nju20vw1SRHe3d9jVu6gJ+4e3+MMpqu7pqE5HT6WsTSlce++GQmK5UXS8mzV8DSYHrQH+Xrf2jVcuKNg==}
+
 snapshots:
 
+  '@types/node@22.10.2':
+    dependencies:
+      undici-types: 6.20.0
+
   node-addon-api@8.3.0: {}
+
+  undici-types@6.20.0: {}

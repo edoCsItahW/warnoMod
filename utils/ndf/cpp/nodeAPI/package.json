@@ -1,5 +1,12 @@
 {
+	"scripts": {
+		"dev": "ts-node test/test.ts"
+	},
 	"dependencies": {
 		"node-addon-api": "^8.3.0"
+	},
+	"devDependencies": {
+		"@types/node": "^22.10.2",
+		"ndf-node-api": "link:E:/codeSpace/codeSet/ndf/warnoMod/utils/ndf/cpp/nodeAPI/ndfNodeAPI"
 	}
 }

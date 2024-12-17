@@ -9,10 +9,10 @@
 #define NDFNODEAPI_BUILD_H
 #pragma once
 
-#include "../src/lexer/lexer.h"
-#include "../src/lexer/tokenProc.h"
-#include "../src/parser/parser.h"
-#include "../src/utils.h"
+#include "../../src/lexer/lexer.h"
+#include "../../src/lexer/tokenProc.h"
+#include "../../src/parser/parser.h"
+#include "../../src/utils.h"
 #include "napi.h"
 #include <functional>
 
@@ -24,14 +24,18 @@ template<typename F, typename T, typename R>
 concept Convertor = std::invocable<F, const T&> && std::same_as<std::invoke_result_t<F, const T&>, R>;
 
 template<typename T, typename F>
-std::vector<T> arrConvert(const node::Array& arr, F func) requires Convertor<F, node::Value, T> {
+std::vector<T> arrConvert(const node::Array& arr, F func)
+    requires Convertor<F, node::Value, T>
+{
     std::vector<T> res;
     for (size_t i = 0; i < arr.Length(); i++) res.push_back(func(arr[i]));
     return res;
 }
 
 template<typename T, typename F>
-node::Array arrConvert(const node::Env& env, const std::vector<T>& vec, F func) requires Convertor<F, T, node::Value> {
+node::Array arrConvert(const node::Env& env, const std::vector<T>& vec, F func)
+    requires Convertor<F, T, node::Value>
+{
     node::Array res = node::Array::New(env, vec.size());
     for (size_t i = 0; i < vec.size(); i++) res[i] = func(vec[i]);
     return res;
@@ -47,7 +51,8 @@ node::Array arrConvert(const node::Env& env, const std::vector<T>& vec, F func) 
                                                                                                                                                                                                        \
     private:                                                                                                                                                                                           \
         static node::FunctionReference constructor;                                                                                                                                                    \
-        insCode attrCode node::Value toString(const node::CallbackInfo& info);                                                                                                                         \
+        insCode attrCode node::Value posGet(const node::CallbackInfo& info);                                                                                                                           \
+        node::Value toString(const node::CallbackInfo& info);                                                                                                                                          \
         node::Value toJson(const node::CallbackInfo& info);                                                                                                                                            \
     };
 
@@ -123,7 +128,6 @@ namespace astNodeApi {
     AST_WRAP_SPEC(Vector, AST_WRAP_ATTR(expressions))
 
     node::Value parse(const node::CallbackInfo& info);
-}
-
+}  // namespace astNodeApi
 
 #endif  // NDFNODEAPI_BUILD_H
