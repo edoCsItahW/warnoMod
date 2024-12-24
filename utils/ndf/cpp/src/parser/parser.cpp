@@ -32,6 +32,7 @@ bool Parser::inScope() const { return _idx < _tokens.size() && curr()->type != T
 
 void Parser::skip() {
     while (inScope() && (curr()->type == TokenType::NEWLINE || curr()->type == TokenType::COMMENT)) _idx++;
+    _idx--;
 }
 
 TokenPtr Parser::expect(enum TokenType type, bool skipNewLine, const std::source_location &loc) {
@@ -536,7 +537,7 @@ std::shared_ptr<ast::Float> Parser::parseFloat() {
     float_->_pos = curr()->pos();
 
     float_->value = std::stof(expect(TokenType::FLOAT)->value);
-
+    
     return float_;
 }
 

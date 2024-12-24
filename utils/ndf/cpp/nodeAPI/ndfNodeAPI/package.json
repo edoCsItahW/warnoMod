@@ -4,6 +4,12 @@
     "description": "",
     "main": "src/ndfNodeAPI.node",
     "types": "src/ndfNodeAPI.d.ts",
+    "files": [
+        "src/"
+    ],
+    "engines": {
+        "node": ">=16.0.0"
+    },
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
     },
