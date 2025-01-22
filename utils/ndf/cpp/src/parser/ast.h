@@ -130,6 +130,26 @@
  * @endcode
  * */
 
+#define AST_DEC_ABC(name, base)                                                                                                                                                                        \
+    struct name : public base {                                                                                                                                                                        \
+        const char *nodeName = #name;                                                                                                                                                                  \
+    };
+
+#define AST_DEC_SPEC(name, base, attrCode)                                                                                                                                                             \
+    struct name : public base {                                                                                                                                                                        \
+        const char *nodeName = #name;                                                                                                                                                                  \
+        int _pos;                                                                                                                                                                                      \
+        [[nodiscard]] int getPos() const override { return _pos; }                                                                                                                                     \
+        [[nodiscard]] std::string getNodeName() const override;                                                                                                                                        \
+        [[nodiscard]] std::string toString() const override;                                                                                                                                           \
+        [[nodiscard]] std::string toJson() const override;                                                                                                                                             \
+        attrCode                                                                                                                                                                                       \
+    };
+
+#define AST_ATTR_DEC(attrName, attrType) std::shared_ptr<attrType> attrName;
+
+#define AST_ATTR_ARR_DEC(attrName, attrType) std::vector<std::shared_ptr<attrType>> attrName;
+
 /** @namespace ast
  *
  * @if zh
@@ -184,6 +204,10 @@ namespace ast {
          * */
         const char *nodeName = "AST";
 
+        int _pos;
+
+        [[nodiscard]] virtual int getPos() const = 0;
+
         [[nodiscard]] virtual std::string getNodeName() const = 0;
 
         /**
@@ -237,16 +261,7 @@ namespace ast {
      *
      * @see AST
      * */
-    struct Program : public AST {
-        const char *nodeName = "Program";  ///< @see AST
-        std::vector<std::shared_ptr<Statement>> statements;
-
-        [[nodiscard]] std::string getNodeName() const override;
-
-        [[nodiscard]] std::string toJson() const override;
-
-        [[nodiscard]] std::string toString() const override;
-    };
+    AST_DEC_SPEC(Program, AST, AST_ATTR_ARR_DEC(statements, Statement))
 
     /** @struct Member
      *
@@ -267,17 +282,7 @@ namespace ast {
      *
      * @see AST
      * */
-    struct Member : public AST {
-        const char *nodeName = "Member";
-        std::shared_ptr<Identifier> identifier;
-        std::shared_ptr<Expression> expression;
-
-        [[nodiscard]] std::string getNodeName() const override;
-
-        [[nodiscard]] std::string toJson() const override;
-
-        [[nodiscard]] std::string toString() const override;
-    };
+    AST_DEC_SPEC(Member, AST, AST_ATTR_DEC(identifier, Identifier) AST_ATTR_DEC(expression, Expression))
 
     /** @struct Parameter
      *
@@ -304,18 +309,7 @@ namespace ast {
      * @see AST
      * @see \warnoMod\utils\usefulInfo\Modding Manual.pdf
      * */
-    struct Parameter : public AST {
-        const char *nodeName = "Parameter";
-        std::shared_ptr<Identifier> identifier;
-        std::shared_ptr<Identifier> type;
-        std::shared_ptr<Expression> expression;
-
-        [[nodiscard]] std::string getNodeName() const override;
-
-        [[nodiscard]] std::string toJson() const override;
-
-        [[nodiscard]] std::string toString() const override;
-    };
+    AST_DEC_SPEC(Parameter, AST, AST_ATTR_DEC(identifier, Identifier) AST_ATTR_DEC(type, Identifier) AST_ATTR_DEC(expression, Expression))
 
     /** @struct Statement
      *
@@ -347,9 +341,7 @@ namespace ast {
      *
      * @see AST
      * */
-    struct Statement : public AST {
-        const char *nodeName = "Statement";
-    };
+    AST_DEC_ABC(Statement, AST)
 
     /** @struct Export
      *
@@ -370,16 +362,7 @@ namespace ast {
      *
      * @see Statement
      * */
-    struct Export : public Statement {
-        const char *nodeName = "Export";
-        std::shared_ptr<Statement> statement;
-
-        [[nodiscard]] std::string getNodeName() const override;
-
-        [[nodiscard]] std::string toJson() const override;
-
-        [[nodiscard]] std::string toString() const override;
-    };
+    AST_DEC_SPEC(Export, Statement, AST_ATTR_DEC(statement, Statement))
 
     /** @struct MapDef
      *
@@ -400,16 +383,7 @@ namespace ast {
      *
      * @see Statement
      * */
-    struct MapDef : public Statement {
-        const char *nodeName = "MapDef";
-        std::vector<std::shared_ptr<Pair>> pairs;
-
-        [[nodiscard]] std::string getNodeName() const override;
-
-        [[nodiscard]] std::string toJson() const override;
-
-        [[nodiscard]] std::string toString() const override;
-    };
+    AST_DEC_SPEC(MapDef, Statement, AST_ATTR_ARR_DEC(pairs, Pair))
 
     /** @struct ObjectDef
      *
@@ -435,18 +409,7 @@ namespace ast {
      *
      * @see Statement
      * */
-    struct ObjectDef : public Statement {
-        const char *nodeName = "ObjectDef";
-        std::shared_ptr<Identifier> identifier;
-        std::shared_ptr<Identifier> type;
-        std::vector<std::shared_ptr<Member>> members;
-
-        [[nodiscard]] std::string getNodeName() const override;
-
-        [[nodiscard]] std::string toJson() const override;
-
-        [[nodiscard]] std::string toString() const override;
-    };
+    AST_DEC_SPEC(ObjectDef, Statement, AST_ATTR_DEC(identifier, Identifier) AST_ATTR_DEC(type, Identifier) AST_ATTR_ARR_DEC(members, Member))
 
     /** @struct Assignment
      *
@@ -467,17 +430,7 @@ namespace ast {
      *
      * @see Statement
      * */
-    struct Assignment : public Statement {
-        const char *nodeName = "Assignment";
-        std::shared_ptr<Identifier> identifier;
-        std::shared_ptr<Expression> expression;
-
-        [[nodiscard]] std::string getNodeName() const override;
-
-        [[nodiscard]] std::string toJson() const override;
-
-        [[nodiscard]] std::string toString() const override;
-    };
+    AST_DEC_SPEC(Assignment, Statement, AST_ATTR_DEC(identifier, Identifier) AST_ATTR_DEC(expression, Expression))
 
     /** @struct TemplateDef
      *
@@ -498,19 +451,7 @@ namespace ast {
      *
      * @see Statement
      * */
-    struct TemplateDef : public Statement {
-        const char *nodeName = "TemplateDef";
-        std::shared_ptr<Identifier> identifier;
-        std::vector<std::shared_ptr<Parameter>> parameters;
-        std::shared_ptr<Identifier> type;
-        std::vector<std::shared_ptr<Member>> members;
-
-        [[nodiscard]] std::string getNodeName() const override;
-
-        [[nodiscard]] std::string toJson() const override;
-
-        [[nodiscard]] std::string toString() const override;
-    };
+    AST_DEC_SPEC(TemplateDef, Statement, AST_ATTR_DEC(identifier, Identifier) AST_ATTR_ARR_DEC(parameters, Parameter) AST_ATTR_DEC(type, Identifier) AST_ATTR_ARR_DEC(members, Member))
 
     /** @struct Private
      *
@@ -531,16 +472,7 @@ namespace ast {
      *
      * @see Statement
      * */
-    struct Private : public Statement {
-        const char *nodeName = "Private";
-        std::shared_ptr<Statement> statement;
-
-        [[nodiscard]] std::string getNodeName() const override;
-
-        [[nodiscard]] std::string toJson() const override;
-
-        [[nodiscard]] std::string toString() const override;
-    };
+    AST_DEC_SPEC(Private, Statement, AST_ATTR_DEC(statement, Statement))
 
     /** @struct Expression
      *
@@ -571,9 +503,7 @@ namespace ast {
      *
      * @see AST
      * */
-    struct Expression : public AST {
-        const char *nodeName = "Expression";
-    };
+    AST_DEC_ABC(Expression, AST)
 
     /** @struct Identifier
      *
@@ -594,16 +524,7 @@ namespace ast {
      *
      * @see Expression
      * */
-    struct Identifier : public Expression {
-        const char *nodeName = "Identifier";
-        std::string name;
-
-        [[nodiscard]] std::string getNodeName() const override;
-
-        [[nodiscard]] std::string toJson() const override;
-
-        [[nodiscard]] std::string toString() const override;
-    };
+    AST_DEC_SPEC(Identifier, Expression, std::string name;)
 
     /** @struct EnumRef
      *
@@ -624,17 +545,7 @@ namespace ast {
      *
      * @see Expression
      * */
-    struct EnumRef : public Expression {
-        const char *nodeName = "EnumRef";
-        std::shared_ptr<Identifier> enumName;
-        std::shared_ptr<Identifier> enumValue;
-
-        [[nodiscard]] std::string getNodeName() const override;
-
-        [[nodiscard]] std::string toJson() const override;
-
-        [[nodiscard]] std::string toString() const override;
-    };
+    AST_DEC_SPEC(EnumRef, Expression, AST_ATTR_DEC(enumName, Identifier) AST_ATTR_DEC(enumValue, Identifier))
 
     /** @struct MapRef
      *
@@ -655,16 +566,7 @@ namespace ast {
      *
      * @see Expression
      * */
-    struct MapRef : public Expression {
-        const char *nodeName = "MapRef";
-        std::vector<std::shared_ptr<Pair>> pairs;
-
-        [[nodiscard]] std::string getNodeName() const override;
-
-        [[nodiscard]] std::string toJson() const override;
-
-        [[nodiscard]] std::string toString() const override;
-    };
+    AST_DEC_SPEC(MapRef, Expression, AST_ATTR_ARR_DEC(pairs, Pair))
 
     /** @struct ObjectIns
      *
@@ -685,17 +587,7 @@ namespace ast {
      *
      * @see Expression
      * */
-    struct ObjectIns : public Expression {
-        const char *nodeName = "ObjectIns";
-        std::shared_ptr<Identifier> identifier;
-        std::vector<std::shared_ptr<Member>> members;
-
-        [[nodiscard]] std::string getNodeName() const override;
-
-        [[nodiscard]] std::string toJson() const override;
-
-        [[nodiscard]] std::string toString() const override;
-    };
+    AST_DEC_SPEC(ObjectIns, Expression, AST_ATTR_DEC(identifier, Identifier) AST_ATTR_ARR_DEC(members, Member))
 
     /** @struct ObjectRef
      *
@@ -716,16 +608,7 @@ namespace ast {
      *
      * @see Expression
      * */
-    struct ObjectRef : public Expression {
-        const char *nodeName = "ObjectRef";
-        std::shared_ptr<Identifier> identifier;
-
-        [[nodiscard]] std::string getNodeName() const override;
-
-        [[nodiscard]] std::string toJson() const override;
-
-        [[nodiscard]] std::string toString() const override;
-    };
+    AST_DEC_SPEC(ObjectRef, Expression, AST_ATTR_DEC(identifier, Identifier))
 
     /** @struct Operation
      *
@@ -746,18 +629,7 @@ namespace ast {
      *
      * @see Expression
      * */
-    struct Operation : public Expression {
-        const char *nodeName = "Operation";
-        std::shared_ptr<Expression> left;
-        std::shared_ptr<Operator> operator_;
-        std::shared_ptr<Expression> right;
-
-        [[nodiscard]] std::string getNodeName() const override;
-
-        [[nodiscard]] std::string toJson() const override;
-
-        [[nodiscard]] std::string toString() const override;
-    };
+    AST_DEC_SPEC(Operation, Expression, AST_ATTR_DEC(left, Expression) AST_ATTR_DEC(operator_, Operator) AST_ATTR_DEC(right, Expression))
 
     /** @struct Operator
      *
@@ -778,16 +650,7 @@ namespace ast {
      *
      * @see Operation
      * */
-    struct Operator : public Expression {
-        const char *nodeName = "Operator";
-        std::string value;
-
-        [[nodiscard]] std::string getNodeName() const override;
-
-        [[nodiscard]] std::string toJson() const override;
-
-        [[nodiscard]] std::string toString() const override;
-    };
+    AST_DEC_SPEC(Operator, Expression, std::string value;)
 
     /** @struct TemplateParam
      *
@@ -808,16 +671,7 @@ namespace ast {
      *
      * @see Expression
      * */
-    struct TemplateParam : public Expression {
-        const char *nodeName = "TemplateParam";
-        std::shared_ptr<Identifier> identifier;
-
-        [[nodiscard]] std::string getNodeName() const override;
-
-        [[nodiscard]] std::string toJson() const override;
-
-        [[nodiscard]] std::string toString() const override;
-    };
+    AST_DEC_SPEC(TemplateParam, Expression, AST_ATTR_DEC(identifier, Identifier))
 
     /** @struct TemplateRef
      *
@@ -838,16 +692,7 @@ namespace ast {
      *
      * @see Expression
      * */
-    struct TemplateRef : public Expression {
-        const char *nodeName = "TemplateRef";
-        std::shared_ptr<Identifier> identifier;
-
-        [[nodiscard]] std::string getNodeName() const override;
-
-        [[nodiscard]] std::string toJson() const override;
-
-        [[nodiscard]] std::string toString() const override;
-    };
+    AST_DEC_SPEC(TemplateRef, Expression, AST_ATTR_DEC(identifier, Identifier))
 
     /** @struct Literal
      *
@@ -879,9 +724,7 @@ namespace ast {
      *
      * @see Expression
      * */
-    struct Literal : public Expression {
-        const char *nodeName = "Literal";
-    };
+    AST_DEC_ABC(Literal, Expression)
 
     /** @struct Boolean
      *
@@ -902,16 +745,7 @@ namespace ast {
      *
      * @see Literal
      * */
-    struct Boolean : public Literal {
-        bool value;
-        const char *nodeName = "Boolean";
-
-        [[nodiscard]] std::string getNodeName() const override;
-
-        [[nodiscard]] std::string toJson() const override;
-
-        [[nodiscard]] std::string toString() const override;
-    };
+    AST_DEC_SPEC(Boolean, Literal, bool value;)
 
     /** @struct Float
      *
@@ -932,16 +766,7 @@ namespace ast {
      *
      * @see Literal
      * */
-    struct Float : public Literal {
-        const char *nodeName = "Float";
-        double value;
-
-        [[nodiscard]] std::string getNodeName() const override;
-
-        [[nodiscard]] std::string toJson() const override;
-
-        [[nodiscard]] std::string toString() const override;
-    };
+    AST_DEC_SPEC(Float, Literal, double value;)
 
     /** @struct Integer
      *
@@ -962,16 +787,7 @@ namespace ast {
      *
      * @see Literal
      */
-    struct Integer : public Literal {
-        const char *nodeName = "Integer";
-        int value;
-
-        [[nodiscard]] std::string getNodeName() const override;
-
-        [[nodiscard]] std::string toJson() const override;
-
-        [[nodiscard]] std::string toString() const override;
-    };
+    AST_DEC_SPEC(Integer, Literal, int value;)
 
     /** @struct GUID
      *
@@ -992,16 +808,7 @@ namespace ast {
      *
      * @see Literal
      * */
-    struct GUID : public Literal {
-        const char *nodeName = "GUID";
-        std::string value;
-
-        [[nodiscard]] std::string getNodeName() const override;
-
-        [[nodiscard]] std::string toJson() const override;
-
-        [[nodiscard]] std::string toString() const override;
-    };
+    AST_DEC_SPEC(GUID, Literal, std::string value;)
 
     /** @struct Nil
      *
@@ -1022,16 +829,7 @@ namespace ast {
      *
      * @see Literal
      * */
-    struct Nil : public Literal {
-        const char *nodeName = "Nil";
-        std::string value    = "nil";
-
-        [[nodiscard]] std::string getNodeName() const override;
-
-        [[nodiscard]] std::string toJson() const override;
-
-        [[nodiscard]] std::string toString() const override;
-    };
+    AST_DEC_SPEC(Nil, Literal, std::string value = "nil";)
 
     /** @struct Pair
      *
@@ -1052,17 +850,7 @@ namespace ast {
      *
      * @see Literal
      * */
-    struct Pair : public Literal {
-        const char *nodeName = "Pair";
-        std::shared_ptr<Expression> first;
-        std::shared_ptr<Expression> second;
-
-        [[nodiscard]] std::string getNodeName() const override;
-
-        [[nodiscard]] std::string toJson() const override;
-
-        [[nodiscard]] std::string toString() const override;
-    };
+    AST_DEC_SPEC(Pair, Literal, AST_ATTR_DEC(first, Expression) AST_ATTR_DEC(second, Expression))
 
     /** @struct Path
      *
@@ -1083,16 +871,7 @@ namespace ast {
      *
      * @see Literal
      * */
-    struct Path : public Literal {
-        const char *nodeName = "Path";
-        std::string value;
-
-        [[nodiscard]] std::string getNodeName() const override;
-
-        [[nodiscard]] std::string toJson() const override;
-
-        [[nodiscard]] std::string toString() const override;
-    };
+    AST_DEC_SPEC(Path, Literal, std::string value;)
 
     /** @struct String
      *
@@ -1114,16 +893,7 @@ namespace ast {
      *
      * @see Literal
      */
-    struct String : public Literal {
-        const char *nodeName = "String";
-        std::string value;
-
-        [[nodiscard]] std::string getNodeName() const override;
-
-        [[nodiscard]] std::string toJson() const override;
-
-        [[nodiscard]] std::string toString() const override;
-    };
+    AST_DEC_SPEC(String, Literal, std::string value;)
 
     /** @struct Vector
      *
@@ -1144,16 +914,7 @@ namespace ast {
      *
      * @see Literal
      * */
-    struct Vector : public Literal {
-        const char *nodeName = "Vector";
-        std::vector<std::shared_ptr<Expression>> expressions;
-
-        [[nodiscard]] std::string getNodeName() const override;
-
-        [[nodiscard]] std::string toJson() const override;
-
-        [[nodiscard]] std::string toString() const override;
-    };
+    AST_DEC_SPEC(Vector, Literal, AST_ATTR_ARR_DEC(expressions, Expression))
 
 }  // namespace ast
 

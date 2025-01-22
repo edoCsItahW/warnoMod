@@ -1,0 +1,14 @@
+{
+    "name": "ndf-node",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.ts",
+    "scripts": {
+        "dev": "ts-node test.ts"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/edoCsItahW/warnoMod.git"
+    },
+    "private": true
+}

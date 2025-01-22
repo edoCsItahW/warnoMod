@@ -1,0 +1,38 @@
+//{
+//    "compilerOptions": {
+//        "target": "ESNext",
+//        "module": "CommonJS",
+//        "lib": ["esnext", "dom"],
+//        "moduleResolution": "Node",
+//        "sourceMap": true,
+//        "esModuleInterop": true,
+//        "forceConsistentCasingInFileNames": true,
+//        "strict": true,
+//        "skipLibCheck": true,
+//        "rootDir": ".",
+//        "types": ["node"]
+//    },
+//    "include": ["src/**/*"],
+//    "ts-node": {
+//        "compilerOptions": {
+//            "module": "CommonJS"
+//        },
+//        "transpileOnly": true,
+//        "files": true
+//    }
+//}
+{
+    "compilerOptions": {
+        "target": "es2020",
+        "lib": ["es2020", "dom"],
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "sourceMap": true,
+        "strict": true,
+        "outDir": "out",
+        "rootDir": ".",
+        "types": ["node"]
+    },
+    "include": [],
+    "exclude": ["node_modules"]
+}

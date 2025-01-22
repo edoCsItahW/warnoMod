@@ -16,10 +16,16 @@ std::string wstr2str(const std::wstring& wstr) {
     return conv.to_bytes(wstr);
 }
 
+namespace t1 {
+    namespace t2 {
+        void func() {}
+    }
+}
+
 int main() {
     SetConsoleOutputCP(CP_UTF8);
     std::setlocale(LC_ALL, "");
-
+    t1::t2::func();
     auto text = std::wstring(L"Ne pas éditer, ce fichier est généré par DivisionRulesFileWriter");
 
     for (wchar_t c : text)

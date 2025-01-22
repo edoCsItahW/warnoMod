@@ -32,6 +32,7 @@ bool Parser::inScope() const { return _idx < _tokens.size() && curr()->type != T
 
 void Parser::skip() {
     while (inScope() && (curr()->type == TokenType::NEWLINE || curr()->type == TokenType::COMMENT)) _idx++;
+    _idx--;
 }
 
 TokenPtr Parser::expect(enum TokenType type, bool skipNewLine, const std::source_location &loc) {
@@ -66,6 +67,9 @@ std::shared_ptr<ast::Program> Parser::parse(bool dbg) {
     // <program> ::= <statement>*
 
     auto program = std::make_shared<ast::Program>();
+
+    program->_pos = curr()->pos();
+
     while (inScope()) {
         skip();
 
@@ -133,6 +137,8 @@ std::shared_ptr<ast::Assignment> Parser::parseAssignment() {
 
     auto assign = std::make_shared<ast::Assignment>();
 
+    assign->_pos = curr()->pos();
+
     assign->identifier = std::make_shared<ast::Identifier>();
 
     assign->identifier->name = expect(TokenType::IDENTIFIER)->value;
@@ -150,6 +156,8 @@ std::shared_ptr<ast::ObjectDef> Parser::parseObjectDef() {
     // <object_def> ::= <identifier> "is" <type> "(" <member_list>? ")"
 
     auto obj = std::make_shared<ast::ObjectDef>();
+
+    obj->_pos = curr()->pos();
 
     obj->identifier = std::make_shared<ast::Identifier>();
 
@@ -182,6 +190,8 @@ std::shared_ptr<ast::MapDef> Parser::parseMapDef() {
 
     auto map = std::make_shared<ast::MapDef>();
 
+    map->_pos = curr()->pos();
+
     expect(TokenType::KW_MAP);
 
     expect(TokenType::LBRACKET);
@@ -200,6 +210,8 @@ std::shared_ptr<ast::TemplateDef> Parser::parseTemplateDef() {
     // <template_def> ::= "template" <identifier> "[" <parameter_list>? "]" "is" <type> "(" <member_list>? ")"
 
     auto temp = std::make_shared<ast::TemplateDef>();
+
+    temp->_pos = curr()->pos();
 
     expect(TokenType::KW_TEMPLATE);
 
@@ -244,6 +256,8 @@ std::shared_ptr<ast::Export> Parser::parseExport() {
 
     auto export_ = std::make_shared<ast::Export>();
 
+    export_->_pos = curr()->pos();
+
     expect(TokenType::KW_EXPORT);
 
     export_->statement = dbgParseStatement(this);
@@ -257,6 +271,8 @@ std::shared_ptr<ast::Private> Parser::parsePrivate() {
     // <private> ::= "private" <identifier>
 
     auto private_ = std::make_shared<ast::Private>();
+
+    private_->_pos = curr()->pos();
 
     expect(TokenType::KW_PRIVATE);
 
@@ -366,6 +382,8 @@ std::shared_ptr<ast::TemplateParam> Parser::parseTemplateParam() {
 
     auto param = std::make_shared<ast::TemplateParam>();
 
+    param->_pos = curr()->pos();
+
     expect(TokenType::LT);
 
     param->identifier = std::make_shared<ast::Identifier>();
@@ -392,6 +410,8 @@ std::shared_ptr<ast::Expression> Parser::parseOperation(int precedence) {
 
         auto opt = std::make_shared<ast::Operation>();
 
+        opt->_pos = curr()->pos();
+
         opt->left = left;
         opt->right = right;
         opt->operator_ = op;
@@ -407,6 +427,8 @@ std::shared_ptr<ast::Pair> Parser::parsePair() {
     // <pair> ::= "(" <expression> "," <expression> ")"
 
     auto pair = std::make_shared<ast::Pair>();
+
+    pair->_pos = curr()->pos();
 
     expect(TokenType::LPAREN);
 
@@ -427,6 +449,8 @@ std::shared_ptr<ast::Parameter> Parser::parseParameter() {
     // <parameter> ::= <identifier> [":" <type>] ["=" <expression>]
 
     auto param = std::make_shared<ast::Parameter>();
+
+    param->_pos = curr()->pos();
 
     param->identifier = std::make_shared<ast::Identifier>();
 
@@ -454,6 +478,8 @@ std::shared_ptr<ast::Member> Parser::parseMember() {
 
     auto member = std::make_shared<ast::Member>();
 
+    member->_pos = curr()->pos();
+
     member->identifier = std::make_shared<ast::Identifier>();
 
     member->identifier->name = expect(TokenType::IDENTIFIER)->value;
@@ -470,6 +496,8 @@ std::shared_ptr<ast::Boolean> Parser::parseBoolean() {
     // <boolean> ::= "true" | "false"
     auto boolean = std::make_shared<ast::Boolean>();
 
+    boolean->_pos = curr()->pos();
+
     boolean->value = (curr()->value == "true" || curr()->value == "True");
 
     expect(TokenType::KW_BOOLEN);
@@ -482,6 +510,8 @@ std::shared_ptr<ast::String> Parser::parseString() {
     // <string> ::= "'" <text> "'" | "\"" <text> "\""
     auto string = std::make_shared<ast::String>();
 
+    string->_pos = curr()->pos();
+
     string->value = expect(TokenType::STRING)->value;
 
     return string;
@@ -491,6 +521,8 @@ std::shared_ptr<ast::Integer> Parser::parseInteger() {
     if (_debug) debug("ParseInteger", curr());
     // <integer> ::= <digit>+
     auto integer = std::make_shared<ast::Integer>();
+
+    integer->_pos = curr()->pos();
 
     integer->value = std::stoi(expect(TokenType::INT)->value);
 
@@ -502,8 +534,10 @@ std::shared_ptr<ast::Float> Parser::parseFloat() {
     // <float> ::= <digit>* "." <digit>+
     auto float_ = std::make_shared<ast::Float>();
 
-    float_->value = std::stof(expect(TokenType::FLOAT)->value);
+    float_->_pos = curr()->pos();
 
+    float_->value = std::stof(expect(TokenType::FLOAT)->value);
+    
     return float_;
 }
 
@@ -513,6 +547,8 @@ std::shared_ptr<ast::Vector> Parser::parseVector() {
     // <vector> ::= "[" <expression_list>? "]"
 
     auto vector = std::make_shared<ast::Vector>();
+
+    vector->_pos = curr()->pos();
 
     expect(TokenType::LBRACKET);
 
@@ -534,6 +570,8 @@ std::shared_ptr<ast::Identifier> Parser::parseIdentifier() {
 
     auto identifier = std::make_shared<ast::Identifier>();
 
+    identifier->_pos = curr()->pos();
+
     identifier->name = expect(TokenType::IDENTIFIER)->value;
 
     return identifier;
@@ -542,17 +580,19 @@ std::shared_ptr<ast::Identifier> Parser::parseIdentifier() {
 std::shared_ptr<ast::ObjectRef> Parser::parseObjectRef() {
     if (_debug) debug("ParseObjectRef", curr());
     // <object_ref> ::= "$" "/" <identifier>
-    auto obj_ref = std::make_shared<ast::ObjectRef>();
+    auto objRef = std::make_shared<ast::ObjectRef>();
+
+    objRef->_pos = curr()->pos();
 
     expect(TokenType::DOLLAR);
 
     expect(TokenType::DIV);
 
-    obj_ref->identifier = std::make_shared<ast::Identifier>();
+    objRef->identifier = std::make_shared<ast::Identifier>();
 
-    obj_ref->identifier->name = expect(TokenType::IDENTIFIER)->value;
+    objRef->identifier->name = expect(TokenType::IDENTIFIER)->value;
 
-    return obj_ref;
+    return objRef;
 }
 
 std::shared_ptr<ast::MapRef> Parser::parseMapRef() {
@@ -560,14 +600,15 @@ std::shared_ptr<ast::MapRef> Parser::parseMapRef() {
     dbg::Debugger dbgParsePair(&Parser::parsePair);
     // <map_ref> ::= "MAP[" <pair_list> "]"
 
-    auto map_ref = std::make_shared<ast::MapRef>();
+    auto mapRef = std::make_shared<ast::MapRef>();
+    mapRef->_pos = curr()->pos();
 
     expect(TokenType::KW_MAP);
 
     expect(TokenType::LBRACKET);
 
     while (inScope() && curr()->type != TokenType::RBRACKET) {
-        map_ref->pairs.push_back(dbgParsePair(this));
+        mapRef->pairs.push_back(dbgParsePair(this));
         skip();
 
         if (curr()->type == TokenType::RBRACKET) break;
@@ -577,28 +618,28 @@ std::shared_ptr<ast::MapRef> Parser::parseMapRef() {
 
     expect(TokenType::RBRACKET);
 
-    return map_ref;
+    return mapRef;
 }
 
 std::shared_ptr<ast::TemplateRef> Parser::parseTemplateRef() {
     if (_debug) debug("ParseTemplateRef", curr());
     // <template_ref> ::= "template" <identifier>
-    auto temp_ref = std::make_shared<ast::TemplateRef>();
-
+    auto tempRef = std::make_shared<ast::TemplateRef>();
+    tempRef->_pos = curr()->pos();
     expect(TokenType::KW_TEMPLATE);
 
-    temp_ref->identifier = std::make_shared<ast::Identifier>();
+    tempRef->identifier = std::make_shared<ast::Identifier>();
 
-    temp_ref->identifier->name = expect(TokenType::IDENTIFIER)->value;
+    tempRef->identifier->name = expect(TokenType::IDENTIFIER)->value;
 
-    return temp_ref;
+    return tempRef;
 }
 
 std::shared_ptr<ast::GUID> Parser::parseGuid() {
     if (_debug) debug("ParseGuid", curr());
     // <guid> ::= <hex_digit>+
     auto guid = std::make_shared<ast::GUID>();
-
+    guid->_pos = curr()->pos();
     guid->value = expect(TokenType::GUID)->value;
     return guid;
 }
@@ -607,7 +648,7 @@ std::shared_ptr<ast::Path> Parser::parsePath() {
     if (_debug) debug("ParsePath", curr());
     // <path> ::= "$" "/" <identifier> ("/" <identifier>)* | "~" "/" <identifier> ("/" <identifier>)* | "." "/" <identifier> ("/" <identifier>)*
     auto path = std::make_shared<ast::Path>();
-
+    path->_pos = curr()->pos();
     path->value = expect(TokenType::PATH)->value;
     return path;
 }
@@ -617,6 +658,8 @@ std::shared_ptr<ast::ObjectIns> Parser::parseObjectIns() {
     dbg::Debugger dbgParseMember(&Parser::parseMember);
     // <object_ins> ::= <identifier> "(" <member_list> ")"
     auto objIns = std::make_shared<ast::ObjectIns>();
+
+    objIns->_pos = curr()->pos();
 
     objIns->identifier = std::make_shared<ast::Identifier>();
 
@@ -639,26 +682,30 @@ std::shared_ptr<ast::ObjectIns> Parser::parseObjectIns() {
 std::shared_ptr<ast::EnumRef> Parser::parseEnumRef() {
     if (_debug) debug("ParseEnumRef", curr());
     // <enum_ref> ::= <identifier> '/' <identifier>
-    auto enum_ref = std::make_shared<ast::EnumRef>();
+    auto enumRef = std::make_shared<ast::EnumRef>();
 
-    enum_ref->enumName = std::make_shared<ast::Identifier>();
+    enumRef->_pos = curr()->pos();
 
-    enum_ref->enumName->name = expect(TokenType::IDENTIFIER)->value;
+    enumRef->enumName = std::make_shared<ast::Identifier>();
+
+    enumRef->enumName->name = expect(TokenType::IDENTIFIER)->value;
 
     expect(TokenType::DIV);
 
-    enum_ref->enumValue = std::make_shared<ast::Identifier>();
+    enumRef->enumValue = std::make_shared<ast::Identifier>();
 
-    enum_ref->enumValue->name = expect(TokenType::IDENTIFIER)->value;
+    enumRef->enumValue->name = expect(TokenType::IDENTIFIER)->value;
 
-    return enum_ref;
+    return enumRef;
 }
 
 std::shared_ptr<ast::Nil> Parser::parseNil() {
     if (_debug) debug("ParseNil", curr());
     // <nil> ::= "nil"
+    auto nil = std::make_shared<ast::Nil>();
+    nil->_pos = curr()->pos();
     _idx++;
-    return std::make_shared<ast::Nil>();
+    return nil;
 }
 
 int Parser::getPrecedence(enum TokenType type) {

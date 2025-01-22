@@ -13,6 +13,7 @@
  * @brief
  * */
 #include "ast.h"
+#include <cassert>
 #include <format>
 #include <iostream>  // MSCV
 #include <sstream>
