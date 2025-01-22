@@ -1,0 +1,19 @@
+export Modele_T72_DDR is TResourceMesh
+(
+    Mesh="GameData:/Assets/3D/Units/DDR/Char/T72/T72.fbx"
+)
+
+export Modele_T72_DDR_MID is TResourceMesh
+(
+    Mesh="GameData:/Assets/3D/Units/DDR/Char/T72_MID/T72_MID.fbx"
+)
+
+export Modele_T72_DDR_LOW is TResourceMesh
+(
+    Mesh="GameData:/Assets/3D/Units/DDR/Char/T72_LOW/T72_LOW.fbx"
+)
+
+// Modele_T72_DDR_Tourelle_02 is TResourceMesh
+// (
+//     Mesh=ModelFile_NVT_127_Tourelle_02
+// )

@@ -1,4 +1,4 @@
-export GfxDescriptorChassis_HeavyTank is TGfxDescriptorChassis
+GfxDescriptorChassis_HeavyTank is TGfxDescriptorChassis
 (
     SousMobileName = 'chassis'
     SpringX = 25
@@ -12,7 +12,7 @@ export GfxDescriptorChassis_HeavyTank is TGfxDescriptorChassis
     SpringDamperMaxY = 0.1
     Force = 4
 )
-export GfxDescriptorChassis_MediumTank is TGfxDescriptorChassis
+GfxDescriptorChassis_MediumTank is TGfxDescriptorChassis
 (
     SousMobileName = 'chassis'
     SpringX = 30
@@ -26,7 +26,7 @@ export GfxDescriptorChassis_MediumTank is TGfxDescriptorChassis
     SpringDamperMaxY = 0.1
     Force = 4
 )
-export GfxDescriptorChassis_MediumTank_AutoCanon is TGfxDescriptorChassis
+GfxDescriptorChassis_MediumTank_AutoCanon is TGfxDescriptorChassis
 (
     SousMobileName = 'chassis'
     SpringX = 30
@@ -40,7 +40,7 @@ export GfxDescriptorChassis_MediumTank_AutoCanon is TGfxDescriptorChassis
     SpringDamperMaxY = 0.1
     Force = 0.4
 )
-export GfxDescriptorChassis_MediumTank_NoCanonRecoil is TGfxDescriptorChassis
+GfxDescriptorChassis_MediumTank_NoCanonRecoil is TGfxDescriptorChassis
 (
     SousMobileName = 'chassis'
     SpringX = 30
@@ -53,7 +53,7 @@ export GfxDescriptorChassis_MediumTank_NoCanonRecoil is TGfxDescriptorChassis
     SpringDamperMaxX = 0.2
     SpringDamperMaxY = 0.1
 )
-export GfxDescriptorChassis_SmallTank is TGfxDescriptorChassis
+GfxDescriptorChassis_SmallTank is TGfxDescriptorChassis
 (
     SousMobileName = 'chassis'
     SpringX = 30
@@ -67,7 +67,7 @@ export GfxDescriptorChassis_SmallTank is TGfxDescriptorChassis
     SpringDamperMaxY = 0.1
     Force = 4
 )
-export GfxDescriptorChassis_Vehicule is TGfxDescriptorChassis
+GfxDescriptorChassis_Vehicule is TGfxDescriptorChassis
 (
     SousMobileName = 'chassis'
     SpringX = 60

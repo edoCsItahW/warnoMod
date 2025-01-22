@@ -35,6 +35,7 @@ unnamed TUICommonLDHintResource
         ( "major_NL_name",          ST_Component_1Texture_1Text_Portrait(portrait_name = 'ddr_maj_1')),
 
         ( "Steelman_LDHint_Portrait",          Steelman_LDHint_Portrait()),
+        ( "Steelman_LDHint_PortraitVideo",     Steelman_LDHint_PortraitVideo()),
 
 
         ("pact_plays_first" , FullScreenImageEtTexte(TextureToken = 'PACT_Starting_Turn_Background')),

@@ -1,16 +1,38 @@
+DummyDepiction is TDepictionTemplate
+(
+    Scaler = TIdentityScaler()
+    Selector = TConstantAlternativeSelector(Key = [LOD_High])
+    DepictionAlternatives = [ DepictionDescriptor_LOD_High(MeshDescriptor = $/GFX/DepictionResources/Rien) ]
+)
+
+export InfantryDepictionSquadShowroom is TTimelyDepictionReceiverFactory
+(
+  DepictionTemplate = TDepictionTemplate
+  (
+    Selector = OnlyHighDepictionSelector
+    DepictionAlternatives = [
+      DepictionDescriptor_LOD_High(MeshDescriptor = $/GFX/DepictionResources/Rien),
+    ]
+  )
+)
+
+
 export GfxProperties is TGfxProperties
 (
-    World                     = $/M3D/Scene/DefaultWorld
-    InfantryMimetic = ~/InfantryMimetic + MAP[('TestUnit_ModelInfantry', TacticDepiction_TestUnit_ModelInfantry_Squad)]
-    InfantryMimeticGhost = ~/InfantryMimeticGhost
-    UnitMimeticGhost = ~/VehicleMimeticGhost + ~/AerialMimeticGhost + ~/PawnGhost + ~/AerialPawnGhost + MAP[
-        ("dummy", TDepictionTemplate
-            (
-                Scaler = TIdentityScaler()
-                Selector = TConstantAlternativeSelector(Key = [LOD_High])
-                DepictionAlternatives = [ DepictionDescriptor_LOD_High(MeshDescriptor = $/GFX/DepictionResources/Rien) ]
-            )
-        )
+    World = $/M3D/Scene/DefaultWorld
+    InfantryMimetic = ~/InfantryMimetic + MAP[
+        ('TestUnit_ModelInfantry', TacticDepiction_TestUnit_ModelInfantry_Squad),
+        ('TestMissile', TestMissileDepiction),
+        ('TestTank', TestTankDepiction),
+        ('TestVehicule', TestVehiculeDepiction),
+        ('TestHelico', TestHelicoDepiction),
+        ('TestAvion', TestAvionDepiction),
+        ('TestInfantrySquad', TestInfantrySquadDepiction),
+        ('TestTankStrategic', TestTankDepiction),
+        ('TestAvionStrategic', TestAvionDepiction),
+    ]
+    UnitMimeticGhost = ~/InfantryMimeticGhost + ~/DepictionMimeticGhosts + ~/PawnGhost + ~/AerialPawnGhost + MAP[
+        ('dummy', DummyDepiction),
     ]
     BuildingMimeticGhost = ~/BuildingMimeticGhost
     BuildingULBVDescriptor = ~/DefaultUnitLevelBuildViewDescriptor

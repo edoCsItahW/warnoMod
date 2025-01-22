@@ -6,7 +6,7 @@ export Attack_Objectives_OnlyTestAuto is TMacroActionDescriptor_ObjectiveAttack_
     ParametresDeMission =
     [
         TGenerationSettingHolder(GenerationType = TGenerationType_FixedSize NumberLaunchBasedOnGenerationType = 1),
-        TMacroActionProductionSettingHolder(ProdProperties = [TProdProperty_LaunchAsSoonAsPossible] PoolModelList = [Pool_Objective_Attack_TestAuto] LaunchASAP_RatioMin = 0.01 DisableReinforcement = true),
+        TMacroActionProductionSettingHolder(ProdProperties = [TProdProperty_LaunchAsSoonAsPossible] PoolModelList = [Pool_Objective_Attack_TestAuto] DisableReinforcement = true),
         TAttackRatioSettingHolder(RatioMinimumPourAttaquer = 1.0),
     ]
 )
@@ -35,7 +35,7 @@ export Attack_Corridor_OnlyTestAuto is TMacroActionDescriptor_CorridorAttack_Spe
     ParametresDeMission =
     [
         TGenerationSettingHolder(GenerationType = TGenerationType_FixedSize NumberLaunchBasedOnGenerationType = 1),
-        TMacroActionProductionSettingHolder(ProdProperties = [TProdProperty_LaunchAsSoonAsPossible] PoolModelList = [Pool_Corridor_Attack_TestAuto] LaunchASAP_RatioMin = 0.01 DisableReinforcement = true),
+        TMacroActionProductionSettingHolder(ProdProperties = [TProdProperty_LaunchAsSoonAsPossible] PoolModelList = [Pool_Corridor_Attack_TestAuto] DisableReinforcement = true),
         TAttackRatioSettingHolder(RatioMinimumPourAttaquer = 1.2 RatioPourAttaquerPerduAChaqueTick = 0.00084),
         TCorridorPlacementSettingHolder(),
         TForcedPlacementSettingHolder(ForcedCorridor = [2]), // On force le couloirs pour ne pas dépendre du déterminisme
@@ -48,7 +48,7 @@ export Attack_Corridor_MiddleCommandZone_OnlyTestAuto is TMacroActionDescriptor_
     ParametresDeMission =
     [
         TGenerationSettingHolder(GenerationType = TGenerationType_FixedSize NumberLaunchBasedOnGenerationType = 1),
-        TMacroActionProductionSettingHolder(ProdProperties = [TProdProperty_LaunchAsSoonAsPossible] PoolModelList = [Pool_Corridor_Attack_TestAuto] LaunchASAP_RatioMin = 0.01 DisableReinforcement = true),
+        TMacroActionProductionSettingHolder(ProdProperties = [TProdProperty_LaunchAsSoonAsPossible] PoolModelList = [Pool_Corridor_Attack_TestAuto] DisableReinforcement = true),
         TAttackRatioSettingHolder(RatioMinimumPourAttaquer = 1.2 RatioPourAttaquerPerduAChaqueTick = 0.00084),
         TCorridorPlacementSettingHolder(),
         TForcedPlacementSettingHolder(ForcedCorridor = [5]), // On force le couloirs pour ne pas dépendre du déterminisme

@@ -2,7 +2,7 @@
 
 Playlist_Outgame is
 [
-//  Music( Copyrighted = true FileName = "GameData:/Assets/Sounds/PerpetualMusic/Aviator.wav" ),
+    Music( Copyrighted = true FileName = "GameData:/Assets/Sounds/PerpetualMusic/Aviator.wav" ),
     Music( Copyrighted = true FileName = "GameData:/Assets/Sounds/PerpetualMusic/Brooding-Thoughts.wav" ),
     Music( Copyrighted = true FileName = "GameData:/Assets/Sounds/PerpetualMusic/Canyon.wav" ),
     Music(                    FileName = "GameData:/Assets/Sounds/PerpetualMusic/Clusters_Of_Desolation.wav" ),
@@ -38,12 +38,12 @@ Playlist_Outgame is
 
 Playlist_Ingame is
 [
-//  Music( Copyrighted = true FileName = "GameData:/Assets/Sounds/PerpetualMusic/Aviator.wav" ),
+    Music( Copyrighted = true FileName = "GameData:/Assets/Sounds/PerpetualMusic/Aviator.wav" ),
     Music( Copyrighted = true FileName = "GameData:/Assets/Sounds/PerpetualMusic/Canyon.wav" ),
     Music( Copyrighted = true FileName = "GameData:/Assets/Sounds/PerpetualMusic/Born-A-Hero.wav" ),
     Music(                    FileName = "GameData:/Assets/Sounds/PerpetualMusic/Clusters_Of_Desolation.wav" ),
     Music(                    FileName = "GameData:/Assets/Sounds/PerpetualMusic/Depiction_Of_Fear.wav" ),
-//  Music(                    FileName = "GameData:/Assets/Sounds/PerpetualMusic/Digital_Warfare.wav" ),
+    Music(                    FileName = "GameData:/Assets/Sounds/PerpetualMusic/Digital_Warfare.wav" ),
     Music( Copyrighted = true FileName = "GameData:/Assets/Sounds/PerpetualMusic/Dark_City_Beats.wav" ),
     Music( Copyrighted = true FileName = "GameData:/Assets/Sounds/PerpetualMusic/Dawn_On_Glendale.wav" ),
     Music( Copyrighted = true FileName = "GameData:/Assets/Sounds/PerpetualMusic/Divine-Inspiration.wav" ),

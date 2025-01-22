@@ -1,0 +1,14 @@
+export Modele_T54B_DDR is TResourceMesh
+(
+    Mesh="GameData:/Assets/3D/Units/DDR/Char/T54B/T54B.fbx"
+)
+
+export Modele_T54B_DDR_MID is TResourceMesh
+(
+    Mesh="GameData:/Assets/3D/Units/DDR/Char/T54B_MID/T54B_MID.fbx"
+)
+
+export Modele_T54B_DDR_LOW is TResourceMesh
+(
+    Mesh="GameData:/Assets/3D/Units/DDR/Char/T54B_LOW/T54B_LOW.fbx"
+)

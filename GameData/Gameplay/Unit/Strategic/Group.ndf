@@ -4,7 +4,6 @@ Strategic_GroupModuleDescriptor is TGroupModuleDescriptor
 (
 )
 
-
 Strategic_GroupStateEngineDescriptor is TStateEngineGroupModuleDescriptor
 (
 )

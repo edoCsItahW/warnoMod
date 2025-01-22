@@ -204,9 +204,9 @@ StrategicBattleOrderContainer is BUCKContainerDescriptor
                                 UniqueName = "UnitPanelInfoContainerForOOB"
                                 ComponentFrame = TUIFramePropertyRTTI
                                 (
-                                    AlignementToFather = [0.5, 0.5]
-                                    AlignementToAnchor = [0.5, 0.5]
-                                    MagnifiableOffset = [60,-20]
+                                    AlignementToFather = [1, 0.5]
+                                    AlignementToAnchor = [1, 0.5]
+                                    MagnifiableOffset = [0,-20]
                                 )
                                 FitStyle = ~/ContainerFitStyle/FitToContent
                             )

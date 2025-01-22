@@ -724,6 +724,12 @@ export UnitEffect_Bouclier_Suppression_IFV is TEffectsPackDescriptor
             BonusDamage         = -33
             DamageType          = EDamageType/Suppress
         ),
+        TUnitEffectRaiseTagDescriptor
+        (
+            TagListToRaise = [
+                 "IFV_ok",
+            ]
+        ),
         TUnitEffectShowLabelIconDescriptor
         (
             TextureToken         = "icone_ifv"
@@ -896,9 +902,26 @@ export UnitEffect_Choc is TEffectsPackDescriptor
             ModifierType  = ~/ModifierType_Pourcentage
             ModifierValue = -15
         ),
+        TUnitEffectRaiseTagDescriptor
+        (
+            TagListToRaise = [
+                 "choc_ok",
+            ]
+        ),
         TUnitEffectShowLabelIconDescriptor
         (
             TextureToken         = "icone_shock"
+        ),
+    ]
+)
+export UnitEffect_Choc_feedback is TEffectsPackDescriptor
+(
+    DescriptorId       = GUID:{3f1521d2-d3c1-4ee5-95a5-1860daf2e023}
+    NameForDebug       = 'Choc_feedback'
+    EffectsDescriptors = [
+        TUnitEffectShowLabelIconDescriptor
+        (
+            TextureToken         = "icone_shock_off"
         ),
     ]
 )
@@ -1920,6 +1943,17 @@ export UnitEffect_GroundUnit_Cowering is TEffectsPackDescriptor
         ),
     ]
 )
+export UnitEffect_IFV_feedback is TEffectsPackDescriptor
+(
+    DescriptorId       = GUID:{e63f8a3b-1ee2-48e7-abfc-b082850c267d}
+    NameForDebug       = 'IFV_feedback'
+    EffectsDescriptors = [
+        TUnitEffectShowLabelIconDescriptor
+        (
+            TextureToken         = "icone_ifv_off"
+        ),
+    ]
+)
 export UnitEffect_Infanterie_Courage_Effet is TEffectsPackDescriptor
 (
     DescriptorId       = GUID:{c06041c4-2c91-4c3b-88df-42b21063aa4e}
@@ -2197,6 +2231,12 @@ export UnitEffect_Malus_ciblage_UAV is TEffectsPackDescriptor
             ModifierType       = ~/ModifierType_Pourcentage
             BonusPrecisionWhenTargeted = -50
         ),
+        TUnitEffectRaiseTagDescriptor
+        (
+            TagListToRaise = [
+                 "UAV",
+            ]
+        ),
         TUnitEffectShowLabelIconDescriptor
         (
             TextureToken         = "icone_electronic_warfare"
@@ -2321,13 +2361,6 @@ export UnitEffect_Optiques_plus_33pourcent is TEffectsPackDescriptor
             ModifierType         = ~/ModifierType_Multiplicatif
             BonusOpticalStrength = 1.33
         ),
-    ]
-)
-export UnitEffect_Placebo is TEffectsPackDescriptor
-(
-    DescriptorId       = GUID:{5e6eb10f-c221-4c05-97f6-657a2d8349d9}
-    NameForDebug       = 'Placebo'
-    EffectsDescriptors = [
     ]
 )
 export UnitEffect_Precision_moins_20 is TEffectsPackDescriptor
@@ -2773,6 +2806,17 @@ export UnitEffect_RoF_plus_75pourcent is TEffectsPackDescriptor
         ),
     ]
 )
+export UnitEffect_SF_feedback is TEffectsPackDescriptor
+(
+    DescriptorId       = GUID:{af8bc966-6022-4ecb-8d6c-038ee402df9d}
+    NameForDebug       = 'SF_feedback'
+    EffectsDescriptors = [
+        TUnitEffectShowLabelIconDescriptor
+        (
+            TextureToken         = "icone_sf"
+        ),
+    ]
+)
 export UnitEffect_Steelman_supprimer_PA is TEffectsPackDescriptor
 (
     DescriptorId       = GUID:{f345ea94-ced6-4961-a8ac-d90597b4fddb}
@@ -3132,6 +3176,17 @@ export UnitEffect_military_police is TEffectsPackDescriptor
         ),
         TUnitEffectShowLabelIconDescriptor
         (
+            TextureToken         = "icone_mp_given"
+        ),
+    ]
+)
+export UnitEffect_military_police_feedback is TEffectsPackDescriptor
+(
+    DescriptorId       = GUID:{09071ac9-8900-4e88-b230-54abbdf1b774}
+    NameForDebug       = 'military_police_feedback'
+    EffectsDescriptors = [
+        TUnitEffectShowLabelIconDescriptor
+        (
             TextureToken         = "icone_mp"
         ),
     ]
@@ -3217,6 +3272,7 @@ export UnitEffect_sigint_close is TEffectsPackDescriptor
         (
             TagListToRaise = [
                  "sigint_close",
+                 "sigint_ok",
             ]
         ),
         TUnitEffectShowLabelIconDescriptor
@@ -3230,9 +3286,26 @@ export UnitEffect_sigint_far is TEffectsPackDescriptor
     DescriptorId       = GUID:{10c4c1c6-f2d4-4e92-81d3-a22a348371a9}
     NameForDebug       = 'sigint_far'
     EffectsDescriptors = [
+        TUnitEffectRaiseTagDescriptor
+        (
+            TagListToRaise = [
+                 "sigint_ok",
+            ]
+        ),
         TUnitEffectShowLabelIconDescriptor
         (
             TextureToken         = "icone_sigint_far"
+        ),
+    ]
+)
+export UnitEffect_sigint_feedback is TEffectsPackDescriptor
+(
+    DescriptorId       = GUID:{8dd93fa6-2b20-4386-9741-e83b1909b42a}
+    NameForDebug       = 'sigint_feedback'
+    EffectsDescriptors = [
+        TUnitEffectShowLabelIconDescriptor
+        (
+            TextureToken         = "icone_sigint_off"
         ),
     ]
 )
@@ -3265,6 +3338,98 @@ export UnitEffect_sniper is TEffectsPackDescriptor
         TUnitEffectShowLabelIconDescriptor
         (
             TextureToken         = "icone_sniper"
+        ),
+    ]
+)
+export UnitEffect_sniper_feedback is TEffectsPackDescriptor
+(
+    DescriptorId       = GUID:{78a076bd-4203-4785-b780-c5531b0b2a87}
+    NameForDebug       = 'sniper_feedback'
+    EffectsDescriptors = [
+        TUnitEffectShowLabelIconDescriptor
+        (
+            TextureToken         = "icone_sniper_off"
+        ),
+    ]
+)
+export UnitEffect_stressOnMiss_high is TEffectsPackDescriptor
+(
+    DescriptorId       = GUID:{d9885cc3-77f6-4736-b3f0-8f446512f82f}
+    NameForDebug       = 'stressOnMiss_high'
+    EffectsDescriptors = [
+        TUnitEffectIncreaseOpticalStrengthDescriptor
+        (
+            ModifierType         = ~/ModifierType_Additionnel
+            BonusOpticalStrength = -43
+        ),
+        TEffectInflictSuppressDamageDescriptor
+        (
+            ModifierType             = ~/ModifierType_Additionnel
+            SuppressDamageValue      = 250
+        ),
+        TUnitEffectRaiseTagDescriptor
+        (
+            TagListToRaise = [
+                 "RadioJammed",
+            ]
+        ),
+        TUnitEffectShowLabelIconDescriptor
+        (
+            TextureToken         = "icone_effet_stressOnMiss"
+        ),
+    ]
+)
+export UnitEffect_stressOnMiss_low is TEffectsPackDescriptor
+(
+    DescriptorId       = GUID:{534b7c38-117f-4704-bd48-119646d21ef1}
+    NameForDebug       = 'stressOnMiss_low'
+    EffectsDescriptors = [
+        TUnitEffectIncreaseOpticalStrengthDescriptor
+        (
+            ModifierType         = ~/ModifierType_Additionnel
+            BonusOpticalStrength = -43
+        ),
+        TEffectInflictSuppressDamageDescriptor
+        (
+            ModifierType             = ~/ModifierType_Additionnel
+            SuppressDamageValue      = 75
+        ),
+        TUnitEffectRaiseTagDescriptor
+        (
+            TagListToRaise = [
+                 "RadioJammed",
+            ]
+        ),
+        TUnitEffectShowLabelIconDescriptor
+        (
+            TextureToken         = "icone_effet_stressOnMiss"
+        ),
+    ]
+)
+export UnitEffect_stressOnMiss_mid is TEffectsPackDescriptor
+(
+    DescriptorId       = GUID:{6bd1c672-b306-40f3-b5cb-f4f8c2fcce6f}
+    NameForDebug       = 'stressOnMiss_mid'
+    EffectsDescriptors = [
+        TUnitEffectIncreaseOpticalStrengthDescriptor
+        (
+            ModifierType         = ~/ModifierType_Additionnel
+            BonusOpticalStrength = -43
+        ),
+        TEffectInflictSuppressDamageDescriptor
+        (
+            ModifierType             = ~/ModifierType_Additionnel
+            SuppressDamageValue      = 150
+        ),
+        TUnitEffectRaiseTagDescriptor
+        (
+            TagListToRaise = [
+                 "RadioJammed",
+            ]
+        ),
+        TUnitEffectShowLabelIconDescriptor
+        (
+            TextureToken         = "icone_effet_stressOnMiss"
         ),
     ]
 )

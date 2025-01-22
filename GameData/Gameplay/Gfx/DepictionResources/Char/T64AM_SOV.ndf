@@ -1,0 +1,14 @@
+export Modele_T64AM_SOV is TResourceMesh
+(
+    Mesh="GameData:/Assets/3D/Units/URSS/Char/T64A/T64A.fbx"
+)
+
+export Modele_T64AM_SOV_MID is TResourceMesh
+(
+    Mesh="GameData:/Assets/3D/Units/URSS/Char/T64A_MID/T64A_MID.fbx"
+)
+
+export Modele_T64AM_SOV_LOW is TResourceMesh
+(
+    Mesh="GameData:/Assets/3D/Units/URSS/Char/T64A_LOW/T64A_LOW.fbx"
+)

@@ -77,6 +77,25 @@ export DepictionOperator_MovementSound_SM_SD_avion_Aquila_MQM_105 is TCosmeticCo
         ),
     ]
 )
+export DepictionOperator_MovementSound_SM_SD_avion_CL_289 is TCosmeticConstantMovementSoundOperatorDesc
+(
+    FadeInDuration = 0.5
+    MaxVolume = 0.5
+    MaxVolumeSpeed = 80
+    MinVolume = 0.1
+    OperatorId = "constantSound"
+    Sounds = 
+    [
+        TSoundDescriptor
+        (
+            SoundSettings = $/SoundSettings/SoundSettings_Moteur_Helico
+            TheSoundStream = TSoundStream
+            (
+                FileName = "GameData:/Assets/Sounds/SFX/Avions/CL_289_Engine.wav"
+            )
+        ),
+    ]
+)
 export DepictionOperator_MovementSound_SM_SD_avion_Crusader is TCosmeticConstantMovementSoundOperatorDesc
 (
     FadeInDuration = 0.5
@@ -320,6 +339,25 @@ export DepictionOperator_MovementSound_SM_SD_avion_bombardier is TCosmeticConsta
             TheSoundStream = TSoundStream
             (
                 FileName = "GameData:/Assets/Sounds/SFX/Avions/A10_Engine.wav"
+            )
+        ),
+    ]
+)
+export DepictionOperator_MovementSound_SM_SD_avion_bombardier_A6_Intruder is TCosmeticConstantMovementSoundOperatorDesc
+(
+    FadeInDuration = 0.5
+    MaxVolume = 1
+    MaxVolumeSpeed = 80
+    MinVolume = 0.1
+    OperatorId = "constantSound"
+    Sounds = 
+    [
+        TSoundDescriptor
+        (
+            SoundSettings = $/SoundSettings/SoundSettings_Moteur_Avion
+            TheSoundStream = TSoundStream
+            (
+                FileName = "GameData:/Assets/Sounds/SFX/Avions/A6_Engine.wav"
             )
         ),
     ]

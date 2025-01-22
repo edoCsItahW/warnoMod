@@ -380,7 +380,7 @@ DefaultTextFormatScript is TTextFormatScriptRTTI
             (
                 Style = TTextStyle
                 (
-                    FontSize    = 1.25
+                    FontSize    = 1.0
                     ColorBottom = [0, 0, 0, 0]
                     ColorUp     = [0, 0, 0, 0]
                     ColorStroke = [0, 0, 0, 0]

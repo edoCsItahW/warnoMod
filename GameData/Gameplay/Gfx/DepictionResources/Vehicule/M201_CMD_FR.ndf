@@ -1,0 +1,14 @@
+export Modele_M201_CMD_FR is TResourceMesh
+(
+    Mesh="GameData:/Assets/3D/Units/FR/Vehicule/M201_CMD/M201_CMD.fbx"
+)
+
+export Modele_M201_CMD_FR_MID is TResourceMesh
+(
+    Mesh="GameData:/Assets/3D/Units/FR/Vehicule/M201_CMD/M201_CMD.fbx"
+)
+
+export Modele_M201_CMD_FR_LOW is TResourceMesh
+(
+    Mesh="GameData:/Assets/3D/Units/FR/Vehicule/M201_CMD/M201_CMD.fbx"
+)

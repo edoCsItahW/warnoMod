@@ -1,0 +1,14 @@
+export Modele_T72S_DDR is TResourceMesh
+(
+    Mesh="GameData:/Assets/3D/Units/DDR/Char/T72S/T72S.fbx"
+)
+
+export Modele_T72S_DDR_MID is TResourceMesh
+(
+    Mesh="GameData:/Assets/3D/Units/DDR/Char/T72S_MID/T72S_MID.fbx"
+)
+
+export Modele_T72S_DDR_LOW is TResourceMesh
+(
+    Mesh="GameData:/Assets/3D/Units/DDR/Char/T72S_LOW/T72S_LOW.fbx"
+)

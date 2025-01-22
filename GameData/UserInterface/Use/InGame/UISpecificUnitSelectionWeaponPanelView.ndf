@@ -707,6 +707,4 @@ UISpecificUnitSelectionWeaponPanelViewDescriptor is TUISpecificUnitSelectionWeap
     WeaponNameAndAmountToken = "UIPW_NUM"
     UnknownValueToken = "UK_VAL"
     UnknownValueDicoToken = ~/LocalisationConstantes/dico_interface_ingame
-
-    SupplyTextureName = "weapon_panel_supply_texture"
 )

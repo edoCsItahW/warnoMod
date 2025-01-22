@@ -7,33 +7,10 @@ private Private_ModelFile_TestUnit_ModelInfantry is 'CommonData:/Assets/3D/Units
 private Private_ModelFile_TestUnit_ModelBuilding is 'CommonData:/Assets/3D/Building/Tests/BaseBuilding_Batiment_Placeholder.fbx'
 
 
-export Modele_TestUnit_Tank is ModelDescriptor
-(
-    FileName = Private_ModelFile_TestUnit_ModelTank
-)
-
-export Modele_TestUnit_Vehicule is ModelDescriptor
-(
-    FileName = Private_ModelFile_TestUnit_ModelVehicule
-)
-
-export Modele_TestUnit_Helico is ModelDescriptor
-(
-    FileName = Private_ModelFile_TestUnit_ModelHelico
-)
-
-export Modele_TestUnit_Avion is ModelDescriptor
-(
-    FileName = Private_ModelFile_TestUnit_ModelAvion
-)
-
-export Modele_TestUnit_Bateau is ModelDescriptor
-(
-    FileName = Private_ModelFile_TestUnit_ModelBateau
-)
-
-export Modele_TestUnit_Infantry is ModelDescriptor
-(
-    FileName = Private_ModelFile_TestUnit_ModelInfantry
-)
+export Modele_TestUnit_Tank     is TResourceMesh( Mesh=Private_ModelFile_TestUnit_ModelTank )
+export Modele_TestUnit_Vehicule is TResourceMesh( Mesh=Private_ModelFile_TestUnit_ModelVehicule )
+export Modele_TestUnit_Helico   is TResourceMesh( Mesh=Private_ModelFile_TestUnit_ModelHelico )
+export Modele_TestUnit_Avion    is TResourceMesh( Mesh=Private_ModelFile_TestUnit_ModelAvion )
+export Modele_TestUnit_Bateau   is TResourceMesh( Mesh=Private_ModelFile_TestUnit_ModelBateau )
+export Modele_TestUnit_Infantry is TResourceMesh( Mesh=Private_ModelFile_TestUnit_ModelInfantry )
 

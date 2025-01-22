@@ -43,7 +43,8 @@ template EcranGaucheTextEditable
                             RelativeWidthHeight = [0.0, 1.0]
                             MagnifiableWidthHeight = [180.0, 0.0]
                         )
-                        HorizontalFitStyle = ~/FitStyle/MinBetweenUserDefinedAndContent
+                        HorizontalFitStyle = ~/FitStyle/UserDefined
+                        VerticalFitStyle = ~/FitStyle/UserDefined
 
                         ParagraphStyle = TParagraphStyle
                         (

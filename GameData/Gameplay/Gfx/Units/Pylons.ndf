@@ -3,86 +3,54 @@
 //----------------------------------------------------------------------------------------------------------------------------------------
 //Ci-dessous, declaration des meshes de pylones qui sont sur les avions et helicos.
 //C'est sur ces meshes que sont ensuite attaches les MISSILES et BOMBES.
-template AlternativeCommon [ModelResource] is DepictionDescriptor_LOD_High
+template PylonDepictionCommon [ ModelResource ] is TDepictionTemplate
 (
-    MeshDescriptor = <ModelResource>
-)
-
-template AlternativeShowroom [ModelResource] is AlternativeCommon( ModelResource = <ModelResource> )
-template AlternativeVehicle  [ModelResource] is AlternativeCommon( ModelResource = <ModelResource> )
-template AlternativeAirplane [ModelResource] is AlternativeCommon( ModelResource = <ModelResource> )
-template AlternativeHelico   [ModelResource] is AlternativeCommon( ModelResource = <ModelResource> )
-
-template PylonDepictionCommon [ DepictionDescriptor, NoShadow = False ] is TDepictionTemplate
-(
-    ShadowLessInitialValue = <NoShadow>
     Selector = SpecificPylonDepictionSelector
-    DepictionAlternatives = [ <DepictionDescriptor> ]
+    DepictionAlternatives = [ DepictionDescriptor_LOD_High( MeshDescriptor = <ModelResource> ) ]
 )
 
-template PylonDepictionVehicle [ ModelResource ] is PylonDepictionCommon
-(
-    DepictionDescriptor = AlternativeVehicle( ModelResource = <ModelResource> )
-)
-
-template PylonDepictionAirplane [ ModelResource ] is PylonDepictionCommon
-(
-    NoShadow = True
-    DepictionDescriptor = AlternativeAirplane( ModelResource = <ModelResource> )
-)
-
-template PylonDepictionHelico [ ModelResource ] is PylonDepictionCommon
-(
-    DepictionDescriptor = AlternativeHelico( ModelResource = <ModelResource> )
-)
-
-template PylonDepictionCommonShowroom [ DepictionDescriptor ] is TDepictionTemplate
+template PylonDepictionShowroom [ ModelResource ] is TDepictionTemplate
 (
     Selector = OnlyHighDepictionSelector
-    DepictionAlternatives = [ <DepictionDescriptor> ]
-)
-
-template PylonDepictionShowroom [ ModelResource ] is PylonDepictionCommonShowroom
-(
-    DepictionDescriptor = AlternativeShowroom( ModelResource = <ModelResource> )
+    DepictionAlternatives = [ DepictionDescriptor_LOD_High( MeshDescriptor = <ModelResource> ) ]
 )
 
 PylonSet_DefaultMissileVehicle is TDepictionPylonSet
 (
     Pylons = [
-        PylonDepictionVehicle( ModelResource = $/GFX/DepictionResources/ModelPylon1 ),
-        PylonDepictionVehicle( ModelResource = $/GFX/DepictionResources/ModelPylon2 ),
-        PylonDepictionVehicle( ModelResource = $/GFX/DepictionResources/ModelPylon3 ),
-        PylonDepictionVehicle( ModelResource = $/GFX/DepictionResources/ModelPylon4 ),
-        PylonDepictionVehicle( ModelResource = $/GFX/DepictionResources/ModelPylon5 ),
-        PylonDepictionVehicle( ModelResource = $/GFX/DepictionResources/ModelPylon6 ),
-        PylonDepictionVehicle( ModelResource = $/GFX/DepictionResources/ModelPylon7 ),
+        PylonDepictionCommon( ModelResource = $/GFX/DepictionResources/ModelPylon1 ),
+        PylonDepictionCommon( ModelResource = $/GFX/DepictionResources/ModelPylon2 ),
+        PylonDepictionCommon( ModelResource = $/GFX/DepictionResources/ModelPylon3 ),
+        PylonDepictionCommon( ModelResource = $/GFX/DepictionResources/ModelPylon4 ),
+        PylonDepictionCommon( ModelResource = $/GFX/DepictionResources/ModelPylon5 ),
+        PylonDepictionCommon( ModelResource = $/GFX/DepictionResources/ModelPylon6 ),
+        PylonDepictionCommon( ModelResource = $/GFX/DepictionResources/ModelPylon7 ),
     ]
 )
 
 PylonSet_DefaultMissileAirplane is TDepictionPylonSet
 (
     Pylons = [
-        PylonDepictionAirplane( ModelResource = $/GFX/DepictionResources/ModelPylon1 ),
-        PylonDepictionAirplane( ModelResource = $/GFX/DepictionResources/ModelPylon2 ),
-        PylonDepictionAirplane( ModelResource = $/GFX/DepictionResources/ModelPylon3 ),
-        PylonDepictionAirplane( ModelResource = $/GFX/DepictionResources/ModelPylon4 ),
-        PylonDepictionAirplane( ModelResource = $/GFX/DepictionResources/ModelPylon5 ),
-        PylonDepictionAirplane( ModelResource = $/GFX/DepictionResources/ModelPylon6 ),
-        PylonDepictionAirplane( ModelResource = $/GFX/DepictionResources/ModelPylon7 ),
+        PylonDepictionCommon( ModelResource = $/GFX/DepictionResources/ModelPylon1 ),
+        PylonDepictionCommon( ModelResource = $/GFX/DepictionResources/ModelPylon2 ),
+        PylonDepictionCommon( ModelResource = $/GFX/DepictionResources/ModelPylon3 ),
+        PylonDepictionCommon( ModelResource = $/GFX/DepictionResources/ModelPylon4 ),
+        PylonDepictionCommon( ModelResource = $/GFX/DepictionResources/ModelPylon5 ),
+        PylonDepictionCommon( ModelResource = $/GFX/DepictionResources/ModelPylon6 ),
+        PylonDepictionCommon( ModelResource = $/GFX/DepictionResources/ModelPylon7 ),
     ]
 )
 
 PylonSet_DefaultMissileHelico is TDepictionPylonSet
 (
     Pylons = [
-        PylonDepictionHelico( ModelResource = $/GFX/DepictionResources/ModelPylon1 ),
-        PylonDepictionHelico( ModelResource = $/GFX/DepictionResources/ModelPylon2 ),
-        PylonDepictionHelico( ModelResource = $/GFX/DepictionResources/ModelPylon3 ),
-        PylonDepictionHelico( ModelResource = $/GFX/DepictionResources/ModelPylon4 ),
-        PylonDepictionHelico( ModelResource = $/GFX/DepictionResources/ModelPylon5 ),
-        PylonDepictionHelico( ModelResource = $/GFX/DepictionResources/ModelPylon6 ),
-        PylonDepictionHelico( ModelResource = $/GFX/DepictionResources/ModelPylon7 ),
+        PylonDepictionCommon( ModelResource = $/GFX/DepictionResources/ModelPylon1 ),
+        PylonDepictionCommon( ModelResource = $/GFX/DepictionResources/ModelPylon2 ),
+        PylonDepictionCommon( ModelResource = $/GFX/DepictionResources/ModelPylon3 ),
+        PylonDepictionCommon( ModelResource = $/GFX/DepictionResources/ModelPylon4 ),
+        PylonDepictionCommon( ModelResource = $/GFX/DepictionResources/ModelPylon5 ),
+        PylonDepictionCommon( ModelResource = $/GFX/DepictionResources/ModelPylon6 ),
+        PylonDepictionCommon( ModelResource = $/GFX/DepictionResources/ModelPylon7 ),
     ]
 )
 
@@ -90,28 +58,28 @@ PylonSet_DefaultMissileHelico is TDepictionPylonSet
 PylonSet_DefaultPodVehicle is TDepictionPylonSet
 (
     Pylons = [
-        PylonDepictionVehicle( ModelResource = $/GFX/DepictionResources/PodModelPylon4 ),
-        PylonDepictionVehicle( ModelResource = $/GFX/DepictionResources/PodModelPylon7 ),
-        PylonDepictionVehicle( ModelResource = $/GFX/DepictionResources/PodModelPylon19 ),
+        PylonDepictionCommon( ModelResource = $/GFX/DepictionResources/PodModelPylon4 ),
+        PylonDepictionCommon( ModelResource = $/GFX/DepictionResources/PodModelPylon7 ),
+        PylonDepictionCommon( ModelResource = $/GFX/DepictionResources/PodModelPylon19 ),
     ]
 )
 
 PylonSet_DefaultPodAirplane is TDepictionPylonSet
 (
     Pylons = [
-        PylonDepictionAirplane( ModelResource = $/GFX/DepictionResources/PodModelPylon4 ),
-        PylonDepictionAirplane( ModelResource = $/GFX/DepictionResources/PodModelPylon6 ),
-        PylonDepictionAirplane( ModelResource = $/GFX/DepictionResources/PodModelPylon7 ),
-        PylonDepictionAirplane( ModelResource = $/GFX/DepictionResources/PodModelPylon19 ),
+        PylonDepictionCommon( ModelResource = $/GFX/DepictionResources/PodModelPylon4 ),
+        PylonDepictionCommon( ModelResource = $/GFX/DepictionResources/PodModelPylon6 ),
+        PylonDepictionCommon( ModelResource = $/GFX/DepictionResources/PodModelPylon7 ),
+        PylonDepictionCommon( ModelResource = $/GFX/DepictionResources/PodModelPylon19 ),
     ]
 )
 
 PylonSet_DefaultPodHelico is TDepictionPylonSet
 (
     Pylons = [
-        PylonDepictionHelico( ModelResource = $/GFX/DepictionResources/PodModelPylon4 ),
-        PylonDepictionHelico( ModelResource = $/GFX/DepictionResources/PodModelPylon7 ),
-        PylonDepictionHelico( ModelResource = $/GFX/DepictionResources/PodModelPylon19 ),
+        PylonDepictionCommon( ModelResource = $/GFX/DepictionResources/PodModelPylon4 ),
+        PylonDepictionCommon( ModelResource = $/GFX/DepictionResources/PodModelPylon7 ),
+        PylonDepictionCommon( ModelResource = $/GFX/DepictionResources/PodModelPylon19 ),
     ]
 )
 
@@ -177,24 +145,24 @@ DepictionPylonSet_Helico_Default is TMultiPylonSet
 PylonSet_SOVPodHelico is TDepictionPylonSet
 (
     Pylons = [
-        PylonDepictionHelico( ModelResource = $/GFX/DepictionResources/PodSOVModelPylon_5  ),
-        PylonDepictionHelico( ModelResource = $/GFX/DepictionResources/PodSOVModelPylon_16 ),
-        PylonDepictionHelico( ModelResource = $/GFX/DepictionResources/PodSOVModelPylon_17 ),
-        PylonDepictionHelico( ModelResource = $/GFX/DepictionResources/PodSOVModelPylon_20 ),
-        PylonDepictionHelico( ModelResource = $/GFX/DepictionResources/PodSOVModelPylon_32 ),
-        PylonDepictionHelico( ModelResource = $/GFX/DepictionResources/PodSOVModelPylon_33 ),
+        PylonDepictionCommon( ModelResource = $/GFX/DepictionResources/PodSOVModelPylon_5  ),
+        PylonDepictionCommon( ModelResource = $/GFX/DepictionResources/PodSOVModelPylon_16 ),
+        PylonDepictionCommon( ModelResource = $/GFX/DepictionResources/PodSOVModelPylon_17 ),
+        PylonDepictionCommon( ModelResource = $/GFX/DepictionResources/PodSOVModelPylon_20 ),
+        PylonDepictionCommon( ModelResource = $/GFX/DepictionResources/PodSOVModelPylon_32 ),
+        PylonDepictionCommon( ModelResource = $/GFX/DepictionResources/PodSOVModelPylon_33 ),
     ]
 )
 
 PylonSet_SOVPodAirplane is TDepictionPylonSet
 (
     Pylons = [
-        PylonDepictionAirplane( ModelResource = $/GFX/DepictionResources/PodSOVModelPylon_5 ),
-        PylonDepictionAirplane( ModelResource = $/GFX/DepictionResources/PodSOVModelPylon_16 ),
-        PylonDepictionAirplane( ModelResource = $/GFX/DepictionResources/PodSOVModelPylon_17 ),
-        PylonDepictionAirplane( ModelResource = $/GFX/DepictionResources/PodSOVModelPylon_Airplane_20 ),
-        PylonDepictionAirplane( ModelResource = $/GFX/DepictionResources/PodSOVModelPylon_32 ),
-        PylonDepictionAirplane( ModelResource = $/GFX/DepictionResources/PodSOVModelPylon_33 ),
+        PylonDepictionCommon( ModelResource = $/GFX/DepictionResources/PodSOVModelPylon_5 ),
+        PylonDepictionCommon( ModelResource = $/GFX/DepictionResources/PodSOVModelPylon_16 ),
+        PylonDepictionCommon( ModelResource = $/GFX/DepictionResources/PodSOVModelPylon_17 ),
+        PylonDepictionCommon( ModelResource = $/GFX/DepictionResources/PodSOVModelPylon_Airplane_20 ),
+        PylonDepictionCommon( ModelResource = $/GFX/DepictionResources/PodSOVModelPylon_32 ),
+        PylonDepictionCommon( ModelResource = $/GFX/DepictionResources/PodSOVModelPylon_33 ),
     ]
 )
 
@@ -224,7 +192,7 @@ PylonSet_SOVPodHelicoShowroom is TDepictionPylonSet
 
 template PylonSet_PodAirplane [ ModelResource ] is TDepictionPylonSet
 (
-    Pylons = [ PylonDepictionAirplane( ModelResource = <ModelResource> ) ]
+    Pylons = [ PylonDepictionCommon( ModelResource = <ModelResource> ) ]
 )
 
 template PylonSet_PodAirplaneShowroom [ ModelResource ] is TDepictionPylonSet
@@ -295,8 +263,8 @@ DepictionPylonSet_Airplane_FR_Showroom is TMultiPylonSet
 PylonSet_FRPodAirplane is TDepictionPylonSet
 (
     Pylons = [
-        PylonDepictionAirplane( ModelResource = $/GFX/DepictionResources/PodFRModelPylon_4 ),
-        PylonDepictionAirplane( ModelResource = $/GFX/DepictionResources/PodFRModelResource ),
+        PylonDepictionCommon( ModelResource = $/GFX/DepictionResources/PodFRModelPylon_4 ),
+        PylonDepictionCommon( ModelResource = $/GFX/DepictionResources/PodFRModelResource ),
     ]
 )
 
@@ -337,5 +305,5 @@ DepictionPylonSet_ATGM_Showroom is DepictionPylonSet_ATGM_Template
 
 DepictionPylonSet_ATGM is DepictionPylonSet_ATGM_Template
 (
-    Pylon = PylonDepictionVehicle ( ModelResource = $/GFX/DepictionResources/ATGMModelResource )
+    Pylon = PylonDepictionCommon ( ModelResource = $/GFX/DepictionResources/ATGMModelResource )
 )

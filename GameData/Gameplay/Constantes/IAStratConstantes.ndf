@@ -90,11 +90,6 @@ IAStratConstantes is TIAStratConstantesDescriptor_Specific
     DistanceToSeekForestForUnitInDefenseGRU = 1413
     DistanceToSeekPolygonCenterForUnitInDefenseGRU = 707
 
-    //TimeToWaitAfterFleeToGoBackToOriginalPositionInSeconds = 15
-    //UnitTagForHQ_UsedInDefenseMissionOnly contient une liste de tags permettant de trouver une liste d'unites ennemies. On cherchera l'unite ennemie la plus proche de la zone
-    //a defendre pour trouver sur quel point de defense se placer quand on n'a pas d'ennemi a proximité
-    UseAntiStackingForVehicles = true
-    UseAntiStackingForInfantry = true
     MaxNumberOfStackingUnits = 2
 
     // Objectif Attack

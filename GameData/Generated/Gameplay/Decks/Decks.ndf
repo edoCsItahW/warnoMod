@@ -1,6 +1,95 @@
 // Ne pas éditer, ce fichier est généré par DecksFileWriter
 
 
+export Descriptor_Deck_BEL_16e_Mecanisee_multi is TDeckDescriptor
+(
+    DeckName = 'ZYYGBZIEQE'
+    DeckDivision = ~/Descriptor_Deck_Division_BEL_16e_Mecanisee_multi
+    DeckPackList =
+    [
+        ~/Descriptor_Deck_Pack_AIFV_B_CMD_BEL_1,
+        ~/Descriptor_Deck_Pack_MAN_Z311_BEL_0,
+        ~/Descriptor_Deck_Pack_MAN_Z311_BEL_0,
+        ~/Descriptor_Deck_Pack_Volvo_N10_supply_BEL_0,
+        ~/Descriptor_Deck_Pack_Mech_Rifles_CMD_BEL_AIFV_B_50_BEL_1,
+        ~/Descriptor_Deck_Pack_Mech_Rifles_MG_BEL_AIFV_B_C25_BEL_1,
+        ~/Descriptor_Deck_Pack_Mech_Rifles_MG_BEL_AIFV_B_C25_BEL_1,
+        ~/Descriptor_Deck_Pack_Mech_Rifles_AT_BEL_AIFV_B_50_BEL_1,
+        ~/Descriptor_Deck_Pack_HMGteam_M2HB_BEL_AIFV_B_50_BEL_1,
+        ~/Descriptor_Deck_Pack_ATteam_Milan_1_BEL_M113A1B_MILAN_BEL_1,
+        ~/Descriptor_Deck_Pack_ATteam_Milan_2_BEL_AIFV_B_MILAN_BEL_1,
+        ~/Descriptor_Deck_Pack_LightRifles_CMD_LUX_M1038_Humvee_LUX_1,
+        ~/Descriptor_Deck_Pack_LightRifles_LUX_M1038_Humvee_LUX_1,
+        ~/Descriptor_Deck_Pack_Mortier_81mm_BEL_Iltis_trans_BEL_1,
+        ~/Descriptor_Deck_Pack_M109A2_BEL_0,
+        ~/Descriptor_Deck_Pack_M109A2_BEL_0,
+        ~/Descriptor_Deck_Pack_Leopard_1A5_CMD_BEL_1,
+        ~/Descriptor_Deck_Pack_Leopard_1BE_BEL_1,
+        ~/Descriptor_Deck_Pack_Leopard_1BE_BEL_1,
+        ~/Descriptor_Deck_Pack_Leopard_1BE_BEL_1,
+        ~/Descriptor_Deck_Pack_Leopard_1A5_BEL_1,
+        ~/Descriptor_Deck_Pack_FV102_Striker_BEL_1,
+        ~/Descriptor_Deck_Pack_LRRP_BEL_Unimog_trans_BEL_2,
+        ~/Descriptor_Deck_Pack_Sniper_ESR_BEL_Iltis_trans_BEL_1,
+        ~/Descriptor_Deck_Pack_FV107_Scimitar_BEL_1,
+        ~/Descriptor_Deck_Pack_Epervier_BEL_1,
+        ~/Descriptor_Deck_Pack_MANPAD_Mistral_BEL_Iltis_trans_BEL_1,
+        ~/Descriptor_Deck_Pack_MAN_Z311_Mi50_BEL_1,
+        ~/Descriptor_Deck_Pack_Gepard_1A2_BEL_1,
+        ~/Descriptor_Deck_Pack_A109BA_TOW_BEL_1,
+        ~/Descriptor_Deck_Pack_A109BA_TOW_twin_BEL_2,
+        ~/Descriptor_Deck_Pack_F16A_AA_BEL_1,
+        ~/Descriptor_Deck_Pack_Mirage_5_BA_RKT_BEL_1,
+        ~/Descriptor_Deck_Pack_Mirage_5_BA_MIRSIP_BEL_1,
+        ~/Descriptor_Deck_Pack_Mirage_5_BA_CLU_BEL_1,
+    ]
+)
+
+export Descriptor_Deck_RDA_9_Panzer_multi is TDeckDescriptor
+(
+    DeckName = 'JLFAWVYJKY'
+    DeckDivision = ~/Descriptor_Deck_Division_RDA_9_Panzer_multi
+    DeckPackList =
+    [
+        ~/Descriptor_Deck_Pack_MotRifles_RPG27_DDR_BMP_2_DDR_2,
+        ~/Descriptor_Deck_Pack_MotRifles_RPG27_DDR_BMP_2_DDR_2,
+        ~/Descriptor_Deck_Pack_MotRifles_DDR_BMP_1P_Konkurs_DDR_0,
+        ~/Descriptor_Deck_Pack_MotRifles_DDR_BMP_1_SP1_DDR_0,
+        ~/Descriptor_Deck_Pack_Engineers_DDR_BTR_70_DDR_0,
+        ~/Descriptor_Deck_Pack_ATteam_Fagot_DDR_UAZ_469_trans_DDR_0,
+        ~/Descriptor_Deck_Pack_BTR_60_CHAIKA_CMD_DDR_1,
+        ~/Descriptor_Deck_Pack_Ural_4320_DDR_0,
+        ~/Descriptor_Deck_Pack_T815_supply_DDR_0,
+        ~/Descriptor_Deck_Pack_T72M1_CMD_DDR_1,
+        ~/Descriptor_Deck_Pack_T72M_CMD_DDR_1,
+        ~/Descriptor_Deck_Pack_T72M1_DDR_1,
+        ~/Descriptor_Deck_Pack_T72M1_DDR_1,
+        ~/Descriptor_Deck_Pack_T72M1_DDR_1,
+        ~/Descriptor_Deck_Pack_T72S_DDR_1,
+        ~/Descriptor_Deck_Pack_MTLB_Shturm_DDR_0,
+        ~/Descriptor_Deck_Pack_T72MUV2_DDR_2,
+        ~/Descriptor_Deck_Pack_T72MUV2_DDR_2,
+        ~/Descriptor_Deck_Pack_T72MUV2_DDR_2,
+        ~/Descriptor_Deck_Pack_Scout_DDR_UAZ_469_trans_DDR_0,
+        ~/Descriptor_Deck_Pack_BRM_1_DDR_0,
+        ~/Descriptor_Deck_Pack_Mi_8PPA_SOV_0,
+        ~/Descriptor_Deck_Pack_2K12_KUB_DDR_0,
+        ~/Descriptor_Deck_Pack_MTLB_Strela10_DDR_1,
+        ~/Descriptor_Deck_Pack_MANPAD_Igla_DDR_UAZ_469_trans_DDR_1,
+        ~/Descriptor_Deck_Pack_ZSU_23_Shilka_DDR_1,
+        ~/Descriptor_Deck_Pack_Mi_24D_s5_AT_DDR_1,
+        ~/Descriptor_Deck_Pack_Mi_2_rocket_DDR_1,
+        ~/Descriptor_Deck_Pack_MiG_23ML_DDR_1,
+        ~/Descriptor_Deck_Pack_MiG_23MF_AA_DDR_1,
+        ~/Descriptor_Deck_Pack_Su_22_AT_DDR_1,
+        ~/Descriptor_Deck_Pack_Su_22_RKT_DDR_1,
+        ~/Descriptor_Deck_Pack_RM70_85_DDR_1,
+        ~/Descriptor_Deck_Pack_2S3_DDR_0,
+        ~/Descriptor_Deck_Pack_Mortier_PM43_120mm_DDR_MTLB_trans_DDR_0,
+        ~/Descriptor_Deck_Pack_FOB_DDR_1,
+    ]
+)
+
 export Descriptor_Deck_RDA_4_MSD_multi is TDeckDescriptor
 (
     DeckName = 'SGGDGYLPQD'
@@ -363,6 +452,186 @@ export Descriptor_Deck_RDA_KdA_Bezirk_Erfurt_multi is TDeckDescriptor
     ]
 )
 
+export Descriptor_Deck_NL_4e_Divisie_multi is TDeckDescriptor
+(
+    DeckName = 'SWAEPDCBHE'
+    DeckDivision = ~/Descriptor_Deck_Division_NL_4e_Divisie_multi
+    DeckPackList =
+    [
+        ~/Descriptor_Deck_Pack_AIFV_B_Cargo_NL_0,
+        ~/Descriptor_Deck_Pack_DAF_YA_4400_supply_NL_0,
+        ~/Descriptor_Deck_Pack_Reserve_NL_DAF_YA_4400_NL_0,
+        ~/Descriptor_Deck_Pack_Mech_Rifles_Dragon_NL_AIFV_B_C25_NL_1,
+        ~/Descriptor_Deck_Pack_Mech_Rifles_M72_LAW_NL_AIFV_B_C25_NL_1,
+        ~/Descriptor_Deck_Pack_Mech_Rifles_Carl_NL_DAF_YA_4400_NL_1,
+        ~/Descriptor_Deck_Pack_Mech_Rifles_Carl_NL_DAF_YA_4400_NL_1,
+        ~/Descriptor_Deck_Pack_Mech_Rifles_Carl_NL_DAF_YA_4400_NL_1,
+        ~/Descriptor_Deck_Pack_ATteam_TOW2_NL_LandRover_NL_0,
+        ~/Descriptor_Deck_Pack_Mortier_MORT61_120mm_NL_DAF_YA_4400_NL_0,
+        ~/Descriptor_Deck_Pack_Howz_M114_155mm_NL_DAF_YHZ_2300_trans_NL_0,
+        ~/Descriptor_Deck_Pack_M110A2_HOWZ_NL_1,
+        ~/Descriptor_Deck_Pack_AIFV_B_TOW_NL_0,
+        ~/Descriptor_Deck_Pack_Leopard_1A1_NL_0,
+        ~/Descriptor_Deck_Pack_Leopard_2A4B_NL_1,
+        ~/Descriptor_Deck_Pack_Leopard_2A4B_NL_1,
+        ~/Descriptor_Deck_Pack_Leopard_2A4B_NL_1,
+        ~/Descriptor_Deck_Pack_Leopard_2A4_NL_0,
+        ~/Descriptor_Deck_Pack_Leopard_2A4B_CMD_NL_1,
+        ~/Descriptor_Deck_Pack_Leopard_2A4B_CMD_NL_1,
+        ~/Descriptor_Deck_Pack_Bo_105_CB_NL_1,
+        ~/Descriptor_Deck_Pack_M113_CV_25mm_NL_0,
+        ~/Descriptor_Deck_Pack_Engineers_Scout_NL_M113A1_reco_NL_0,
+        ~/Descriptor_Deck_Pack_DCA_Bofors_upgrade_NL_DAF_YA_4400_NL_1,
+        ~/Descriptor_Deck_Pack_MANPAD_Stinger_C_NL_LandRover_NL_0,
+        ~/Descriptor_Deck_Pack_Gepard_1A2_NL_0,
+        ~/Descriptor_Deck_Pack_F5A_FreedomFighter_NL_1,
+        ~/Descriptor_Deck_Pack_F5A_FreedomFighter_RKT_NL_1,
+        ~/Descriptor_Deck_Pack_F16A_AA_NL_1,
+        ~/Descriptor_Deck_Pack_F16A_AA_NL_1,
+        ~/Descriptor_Deck_Pack_F16A_CLU_NL_1,
+        ~/Descriptor_Deck_Pack_AIFV_B_CMD_NL_1,
+        ~/Descriptor_Deck_Pack_AIFV_B_CMD_NL_1,
+        ~/Descriptor_Deck_Pack_M110A2_HOWZ_NL_1,
+        ~/Descriptor_Deck_Pack_Scout_AT_NL_Alouette_III_trans_NL_1,
+        ~/Descriptor_Deck_Pack_Engineers_NL_M113A1_NL_1,
+    ]
+)
+
+export Descriptor_Deck_POL_20_Pancerna_multi is TDeckDescriptor
+(
+    DeckName = 'ONLIADMYGS'
+    DeckDivision = ~/Descriptor_Deck_Division_POL_20_Pancerna_multi
+    DeckPackList =
+    [
+        ~/Descriptor_Deck_Pack_FOB_POL_1,
+        ~/Descriptor_Deck_Pack_GAZ_66_POL_0,
+        ~/Descriptor_Deck_Pack_GAZ_66_POL_0,
+        ~/Descriptor_Deck_Pack_Star_266_supply_POL_0,
+        ~/Descriptor_Deck_Pack_Engineers_CMD_POL_OT_64_SKOT_2_POL_1,
+        ~/Descriptor_Deck_Pack_MotRifles_CMD_POL_BMP_1_SP2_POL_1,
+        ~/Descriptor_Deck_Pack_MotRifles_SVD_POL_BMP_1_SP2_POL_1,
+        ~/Descriptor_Deck_Pack_MotRifles_SVD_POL_BMP_1_SP2_POL_1,
+        ~/Descriptor_Deck_Pack_ATteam_RCL_SPG9_POL_BMP_1_SP2_POL_1,
+        ~/Descriptor_Deck_Pack_Atteam_Fagot_POL_BMP_1_SP2_POL_1,
+        ~/Descriptor_Deck_Pack_2S1_POL_1,
+        ~/Descriptor_Deck_Pack_2S1_POL_1,
+        ~/Descriptor_Deck_Pack_DANA_POL_0,
+        ~/Descriptor_Deck_Pack_BM21_Grad_POL_0,
+        ~/Descriptor_Deck_Pack_T55A_CMD_POL_1,
+        ~/Descriptor_Deck_Pack_T55A_POL_1,
+        ~/Descriptor_Deck_Pack_T55AS_POL_1,
+        ~/Descriptor_Deck_Pack_T72M1_CMD_POL_1,
+        ~/Descriptor_Deck_Pack_T72M_POL_1,
+        ~/Descriptor_Deck_Pack_T72M1_POL_1,
+        ~/Descriptor_Deck_Pack_T72M1_POL_1,
+        ~/Descriptor_Deck_Pack_T72M1_Wilk_POL_1,
+        ~/Descriptor_Deck_Pack_BRDM_2_Malyu_P_POL_1,
+        ~/Descriptor_Deck_Pack_Engineers_Scout_POL_BAV_485_POL_1,
+        ~/Descriptor_Deck_Pack_Scout_LRRP_POL_Honker_RYS_POL_2,
+        ~/Descriptor_Deck_Pack_Scout_SF_POL_Honker_RYS_POL_2,
+        ~/Descriptor_Deck_Pack_BRM_1_POL_1,
+        ~/Descriptor_Deck_Pack_Mi_2_gunship_POL_1,
+        ~/Descriptor_Deck_Pack_ZSU_23_Shilka_POL_1,
+        ~/Descriptor_Deck_Pack_MTLB_Strela10_POL_1,
+        ~/Descriptor_Deck_Pack_2K12_KUB_POL_1,
+        ~/Descriptor_Deck_Pack_Mi_24D_POL_1,
+        ~/Descriptor_Deck_Pack_Mi_24D_s8_AT_POL_1,
+        ~/Descriptor_Deck_Pack_MiG_21bis_POL_2,
+        ~/Descriptor_Deck_Pack_MiG_21bis_HE_POL_2,
+        ~/Descriptor_Deck_Pack_Su_22_AT_POL_1,
+    ]
+)
+
+export Descriptor_Deck_POL_Korpus_Desantowy_multi is TDeckDescriptor
+(
+    DeckName = 'RUBMFOCSHC'
+    DeckDivision = ~/Descriptor_Deck_Division_POL_Korpus_Desantowy_multi
+    DeckPackList =
+    [
+        ~/Descriptor_Deck_Pack_BAV_485_Supply_POL_0,
+        ~/Descriptor_Deck_Pack_Mi_6_POL_1,
+        ~/Descriptor_Deck_Pack_UAZ_469_CMD_Para_POL_2,
+        ~/Descriptor_Deck_Pack_MLRS_WP_8z_POL_UAZ_469_trans_POL_0,
+        ~/Descriptor_Deck_Pack_Mortier_2B9_Vasilek_Para_POL_UAZ_469_trans_POL_1,
+        ~/Descriptor_Deck_Pack_2S7_Pion_POL_1,
+        ~/Descriptor_Deck_Pack_ASU_85_POL_1,
+        ~/Descriptor_Deck_Pack_T55A_CMD_POL_1,
+        ~/Descriptor_Deck_Pack_T55A_POL_0,
+        ~/Descriptor_Deck_Pack_T55AS_POL_0,
+        ~/Descriptor_Deck_Pack_BRDM_2_Malyu_P_POL_1,
+        ~/Descriptor_Deck_Pack_Atteam_Fagot_POL_OT_62_TOPAS_SPG9_POL_0,
+        ~/Descriptor_Deck_Pack_Naval_Rifle_POL_OT_62_TOPAS_2AP_POL_1,
+        ~/Descriptor_Deck_Pack_Naval_Rifle_POL_OT_62_TOPAS_2AP_POL_1,
+        ~/Descriptor_Deck_Pack_Para_Metis_POL_GAZ_66B_POL_2,
+        ~/Descriptor_Deck_Pack_Para_POL_GAZ_66B_POL_2,
+        ~/Descriptor_Deck_Pack_Para_CMD_POL_GAZ_66B_POL_2,
+        ~/Descriptor_Deck_Pack_UAZ_469_SPG9_Para_POL_2,
+        ~/Descriptor_Deck_Pack_Naval_Engineers_POL_BAV_485_POL_1,
+        ~/Descriptor_Deck_Pack_W3RR_Procjon_POL_1,
+        ~/Descriptor_Deck_Pack_Scout_LRRP_Para_POL_UAZ_469_trans_POL_2,
+        ~/Descriptor_Deck_Pack_MANPAD_Strela_2M_Para_POL_UAZ_469_trans_POL_2,
+        ~/Descriptor_Deck_Pack_MANPAD_Strela_2M_POL_OT_62_TOPAS_JOD_POL_2,
+        ~/Descriptor_Deck_Pack_Hibneryt_KG_POL_1,
+        ~/Descriptor_Deck_Pack_W3W_Sokol_AA_POL_1,
+        ~/Descriptor_Deck_Pack_W3W_Sokol_AA_POL_1,
+        ~/Descriptor_Deck_Pack_Mi_24D_s8_AT_POL_1,
+        ~/Descriptor_Deck_Pack_Mi_24V_POL_1,
+        ~/Descriptor_Deck_Pack_Mi_24V_POL_1,
+        ~/Descriptor_Deck_Pack_MiG_29_AA_POL_1,
+        ~/Descriptor_Deck_Pack_MiG_29_AA_POL_1,
+        ~/Descriptor_Deck_Pack_Su_22_nplm_POL_1,
+        ~/Descriptor_Deck_Pack_Su_22_AT_POL_1,
+        ~/Descriptor_Deck_Pack_Su_22_SEAD_POL_1,
+        ~/Descriptor_Deck_Pack_BRDM_2_POL_1,
+        ~/Descriptor_Deck_Pack_Naval_Engineers_Flam_POL_OT_62_TOPAS_POL_1,
+    ]
+)
+
+export Descriptor_Deck_POL_4_Zmechanizowana_multi is TDeckDescriptor
+(
+    DeckName = 'TXTNNGPIUS'
+    DeckDivision = ~/Descriptor_Deck_Division_POL_4_Zmechanizowana_multi
+    DeckPackList =
+    [
+        ~/Descriptor_Deck_Pack_UAZ_469_CMD_POL_1,
+        ~/Descriptor_Deck_Pack_OT_64_SKOT_CMD_POL_1,
+        ~/Descriptor_Deck_Pack_GAZ_66_POL_0,
+        ~/Descriptor_Deck_Pack_KrAZ_255B_supply_POL_0,
+        ~/Descriptor_Deck_Pack_RM70_85_POL_0,
+        ~/Descriptor_Deck_Pack_Howz_ML20_152mm_POL_KrAZ_255B_POL_0,
+        ~/Descriptor_Deck_Pack_Mortier_PM43_120mm_POL_Star_266_POL_0,
+        ~/Descriptor_Deck_Pack_Scout_SF_POL_Honker_RYS_POL_2,
+        ~/Descriptor_Deck_Pack_Engineers_Scout_POL_BAV_485_POL_1,
+        ~/Descriptor_Deck_Pack_Mi_24V_POL_1,
+        ~/Descriptor_Deck_Pack_Mi_24V_POL_1,
+        ~/Descriptor_Deck_Pack_Mi_24D_s8_AT_POL_1,
+        ~/Descriptor_Deck_Pack_Mi_2_AA_POL_1,
+        ~/Descriptor_Deck_Pack_Su_22_AT_POL_1,
+        ~/Descriptor_Deck_Pack_Su_22_clu_POL_1,
+        ~/Descriptor_Deck_Pack_MiG_23MF_AA_POL_1,
+        ~/Descriptor_Deck_Pack_T55AMS_Merida_POL_0,
+        ~/Descriptor_Deck_Pack_T55AM_Merida_POL_1,
+        ~/Descriptor_Deck_Pack_T55AM_Merida_POL_1,
+        ~/Descriptor_Deck_Pack_T55AM_Merida_CMD_POL_1,
+        ~/Descriptor_Deck_Pack_T55A_POL_0,
+        ~/Descriptor_Deck_Pack_BRDM_2_Konkurs_POL_0,
+        ~/Descriptor_Deck_Pack_MotRifles_POL_BMP_1_SP2_POL_2,
+        ~/Descriptor_Deck_Pack_Scout_POL_UAZ_469_trans_POL_0,
+        ~/Descriptor_Deck_Pack_BRDM_1_PSNR1_POL_0,
+        ~/Descriptor_Deck_Pack_Osa_9K33M3_POL_0,
+        ~/Descriptor_Deck_Pack_Osa_9K33M3_POL_0,
+        ~/Descriptor_Deck_Pack_BRDM_Strela_1_POL_0,
+        ~/Descriptor_Deck_Pack_MANPAD_Strela_2M_POL_OT_64_SKOT_2P_POL_0,
+        ~/Descriptor_Deck_Pack_MotRifles_SVD_POL_Star_266_POL_1,
+        ~/Descriptor_Deck_Pack_Rifles_POL_Star_266_POL_1,
+        ~/Descriptor_Deck_Pack_MotRifles_POL_Star_266_POL_1,
+        ~/Descriptor_Deck_Pack_Commandos_POL_W3_Sokol_POL_3,
+        ~/Descriptor_Deck_Pack_Engineers_POL_Star_266_POL_1,
+        ~/Descriptor_Deck_Pack_Engineers_Flam_POL_OT_64_SKOT_2_POL_1,
+        ~/Descriptor_Deck_Pack_WSW_POL_Star_266_POL_1,
+    ]
+)
+
 export Descriptor_Deck_RFA_2_PzGrenadier_multi is TDeckDescriptor
 (
     DeckName = 'RPGUDLLPPH'
@@ -539,6 +808,51 @@ export Descriptor_Deck_SOV_119IndTkBrig_multi is TDeckDescriptor
         ~/Descriptor_Deck_Pack_Mi_24P_SOV_1,
         ~/Descriptor_Deck_Pack_Mi_24P_SOV_1,
         ~/Descriptor_Deck_Pack_Mi_8TV_Gunship_SOV_1,
+    ]
+)
+
+export Descriptor_Deck_SOV_25_Tank_multi is TDeckDescriptor
+(
+    DeckName = 'SZDBRMISSA'
+    DeckDivision = ~/Descriptor_Deck_Division_SOV_25_Tank_multi
+    DeckPackList =
+    [
+        ~/Descriptor_Deck_Pack_Ural_4320_SOV_0,
+        ~/Descriptor_Deck_Pack_Mi_8TZ_SOV_0,
+        ~/Descriptor_Deck_Pack_BMP_1_CMD_SOV_1,
+        ~/Descriptor_Deck_Pack_MotRifles_SOV_BMP_2_SOV_1,
+        ~/Descriptor_Deck_Pack_MotRifles_SOV_BMP_1P_Konkurs_SOV_1,
+        ~/Descriptor_Deck_Pack_MotRifles_SOV_BMP_1P_Konkurs_SOV_1,
+        ~/Descriptor_Deck_Pack_HMGteam_NSV_SOV_UAZ_469_SOV_0,
+        ~/Descriptor_Deck_Pack_Engineers_SOV_MTLB_transp_SOV_0,
+        ~/Descriptor_Deck_Pack_2S19_MstaS_SOV_0,
+        ~/Descriptor_Deck_Pack_BM21_Grad_SOV_0,
+        ~/Descriptor_Deck_Pack_Mortier_2S12_120mm_SOV_MTLB_transp_SOV_0,
+        ~/Descriptor_Deck_Pack_T64BV_CMD_SOV_1,
+        ~/Descriptor_Deck_Pack_T64BV_CMD_SOV_1,
+        ~/Descriptor_Deck_Pack_T64A_SOV_1,
+        ~/Descriptor_Deck_Pack_T64BV1_SOV_1,
+        ~/Descriptor_Deck_Pack_T64BV1_SOV_1,
+        ~/Descriptor_Deck_Pack_T64BV_SOV_1,
+        ~/Descriptor_Deck_Pack_T64BV_SOV_1,
+        ~/Descriptor_Deck_Pack_T64BV_SOV_1,
+        ~/Descriptor_Deck_Pack_T64B1_SOV_1,
+        ~/Descriptor_Deck_Pack_T64B1_reco_SOV_1,
+        ~/Descriptor_Deck_Pack_HvyScout_SOV_BMP_2_reco_SOV_1,
+        ~/Descriptor_Deck_Pack_Scout_SOV_UAZ_469_SOV_0,
+        ~/Descriptor_Deck_Pack_Mi_24K_reco_SOV_1,
+        ~/Descriptor_Deck_Pack_2K12_KUB_SOV_0,
+        ~/Descriptor_Deck_Pack_ZSU_23_Shilka_SOV_1,
+        ~/Descriptor_Deck_Pack_MANPAD_Igla_SOV_UAZ_469_SOV_1,
+        ~/Descriptor_Deck_Pack_Mi_24V_AT_SOV_1,
+        ~/Descriptor_Deck_Pack_Mi_24V_AT_SOV_1,
+        ~/Descriptor_Deck_Pack_Mi_24V_RKT2_SOV_1,
+        ~/Descriptor_Deck_Pack_Su_27S_SOV_1,
+        ~/Descriptor_Deck_Pack_Su_27S_SOV_1,
+        ~/Descriptor_Deck_Pack_MiG_29_AA_SOV_1,
+        ~/Descriptor_Deck_Pack_Su_25_rkt2_SOV_1,
+        ~/Descriptor_Deck_Pack_Su_25_SOV_1,
+        ~/Descriptor_Deck_Pack_Pchela_1T_SOV_1,
     ]
 )
 
@@ -809,6 +1123,51 @@ export Descriptor_Deck_SOV_79_Gds_Tank_multi is TDeckDescriptor
     ]
 )
 
+export Descriptor_Deck_UK_4th_Armoured_multi is TDeckDescriptor
+(
+    DeckName = 'CISOZFOUBO'
+    DeckDivision = ~/Descriptor_Deck_Division_UK_4th_Armoured_multi
+    DeckPackList =
+    [
+        ~/Descriptor_Deck_Pack_Alvis_Stalwart_UK_0,
+        ~/Descriptor_Deck_Pack_AEC_Militant_UK_0,
+        ~/Descriptor_Deck_Pack_CH47D_Chinook_supply_UK_0,
+        ~/Descriptor_Deck_Pack_Rifles_CMD_UK_Saxon_UK_1,
+        ~/Descriptor_Deck_Pack_Rifles_Mot_UK_Saxon_UK_1,
+        ~/Descriptor_Deck_Pack_Rifles_Mot_UK_Bedford_MJ_4t_trans_UK_1,
+        ~/Descriptor_Deck_Pack_HMGteam_MAG_UK_LandRover_UK_1,
+        ~/Descriptor_Deck_Pack_RCL_L6_Wombat_UK_Bedford_MJ_4t_trans_UK_1,
+        ~/Descriptor_Deck_Pack_ATteam_Milan_1_UK_FV432_MILAN_UK_1,
+        ~/Descriptor_Deck_Pack_ATteam_Milan_2_UK_FV120_Spartan_MCT_UK_1,
+        ~/Descriptor_Deck_Pack_FV432_Mortar_UK_0,
+        ~/Descriptor_Deck_Pack_FV433_Abbot_UK_1,
+        ~/Descriptor_Deck_Pack_M107A2_175mm_UK_1,
+        ~/Descriptor_Deck_Pack_FV4201_Chieftain_Mk11_CMD_UK_1,
+        ~/Descriptor_Deck_Pack_FV4201_Chieftain_Mk11_CMD_UK_1,
+        ~/Descriptor_Deck_Pack_FV4201_Chieftain_Mk6_UK_1,
+        ~/Descriptor_Deck_Pack_FV4201_Chieftain_Mk9_UK_1,
+        ~/Descriptor_Deck_Pack_FV4201_Chieftain_Mk9_UK_1,
+        ~/Descriptor_Deck_Pack_FV4201_Chieftain_Mk11_UK_1,
+        ~/Descriptor_Deck_Pack_FV4201_Chieftain_Mk11_UK_1,
+        ~/Descriptor_Deck_Pack_FV4201_Chieftain_Mk11_UK_1,
+        ~/Descriptor_Deck_Pack_FV102_Striker_UK_1,
+        ~/Descriptor_Deck_Pack_Scout_Motorized_UK_Saxon_UK_1,
+        ~/Descriptor_Deck_Pack_Sniper_UK_LandRover_UK_1,
+        ~/Descriptor_Deck_Pack_FV721_Fox_UK_1,
+        ~/Descriptor_Deck_Pack_Lynx_AH_Mk7_Chancellor_UK_1,
+        ~/Descriptor_Deck_Pack_DCA_Javelin_LML_UK_Bedford_MJ_4t_trans_UK_1,
+        ~/Descriptor_Deck_Pack_DCA_Rapier_Darkfire_UK_Rover_101FC_UK_1,
+        ~/Descriptor_Deck_Pack_Tracked_Rapier_UK_1,
+        ~/Descriptor_Deck_Pack_Lynx_AH_Mk1_TOW_UK_2,
+        ~/Descriptor_Deck_Pack_Lynx_AH_Mk7_I_TOW_UK_1,
+        ~/Descriptor_Deck_Pack_F4_Phantom_AA_F3_UK_1,
+        ~/Descriptor_Deck_Pack_F4_Phantom_GR2_HE_UK_1,
+        ~/Descriptor_Deck_Pack_F4_Phantom_GR2_UK_1,
+        ~/Descriptor_Deck_Pack_M107A2_175mm_UK_1,
+        ~/Descriptor_Deck_Pack_Jaguar_RKT_UK_1,
+    ]
+)
+
 export Descriptor_Deck_UK_1st_Armoured_multi is TDeckDescriptor
 (
     DeckName = 'SWPIKAMRSW'
@@ -938,6 +1297,51 @@ export Descriptor_Deck_NATO_Garnison_Berlin_multi is TDeckDescriptor
         ~/Descriptor_Deck_Pack_F117_Nighthawk_US_2,
         ~/Descriptor_Deck_Pack_F117_Nighthawk_US_2,
         ~/Descriptor_Deck_Pack_Lynx_AH_Mk7_I_TOW_UK_1,
+    ]
+)
+
+export Descriptor_Deck_UK_5th_Airborne_Brigade_multi is TDeckDescriptor
+(
+    DeckName = 'DXKFNWMLIP'
+    DeckDivision = ~/Descriptor_Deck_Division_UK_5th_Airborne_Brigade_multi
+    DeckPackList =
+    [
+        ~/Descriptor_Deck_Pack_F16A_AA2_NL_1,
+        ~/Descriptor_Deck_Pack_F4F_Phantom_II_AA_RFA_1,
+        ~/Descriptor_Deck_Pack_Buccaneer_S2B_SEAD_UK_1,
+        ~/Descriptor_Deck_Pack_Mirage_5_BA_BEL_1,
+        ~/Descriptor_Deck_Pack_Iltis_para_CMD_RFA_2,
+        ~/Descriptor_Deck_Pack_ParaCmdo_AT_BEL_Unimog_U1350L_BEL_2,
+        ~/Descriptor_Deck_Pack_ParaCmdo_AT_BEL_Unimog_U1350L_BEL_2,
+        ~/Descriptor_Deck_Pack_ParaCmdo_BEL_Unimog_U1350L_Para_BEL_2,
+        ~/Descriptor_Deck_Pack_Pathfinders_UK_Rover_101FC_UK_2,
+        ~/Descriptor_Deck_Pack_Scout_ParaCmdo_BEL_A109BA_BEL_1,
+        ~/Descriptor_Deck_Pack_Scout_ParaCmdo_Mech_BEL_Iltis_trans_BEL_1,
+        ~/Descriptor_Deck_Pack_LSV_MILAN_UK_3,
+        ~/Descriptor_Deck_Pack_Westland_Scout_SS11_UK_1,
+        ~/Descriptor_Deck_Pack_Wiesel_TOW_RFA_1,
+        ~/Descriptor_Deck_Pack_Faun_Kraka_TOW_RFA_1,
+        ~/Descriptor_Deck_Pack_Supacat_ATMP_MILAN_UK_1,
+        ~/Descriptor_Deck_Pack_FV107_Scimitar_para_BEL_1,
+        ~/Descriptor_Deck_Pack_Lynx_AH_Mk7_I_TOW_UK_1,
+        ~/Descriptor_Deck_Pack_MANPAD_Mistral_para_BEL_Iltis_trans_BEL_1,
+        ~/Descriptor_Deck_Pack_Supacat_ATMP_Javelin_LML_UK_1,
+        ~/Descriptor_Deck_Pack_Faun_Kraka_20mm_RFA_1,
+        ~/Descriptor_Deck_Pack_DCA_Rapier_Darkfire_UK_Rover_101FC_UK_0,
+        ~/Descriptor_Deck_Pack_FV105_Sultan_BEL_2,
+        ~/Descriptor_Deck_Pack_Rover_101FC_supply_UK_0,
+        ~/Descriptor_Deck_Pack_Unimog_U1350L_supply_BEL_1,
+        ~/Descriptor_Deck_Pack_Paratroopers_UK_Rover_101FC_UK_1,
+        ~/Descriptor_Deck_Pack_Paratroopers_UK_Rover_101FC_UK_1,
+        ~/Descriptor_Deck_Pack_Marines_NL_DAF_YA_4400_NL_1,
+        ~/Descriptor_Deck_Pack_Fallschirm_Engineers_RFA_Unimog_trans_RFA_1,
+        ~/Descriptor_Deck_Pack_Rifles_Gurkhas_CMD_UK_LandRover_UK_2,
+        ~/Descriptor_Deck_Pack_ATteam_Milan_2_para_RFA_Iltis_trans_RFA_1,
+        ~/Descriptor_Deck_Pack_ATteam_Milan_1_para_BEL_Unimog_U1350L_BEL_1,
+        ~/Descriptor_Deck_Pack_Howz_L118_105mm_UK_Rover_101FC_UK_1,
+        ~/Descriptor_Deck_Pack_Buccaneer_S2B_ATGM_UK_2,
+        ~/Descriptor_Deck_Pack_FV101_Scorpion_para_BEL_1,
+        ~/Descriptor_Deck_Pack_81mm_mortar_CLU_UK_LandRover_UK_1,
     ]
 )
 
@@ -1200,6 +1604,51 @@ export Descriptor_Deck_US_8th_Inf_multi is TDeckDescriptor
         ~/Descriptor_Deck_Pack_M35_supply_US_0,
         ~/Descriptor_Deck_Pack_M35_supply_US_0,
         ~/Descriptor_Deck_Pack_HEMTT_US_0,
+    ]
+)
+
+export Descriptor_Deck_US_9th_Mot_multi is TDeckDescriptor
+(
+    DeckName = 'VNHPMSAWYT'
+    DeckDivision = ~/Descriptor_Deck_Division_US_9th_Mot_multi
+    DeckPackList =
+    [
+        ~/Descriptor_Deck_Pack_NatGuard_CMD_US_M35_trans_US_1,
+        ~/Descriptor_Deck_Pack_NatGuard_LAW_US_M35_trans_US_0,
+        ~/Descriptor_Deck_Pack_NatGuard_Dragon_US_M35_trans_US_0,
+        ~/Descriptor_Deck_Pack_MP_RCL_US_M1025_Humvee_MP_US_1,
+        ~/Descriptor_Deck_Pack_ATteam_TOW_US_M151_MUTT_trans_US_1,
+        ~/Descriptor_Deck_Pack_LightRifles_CMD_US_M998_Humvee_AGL_US_1,
+        ~/Descriptor_Deck_Pack_LightRifles_LAW_US_M998_Humvee_HMG_US_1,
+        ~/Descriptor_Deck_Pack_LightRifles_Dragon_US_M998_Humvee_HMG_US_1,
+        ~/Descriptor_Deck_Pack_M106A2_Howz_NG_US_0,
+        ~/Descriptor_Deck_Pack_M60A1_AVLM_US_0,
+        ~/Descriptor_Deck_Pack_M109A2_NG_US_0,
+        ~/Descriptor_Deck_Pack_M60A3_CMD_US_1,
+        ~/Descriptor_Deck_Pack_M60A3_Patton_NG_US_1,
+        ~/Descriptor_Deck_Pack_M60A3_Patton_NG_US_1,
+        ~/Descriptor_Deck_Pack_M60A3_Patton_US_1,
+        ~/Descriptor_Deck_Pack_M1025_Humvee_TOW_US_1,
+        ~/Descriptor_Deck_Pack_CUCV_Hellfire_US_1,
+        ~/Descriptor_Deck_Pack_Scout_NG_US_M151_MUTT_trans_US_1,
+        ~/Descriptor_Deck_Pack_Sniper_M82_US_FAV_trans_US_1,
+        ~/Descriptor_Deck_Pack_FAV_AGL_US_1,
+        ~/Descriptor_Deck_Pack_FAV_TOW_US_1,
+        ~/Descriptor_Deck_Pack_MQM_105_Aquila_US_1,
+        ~/Descriptor_Deck_Pack_MANPAD_Stinger_C_US_CUCV_trans_US_1,
+        ~/Descriptor_Deck_Pack_DCA_XM85_Chaparral_US_M35_trans_US_1,
+        ~/Descriptor_Deck_Pack_M998_Avenger_nonPara_US_1,
+        ~/Descriptor_Deck_Pack_AH1F_Hog_US_1,
+        ~/Descriptor_Deck_Pack_AH1F_Cobra_US_1,
+        ~/Descriptor_Deck_Pack_F15C_Eagle_AA2_US_1,
+        ~/Descriptor_Deck_Pack_FA16_CAS_US_1,
+        ~/Descriptor_Deck_Pack_F16E_HE_US_1,
+        ~/Descriptor_Deck_Pack_M270_MLRS_cluster_US_0,
+        ~/Descriptor_Deck_Pack_HMGteam_Mk19_US_CUCV_trans_US_1,
+        ~/Descriptor_Deck_Pack_ATteam_TOW2A_US_CUCV_trans_US_1,
+        ~/Descriptor_Deck_Pack_CUCV_US_0,
+        ~/Descriptor_Deck_Pack_CUCV_US_0,
+        ~/Descriptor_Deck_Pack_M35_supply_US_0,
     ]
 )
 
@@ -2069,6 +2518,580 @@ export Descriptor_Deck_SOV_57_GMRD_challenge_Sledgehammer_OP_04_BOH_Player is TD
     ]
 )
 
+export Descriptor_Deck_UK_5th_Airborne_Brigade_challenge_OP_07_ALAM_BEL is TDeckDescriptor
+(
+    DeckName = 'JXINIYFNXC'
+    DeckIdentifier = 'OP_07_ALAM_BEL'
+    DeckDivision = ~/Descriptor_Deck_Division_UK_5th_Airborne_Brigade_challenge
+    DeckPackList =
+    [
+        ~/Descriptor_Deck_Pack_Paratroopers_CMD_UK_LandRover_UK_2,
+        ~/Descriptor_Deck_Pack_Paratroopers_UK_Rover_101FC_UK_2,
+        ~/Descriptor_Deck_Pack_ParaCmdo_CMD_BEL_Unimog_U1350L_BEL_2,
+        ~/Descriptor_Deck_Pack_ParaCmdo_BEL_Unimog_U1350L_BEL_2,
+        ~/Descriptor_Deck_Pack_ParaCmdo_AT_BEL_Unimog_U1350L_BEL_2,
+        ~/Descriptor_Deck_Pack_ATteam_Milan_2_UK_Supacat_ATMP_UK_2,
+        ~/Descriptor_Deck_Pack_Paratroopers_Engineers_UK_Rover_101FC_UK_3,
+        ~/Descriptor_Deck_Pack_Paratroopers_UK_Rover_101FC_UK_2,
+        ~/Descriptor_Deck_Pack_ParaCmdo_BEL_Unimog_U1350L_BEL_2,
+        ~/Descriptor_Deck_Pack_ParaCmdo_AT_BEL_Unimog_U1350L_BEL_2,
+        ~/Descriptor_Deck_Pack_81mm_mortar_Para_UK_Supacat_ATMP_UK_2,
+        ~/Descriptor_Deck_Pack_Sniper_UK_Supacat_ATMP_UK_3,
+        ~/Descriptor_Deck_Pack_Scout_ParaCmdo_BEL_Unimog_U1350L_BEL_2,
+        ~/Descriptor_Deck_Pack_Pathfinders_UK_CH47_Chinook_UK_3,
+        ~/Descriptor_Deck_Pack_Pathfinders_UK_Rover_101FC_UK_2,
+        ~/Descriptor_Deck_Pack_Mortier_81mm_para_BEL_Unimog_U1350L_BEL_2,
+        ~/Descriptor_Deck_Pack_Mortier_107mm_para_BEL_Unimog_U1350L_BEL_2,
+    ]
+)
+
+export Descriptor_Deck_UK_5th_Airborne_Brigade_challenge_OP_07_ALAM_PLAYER is TDeckDescriptor
+(
+    DeckName = 'XJMQBNGHTX'
+    DeckIdentifier = 'OP_07_ALAM_PLAYER'
+    DeckDivision = ~/Descriptor_Deck_Division_UK_5th_Airborne_Brigade_challenge
+    DeckPackList =
+    [
+        ~/Descriptor_Deck_Pack_FV105_Sultan_para_BEL_1,
+        ~/Descriptor_Deck_Pack_Unimog_supply_BEL_1,
+        ~/Descriptor_Deck_Pack_FV101_Scorpion_para_BEL_1,
+        ~/Descriptor_Deck_Pack_FV107_Scimitar_para_BEL_1,
+        ~/Descriptor_Deck_Pack_FV102_Striker_para_UK_2,
+        ~/Descriptor_Deck_Pack_FV101_Scorpion_UK_2,
+        ~/Descriptor_Deck_Pack_FV107_Scimitar_UK_2,
+        ~/Descriptor_Deck_Pack_Scout_ParaCmdo_Mech_BEL_FV103_Spartan_para_BEL_1,
+        ~/Descriptor_Deck_Pack_Westland_Scout_SS11_UK_1,
+        ~/Descriptor_Deck_Pack_Gazelle_SNEB_reco_UK_1,
+        ~/Descriptor_Deck_Pack_Gazelle_CMD_UK_1,
+        ~/Descriptor_Deck_Pack_Supacat_ATMP_supply_UK_2,
+        ~/Descriptor_Deck_Pack_Mortier_Tampella_120mm_para_RFA_Faun_kraka_RFA_1,
+        ~/Descriptor_Deck_Pack_Supacat_ATMP_MILAN_UK_1,
+        ~/Descriptor_Deck_Pack_Supacat_ATMP_Javelin_LML_UK_2,
+        ~/Descriptor_Deck_Pack_Gazelle_UK_1,
+        ~/Descriptor_Deck_Pack_Iltis_para_CMD_RFA_1,
+        ~/Descriptor_Deck_Pack_Fallschirm_RFA_Unimog_trans_RFA_1,
+        ~/Descriptor_Deck_Pack_Fallschirm_Engineers_RFA_Unimog_trans_RFA_1,
+        ~/Descriptor_Deck_Pack_Fallschirm_B1_RFA_Unimog_trans_RFA_1,
+        ~/Descriptor_Deck_Pack_CH53G_RFA_1,
+        ~/Descriptor_Deck_Pack_Faun_Kraka_Log_RFA_1,
+        ~/Descriptor_Deck_Pack_Fallschirmjager_CMD_RFA_Unimog_trans_RFA_1,
+        ~/Descriptor_Deck_Pack_ATteam_Milan_2_para_RFA_Faun_kraka_RFA_1,
+        ~/Descriptor_Deck_Pack_LandRover_CMD_Para_UK_3,
+        ~/Descriptor_Deck_Pack_LSV_MILAN_UK_3,
+        ~/Descriptor_Deck_Pack_LSV_M2HB_UK_3,
+        ~/Descriptor_Deck_Pack_MANPAD_Javelin_UK_Supacat_ATMP_UK_1,
+        ~/Descriptor_Deck_Pack_Mortier_107mm_para_BEL_Unimog_U1350L_BEL_1,
+        ~/Descriptor_Deck_Pack_Wiesel_TOW_RFA_1,
+        ~/Descriptor_Deck_Pack_Wiesel_20mm_RFA_CH53G_trans_RFA_1,
+        ~/Descriptor_Deck_Pack_SAS_UK_CH47_Chinook_UK_3,
+        ~/Descriptor_Deck_Pack_DCA_Oerlikon_GDF_002_35mm_UK_Rover_101FC_UK_1,
+        ~/Descriptor_Deck_Pack_LRRP_UK_LandRover_UK_3,
+        ~/Descriptor_Deck_Pack_Paratroopers_CMD_UK_LandRover_UK_1,
+        ~/Descriptor_Deck_Pack_Paratroopers_UK_Rover_101FC_UK_1,
+        ~/Descriptor_Deck_Pack_Paratroopers_UK_Rover_101FC_UK_1,
+        ~/Descriptor_Deck_Pack_81mm_mortar_Para_UK_Supacat_ATMP_UK_1,
+        ~/Descriptor_Deck_Pack_ATteam_Milan_2_UK_Supacat_ATMP_UK_1,
+        ~/Descriptor_Deck_Pack_HMGteam_MAG_para_UK_Supacat_ATMP_UK_1,
+    ]
+    DeckCombatGroupList =
+    [
+        TDeckCombatGroupDescriptor
+        (
+            Name = "ALAMEB"
+            SmartGroupList =
+            [
+                TDeckSmartGroupDescriptor
+                (
+                    Name = "QAKJNXRRRG"
+                    PackIndexUnitNumberList =
+                    [
+                        (0,2),
+                        (1,6),
+                    ]
+                ),
+                TDeckSmartGroupDescriptor
+                (
+                    Name = "JHCHYMTDKY"
+                    PackIndexUnitNumberList =
+                    [
+                        (2,4),
+                        (3,4),
+                        (7,2),
+                    ]
+                ),
+                TDeckSmartGroupDescriptor
+                (
+                    Name = "QSZFKKOXBE"
+                    PackIndexUnitNumberList =
+                    [
+                        (2,4),
+                        (3,4),
+                        (7,2),
+                    ]
+                ),
+                TDeckSmartGroupDescriptor
+                (
+                    Name = "ALAMLGT"
+                    PackIndexUnitNumberList =
+                    [
+                        (5,2),
+                        (6,2),
+                        (4,2),
+                    ]
+                ),
+                TDeckSmartGroupDescriptor
+                (
+                    Name = "ALAMSAS"
+                    PackIndexUnitNumberList =
+                    [
+                        (33,2),
+                        (31,2),
+                    ]
+                ),
+            ]
+        ),
+        TDeckCombatGroupDescriptor
+        (
+            Name = "ALAMFJB"
+            SmartGroupList =
+            [
+                TDeckSmartGroupDescriptor
+                (
+                    Name = "GUKJSXEWDZ"
+                    PackIndexUnitNumberList =
+                    [
+                        (22,1),
+                        (19,2),
+                        (12,2),
+                    ]
+                ),
+                TDeckSmartGroupDescriptor
+                (
+                    Name = "UYGPVAOZNQ"
+                    PackIndexUnitNumberList =
+                    [
+                        (20,2),
+                        (21,6),
+                    ]
+                ),
+                TDeckSmartGroupDescriptor
+                (
+                    Name = "SXIIPLTZDL"
+                    PackIndexUnitNumberList =
+                    [
+                        (17,3),
+                        (23,1),
+                        (18,1),
+                    ]
+                ),
+                TDeckSmartGroupDescriptor
+                (
+                    Name = "VIASDOIFLW"
+                    PackIndexUnitNumberList =
+                    [
+                        (17,3),
+                        (23,1),
+                        (18,1),
+                    ]
+                ),
+                TDeckSmartGroupDescriptor
+                (
+                    Name = "MUKJYFOFLY"
+                    PackIndexUnitNumberList =
+                    [
+                        (30,2),
+                        (29,4),
+                    ]
+                ),
+            ]
+        ),
+        TDeckCombatGroupDescriptor
+        (
+            Name = "ALAMUKA1"
+            SmartGroupList =
+            [
+                TDeckSmartGroupDescriptor
+                (
+                    Name = "AFSDTRHFDJ"
+                    PackIndexUnitNumberList =
+                    [
+                        (34,1),
+                        (39,2),
+                        (11,6),
+                    ]
+                ),
+                TDeckSmartGroupDescriptor
+                (
+                    Name = "JJBFRUUKQE"
+                    PackIndexUnitNumberList =
+                    [
+                        (35,2),
+                        (38,1),
+                        (37,1),
+                    ]
+                ),
+                TDeckSmartGroupDescriptor
+                (
+                    Name = "MWAHCSJGPL"
+                    PackIndexUnitNumberList =
+                    [
+                        (35,2),
+                        (38,1),
+                        (37,1),
+                    ]
+                ),
+            ]
+        ),
+        TDeckCombatGroupDescriptor
+        (
+            Name = "ALAMAAC"
+            SmartGroupList =
+            [
+                TDeckSmartGroupDescriptor
+                (
+                    Name = "WGBGQDABLA"
+                    PackIndexUnitNumberList =
+                    [
+                        (10,1),
+                        (15,2),
+                    ]
+                ),
+                TDeckSmartGroupDescriptor
+                (
+                    Name = "OBWKKGSZTP"
+                    PackIndexUnitNumberList =
+                    [
+                        (9,1),
+                        (8,2),
+                    ]
+                ),
+                TDeckSmartGroupDescriptor
+                (
+                    Name = "ROFZTNSYMX"
+                    PackIndexUnitNumberList =
+                    [
+                        (9,1),
+                        (8,2),
+                    ]
+                ),
+            ]
+        ),
+    ]
+)
+
+export Descriptor_Deck_POL_30RMD_84MSR_challenge_OP_07_ALAM_POL is TDeckDescriptor
+(
+    DeckName = 'IAOMEMEULP'
+    DeckIdentifier = 'OP_07_ALAM_POL'
+    DeckDivision = ~/Descriptor_Deck_Division_POL_30RMD_84MSR_challenge
+    DeckPackList =
+    [
+        ~/Descriptor_Deck_Pack_HMGteam_PKM_POL_UAZ_469_trans_POL_1,
+        ~/Descriptor_Deck_Pack_HMGteam_NSV_POL_UAZ_469_trans_POL_1,
+        ~/Descriptor_Deck_Pack_WSW_POL_Star_266_POL_0,
+        ~/Descriptor_Deck_Pack_Reserve_POL_Star_266_POL_0,
+        ~/Descriptor_Deck_Pack_Rifles_CMD_POL_BMP_1_SP2_POL_2,
+        ~/Descriptor_Deck_Pack_Rifles_POL_BMP_1_SP2_POL_2,
+        ~/Descriptor_Deck_Pack_Engineers_POL_Star_266_POL_2,
+        ~/Descriptor_Deck_Pack_ATteam_RCL_SPG9_POL_UAZ_469_trans_POL_1,
+        ~/Descriptor_Deck_Pack_Groupe_AT_POL_Star_266_POL_2,
+        ~/Descriptor_Deck_Pack_Mortier_M43_82mm_POL_UAZ_469_trans_POL_0,
+        ~/Descriptor_Deck_Pack_Mortier_PM43_120mm_POL_UAZ_469_trans_POL_1,
+        ~/Descriptor_Deck_Pack_T34_85M_CMD_POL_0,
+        ~/Descriptor_Deck_Pack_T34_85M_POL_0,
+        ~/Descriptor_Deck_Pack_AT_D44_85mm_POL_Star_266_POL_1,
+        ~/Descriptor_Deck_Pack_T54B_CMD_POL_2,
+        ~/Descriptor_Deck_Pack_T54B_POL_2,
+        ~/Descriptor_Deck_Pack_DCA_AZP_S60_POL_Star_266_POL_1,
+        ~/Descriptor_Deck_Pack_LO_1800_ZPU_2_POL_1,
+        ~/Descriptor_Deck_Pack_Scout_POL_UAZ_469_Reco_POL_1,
+    ]
+)
+
+export Descriptor_Deck_UK_5th_Airborne_Brigade_challenge_OP_07_ALAM_UK is TDeckDescriptor
+(
+    DeckName = 'YUHNIGINKZ'
+    DeckIdentifier = 'OP_07_ALAM_UK'
+    DeckDivision = ~/Descriptor_Deck_Division_UK_5th_Airborne_Brigade_challenge
+    DeckPackList =
+    [
+        ~/Descriptor_Deck_Pack_Paratroopers_CMD_UK_LandRover_UK_2,
+        ~/Descriptor_Deck_Pack_Paratroopers_UK_Rover_101FC_UK_2,
+        ~/Descriptor_Deck_Pack_ParaCmdo_CMD_BEL_Unimog_U1350L_BEL_2,
+        ~/Descriptor_Deck_Pack_ParaCmdo_BEL_Unimog_U1350L_BEL_2,
+        ~/Descriptor_Deck_Pack_ParaCmdo_AT_BEL_Unimog_U1350L_BEL_2,
+        ~/Descriptor_Deck_Pack_ATteam_Milan_2_UK_Supacat_ATMP_UK_2,
+        ~/Descriptor_Deck_Pack_Paratroopers_Engineers_UK_Rover_101FC_UK_3,
+        ~/Descriptor_Deck_Pack_Paratroopers_UK_Rover_101FC_UK_2,
+        ~/Descriptor_Deck_Pack_ParaCmdo_BEL_Unimog_U1350L_BEL_2,
+        ~/Descriptor_Deck_Pack_ParaCmdo_AT_BEL_Unimog_U1350L_BEL_2,
+        ~/Descriptor_Deck_Pack_81mm_mortar_Para_UK_Supacat_ATMP_UK_2,
+        ~/Descriptor_Deck_Pack_Sniper_UK_Supacat_ATMP_UK_3,
+        ~/Descriptor_Deck_Pack_Scout_ParaCmdo_BEL_Unimog_U1350L_BEL_2,
+        ~/Descriptor_Deck_Pack_Pathfinders_UK_CH47_Chinook_UK_3,
+        ~/Descriptor_Deck_Pack_Pathfinders_UK_Rover_101FC_UK_2,
+        ~/Descriptor_Deck_Pack_Scout_Para_UK_Rover_101FC_UK_2,
+        ~/Descriptor_Deck_Pack_Mortier_81mm_para_BEL_Unimog_U1350L_BEL_2,
+        ~/Descriptor_Deck_Pack_Mortier_107mm_para_BEL_Unimog_U1350L_BEL_2,
+    ]
+)
+
+export Descriptor_Deck_RFA_2_PzGrenadier_challenge_OP_08_CONV_ALLY is TDeckDescriptor
+(
+    DeckName = 'BPTJAYDPUX'
+    DeckIdentifier = 'OP_08_CONV_ALLY'
+    DeckDivision = ~/Descriptor_Deck_Division_RFA_2_PzGrenadier_challenge
+    DeckPackList =
+    [
+        ~/Descriptor_Deck_Pack_TPZ_Fuchs_CMD_RFA_1,
+    ]
+)
+
+export Descriptor_Deck_DDR_20MSD_challenge_OP_08_CONV_IA1 is TDeckDescriptor
+(
+    DeckName = 'IVEXRHVFTA'
+    DeckIdentifier = 'OP_08_CONV_IA1'
+    DeckDivision = ~/Descriptor_Deck_Division_DDR_20MSD_challenge
+    DeckPackList =
+    [
+        ~/Descriptor_Deck_Pack_BTR_60_CMD_DDR_1,
+    ]
+)
+
+export Descriptor_Deck_SOV_138_TkInde_challenge_OP_08_CONV_IA2 is TDeckDescriptor
+(
+    DeckName = 'UFWUXIBVOT'
+    DeckIdentifier = 'OP_08_CONV_IA2'
+    DeckDivision = ~/Descriptor_Deck_Division_SOV_138_TkInde_challenge
+    DeckPackList =
+    [
+        ~/Descriptor_Deck_Pack_MotRifles_SOV_BMP_1P_SOV_1,
+        ~/Descriptor_Deck_Pack_T64B_SOV_1,
+        ~/Descriptor_Deck_Pack_2S1_Gvozdika_SOV_3,
+        ~/Descriptor_Deck_Pack_Ural_4320_SOV_1,
+        ~/Descriptor_Deck_Pack_Mortier_2S12_120mm_SOV_GAZ_66_SOV_2,
+        ~/Descriptor_Deck_Pack_T64B_CMD_SOV_2,
+        ~/Descriptor_Deck_Pack_HvyScout_SOV_BMP_1P_reco_SOV_2,
+        ~/Descriptor_Deck_Pack_T64BV1_SOV_1,
+        ~/Descriptor_Deck_Pack_MTLB_Strela10_SOV_1,
+        ~/Descriptor_Deck_Pack_BRM_1_SOV_1,
+        ~/Descriptor_Deck_Pack_Mi_8TV_s57_16_SOV_1,
+    ]
+)
+
+export Descriptor_Deck_NL_4e_Divisie_challenge_OP_08_CONV_PLAYER is TDeckDescriptor
+(
+    DeckName = 'CKYVSBETXA'
+    DeckIdentifier = 'OP_08_CONV_PLAYER'
+    DeckDivision = ~/Descriptor_Deck_Division_NL_4e_Divisie_challenge
+    DeckPackList =
+    [
+        ~/Descriptor_Deck_Pack_AIFV_B_CMD_NL_1,
+        ~/Descriptor_Deck_Pack_AIFV_B_CMD_NL_1,
+        ~/Descriptor_Deck_Pack_AIFV_B_CMD_NL_1,
+        ~/Descriptor_Deck_Pack_HMGteam_M2HB_NL_LandRover_NL_1,
+        ~/Descriptor_Deck_Pack_Scout_NL_LandRover_NL_2,
+        ~/Descriptor_Deck_Pack_Scout_AT_NL_LandRover_NL_2,
+        ~/Descriptor_Deck_Pack_AH1F_Hog_US_2,
+        ~/Descriptor_Deck_Pack_AH1F_Hog_US_2,
+        ~/Descriptor_Deck_Pack_AH1F_Cobra_US_2,
+        ~/Descriptor_Deck_Pack_AH1F_Hog_US_2,
+        ~/Descriptor_Deck_Pack_Leopard_2A4_CMD_NL_3,
+        ~/Descriptor_Deck_Pack_Mech_Rifles_CMD_NL_AIFV_B_C25_NL_2,
+        ~/Descriptor_Deck_Pack_OH58C_CMD_US_2,
+        ~/Descriptor_Deck_Pack_OH58D_Combat_Scout_US_1,
+        ~/Descriptor_Deck_Pack_EH60A_EW_US_3,
+        ~/Descriptor_Deck_Pack_OH58D_Kiowa_Warrior_US_2,
+        ~/Descriptor_Deck_Pack_Mech_Rifles_M72_LAW_NL_AIFV_B_50_NL_1,
+        ~/Descriptor_Deck_Pack_Mech_Rifles_Carl_NL_AIFV_B_50_NL_1,
+        ~/Descriptor_Deck_Pack_M113_CV_25mm_NL_2,
+        ~/Descriptor_Deck_Pack_MANPAD_Stinger_C_NL_LandRover_NL_1,
+        ~/Descriptor_Deck_Pack_Gepard_1A2_NL_1,
+        ~/Descriptor_Deck_Pack_DAF_YA_4400_supply_NL_1,
+        ~/Descriptor_Deck_Pack_DAF_YA_4400_supply_NL_1,
+        ~/Descriptor_Deck_Pack_DAF_YHZ_2300_NL_1,
+        ~/Descriptor_Deck_Pack_Mech_Rifles_Dragon_NL_AIFV_B_C25_NL_3,
+        ~/Descriptor_Deck_Pack_AIFV_B_TOW_NL_2,
+        ~/Descriptor_Deck_Pack_Leopard_2A4_NL_2,
+        ~/Descriptor_Deck_Pack_Mortier_MORT61_120mm_NL_AIFV_B_50_NL_1,
+        ~/Descriptor_Deck_Pack_AIFV_B_Radar_NL_2,
+        ~/Descriptor_Deck_Pack_Engineers_Scout_NL_M113A1_reco_NL_1,
+        ~/Descriptor_Deck_Pack_AIFV_B_Cargo_NL_1,
+        ~/Descriptor_Deck_Pack_Mech_Rifles_CMD_NL_AIFV_B_C25_NL_2,
+        ~/Descriptor_Deck_Pack_Mech_Rifles_Carl_NL_AIFV_B_50_NL_1,
+        ~/Descriptor_Deck_Pack_Leopard_2A4_NL_2,
+        ~/Descriptor_Deck_Pack_UH60A_Supply_US_1,
+    ]
+    DeckCombatGroupList =
+    [
+        TDeckCombatGroupDescriptor
+        (
+            Name = "TLCGWRXMIB"
+            SmartGroupList =
+            [
+                TDeckSmartGroupDescriptor
+                (
+                    PackIndexUnitNumberList =
+                    [
+                        (0,2),
+                        (16,4),
+                        (3,3),
+                    ]
+                ),
+                TDeckSmartGroupDescriptor
+                (
+                    PackIndexUnitNumberList =
+                    [
+                        (18,2),
+                        (5,1),
+                    ]
+                ),
+                TDeckSmartGroupDescriptor
+                (
+                    PackIndexUnitNumberList =
+                    [
+                        (4,4),
+                        (28,3),
+                        (29,1),
+                    ]
+                ),
+                TDeckSmartGroupDescriptor
+                (
+                    PackIndexUnitNumberList =
+                    [
+                        (20,3),
+                        (19,3),
+                    ]
+                ),
+                TDeckSmartGroupDescriptor
+                (
+                    PackIndexUnitNumberList =
+                    [
+                        (30,10),
+                    ]
+                ),
+            ]
+        ),
+        TDeckCombatGroupDescriptor
+        (
+            Name = "MBXHNCRJJX"
+            SmartGroupList =
+            [
+                TDeckSmartGroupDescriptor
+                (
+                    PackIndexUnitNumberList =
+                    [
+                        (11,2),
+                        (24,1),
+                    ]
+                ),
+                TDeckSmartGroupDescriptor
+                (
+                    PackIndexUnitNumberList =
+                    [
+                        (17,3),
+                    ]
+                ),
+                TDeckSmartGroupDescriptor
+                (
+                    PackIndexUnitNumberList =
+                    [
+                        (17,3),
+                    ]
+                ),
+                TDeckSmartGroupDescriptor
+                (
+                    PackIndexUnitNumberList =
+                    [
+                        (25,4),
+                    ]
+                ),
+            ]
+        ),
+        TDeckCombatGroupDescriptor
+        (
+            Name = "GTKWKUORNP"
+            SmartGroupList =
+            [
+                TDeckSmartGroupDescriptor
+                (
+                    PackIndexUnitNumberList =
+                    [
+                        (11,2),
+                        (24,1),
+                    ]
+                ),
+                TDeckSmartGroupDescriptor
+                (
+                    PackIndexUnitNumberList =
+                    [
+                        (17,3),
+                    ]
+                ),
+                TDeckSmartGroupDescriptor
+                (
+                    PackIndexUnitNumberList =
+                    [
+                        (17,3),
+                    ]
+                ),
+                TDeckSmartGroupDescriptor
+                (
+                    PackIndexUnitNumberList =
+                    [
+                        (26,4),
+                    ]
+                ),
+                TDeckSmartGroupDescriptor
+                (
+                    PackIndexUnitNumberList =
+                    [
+                        (27,4),
+                    ]
+                ),
+            ]
+        ),
+        TDeckCombatGroupDescriptor
+        (
+            Name = "UEVZJIOPLE"
+            SmartGroupList =
+            [
+                TDeckSmartGroupDescriptor
+                (
+                    PackIndexUnitNumberList =
+                    [
+                        (12,1),
+                        (34,4),
+                    ]
+                ),
+                TDeckSmartGroupDescriptor
+                (
+                    PackIndexUnitNumberList =
+                    [
+                        (15,1),
+                    ]
+                ),
+                TDeckSmartGroupDescriptor
+                (
+                    PackIndexUnitNumberList =
+                    [
+                        (8,2),
+                        (6,2),
+                    ]
+                ),
+                TDeckSmartGroupDescriptor
+                (
+                    PackIndexUnitNumberList =
+                    [
+                        (14,1),
+                        (13,2),
+                    ]
+                ),
+            ]
+        ),
+    ]
+)
+
 export Descriptor_Deck_SOV_79_Gds_Tank_challenge_IA_OP_09_STB_IA is TDeckDescriptor
 (
     DeckName = 'IBNYUGGVGI'
@@ -2917,6 +3940,110 @@ export Descriptor_Deck_SOV_35_AirAslt_Brig_challenge_OP_12_AA_Player is TDeckDes
     ]
 )
 
+export Descriptor_Deck_BEL_1BEC_challenge_OP_13_SURV_BEL is TDeckDescriptor
+(
+    DeckName = 'PJMMKCXWFW'
+    DeckIdentifier = 'OP_13_SURV_BEL'
+    DeckDivision = ~/Descriptor_Deck_Division_BEL_1BEC_challenge
+    DeckPackList =
+    [
+        ~/Descriptor_Deck_Pack_ParaCmdo_CMD_BEL_2,
+    ]
+)
+
+export Descriptor_Deck_DDR_23_MSB_challenge_OP_13_SURV_DDR is TDeckDescriptor
+(
+    DeckName = 'XIGMFIRPLP'
+    DeckIdentifier = 'OP_13_SURV_DDR'
+    DeckDivision = ~/Descriptor_Deck_Division_DDR_23_MSB_challenge
+    DeckPackList =
+    [
+        ~/Descriptor_Deck_Pack_2K11_KRUG_DDR_2,
+    ]
+)
+
+export Descriptor_Deck_UK_4th_Armoured_challenge_OP_13_SURV_PLAYER is TDeckDescriptor
+(
+    DeckName = 'KGCHFNWUUS'
+    DeckIdentifier = 'OP_13_SURV_PLAYER'
+    DeckDivision = ~/Descriptor_Deck_Division_UK_4th_Armoured_challenge
+    DeckPackList =
+    [
+        ~/Descriptor_Deck_Pack_Alvis_Stalwart_UK_2,
+        ~/Descriptor_Deck_Pack_Rifles_CMD_UK_FV432_UK_2,
+        ~/Descriptor_Deck_Pack_Rifles_AT_UK_FV432_UK_2,
+        ~/Descriptor_Deck_Pack_FV102_Striker_UK_2,
+        ~/Descriptor_Deck_Pack_FV103_Spartan_GSR_UK_2,
+        ~/Descriptor_Deck_Pack_FV107_Scimitar_UK_2,
+        ~/Descriptor_Deck_Pack_Scout_AT_UK_FV103_Spartan_UK_2,
+        ~/Descriptor_Deck_Pack_MANPAD_Javelin_UK_FV432_SCAT_UK_2,
+    ]
+    DeckCombatGroupList =
+    [
+        TDeckCombatGroupDescriptor
+        (
+            Name = "ABCDEFGHIJ"
+            SmartGroupList =
+            [
+                TDeckSmartGroupDescriptor
+                (
+                    Name = "AFSDTRHFDJ"
+                    PackIndexUnitNumberList =
+                    [
+                        (1,1),
+                        (2,2),
+                    ]
+                ),
+                TDeckSmartGroupDescriptor
+                (
+                    Name = "EBAXRQFWNO"
+                    PackIndexUnitNumberList =
+                    [
+                        (6,1),
+                        (4,1),
+                        (5,2),
+                    ]
+                ),
+                TDeckSmartGroupDescriptor
+                (
+                    Name = "JOBFTPNMXP"
+                    PackIndexUnitNumberList =
+                    [
+                        (3,3),
+                    ]
+                ),
+                TDeckSmartGroupDescriptor
+                (
+                    Name = "HBLUTIMQXB"
+                    PackIndexUnitNumberList =
+                    [
+                        (7,1),
+                    ]
+                ),
+                TDeckSmartGroupDescriptor
+                (
+                    Name = "PJPBNSPBOL"
+                    PackIndexUnitNumberList =
+                    [
+                        (0,1),
+                    ]
+                ),
+            ]
+        ),
+    ]
+)
+
+export Descriptor_Deck_SOV_9_Gds_Tank_challenge_OP_13_SURV_SOV is TDeckDescriptor
+(
+    DeckName = 'OTFHKSWPLV'
+    DeckIdentifier = 'OP_13_SURV_SOV'
+    DeckDivision = ~/Descriptor_Deck_Division_SOV_9_Gds_Tank_challenge
+    DeckPackList =
+    [
+        ~/Descriptor_Deck_Pack_2K12_KUB_SOV_2,
+    ]
+)
+
 export Descriptor_Deck_UK_Blues_Royals_challenge_OP_14_HLM_Ally is TDeckDescriptor
 (
     DeckName = 'RVMZYXPTQA'
@@ -3334,6 +4461,175 @@ export Descriptor_Deck_FR_7e_Blindee_challenge_OP_15_LMS_Player is TDeckDescript
     ]
 )
 
+export Descriptor_Deck_POL_11TkD_challenge_OP_16_DA_ALLY is TDeckDescriptor
+(
+    DeckName = 'MSTBCUCXJI'
+    DeckIdentifier = 'OP_16_DA_ALLY'
+    DeckDivision = ~/Descriptor_Deck_Division_POL_11TkD_challenge
+    DeckPackList =
+    [
+        ~/Descriptor_Deck_Pack_BMP_1_CMD_POL_0,
+    ]
+)
+
+export Descriptor_Deck_UK_2nd_Infantry_challenge_OP_16_DA_IA is TDeckDescriptor
+(
+    DeckName = 'CXNHGTNRHO'
+    DeckIdentifier = 'OP_16_DA_IA'
+    DeckDivision = ~/Descriptor_Deck_Division_UK_2nd_Infantry_challenge
+    DeckPackList =
+    [
+        ~/Descriptor_Deck_Pack_AEC_Militant_UK_0,
+        ~/Descriptor_Deck_Pack_Bedford_MJ_4t_trans_UK_0,
+        ~/Descriptor_Deck_Pack_Airmobile_UK_Rover_101FC_UK_0,
+        ~/Descriptor_Deck_Pack_Airmobile_Mot_UK_Saxon_UK_0,
+        ~/Descriptor_Deck_Pack_FH70_155mm_UK_Bedford_MJ_4t_trans_UK_0,
+        ~/Descriptor_Deck_Pack_Airmobile_Mot_UK_Saxon_UK_0,
+        ~/Descriptor_Deck_Pack_FH70_155mm_UK_Bedford_MJ_4t_trans_UK_0,
+        ~/Descriptor_Deck_Pack_LandRover_MILAN_UK_0,
+        ~/Descriptor_Deck_Pack_LandRover_MILAN_UK_0,
+        ~/Descriptor_Deck_Pack_LandRover_MILAN_UK_0,
+        ~/Descriptor_Deck_Pack_FV4201_Chieftain_Mk11_CMD_UK_0,
+        ~/Descriptor_Deck_Pack_FV4201_Chieftain_Mk11_CMD_UK_0,
+        ~/Descriptor_Deck_Pack_FV4201_Chieftain_Mk11_CMD_UK_0,
+        ~/Descriptor_Deck_Pack_FV4201_Chieftain_Mk11_CMD_UK_0,
+        ~/Descriptor_Deck_Pack_FV4201_Chieftain_Mk9_UK_0,
+        ~/Descriptor_Deck_Pack_FV4201_Chieftain_Mk9_UK_0,
+        ~/Descriptor_Deck_Pack_Lynx_AH_Mk7_SNEB_UK_0,
+        ~/Descriptor_Deck_Pack_Lynx_AH_Mk7_I_TOW_UK_0,
+        ~/Descriptor_Deck_Pack_Lynx_AH_Mk7_SNEB_UK_0,
+    ]
+)
+
+export Descriptor_Deck_POL_11TkD_challenge_OP_16_DA_PLAYER is TDeckDescriptor
+(
+    DeckName = 'ZEKANALDPA'
+    DeckIdentifier = 'OP_16_DA_PLAYER'
+    DeckDivision = ~/Descriptor_Deck_Division_POL_11TkD_challenge
+    DeckPackList =
+    [
+        ~/Descriptor_Deck_Pack_BMP_1_CMD_POL_2,
+        ~/Descriptor_Deck_Pack_HMGteam_PKM_POL_UAZ_469_trans_POL_1,
+        ~/Descriptor_Deck_Pack_BRDM_2_POL_1,
+        ~/Descriptor_Deck_Pack_Scout_POL_OT_65_POL_1,
+        ~/Descriptor_Deck_Pack_ZSU_23_Shilka_POL_3,
+        ~/Descriptor_Deck_Pack_Hibneryt_KG_POL_1,
+        ~/Descriptor_Deck_Pack_MANPAD_Strela_2M_POL_UAZ_469_trans_POL_3,
+        ~/Descriptor_Deck_Pack_BRDM_2_Malyu_P_POL_1,
+        ~/Descriptor_Deck_Pack_Star_266_supply_POL_1,
+        ~/Descriptor_Deck_Pack_KrAZ_255B_supply_POL_1,
+        ~/Descriptor_Deck_Pack_MotRifles_POL_BMP_1_SP2_POL_1,
+        ~/Descriptor_Deck_Pack_MotRifles_POL_BMP_1_SP2_POL_1,
+        ~/Descriptor_Deck_Pack_MotRifles_SVD_POL_BMP_1_SP2_POL_1,
+        ~/Descriptor_Deck_Pack_T72M1_CMD_POL_2,
+        ~/Descriptor_Deck_Pack_T72M1_POL_1,
+        ~/Descriptor_Deck_Pack_T72M1_POL_1,
+        ~/Descriptor_Deck_Pack_Engineers_CMD_POL_OT_64_SKOT_2A_POL_2,
+        ~/Descriptor_Deck_Pack_Engineers_POL_OT_64_SKOT_2A_POL_2,
+        ~/Descriptor_Deck_Pack_Engineers_Flam_POL_OT_64_SKOT_2A_POL_2,
+        ~/Descriptor_Deck_Pack_Atteam_Fagot_POL_BMP_1_SP2_POL_2,
+    ]
+    DeckCombatGroupList =
+    [
+        TDeckCombatGroupDescriptor
+        (
+            Name = "ZZKKZZVRVE"
+            SmartGroupList =
+            [
+                TDeckSmartGroupDescriptor
+                (
+                    Name = "JOIVEMBJJI"
+                    PackIndexUnitNumberList =
+                    [
+                        (10,2),
+                        (12,1),
+                        (19,2),
+                    ]
+                ),
+                TDeckSmartGroupDescriptor
+                (
+                    Name = "MSMPVWPGGN"
+                    PackIndexUnitNumberList =
+                    [
+                        (2,2),
+                        (3,1),
+                    ]
+                ),
+                TDeckSmartGroupDescriptor
+                (
+                    Name = "FNMAENNLZY"
+                    PackIndexUnitNumberList =
+                    [
+                        (0,2),
+                        (8,6),
+                    ]
+                ),
+                TDeckSmartGroupDescriptor
+                (
+                    Name = "YVKFIWSNRI"
+                    PackIndexUnitNumberList =
+                    [
+                        (6,3),
+                        (4,1),
+                        (5,2),
+                    ]
+                ),
+                TDeckSmartGroupDescriptor
+                (
+                    Name = "XIPHZFYZRG"
+                    PackIndexUnitNumberList =
+                    [
+                        (16,1),
+                        (17,1),
+                        (18,2),
+                    ]
+                ),
+            ]
+        ),
+        TDeckCombatGroupDescriptor
+        (
+            Name = "ZSZFIHDHFS"
+            SmartGroupList =
+            [
+                TDeckSmartGroupDescriptor
+                (
+                    Name = "JCNMAGMNGX"
+                    PackIndexUnitNumberList =
+                    [
+                        (13,1),
+                        (3,2),
+                        (2,2),
+                    ]
+                ),
+                TDeckSmartGroupDescriptor
+                (
+                    Name = "JRTLVRNIXR"
+                    PackIndexUnitNumberList =
+                    [
+                        (14,3),
+                    ]
+                ),
+                TDeckSmartGroupDescriptor
+                (
+                    Name = "ZMBSTJIBRQ"
+                    PackIndexUnitNumberList =
+                    [
+                        (14,3),
+                    ]
+                ),
+                TDeckSmartGroupDescriptor
+                (
+                    Name = "XESLIAGOBD"
+                    PackIndexUnitNumberList =
+                    [
+                        (14,3),
+                    ]
+                ),
+            ]
+        ),
+    ]
+)
+
 export Descriptor_Deck_SOV_35_AirAslt_Brig_challenge_IA_OP_17_TAU_IA is TDeckDescriptor
 (
     DeckName = 'WHTCQODBUQ'
@@ -3365,6 +4661,208 @@ export Descriptor_Deck_SOV_35_AirAslt_Brig_challenge_IA_OP_17_TAU_IA is TDeckDes
         ~/Descriptor_Deck_Pack_Su_25_clu_SOV_2,
         ~/Descriptor_Deck_Pack_MiG_27M_rkt_SOV_2,
         ~/Descriptor_Deck_Pack_Spetsnaz_FireSupport_SOV_UAZ_469_SOV_3,
+    ]
+)
+
+export Descriptor_Deck_RFA_2_PzGrenadier_challenge_OP_17_TAU_PLAYER is TDeckDescriptor
+(
+    DeckName = 'NZZZQUFXTZ'
+    DeckIdentifier = 'OP_17_TAU_PLAYER'
+    DeckDivision = ~/Descriptor_Deck_Division_RFA_2_PzGrenadier_challenge
+    DeckPackList =
+    [
+        ~/Descriptor_Deck_Pack_M577_RFA_0,
+        ~/Descriptor_Deck_Pack_M113A1G_supply_RFA_0,
+        ~/Descriptor_Deck_Pack_Panzergrenadier_IFV_RFA_Marder_1A3_RFA_0,
+        ~/Descriptor_Deck_Pack_Panzergrenadier_CMD_RFA_Marder_1A3_RFA_0,
+        ~/Descriptor_Deck_Pack_Jager_RFA_Unimog_trans_RFA_0,
+        ~/Descriptor_Deck_Pack_ATteam_Milan_1_RFA_Iltis_trans_RFA_0,
+        ~/Descriptor_Deck_Pack_HMGteam_MG3_RFA_TPZ_Fuchs_MILAN_RFA_0,
+        ~/Descriptor_Deck_Pack_M113_PzMorser_RFA_0,
+        ~/Descriptor_Deck_Pack_Leopard_2A3_RFA_0,
+        ~/Descriptor_Deck_Pack_Luchs_A1_RFA_0,
+        ~/Descriptor_Deck_Pack_Jager_Aufk_RFA_Unimog_trans_RFA_0,
+        ~/Descriptor_Deck_Pack_Jager_CMD_RFA_Unimog_trans_RFA_0,
+        ~/Descriptor_Deck_Pack_Gepard_1A2_RFA_0,
+        ~/Descriptor_Deck_Pack_MANPAD_Redeye_RFA_Iltis_trans_RFA_0,
+        ~/Descriptor_Deck_Pack_Jaguar_2_RFA_0,
+        ~/Descriptor_Deck_Pack_Unimog_S_404_RFA_0,
+        ~/Descriptor_Deck_Pack_Iltis_RFA_0,
+        ~/Descriptor_Deck_Pack_Scout_RFA_Iltis_trans_RFA_0,
+        ~/Descriptor_Deck_Pack_Jager_RFA_Unimog_trans_RFA_0,
+    ]
+    DeckCombatGroupList =
+    [
+        TDeckCombatGroupDescriptor
+        (
+            Name = "XFCFKTSCXQ"
+            SmartGroupList =
+            [
+                TDeckSmartGroupDescriptor
+                (
+                    Name = "GUKJSXEWDZ"
+                    PackIndexUnitNumberList =
+                    [
+                        (0,2),
+                        (8,2),
+                    ]
+                ),
+                TDeckSmartGroupDescriptor
+                (
+                    Name = "RYBYHRLEIC"
+                    PackIndexUnitNumberList =
+                    [
+                        (9,4),
+                    ]
+                ),
+                TDeckSmartGroupDescriptor
+                (
+                    Name = "BSMZLKLWGU"
+                    PackIndexUnitNumberList =
+                    [
+                        (12,2),
+                        (13,10),
+                    ]
+                ),
+                TDeckSmartGroupDescriptor
+                (
+                    Name = "BPRBCMMUYB"
+                    PackIndexUnitNumberList =
+                    [
+                        (1,10),
+                    ]
+                ),
+                TDeckSmartGroupDescriptor
+                (
+                    Name = "BYRGTONJMG"
+                    PackIndexUnitNumberList =
+                    [
+                        (6,2),
+                    ]
+                ),
+            ]
+        ),
+        TDeckCombatGroupDescriptor
+        (
+            Name = "ARDPJBNCLQ"
+            SmartGroupList =
+            [
+                TDeckSmartGroupDescriptor
+                (
+                    Name = "OIYFAPYMUL"
+                    PackIndexUnitNumberList =
+                    [
+                        (3,1),
+                        (2,1),
+                    ]
+                ),
+                TDeckSmartGroupDescriptor
+                (
+                    Name = "RPENHKHWEX"
+                    PackIndexUnitNumberList =
+                    [
+                        (2,3),
+                    ]
+                ),
+                TDeckSmartGroupDescriptor
+                (
+                    Name = "VIASDOIFLW"
+                    PackIndexUnitNumberList =
+                    [
+                        (2,3),
+                    ]
+                ),
+                TDeckSmartGroupDescriptor
+                (
+                    Name = "OHCUVNQEJG"
+                    PackIndexUnitNumberList =
+                    [
+                        (2,2),
+                    ]
+                ),
+            ]
+        ),
+        TDeckCombatGroupDescriptor
+        (
+            Name = "NEOHVIAXMT"
+            SmartGroupList =
+            [
+                TDeckSmartGroupDescriptor
+                (
+                    Name = "XXGZJFQWFV"
+                    PackIndexUnitNumberList =
+                    [
+                        (11,1),
+                        (10,1),
+                        (5,2),
+                    ]
+                ),
+                TDeckSmartGroupDescriptor
+                (
+                    Name = "QMQJGVGPDZ"
+                    PackIndexUnitNumberList =
+                    [
+                        (4,3),
+                    ]
+                ),
+                TDeckSmartGroupDescriptor
+                (
+                    Name = "QTCHQEGXIB"
+                    PackIndexUnitNumberList =
+                    [
+                        (4,3),
+                    ]
+                ),
+                TDeckSmartGroupDescriptor
+                (
+                    Name = "AVMKIWYENZ"
+                    PackIndexUnitNumberList =
+                    [
+                        (4,3),
+                    ]
+                ),
+            ]
+        ),
+        TDeckCombatGroupDescriptor
+        (
+            Name = "NQNBIFTQNV"
+            SmartGroupList =
+            [
+                TDeckSmartGroupDescriptor
+                (
+                    Name = "YAEKLHAAIV"
+                    PackIndexUnitNumberList =
+                    [
+                        (16,2),
+                        (4,4),
+                    ]
+                ),
+                TDeckSmartGroupDescriptor
+                (
+                    Name = "ACTMUKQPTF"
+                    PackIndexUnitNumberList =
+                    [
+                        (17,4),
+                    ]
+                ),
+                TDeckSmartGroupDescriptor
+                (
+                    Name = "SKRJTXJJWH"
+                    PackIndexUnitNumberList =
+                    [
+                        (15,10),
+                    ]
+                ),
+                TDeckSmartGroupDescriptor
+                (
+                    Name = "RLLTXSJBIX"
+                    PackIndexUnitNumberList =
+                    [
+                        (7,3),
+                    ]
+                ),
+            ]
+        ),
     ]
 )
 
@@ -3488,6 +4986,8 @@ private DeckList is TDeckDescriptorList
 (
     DeckListForAutoFill =
     [
+        ~/Descriptor_Deck_BEL_16e_Mecanisee_multi,
+        ~/Descriptor_Deck_RDA_9_Panzer_multi,
         ~/Descriptor_Deck_RDA_4_MSD_multi,
         ~/Descriptor_Deck_RDA_7_Panzer_multi,
         ~/Descriptor_Deck_WP_Unternehmen_Zentrum_multi,
@@ -3496,25 +4996,33 @@ private DeckList is TDeckDescriptorList
         ~/Descriptor_Deck_FR_152e_Infanterie_multi,
         ~/Descriptor_Deck_FR_5e_Blindee_multi,
         ~/Descriptor_Deck_RDA_KdA_Bezirk_Erfurt_multi,
+        ~/Descriptor_Deck_NL_4e_Divisie_multi,
+        ~/Descriptor_Deck_POL_20_Pancerna_multi,
+        ~/Descriptor_Deck_POL_Korpus_Desantowy_multi,
+        ~/Descriptor_Deck_POL_4_Zmechanizowana_multi,
         ~/Descriptor_Deck_RFA_2_PzGrenadier_multi,
         ~/Descriptor_Deck_RFA_5_Panzer_multi,
         ~/Descriptor_Deck_RFA_TerrKdo_Sud_multi,
         ~/Descriptor_Deck_SOV_119IndTkBrig_multi,
+        ~/Descriptor_Deck_SOV_25_Tank_multi,
         ~/Descriptor_Deck_SOV_27_Gds_Rifle_multi,
         ~/Descriptor_Deck_SOV_35_AirAslt_Brig_multi,
         ~/Descriptor_Deck_SOV_39_Gds_Rifle_multi,
         ~/Descriptor_Deck_SOV_6IndMSBrig_multi,
         ~/Descriptor_Deck_SOV_76_VDV_multi,
         ~/Descriptor_Deck_SOV_79_Gds_Tank_multi,
+        ~/Descriptor_Deck_UK_4th_Armoured_multi,
         ~/Descriptor_Deck_UK_1st_Armoured_multi,
         ~/Descriptor_Deck_UK_2nd_Infantry_multi,
         ~/Descriptor_Deck_NATO_Garnison_Berlin_multi,
+        ~/Descriptor_Deck_UK_5th_Airborne_Brigade_multi,
         ~/Descriptor_Deck_US_11ACR_multi,
         ~/Descriptor_Deck_US_24th_Inf_multi,
         ~/Descriptor_Deck_US_35th_Inf_multi,
         ~/Descriptor_Deck_US_3rd_Arm_multi,
         ~/Descriptor_Deck_US_82nd_Airborne_multi,
         ~/Descriptor_Deck_US_8th_Inf_multi,
+        ~/Descriptor_Deck_US_9th_Mot_multi,
         ~/Descriptor_Deck_US_101st_Airmobile_multi,
         ~/Descriptor_Deck_SOV_56_AirAslt_Brig_multi,
     ]
@@ -3534,6 +5042,14 @@ private DeckList is TDeckDescriptorList
         ~/Descriptor_Deck_US_8th_Inf_challenge_IA_OP_04_BOH_IA2,
         ~/Descriptor_Deck_RFA_TerrKdo_Sud_challenge_IA_OP_04_BOH_IA3,
         ~/Descriptor_Deck_SOV_57_GMRD_challenge_Sledgehammer_OP_04_BOH_Player,
+        ~/Descriptor_Deck_UK_5th_Airborne_Brigade_challenge_OP_07_ALAM_BEL,
+        ~/Descriptor_Deck_UK_5th_Airborne_Brigade_challenge_OP_07_ALAM_PLAYER,
+        ~/Descriptor_Deck_POL_30RMD_84MSR_challenge_OP_07_ALAM_POL,
+        ~/Descriptor_Deck_UK_5th_Airborne_Brigade_challenge_OP_07_ALAM_UK,
+        ~/Descriptor_Deck_RFA_2_PzGrenadier_challenge_OP_08_CONV_ALLY,
+        ~/Descriptor_Deck_DDR_20MSD_challenge_OP_08_CONV_IA1,
+        ~/Descriptor_Deck_SOV_138_TkInde_challenge_OP_08_CONV_IA2,
+        ~/Descriptor_Deck_NL_4e_Divisie_challenge_OP_08_CONV_PLAYER,
         ~/Descriptor_Deck_SOV_79_Gds_Tank_challenge_IA_OP_09_STB_IA,
         ~/Descriptor_Deck_US_3rd_Arm_challenge_OP_09_STB_Player,
         ~/Descriptor_Deck_US_3rd_Arm_challenge_IA_OP_11_RGA_IA1,
@@ -3543,6 +5059,10 @@ private DeckList is TDeckDescriptorList
         ~/Descriptor_Deck_RFA_TerrKdo_Sud_challenge_IA_OP_12_AA_IA1,
         ~/Descriptor_Deck_US_8th_Inf_challenge_IA_OP_12_AA_IA2,
         ~/Descriptor_Deck_SOV_35_AirAslt_Brig_challenge_OP_12_AA_Player,
+        ~/Descriptor_Deck_BEL_1BEC_challenge_OP_13_SURV_BEL,
+        ~/Descriptor_Deck_DDR_23_MSB_challenge_OP_13_SURV_DDR,
+        ~/Descriptor_Deck_UK_4th_Armoured_challenge_OP_13_SURV_PLAYER,
+        ~/Descriptor_Deck_SOV_9_Gds_Tank_challenge_OP_13_SURV_SOV,
         ~/Descriptor_Deck_UK_Blues_Royals_challenge_OP_14_HLM_Ally,
         ~/Descriptor_Deck_SOV_35_AirAslt_Brig_challenge_IA_OP_14_HLM_IA1,
         ~/Descriptor_Deck_FR_7e_Blindee_challenge_OP_15_LMS_Ally,
@@ -3550,7 +5070,11 @@ private DeckList is TDeckDescriptorList
         ~/Descriptor_Deck_SOV_79_Gds_Tank_challenge_IA_OP_15_LMS_IA2,
         ~/Descriptor_Deck_SOV_79_Gds_Tank_challenge_IA_OP_15_LMS_IA3,
         ~/Descriptor_Deck_FR_7e_Blindee_challenge_OP_15_LMS_Player,
+        ~/Descriptor_Deck_POL_11TkD_challenge_OP_16_DA_ALLY,
+        ~/Descriptor_Deck_UK_2nd_Infantry_challenge_OP_16_DA_IA,
+        ~/Descriptor_Deck_POL_11TkD_challenge_OP_16_DA_PLAYER,
         ~/Descriptor_Deck_SOV_35_AirAslt_Brig_challenge_IA_OP_17_TAU_IA,
+        ~/Descriptor_Deck_RFA_2_PzGrenadier_challenge_OP_17_TAU_PLAYER,
         ~/Descriptor_Deck_UK_Blues_Royals_challenge_OP_14_HLM_Player,
     ]
 )

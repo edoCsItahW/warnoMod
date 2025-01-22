@@ -132,10 +132,10 @@ PanelSelectionUnique_Nom is BUCKButtonDescriptor
                         )
                     )
                 ),
-                // Fuel
+                // Fuel&Supply
                 BUCKListElementDescriptor
                 (
-                    ComponentDescriptor = ~/AffichageFuel
+                    ComponentDescriptor = ~/AffichageFuelOrSupply
                 ),
             ]
         ),
@@ -395,9 +395,9 @@ private SelectionPanelStressStatus is BUCKContainerDescriptor
 )
 
 // -------------------------------------------------------------------------------------------------
-private AffichageFuel is BUCKContainerDescriptor
+private AffichageFuelOrSupply is BUCKContainerDescriptor
 (
-    ElementName = 'AffichageFuel'
+    ElementName = 'AffichageFuelOrSupply'
 
     ComponentFrame = TUIFramePropertyRTTI
     (
@@ -426,6 +426,7 @@ private AffichageFuel is BUCKContainerDescriptor
             (
                 ComponentDescriptor = BUCKTextDescriptor
                 (
+                    ElementName = 'AffichageFuelOrSupplyText'
                     ComponentFrame = TUIFramePropertyRTTI
                     (
                         // AlignementToAnchor = [0.5, 0.0]
@@ -455,6 +456,7 @@ private AffichageFuel is BUCKContainerDescriptor
                     // Hints
                     Hint = BUCKSpecificHintableArea
                     (
+                        ElementName = 'AffichageFuelOrSupplyHintText'
                         DicoToken = ~/LocalisationConstantes/dico_interface_ingame
                         HintBodyToken = 'pi_fuel'
                     )
@@ -464,7 +466,7 @@ private AffichageFuel is BUCKContainerDescriptor
             (
                 ComponentDescriptor = BUCKTextDescriptor
                 (
-                    ElementName = 'RemainingFuel'
+                    ElementName = 'RemainingFuelOrSupply'
                     ComponentFrame = TUIFramePropertyRTTI
                     (
                         // AlignementToAnchor = [0.5, 0.0]
@@ -493,6 +495,7 @@ private AffichageFuel is BUCKContainerDescriptor
 
                     Hint = BUCKSpecificHintableArea
                     (
+                        ElementName = 'RemainingFuelOrSupplyHintText'
                         DicoToken = ~/LocalisationConstantes/dico_interface_ingame
                         HintBodyToken = 'pi_fuel'
                     )
@@ -1087,5 +1090,33 @@ UISpecificUnitSelectionPanelViewDescriptor is TUISpecificUnitSelectionPanelViewD
         ("mrl_3", "SHB_MRL3"),
         ("mrl_2", "SHB_MRL2"),
         ("mrl_1", "SHB_MRL1")
+    ]
+
+    FuelToken = "UIPA_FUEL"
+    FuelHintToken = "pi_fuel"
+
+    SupplyToken = "UIPA_SUPLY"
+    SupplyHintToken = "pi_supply"
+
+    SupplyButtonData =
+    [
+        TSupplyButtonData
+        (
+            SupplyButtonToken = "USP_SUPAMM"
+            SupplyButtonTexture = "weapon_panel_supply_ammo_texture"
+            SupplyButtonTypeList = [TSupplyType_Ammunition]
+        ),
+        TSupplyButtonData
+        (
+            SupplyButtonToken = "USP_SUPFUL"
+            SupplyButtonTexture = "weapon_panel_supply_fuel_texture"
+            SupplyButtonTypeList = [TSupplyType_Fuel]
+        ),
+        TSupplyButtonData
+        (
+            SupplyButtonToken = "USP_SUPREP"
+            SupplyButtonTexture = "weapon_panel_supply_repair_texture"
+            SupplyButtonTypeList = [TSupplyType_Health, TSupplyType_Critical]
+        ),
     ]
 )

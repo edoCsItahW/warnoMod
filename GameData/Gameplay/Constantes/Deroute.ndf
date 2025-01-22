@@ -52,6 +52,9 @@ unnamed TRoutConstants
     // Sortie de déroute
     // -------------------------------
 
+    // activation de la protection contre la suppression lorsqu'on est en déroute
+    ProtectionContreLaSuppressionEnDeroute = true
+
     // Une unité sort de déroute lorsque TOUTES les conditions de cette section sont vérifiées.
 
     // condition : suppression non arrondie de l'unité <= 'SortieSeuilSuppression'

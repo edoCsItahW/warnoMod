@@ -193,18 +193,25 @@ UseInGame_AdditionalTextureBank is TBUCKToolAdditionalTextureBank
         ("icone_missile",      MAP [ (~/ComponentState/Normal, TUIResourceTexture_Common( FileName='GameData:/Assets/2D/Interface/UseInGame/Icones/missile2.png' )), ] ),
         ("icone_missile_refill",      MAP [ (~/ComponentState/Normal, TUIResourceTexture_Common( FileName='GameData:/Assets/2D/Interface/UseInGame/Icones/missile2_refill.png' )), ] ),
         ("icone_ifv",      MAP [ (~/ComponentState/Normal, TUIResourceTexture_Common( FileName='GameData:/Assets/2D/Interface/UseInGame/Icones/ifv.png' )), ] ),
+        ("icone_ifv_off",      MAP [ (~/ComponentState/Normal, TUIResourceTexture_Common( FileName='GameData:/Assets/2D/Interface/UseInGame/Icones/ifv_off.png' )), ] ),
+        ("icone_resolute",      MAP [ (~/ComponentState/Normal, TUIResourceTexture_Common( FileName='GameData:/Assets/2D/Interface/UseInGame/Icones/resolute.png' )), ] ),
         ("icone_leader",      MAP [ (~/ComponentState/Normal, TUIResourceTexture_Common( FileName='GameData:/Assets/2D/Interface/UseInGame/Icones/leader.png' )), ] ),
         ("icone_mp",      MAP [ (~/ComponentState/Normal, TUIResourceTexture_Common( FileName='GameData:/Assets/2D/Interface/UseInGame/Icones/mp.png' )), ] ),
+        ("icone_mp_given",      MAP [ (~/ComponentState/Normal, TUIResourceTexture_Common( FileName='GameData:/Assets/2D/Interface/UseInGame/Icones/mp_given.png' )), ] ),
+        ("icone_sf",      MAP [ (~/ComponentState/Normal, TUIResourceTexture_Common( FileName='GameData:/Assets/2D/Interface/UseInGame/Icones/sf.png' )), ] ),
         ("icone_gsr",      MAP [ (~/ComponentState/Normal, TUIResourceTexture_Common( FileName='GameData:/Assets/2D/Interface/UseInGame/Icones/gsr.png' )), ] ),
         ("icone_electronic_warfare",      MAP [ (~/ComponentState/Normal, TUIResourceTexture_Common( FileName='GameData:/Assets/2D/Interface/UseInGame/Icones/electronic_warfare.png' )), ] ),
+        ("icone_effet_stressOnMiss",      MAP [ (~/ComponentState/Normal, TUIResourceTexture_Common( FileName='GameData:/Assets/2D/Interface/UseInGame/Icones/effet_stressOnMiss.png' )), ] ),
         ("icone_radar",      MAP [ (~/ComponentState/Normal, TUIResourceTexture_Common( FileName='GameData:/Assets/2D/Interface/UseInGame/Icones/radar.png' )), ] ),
         ("icone_shock",      MAP [ (~/ComponentState/Normal, TUIResourceTexture_Common( FileName='GameData:/Assets/2D/Interface/UseInGame/Icones/shock.png' )), ] ),
+        ("icone_shock_off",      MAP [ (~/ComponentState/Normal, TUIResourceTexture_Common( FileName='GameData:/Assets/2D/Interface/UseInGame/Icones/shock_off.png' )), ] ),
         ("icone_security",      MAP [ (~/ComponentState/Normal, TUIResourceTexture_Common( FileName='GameData:/Assets/2D/Interface/UseInGame/Icones/security.png' )), ] ),
         ("icone_reserviste",      MAP [ (~/ComponentState/Normal, TUIResourceTexture_Common( FileName='GameData:/Assets/2D/Interface/UseInGame/Icones/reserviste.png' )), ] ),
         ("icone_sniper",      MAP [ (~/ComponentState/Normal, TUIResourceTexture_Common( FileName='GameData:/Assets/2D/Interface/UseInGame/Icones/sniper.png' )), ] ),
         ("icone_sniper_off",      MAP [ (~/ComponentState/Normal, TUIResourceTexture_Common( FileName='GameData:/Assets/2D/Interface/UseInGame/Icones/sniper_off.png' )), ] ),
         ("icone_sigint_close",      MAP [ (~/ComponentState/Normal, TUIResourceTexture_Common( FileName='GameData:/Assets/2D/Interface/UseInGame/Icones/sigint_close.png' )), ] ),
         ("icone_sigint_far",      MAP [ (~/ComponentState/Normal, TUIResourceTexture_Common( FileName='GameData:/Assets/2D/Interface/UseInGame/Icones/sigint_far.png' )), ] ),
+        ("icone_sigint_off",      MAP [ (~/ComponentState/Normal, TUIResourceTexture_Common( FileName='GameData:/Assets/2D/Interface/UseInGame/Icones/sigint_off.png' )), ] ),
         ("icone_fireDirection",      MAP [ (~/ComponentState/Normal, TUIResourceTexture_Common( FileName='GameData:/Assets/2D/Interface/UseInGame/Icones/firedirection.png' )), ] ),
 
         ("icone_panne",      MAP [ (~/ComponentState/Normal, TUIResourceTexture_Common( FileName='GameData:/Assets/2D/Interface/UseInGame/Icones/panne.png' )), ] ),
@@ -427,7 +434,9 @@ UseInGame_AdditionalTextureBank is TBUCKToolAdditionalTextureBank
         // Selection panel
         // -------------------------------------------------------------------------------
 
-        ("weapon_panel_supply_texture", MAP [(~/ComponentState/Normal, TUIResourceTexture_Common(FileName = "GameData:/Assets/2D/Interface/UseInGame/Icones/supply.png"))] ),
+        ("weapon_panel_supply_ammo_texture", MAP [(~/ComponentState/Normal, TUIResourceTexture_Common(FileName = "GameData:/Assets/2D/Interface/UseInGame/Icones/supply_ammo.png"))] ),
+        ("weapon_panel_supply_fuel_texture", MAP [(~/ComponentState/Normal, TUIResourceTexture_Common(FileName = "GameData:/Assets/2D/Interface/UseInGame/Icones/supply_fuel.png"))] ),
+        ("weapon_panel_supply_repair_texture", MAP [(~/ComponentState/Normal, TUIResourceTexture_Common(FileName = "GameData:/Assets/2D/Interface/UseInGame/Icones/supply_repair.png"))] ),
 
         // -------------------------------------------------------------------------------
         // Labels

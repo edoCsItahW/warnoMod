@@ -53,13 +53,11 @@ template TemplateDepictionMissile
 [
     Selector,
     ProjectileModelResource,
-    ShadowLessInitialValue,
 ]
 is TDepictionTemplate
 (
     ResidentMaterialTags = [ MaterialTagMech ]
     AdditionalTextures = $/M3D/Shader/VehicleDestTextures
-    ShadowLessInitialValue = <ShadowLessInitialValue>
     Selector = <Selector>
     DepictionAlternatives = [
         TDepictionDescriptor(
@@ -77,7 +75,6 @@ template TemplateDepictionMissileTowed
 ]
 is TemplateDepictionMissile
 (
-    ShadowLessInitialValue = False
     Selector = DepictionTowedMissileSelector( TowedUnit = <TowedUnit> Value = <MissileNumber> )
     ProjectileModelResource = <ProjectileModelResource>
 )
@@ -90,24 +87,22 @@ template TemplateDepictionMissileGroundUnit
 ]
 is TemplateDepictionMissile
 (
-    ShadowLessInitialValue = False
     Selector = DepictionMissileSelector( PhysicalProperty = <PhysicalProperty> Value = <MissileNumber> )
     ProjectileModelResource = <ProjectileModelResource>
 )
 
-template TemplateDepictionStaticMissilesGroundUnit
+template TemplateDepictionStaticMissiles
 [
     PhysicalProperty,
     ProjectileModelResource
 ]
 is TemplateDepictionMissile
 (
-    ShadowLessInitialValue = False
     Selector = DepictionInstancedMissilesSelector( PhysicalProperty = <PhysicalProperty> )
     ProjectileModelResource = <ProjectileModelResource>
 )
 
-template TemplateDepictionStaticRocketsGroundUnit
+template TemplateDepictionStaticRockets
 [
     PhysicalProperty,
     ProjectileModelResource,
@@ -115,46 +110,7 @@ template TemplateDepictionStaticRocketsGroundUnit
 ]
 is TemplateDepictionMissile
 (
-    ShadowLessInitialValue = False
     Selector = DepictionInstancedRocketsSelector( PhysicalProperty = <PhysicalProperty> VisibleRocketCount = <VisibleRocketCount> )
-    ProjectileModelResource = <ProjectileModelResource>
-)
-
-template TemplateDepictionStaticRocketsAirUnit
-[
-    PhysicalProperty,
-    ProjectileModelResource,
-    VisibleRocketCount,
-]
-is TemplateDepictionMissile
-(
-    ShadowLessInitialValue = True
-    Selector = DepictionInstancedRocketsSelector( PhysicalProperty = <PhysicalProperty> VisibleRocketCount = <VisibleRocketCount> )
-    ProjectileModelResource = <ProjectileModelResource>
-)
-
-template TemplateDepictionMissileAirUnit
-[
-    PhysicalProperty,
-    MissileNumber,
-    ProjectileModelResource
-]
-is TemplateDepictionMissile
-(
-    ShadowLessInitialValue = True
-    Selector = DepictionMissileSelector( PhysicalProperty = <PhysicalProperty> Value = <MissileNumber> )
-    ProjectileModelResource = <ProjectileModelResource>
-)
-
-template TemplateDepictionStaticMissilesAirUnit
-[
-    PhysicalProperty,
-    ProjectileModelResource
-]
-is TemplateDepictionMissile
-(
-    ShadowLessInitialValue = True
-    Selector = DepictionInstancedMissilesSelector( PhysicalProperty = <PhysicalProperty> )
     ProjectileModelResource = <ProjectileModelResource>
 )
 

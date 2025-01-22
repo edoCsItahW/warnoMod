@@ -345,6 +345,8 @@ private RenameEditableTextDescriptor is BUCKEditableTextInputFieldDescriptor
         AlignementToAnchor = [0.5, 0.0]
         AlignementToFather = [0.5, 0.0]
     )
+    TextSizeToken = "24"
+
 )
 
 private RenameModal is SpecificModalWindow

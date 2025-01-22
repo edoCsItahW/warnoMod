@@ -9,17 +9,17 @@ tacticalGamePhaseManagerDescriptor is TGamePhaseManagerDescriptor
         deploiementGamePhaseDescriptor,
     ]
 
-    InitPhaseType = $/GFX/Skirmish/CommandPhase
+    InitPhaseType = ~/CommandPhase
 )
 
 private commandGamePhaseDescriptor is TWargameGamePhaseDescriptor
 (
-    GamePhaseType = $/GFX/Skirmish/CommandPhase
+    GamePhaseType = ~/CommandPhase
 )
 
 private deploiementGamePhaseDescriptor is TDeploiementGamePhaseDescriptor
 (
-    GamePhaseType = $/GFX/Skirmish/DeploiementPhase
+    GamePhaseType = ~/DeploiementPhase
 
 // la description pour NotSpecified est obligatoire, c'est celle par défaut pour tous les modes
     ListeProprietesTempsGrace = MAP [

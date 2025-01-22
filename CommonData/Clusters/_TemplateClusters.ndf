@@ -35,6 +35,7 @@ template TemplateClusterWithNDFLoadedSubCluster
     BaseName  : string       = '',
     NameSpace : string       = '',
     FillResourceList : bool    = false,
+    Moddable  : bool = false,
 ] is TClusterWithNDFLoadedSubCluster
 (
     SubClusterName = <SubClusterName>
@@ -43,30 +44,9 @@ template TemplateClusterWithNDFLoadedSubCluster
         BaseName        = <BaseName>
         NameSpace       = <NameSpace>
         FillResourceList = <FillResourceList>
-        Files           = <Files>
-    )]
-)
-//-----------------------------------------------------------------------------
-template TemplateClusterWithNDFLoadedSubCluster_ReloadableForGameplay
-[
-    SubClusterName : string,
-    Files     = [] ,
-    BaseName  : string       = '',
-    NameSpace : string       = '',
-    Moddable  : bool         = false,
-    FillResourceList : bool    = false,
-] is TClusterWithNDFLoadedSubCluster_Reloadable
-(
-    SubClusterName = <SubClusterName>
-    Transactions = [TNDFTransaction
-    (
-        BaseName        = <BaseName>
-        NameSpace       = <NameSpace>
         Moddable        = <Moddable>
-        FillResourceList = <FillResourceList>
         Files           = <Files>
     )]
-    ReloadType = EReloadableType/Gameplay
 )
 //-----------------------------------------------------------------------------
 //*****************************************************************************

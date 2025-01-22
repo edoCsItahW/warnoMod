@@ -64,6 +64,48 @@ export Descriptor_UnitCadavre_FOB_FR is TEntityDescriptor
         ~/DebugModuleDescriptor,
     ]
 )
+export Descriptor_UnitCadavre_FOB_NL is TEntityDescriptor
+(
+    DescriptorId       = GUID:{ee7572e9-31a2-4d9e-889a-8fcac7493845}
+    ClassNameForDebug  = 'BuildingCadavre_FOB_NL'
+    ModulesDescriptors = [
+        ~/CadavreFlagsModuleDescriptor,
+        ~/BuildingCadavrePositionModuleDescriptor,
+        ~/LinkTeamModuleDescriptor,
+        BuildingCadavreModuleDescriptor
+        (
+            CadavreDuration = $/GFX/Unit/CadavreDurationApresFeu
+            ModuleDescriptorsToSteal =
+            [
+                ~/Descriptor_Unit_FOB_NL/ApparenceModel,
+            ]
+        ),
+        ~/Descriptor_Unit_FOB_NL/ApparenceModel,
+        ~/PackSignauxModuleDescriptor,
+        ~/DebugModuleDescriptor,
+    ]
+)
+export Descriptor_UnitCadavre_FOB_POL is TEntityDescriptor
+(
+    DescriptorId       = GUID:{c551e822-2ba5-4498-85f2-02480cd5821c}
+    ClassNameForDebug  = 'BuildingCadavre_FOB_POL'
+    ModulesDescriptors = [
+        ~/CadavreFlagsModuleDescriptor,
+        ~/BuildingCadavrePositionModuleDescriptor,
+        ~/LinkTeamModuleDescriptor,
+        BuildingCadavreModuleDescriptor
+        (
+            CadavreDuration = $/GFX/Unit/CadavreDurationApresFeu
+            ModuleDescriptorsToSteal =
+            [
+                ~/Descriptor_Unit_FOB_POL/ApparenceModel,
+            ]
+        ),
+        ~/Descriptor_Unit_FOB_POL/ApparenceModel,
+        ~/PackSignauxModuleDescriptor,
+        ~/DebugModuleDescriptor,
+    ]
+)
 export Descriptor_UnitCadavre_FOB_RFA is TEntityDescriptor
 (
     DescriptorId       = GUID:{f2f8d4f5-5023-45df-bd1d-f1c38b87ba5d}

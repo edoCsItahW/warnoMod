@@ -4,6 +4,9 @@ Tactic_GroupModuleDescriptor is TGroupModuleDescriptor
 (
 )
 
+Tactic_GroupMovementModuleDescriptor is TGroupMovementModuleDescriptor
+(
+)
 
 Tactic_GroupStateEngineDescriptor is TStateEngineGroupModuleDescriptor
 (
@@ -15,10 +18,10 @@ export Tactic_ModularUnitGroupDescriptor is TEntityDescriptor
     DescriptorId = GUID:{00000000-0000-0000-0000-000012000000}
     ClassNameForDebug = 'TacticGroup'
 
-
     ModulesDescriptors =
     [
         ~/Tactic_GroupModuleDescriptor,
+        ~/Tactic_GroupMovementModuleDescriptor,
         ~/Tactic_GroupStateEngineDescriptor,
     ]
 )

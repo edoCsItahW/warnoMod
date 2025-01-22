@@ -48,6 +48,12 @@ ConditionTagRaisedInUnit_xp_veteran_1 is TConditionTagRaisedInUnit
     Tag             = "xp_veteran"
     Amount          = 1
 )
+ConditionTagNotRaisedInUnit_IFV_ok_1 is TConditionTagNotRaisedInUnit
+(
+    DescriptorId    = GUID:{d02fd01f-e8cd-45fd-9af7-bc29611b5c6d}
+    Tag             = "IFV_ok"
+    Amount          = 1
+)
 ConditionTagNotRaisedInUnit_Panique_1 is TConditionTagNotRaisedInUnit
 (
     DescriptorId    = GUID:{98a1f046-aa7e-40dd-a112-7bcb5ebfebc2}
@@ -66,6 +72,12 @@ ConditionTagNotRaisedInUnit_Retraite_1 is TConditionTagNotRaisedInUnit
     Tag             = "Retraite"
     Amount          = 1
 )
+ConditionTagNotRaisedInUnit_choc_ok_1 is TConditionTagNotRaisedInUnit
+(
+    DescriptorId    = GUID:{c03f56e5-2fb9-4eaa-a88f-e8a04020a0d7}
+    Tag             = "choc_ok"
+    Amount          = 1
+)
 ConditionTagNotRaisedInUnit_reserviste_immune_1 is TConditionTagNotRaisedInUnit
 (
     DescriptorId    = GUID:{c15662e0-5e4a-4f97-8970-76c84c739398}
@@ -76,6 +88,18 @@ ConditionTagNotRaisedInUnit_sigint_close_1 is TConditionTagNotRaisedInUnit
 (
     DescriptorId    = GUID:{197d6af0-7b04-4960-aa5f-351ce53a8157}
     Tag             = "sigint_close"
+    Amount          = 1
+)
+ConditionTagNotRaisedInUnit_sigint_ok_1 is TConditionTagNotRaisedInUnit
+(
+    DescriptorId    = GUID:{4ffb1486-4921-4e1d-b1a8-8af5fb2777f6}
+    Tag             = "sigint_ok"
+    Amount          = 1
+)
+ConditionTagNotRaisedInUnit_snipe_ok_1 is TConditionTagNotRaisedInUnit
+(
+    DescriptorId    = GUID:{815f3c8e-89c1-4537-888b-0df4a15f7956}
+    Tag             = "snipe_ok"
     Amount          = 1
 )
 ConditionNotInMovement is TConditionNotInMovement

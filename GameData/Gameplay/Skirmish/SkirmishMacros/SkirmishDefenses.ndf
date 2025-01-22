@@ -10,7 +10,6 @@
 // DisableReinforcement : si on recoit des renforts en cours d'attaque ou pas
 // IgnoreSafePath : Le pathfind de la mission cherche ou non à esquiver la menace
 // TuerLaMissionEnFinDeVieAuLieuDeLaRelancer : (bool)
-// LaunchASAP_RatioMin : permet de lancer l'attaque sans attendre toutes les unites requises à combiner avec ProdProperties = [TProdProperty_LaunchAsSoonAsPossible]
 // MissionOmnisciente : Pas utilise dans Normandie (systeme de connaissance de zone)
 //-------------------------------------------------------------------------
 // Parametres TMacroActionDescriptor_CorridorDefense_Specific
@@ -68,7 +67,7 @@ is TMacroActionDescriptor_CorridorDefense_Specific
             (["DefenseAA"], [~/Pool_AA_Defense]),
             (["DefenseTank"], [~/Pool_AT_Defense]),
         ])
-        LaunchASAP_RatioMin = 0.01 DisableReinforcement = true),
+        DisableReinforcement = true),
         TMacroActionLifetimeSettingHolder(MinimumResourceForLaunch = <MinimumResourceForLaunch>),
     ]
 )
@@ -98,7 +97,7 @@ is TMacroActionDescriptor_CorridorDynamicDefense_Specific
             (["DefenseAA"], [~/Pool_AA_Defense]),
             (["DefenseTank"], [~/Pool_AT_Defense]),
         ])
-        LaunchASAP_RatioMin = 0.01 DisableReinforcement = true),
+        DisableReinforcement = true),
         TMacroActionLifetimeSettingHolder(MinimumResourceForLaunch = <MinimumResourceForLaunch>),
     ]
 )
@@ -764,7 +763,7 @@ is TMacroActionDescriptor_Defense_Specific
         TAirStrikeSettingHolder(Setting = ~/BasicAirstrikeSupport),
         TArtilleryAmountSettingHolder(ArtilleryAmount = 1),
         TSupportSettingHolder(SettingList = [Renfort_TransportsAbandonnes]),
-        TMacroActionProductionSettingHolder(ProdProperties = [TProdProperty_LaunchAsSoonAsPossible] PoolModelList = <PoolModelList> LaunchASAP_RatioMin = 0.01 DisableReinforcement = true),
+        TMacroActionProductionSettingHolder(ProdProperties = [TProdProperty_LaunchAsSoonAsPossible] PoolModelList = <PoolModelList> DisableReinforcement = true),
     ]
 )
 

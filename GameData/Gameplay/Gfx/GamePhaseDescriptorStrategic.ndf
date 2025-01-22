@@ -8,7 +8,7 @@ strategicGamePhaseManagerDescriptor is TGamePhaseManagerDescriptor
         strategicGamePhase,
     ]
 
-    InitPhaseType = $/GFX/Skirmish/StrategicGame
+    InitPhaseType = ~/StrategicGame
 )
 
 //------------------------------------------------------------------------
@@ -17,5 +17,5 @@ strategicGamePhaseManagerDescriptor is TGamePhaseManagerDescriptor
 
 private strategicGamePhase is TStrategicGamePhaseDescriptor
 (
-    GamePhaseType = $/GFX/Skirmish/StrategicGame
+    GamePhaseType = ~/StrategicGame
 )

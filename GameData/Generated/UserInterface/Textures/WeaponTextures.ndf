@@ -178,6 +178,10 @@ Texture_Interface_Weapon_d44 is TUIResourceTexture_Common
 (
     FileName = "GameData:/Assets/2D/Interface/Common/UnitsIcons/Armes/Panel_Info/d44.png"
 )
+Texture_Interface_Weapon_Canon_AP_85mm_D48 is TUIResourceTexture_Common
+(
+    FileName = "GameData:/Assets/2D/Interface/Common/UnitsIcons/Armes/Panel_Info/Canon_AP_85mm_D48.png"
+)
 Texture_Interface_Weapon_Canon_AP_85mm_K52 is TUIResourceTexture_Common
 (
     FileName = "GameData:/Assets/2D/Interface/Common/UnitsIcons/Armes/Panel_Info/Canon_AP_85mm_K52.png"
@@ -282,6 +286,10 @@ Texture_Interface_Weapon_APZ23 is TUIResourceTexture_Common
 (
     FileName = "GameData:/Assets/2D/Interface/Common/UnitsIcons/Armes/Panel_Info/APZ23.png"
 )
+Texture_Interface_Weapon_DCA_4_canons_Maxson is TUIResourceTexture_Common
+(
+    FileName = "GameData:/Assets/2D/Interface/Common/UnitsIcons/Armes/Panel_Info/DCA_4_canons_Maxson.png"
+)
 Texture_Interface_Weapon_AK74 is TUIResourceTexture_Common
 (
     FileName = "GameData:/Assets/2D/Interface/Common/UnitsIcons/Armes/Panel_Info/AK74.png"
@@ -337,6 +345,18 @@ Texture_Interface_Weapon_FM_SIG_540 is TUIResourceTexture_Common
 Texture_Interface_Weapon_SIG_543 is TUIResourceTexture_Common
 (
     FileName = "GameData:/Assets/2D/Interface/Common/UnitsIcons/Armes/Panel_Info/SIG_543.png"
+)
+Texture_Interface_Weapon_FM_Tantal is TUIResourceTexture_Common
+(
+    FileName = "GameData:/Assets/2D/Interface/Common/UnitsIcons/Armes/Panel_Info/FM_Tantal.png"
+)
+Texture_Interface_Weapon_FM_kbk_AKM is TUIResourceTexture_Common
+(
+    FileName = "GameData:/Assets/2D/Interface/Common/UnitsIcons/Armes/Panel_Info/FM_kbk_AKM.png"
+)
+Texture_Interface_Weapon_FM_kbk_AKMS is TUIResourceTexture_Common
+(
+    FileName = "GameData:/Assets/2D/Interface/Common/UnitsIcons/Armes/Panel_Info/FM_kbk_AKMS.png"
 )
 Texture_Interface_Weapon_m197_vulcan is TUIResourceTexture_Common
 (
@@ -494,6 +514,10 @@ Texture_Interface_Weapon_L13A1 is TUIResourceTexture_Common
 (
     FileName = "GameData:/Assets/2D/Interface/Common/UnitsIcons/Armes/Panel_Info/L13A1.png"
 )
+Texture_Interface_Weapon_L13A1_Direct is TUIResourceTexture_Common
+(
+    FileName = "GameData:/Assets/2D/Interface/Common/UnitsIcons/Armes/Panel_Info/L13A1_Direct.png"
+)
 Texture_Interface_Weapon_M101_105mm is TUIResourceTexture_Common
 (
     FileName = "GameData:/Assets/2D/Interface/Common/UnitsIcons/Armes/Panel_Info/M101_105mm.png"
@@ -513,6 +537,10 @@ Texture_Interface_Weapon_M114_39 is TUIResourceTexture_Common
 Texture_Interface_Weapon_M114_39_AP is TUIResourceTexture_Common
 (
     FileName = "GameData:/Assets/2D/Interface/Common/UnitsIcons/Armes/Panel_Info/M114_39_AP.png"
+)
+Texture_Interface_Weapon_M118_Direct is TUIResourceTexture_Common
+(
+    FileName = "GameData:/Assets/2D/Interface/Common/UnitsIcons/Armes/Panel_Info/M118_Direct.png"
 )
 Texture_Interface_Weapon_M118 is TUIResourceTexture_Common
 (
@@ -762,6 +790,10 @@ Texture_Interface_Weapon_armbrust is TUIResourceTexture_Common
 (
     FileName = "GameData:/Assets/2D/Interface/Common/UnitsIcons/Armes/Panel_Info/armbrust.png"
 )
+Texture_Interface_Weapon_RocketInf_B11_RCL_107mm_TOWED is TUIResourceTexture_Common
+(
+    FileName = "GameData:/Assets/2D/Interface/Common/UnitsIcons/Armes/Panel_Info/RocketInf_B11_RCL_107mm_TOWED.png"
+)
 Texture_Interface_Weapon_Blindicide_RL100 is TUIResourceTexture_Common
 (
     FileName = "GameData:/Assets/2D/Interface/Common/UnitsIcons/Armes/Panel_Info/Blindicide_RL100.png"
@@ -789,6 +821,10 @@ Texture_Interface_Weapon_LRAC_73 is TUIResourceTexture_Common
 Texture_Interface_Weapon_LRAC_f1 is TUIResourceTexture_Common
 (
     FileName = "GameData:/Assets/2D/Interface/Common/UnitsIcons/Armes/Panel_Info/LRAC_f1.png"
+)
+Texture_Interface_Weapon_RocketInf_M20_SuperBaz is TUIResourceTexture_Common
+(
+    FileName = "GameData:/Assets/2D/Interface/Common/UnitsIcons/Armes/Panel_Info/RocketInf_M20_SuperBaz.png"
 )
 Texture_Interface_Weapon_M202_flash is TUIResourceTexture_Common
 (
@@ -842,9 +878,9 @@ Texture_Interface_Weapon_RPG7 is TUIResourceTexture_Common
 (
     FileName = "GameData:/Assets/2D/Interface/Common/UnitsIcons/Armes/Panel_Info/RPG7.png"
 )
-Texture_Interface_Weapon_RPG76 is TUIResourceTexture_Common
+Texture_Interface_Weapon_RocketInf_RPG76_Komar is TUIResourceTexture_Common
 (
-    FileName = "GameData:/Assets/2D/Interface/Common/UnitsIcons/Armes/Panel_Info/RPG76.png"
+    FileName = "GameData:/Assets/2D/Interface/Common/UnitsIcons/Armes/Panel_Info/RocketInf_RPG76_Komar.png"
 )
 Texture_Interface_Weapon_RPO_RYS is TUIResourceTexture_Common
 (
@@ -1066,6 +1102,10 @@ Texture_Interface_Weapon_Kh_25ML is TUIResourceTexture_Common
 (
     FileName = "GameData:/Assets/2D/Interface/Common/UnitsIcons/Armes/Panel_Info/Kh_25ML.png"
 )
+Texture_Interface_Weapon_AGM_Kh25MP is TUIResourceTexture_Common
+(
+    FileName = "GameData:/Assets/2D/Interface/Common/UnitsIcons/Armes/Panel_Info/AGM_Kh25MP.png"
+)
 Texture_Interface_Weapon_Kh_28 is TUIResourceTexture_Common
 (
     FileName = "GameData:/Assets/2D/Interface/Common/UnitsIcons/Armes/Panel_Info/Kh_28.png"
@@ -1275,6 +1315,7 @@ WeaponAdditionalTextureBank is TBUCKToolAdditionalTextureBank
         ("Texture_Interface_Weapon_Scorpion_Canon", MAP [(~/ComponentState/Normal, ~/Texture_Interface_Weapon_Scorpion_Canon)]),
         ("Texture_Interface_Weapon_Canon_AP_90mm_KanJPz", MAP [(~/ComponentState/Normal, ~/Texture_Interface_Weapon_Canon_AP_90mm_KanJPz)]),
         ("Texture_Interface_Weapon_d44", MAP [(~/ComponentState/Normal, ~/Texture_Interface_Weapon_d44)]),
+        ("Texture_Interface_Weapon_Canon_AP_85mm_D48", MAP [(~/ComponentState/Normal, ~/Texture_Interface_Weapon_Canon_AP_85mm_D48)]),
         ("Texture_Interface_Weapon_Canon_AP_85mm_K52", MAP [(~/ComponentState/Normal, ~/Texture_Interface_Weapon_Canon_AP_85mm_K52)]),
         ("Texture_Interface_Weapon_F3", MAP [(~/ComponentState/Normal, ~/Texture_Interface_Weapon_F3)]),
         ("Texture_Interface_Weapon_Canon_AP_90mm_CN90_F4", MAP [(~/ComponentState/Normal, ~/Texture_Interface_Weapon_Canon_AP_90mm_CN90_F4)]),
@@ -1301,6 +1342,7 @@ WeaponAdditionalTextureBank is TBUCKToolAdditionalTextureBank
         ("Texture_Interface_Weapon_2A38M", MAP [(~/ComponentState/Normal, ~/Texture_Interface_Weapon_2A38M)]),
         ("Texture_Interface_Weapon_HS_831A", MAP [(~/ComponentState/Normal, ~/Texture_Interface_Weapon_HS_831A)]),
         ("Texture_Interface_Weapon_APZ23", MAP [(~/ComponentState/Normal, ~/Texture_Interface_Weapon_APZ23)]),
+        ("Texture_Interface_Weapon_DCA_4_canons_Maxson", MAP [(~/ComponentState/Normal, ~/Texture_Interface_Weapon_DCA_4_canons_Maxson)]),
         ("Texture_Interface_Weapon_AK74", MAP [(~/ComponentState/Normal, ~/Texture_Interface_Weapon_AK74)]),
         ("Texture_Interface_Weapon_AKs74", MAP [(~/ComponentState/Normal, ~/Texture_Interface_Weapon_AKs74)]),
         ("Texture_Interface_Weapon_M16", MAP [(~/ComponentState/Normal, ~/Texture_Interface_Weapon_M16)]),
@@ -1315,6 +1357,9 @@ WeaponAdditionalTextureBank is TBUCKToolAdditionalTextureBank
         ("Texture_Interface_Weapon_MAS_49_56", MAP [(~/ComponentState/Normal, ~/Texture_Interface_Weapon_MAS_49_56)]),
         ("Texture_Interface_Weapon_FM_SIG_540", MAP [(~/ComponentState/Normal, ~/Texture_Interface_Weapon_FM_SIG_540)]),
         ("Texture_Interface_Weapon_SIG_543", MAP [(~/ComponentState/Normal, ~/Texture_Interface_Weapon_SIG_543)]),
+        ("Texture_Interface_Weapon_FM_Tantal", MAP [(~/ComponentState/Normal, ~/Texture_Interface_Weapon_FM_Tantal)]),
+        ("Texture_Interface_Weapon_FM_kbk_AKM", MAP [(~/ComponentState/Normal, ~/Texture_Interface_Weapon_FM_kbk_AKM)]),
+        ("Texture_Interface_Weapon_FM_kbk_AKMS", MAP [(~/ComponentState/Normal, ~/Texture_Interface_Weapon_FM_kbk_AKMS)]),
         ("Texture_Interface_Weapon_m197_vulcan", MAP [(~/ComponentState/Normal, ~/Texture_Interface_Weapon_m197_vulcan)]),
         ("Texture_Interface_Weapon_Gatling_GAU19_12_7mm", MAP [(~/ComponentState/Normal, ~/Texture_Interface_Weapon_Gatling_GAU19_12_7mm)]),
         ("Texture_Interface_Weapon_JakB", MAP [(~/ComponentState/Normal, ~/Texture_Interface_Weapon_JakB)]),
@@ -1354,11 +1399,13 @@ WeaponAdditionalTextureBank is TBUCKToolAdditionalTextureBank
         ("Texture_Interface_Weapon_D30", MAP [(~/ComponentState/Normal, ~/Texture_Interface_Weapon_D30)]),
         ("Texture_Interface_Weapon_GCT_F1", MAP [(~/ComponentState/Normal, ~/Texture_Interface_Weapon_GCT_F1)]),
         ("Texture_Interface_Weapon_L13A1", MAP [(~/ComponentState/Normal, ~/Texture_Interface_Weapon_L13A1)]),
+        ("Texture_Interface_Weapon_L13A1_Direct", MAP [(~/ComponentState/Normal, ~/Texture_Interface_Weapon_L13A1_Direct)]),
         ("Texture_Interface_Weapon_M101_105mm", MAP [(~/ComponentState/Normal, ~/Texture_Interface_Weapon_M101_105mm)]),
         ("Texture_Interface_Weapon_m102", MAP [(~/ComponentState/Normal, ~/Texture_Interface_Weapon_m102)]),
         ("Texture_Interface_Weapon_M113A1", MAP [(~/ComponentState/Normal, ~/Texture_Interface_Weapon_M113A1)]),
         ("Texture_Interface_Weapon_M114_39", MAP [(~/ComponentState/Normal, ~/Texture_Interface_Weapon_M114_39)]),
         ("Texture_Interface_Weapon_M114_39_AP", MAP [(~/ComponentState/Normal, ~/Texture_Interface_Weapon_M114_39_AP)]),
+        ("Texture_Interface_Weapon_M118_Direct", MAP [(~/ComponentState/Normal, ~/Texture_Interface_Weapon_M118_Direct)]),
         ("Texture_Interface_Weapon_M118", MAP [(~/ComponentState/Normal, ~/Texture_Interface_Weapon_M118)]),
         ("Texture_Interface_Weapon_m185", MAP [(~/ComponentState/Normal, ~/Texture_Interface_Weapon_m185)]),
         ("Texture_Interface_Weapon_M201A", MAP [(~/ComponentState/Normal, ~/Texture_Interface_Weapon_M201A)]),
@@ -1421,6 +1468,7 @@ WeaponAdditionalTextureBank is TBUCKToolAdditionalTextureBank
         ("Texture_Interface_Weapon_APILAS", MAP [(~/ComponentState/Normal, ~/Texture_Interface_Weapon_APILAS)]),
         ("Texture_Interface_Weapon_at4_cs", MAP [(~/ComponentState/Normal, ~/Texture_Interface_Weapon_at4_cs)]),
         ("Texture_Interface_Weapon_armbrust", MAP [(~/ComponentState/Normal, ~/Texture_Interface_Weapon_armbrust)]),
+        ("Texture_Interface_Weapon_RocketInf_B11_RCL_107mm_TOWED", MAP [(~/ComponentState/Normal, ~/Texture_Interface_Weapon_RocketInf_B11_RCL_107mm_TOWED)]),
         ("Texture_Interface_Weapon_Blindicide_RL100", MAP [(~/ComponentState/Normal, ~/Texture_Interface_Weapon_Blindicide_RL100)]),
         ("Texture_Interface_Weapon_Blindicide_RL83", MAP [(~/ComponentState/Normal, ~/Texture_Interface_Weapon_Blindicide_RL83)]),
         ("Texture_Interface_Weapon_carl_gustave", MAP [(~/ComponentState/Normal, ~/Texture_Interface_Weapon_carl_gustave)]),
@@ -1428,6 +1476,7 @@ WeaponAdditionalTextureBank is TBUCKToolAdditionalTextureBank
         ("Texture_Interface_Weapon_LAW_80", MAP [(~/ComponentState/Normal, ~/Texture_Interface_Weapon_LAW_80)]),
         ("Texture_Interface_Weapon_LRAC_73", MAP [(~/ComponentState/Normal, ~/Texture_Interface_Weapon_LRAC_73)]),
         ("Texture_Interface_Weapon_LRAC_f1", MAP [(~/ComponentState/Normal, ~/Texture_Interface_Weapon_LRAC_f1)]),
+        ("Texture_Interface_Weapon_RocketInf_M20_SuperBaz", MAP [(~/ComponentState/Normal, ~/Texture_Interface_Weapon_RocketInf_M20_SuperBaz)]),
         ("Texture_Interface_Weapon_M202_flash", MAP [(~/ComponentState/Normal, ~/Texture_Interface_Weapon_M202_flash)]),
         ("Texture_Interface_Weapon_M40A1_RCL", MAP [(~/ComponentState/Normal, ~/Texture_Interface_Weapon_M40A1_RCL)]),
         ("Texture_Interface_Weapon_m68_rcl", MAP [(~/ComponentState/Normal, ~/Texture_Interface_Weapon_m68_rcl)]),
@@ -1441,7 +1490,7 @@ WeaponAdditionalTextureBank is TBUCKToolAdditionalTextureBank
         ("Texture_Interface_Weapon_RPG27", MAP [(~/ComponentState/Normal, ~/Texture_Interface_Weapon_RPG27)]),
         ("Texture_Interface_Weapon_RPG29", MAP [(~/ComponentState/Normal, ~/Texture_Interface_Weapon_RPG29)]),
         ("Texture_Interface_Weapon_RPG7", MAP [(~/ComponentState/Normal, ~/Texture_Interface_Weapon_RPG7)]),
-        ("Texture_Interface_Weapon_RPG76", MAP [(~/ComponentState/Normal, ~/Texture_Interface_Weapon_RPG76)]),
+        ("Texture_Interface_Weapon_RocketInf_RPG76_Komar", MAP [(~/ComponentState/Normal, ~/Texture_Interface_Weapon_RocketInf_RPG76_Komar)]),
         ("Texture_Interface_Weapon_RPO_RYS", MAP [(~/ComponentState/Normal, ~/Texture_Interface_Weapon_RPO_RYS)]),
         ("Texture_Interface_Weapon_RPO_RYS_x4", MAP [(~/ComponentState/Normal, ~/Texture_Interface_Weapon_RPO_RYS_x4)]),
         ("Texture_Interface_Weapon_RPO", MAP [(~/ComponentState/Normal, ~/Texture_Interface_Weapon_RPO)]),
@@ -1497,6 +1546,7 @@ WeaponAdditionalTextureBank is TBUCKToolAdditionalTextureBank
         ("Texture_Interface_Weapon_hot", MAP [(~/ComponentState/Normal, ~/Texture_Interface_Weapon_hot)]),
         ("Texture_Interface_Weapon_Kh_23M", MAP [(~/ComponentState/Normal, ~/Texture_Interface_Weapon_Kh_23M)]),
         ("Texture_Interface_Weapon_Kh_25ML", MAP [(~/ComponentState/Normal, ~/Texture_Interface_Weapon_Kh_25ML)]),
+        ("Texture_Interface_Weapon_AGM_Kh25MP", MAP [(~/ComponentState/Normal, ~/Texture_Interface_Weapon_AGM_Kh25MP)]),
         ("Texture_Interface_Weapon_Kh_28", MAP [(~/ComponentState/Normal, ~/Texture_Interface_Weapon_Kh_28)]),
         ("Texture_Interface_Weapon_Kh_29", MAP [(~/ComponentState/Normal, ~/Texture_Interface_Weapon_Kh_29)]),
         ("Texture_Interface_Weapon_AGM_Kh29L", MAP [(~/ComponentState/Normal, ~/Texture_Interface_Weapon_AGM_Kh29L)]),

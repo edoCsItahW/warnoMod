@@ -2468,7 +2468,6 @@ EndgameResultAnimationComponent is BUCKContainerDescriptor
                 AlignementToFather = [0.5, 0.5]
             )
 
-            TriggerWhenSetVisible = true
             AnimationTotalDuration = 4
 
             FramePropertyAfterAnimation = TUIFramePropertyRTTI

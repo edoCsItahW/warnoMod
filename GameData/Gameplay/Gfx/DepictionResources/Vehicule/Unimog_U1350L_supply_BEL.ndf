@@ -1,0 +1,14 @@
+export Modele_Unimog_U1350L_supply_BEL is TResourceMesh
+(
+    Mesh="GameData:/Assets/3D/Units/BEL/Vehicule/UNIMOG_U1350L/UNIMOG_U1350L.fbx"
+)
+
+export Modele_Unimog_U1350L_supply_BEL_MID is TResourceMesh
+(
+    Mesh="GameData:/Assets/3D/Units/BEL/Vehicule/UNIMOG_U1350L/UNIMOG_U1350L.fbx"
+)
+
+export Modele_Unimog_U1350L_supply_BEL_LOW is TResourceMesh
+(
+    Mesh="GameData:/Assets/3D/Units/BEL/Vehicule/UNIMOG_U1350L/UNIMOG_U1350L.fbx"
+)

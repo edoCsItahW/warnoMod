@@ -552,8 +552,8 @@ is BUCKListDescriptor
                 )
 
                 Axis = ~/ListAxis/Vertical
-                FirstMargin = TRTTILength( Magnifiable = 8.0 )
-                InterItemMargin = TRTTILength( Magnifiable = 8.0 )
+                FirstMargin = TRTTILength( Magnifiable = 2.0 )
+                InterItemMargin = TRTTILength( Magnifiable = 2.0 )
                 LastMargin = TRTTILength( Magnifiable = 8.0 )
                 BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromFrameProperty
 
@@ -733,7 +733,8 @@ template TemplateTextScore
     IsTitre : bool = false,
     IsBold : bool = false,
     TextColor : string = "SM_paleSilver",
-    TextDico = ~/LocalisationConstantes/dico_interface_ingame
+    TextDico = ~/LocalisationConstantes/dico_interface_ingame,
+    TextSize : string = '16'
 ]
 
  is BUCKTextDescriptor
@@ -822,6 +823,7 @@ template TemplateTextVictory
 
 private TerritoryLine is TemplateTextScore
 (
+    TextSize = '12'
 )
 
 //-------------------------------------------------------------------------------------

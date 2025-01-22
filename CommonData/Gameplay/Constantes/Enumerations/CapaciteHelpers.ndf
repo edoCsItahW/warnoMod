@@ -43,7 +43,3 @@ CapaciteFeedbackActivationMask_selected    is 16
 CapaciteFeedbackActivationMask_anytime     is 32
 CapaciteFeedbackActivationMask_soloselected is 64
 CapaciteFeedbackActivationMask_always      is -1
-
-
-CapaciteInfluenceMapType_global is 0
-CapaciteInfluenceMapType_zones  is 1

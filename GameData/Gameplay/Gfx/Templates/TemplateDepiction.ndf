@@ -28,7 +28,7 @@ LOD_Low  is 'low'
 // ****************************************************************************************************************************************
 template DepictionDescriptor_LOD_High
 [
-    MeshDescriptor : TResourceMultiMaterialMesh,
+    MeshDescriptor : TResourceMesh,
     SelectorId = LOD_High
 ]
 is TDepictionDescriptor
@@ -39,7 +39,7 @@ is TDepictionDescriptor
 // ****************************************************************************************************************************************
 template DepictionDescriptor_LOD_Mid
 [
-    MeshDescriptor : TResourceMultiMaterialMesh,
+    MeshDescriptor : TResourceMesh,
     SelectorId = LOD_Mid
 ]
 is TDepictionDescriptor
@@ -51,7 +51,7 @@ is TDepictionDescriptor
 // ****************************************************************************************************************************************
 template DepictionDescriptor_LOD_Low
 [
-    MeshDescriptor : TResourceMultiMaterialMesh,
+    MeshDescriptor : TResourceMesh,
     SelectorId = LOD_Low,
     DisabledOperators = []
 ]
@@ -73,7 +73,7 @@ AlternativeNone is TMeshlessDepictionDescriptor
 
 template DepictionDescriptor_LOD_InfantryHigh
 [
-    MeshDescriptor : TResourceMultiMaterialMesh
+    MeshDescriptor : TResourceMesh
 ]
 is TDepictionDescriptor
 (
@@ -83,7 +83,7 @@ is TDepictionDescriptor
 
 template DepictionDescriptor_LOD_InfantryLow
 [
-    MeshDescriptor : TResourceMultiMaterialMesh
+    MeshDescriptor : TResourceMesh
 ]
 is TDepictionDescriptor
 (
@@ -100,7 +100,7 @@ template TemplateAllSubWeaponDepiction
     Anchors = ['arme_1']
     Depiction = TDepictionTemplate
     (
-        Selector = $/GFX/Unit/SoldierDynamicWeaponSubDepictionSelector
+        Selector = ~/SoldierDynamicWeaponSubDepictionSelector
         DepictionAlternatives = <Alternatives>
         Operators = <Operators>
     )
@@ -114,7 +114,7 @@ template TemplateAllSubBackpackWeaponDepiction
     Anchors = ['arme_2']
     Depiction = TDepictionTemplate
     (
-        Selector = $/GFX/Unit/SoldierDynamicBackpackWeaponSubDepictionSelector
+        Selector = ~/SoldierDynamicBackpackWeaponSubDepictionSelector
         DepictionAlternatives = <Alternatives>
     )
 )
@@ -208,36 +208,6 @@ template TemplateInfantryDepictionSquad
     ]
     Operators = [ <SoundOperator>, DepictionOperator_AlwaysAliveSoundProbe ]
   )
-)
-
-InfantryDepictionSquadShowroom is TTimelyDepictionReceiverFactory
-(
-  DepictionTemplate = TDepictionTemplate
-  (
-    Selector = OnlyHighDepictionSelector
-    DepictionAlternatives = [
-      DepictionDescriptor_LOD_High(MeshDescriptor = $/GFX/DepictionResources/Rien),
-    ]
-  )
-)
-
-template TransportedInfantryDepiction
-[ Index, Alternatives, Counts ]
- is TDepictionTemplate
-(
-    Selector = TTransportedInfantrySelector
-    (
-        Index = <Index>
-        Counts = <Counts>
-        HighNoneLimitInMeter = LodHighLowLimit_Infantry
-        CameraMoverManager = $/Camera/CameraMoverManager
-        OptionalLimit = $/GraphicOption/ModelQuality
-    )
-
-    Operators = [ TCosmeticFreezeSkeletalAnimationOperatorDesc(Animation = $/GFX/DepictionResources/FusilierTransport) ]
-
-    DepictionAlternatives = <Alternatives>
-        + [ DepictionDescriptor_LOD_High( MeshDescriptor = $/GFX/DepictionResources/FuldaSoldier ) ] //pour avoir un 'high' pour le skeleton
 )
 
 template GhostUnitDepictionTemplate
@@ -404,6 +374,46 @@ is TSubDepiction
     )
 )
 
+template TransportedInfantryDepiction
+[
+    Index,
+] is TDepictionTemplate
+(
+    Selector = TTransportedInfantrySelector
+    (
+        Index = <Index>
+        TransportedInfantryCatalog = $/DepictionCore/TransportedInfantryCatalog
+        HighNoneLimitInMeter = LodHighLowLimit_Infantry
+        CameraMoverManager = $/Camera/CameraMoverManager
+        OptionalLimit = $/GraphicOption/ModelQuality
+    )
+
+    Operators = [ TCosmeticFreezeSkeletalAnimationOperatorDesc(Animation = $/GFX/DepictionResources/FusilierTransport) ]
+
+    DepictionAlternatives = [ DepictionDescriptor_LOD_High( MeshDescriptor = $/GFX/DepictionResources/FuldaSoldier ) ] // pour avoir un 'high' pour le skeleton
+)
+template TransportedInfantrySubGenerator
+[
+    Mesh,
+] is TTransportedInfantrySubDepictionGenerator
+(
+    TransportedInfantryCatalog = $/DepictionCore/TransportedInfantryCatalog
+    ReferenceMesh = <Mesh>
+    Soldiers =
+    [
+        TransportedInfantryDepiction( Index = 1 ),
+        TransportedInfantryDepiction( Index = 2 ),
+        TransportedInfantryDepiction( Index = 3 ),
+        TransportedInfantryDepiction( Index = 4 ),
+        TransportedInfantryDepiction( Index = 5 ),
+        TransportedInfantryDepiction( Index = 6 ),
+        TransportedInfantryDepiction( Index = 7 ),
+        TransportedInfantryDepiction( Index = 8 ),
+        TransportedInfantryDepiction( Index = 9 ),
+        TransportedInfantryDepiction( Index = 10 ),
+    ]
+)
+
 AlternativeTowedNone is TMeshlessDepictionDescriptor
 (
     SelectorId = ['none']
@@ -449,7 +459,6 @@ is TSubDepiction
                 (
                     ResidentMaterialTags = [ MaterialTagMech ]
                     AdditionalTextures = $/M3D/Shader/VehicleDestTextures
-                    ShadowLessInitialValue = False
                     Selector = TSubDepictionInstancedTowedMissileSelector
                     (
                         HighNoneLimitInMeter = LodHighNoneLimit_Missile
@@ -463,14 +472,13 @@ is TSubDepiction
     )
 )
 
-template RocketSubDepictionTemplateCommon
+template RocketSubDepictionTemplate
 [
     UnitMeshDescriptor,
     RocketMeshDescriptor,
     RocketCount,
     WeaponIndex,
     PhysicalProperty,
-    RocketDepiction,
     AirStartGroupIndex = 0,
     GroundStartGroupIndex = 0,
 ] is TRocketSubDepictionGenerator
@@ -496,65 +504,18 @@ template RocketSubDepictionTemplateCommon
     [
         TRocketSubDepictionMissileInfo
         (
-            Depiction = <RocketDepiction>
+            Depiction = TemplateDepictionStaticRockets
+            (
+                PhysicalProperty = <PhysicalProperty>
+                ProjectileModelResource = <RocketMeshDescriptor>
+                VisibleRocketCount = <RocketCount>
+            )
             MissileCount = <RocketCount>
             WeaponIndex = <WeaponIndex>
         ),
     ]
     Pylons = ~/DepictionPylonSet_ATGM
     ReferenceMesh = <UnitMeshDescriptor>
-)
-
-template RocketSubDepictionTemplate
-[
-    UnitMeshDescriptor,
-    RocketMeshDescriptor,
-    RocketCount,
-    WeaponIndex,
-    PhysicalProperty,
-    AirStartGroupIndex = 0,
-    GroundStartGroupIndex = 0,
-] is RocketSubDepictionTemplateCommon
-(
-    UnitMeshDescriptor = <UnitMeshDescriptor>
-    RocketMeshDescriptor = <RocketMeshDescriptor>
-    RocketCount = <RocketCount>
-    WeaponIndex = <WeaponIndex>
-    PhysicalProperty = <PhysicalProperty>
-    AirStartGroupIndex = <AirStartGroupIndex>
-    GroundStartGroupIndex = <GroundStartGroupIndex>
-    RocketDepiction = TemplateDepictionStaticRocketsGroundUnit
-    (
-        PhysicalProperty = <PhysicalProperty>
-        ProjectileModelResource = <RocketMeshDescriptor>
-        VisibleRocketCount = <RocketCount>
-    )
-)
-
-template RocketAirplaneSubDepictionTemplate
-[
-    UnitMeshDescriptor,
-    RocketMeshDescriptor,
-    RocketCount,
-    WeaponIndex,
-    PhysicalProperty,
-    AirStartGroupIndex = 0,
-    GroundStartGroupIndex = 0
-] is RocketSubDepictionTemplateCommon
-(
-    UnitMeshDescriptor = <UnitMeshDescriptor>
-    RocketMeshDescriptor = <RocketMeshDescriptor>
-    RocketCount = <RocketCount>
-    WeaponIndex = <WeaponIndex>
-    PhysicalProperty = <PhysicalProperty>
-    AirStartGroupIndex = <AirStartGroupIndex>
-    GroundStartGroupIndex = <GroundStartGroupIndex>
-    RocketDepiction = TemplateDepictionStaticRocketsAirUnit
-    (
-        PhysicalProperty = <PhysicalProperty>
-        ProjectileModelResource = <RocketMeshDescriptor>
-        VisibleRocketCount = <RocketCount>
-    )
 )
 
 template ShowroomRocketSubDepictionTemplate

@@ -1,6 +1,6 @@
 // A incrémenter quand on veut provoquer une recompilation des glads chez tout le monde sans gêner personne
 
-// Version : 00559
+// Version : 00564
 
 //-----------------------------------------------------------------------------
 // differentes constantes utilisees un peu partout.
@@ -347,27 +347,6 @@ CommandName is TBaseClass
     DectivateTestText3D is "Text3DTest::Deactivate"
     ActivateTestObjective is "ObjectiveTest::ActivateDeactivate"
     ActivateDeactivateLabelTest is "LabelTest::ActivateDeactivate"
-
-    PythonLib25PackLoad is "Lib25PythonPack::Load"
-    PythonLib25PackUnload is "Lib25PythonPack::Unload"
-
-    PatchablePythonPackLoad is "PatchableResourcePythonPack::Load"
-    PatchablePythonPackUnload is "PatchableResourcePythonPack::Unload"
-
-    PythonPackLoad is "ResourcePythonPack::Load"
-    PythonPackUnload is "ResourcePythonPack::Unload"
-
-    EugenPythonPackLoad is "EugenResourcePythonPack::Load"
-    EugenPythonPackUnload is "EugenResourcePythonPack::Unload"
-
-    EugenSoloPythonPackLoad is "EugenSoloResourcePythonPack::Load"
-    EugenSoloPythonPackUnload is "EugenSoloResourcePythonPack::Unload"
-
-    EugenTestPythonPackLoad is "EugenTestResourcePythonPack::Load"
-    EugenTestPythonPackUnload is "EugenTestResourcePythonPack::Unload"
-
-    EugenScriptTestAutoPythonPackLoad is "EugenScriptTestAutoResourcePythonPack::Load"
-    EugenScriptTestAutoPythonPackUnload is "EugenScriptTestAutoResourcePythonPack::Unload"
 
     SituationAwarenessNextEvent is "TInstancePositionEvents::Trigg"
 

@@ -25,7 +25,7 @@ is TMacroActionDescriptor_CorridorAttack_Specific
         TGenerationSettingHolder(GenerationType = TGenerationType_FixedSize NumberLaunchBasedOnGenerationType = <NumberLaunchBasedOnGenerationType>),
         TCoordinationSettingHolder(CoordinationType = ESupportingStatus/NeedSupport),
         TMacroActionProductionSettingHolder(ProdProperties = [TProdProperty_LaunchAsSoonAsPossible] PoolModelList = <MainAttackPoolModelList>
-            TaggedPoolModelList = [(["AttackMain"], <MainAttackPoolModelList>)] PrioritizeCorridorsForTaggedPoolModels = true LaunchASAP_RatioMin = 0.01),
+            TaggedPoolModelList = [(["AttackMain"], <MainAttackPoolModelList>)] PrioritizeCorridorsForTaggedPoolModels = true),
         TAttackRatioSettingHolder(RatioMinimumPourAttaquer = <RatioMinimumPourAttaquer> RatioPourAttaquerPerduAChaqueTick = 0.00084), // Perte de 0.1 de ratio toutes les 2 minutes
         TCorridorPlacementSettingHolder(MargeDeRegroupementDepuisLaLigneDeFront = 1 ActiveComportementEnBoutDeCouloir = true),
     ]
@@ -113,9 +113,8 @@ export Blackhorse_Side_Attack is TMacroActionDescriptor_CorridorAttack_Specific
     [
         TGenerationSettingHolder(GenerationType = TGenerationType_FixedSize NumberLaunchBasedOnGenerationType = 1),
         TMacroActionProductionSettingHolder(ProdProperties = [TProdProperty_LaunchAsSoonAsPossible]
-        PoolModelList = [ Pool_BlackHorse_Attack, ] LaunchASAP_RatioMin = 0.01),
+        PoolModelList = [ Pool_BlackHorse_Attack, ]),
         TAttackRatioSettingHolder(RatioMinimumPourAttaquer = 1.0 RatioPourAttaquerPerduAChaqueTick = 0.001),
-        TAntiStackingSettingHolder(),
         TCorridorPlacementSettingHolder(MargeDeRegroupementDepuisLaLigneDeFront = 1 ActiveComportementEnBoutDeCouloir = true),
     ]
 )
@@ -147,7 +146,7 @@ is TMacroActionDescriptor_CorridorAttack_Specific
         ParametresDeMission =
     [
         TGenerationSettingHolder(GenerationType = TGenerationType_FixedSize NumberLaunchBasedOnGenerationType = 1 ConsiderOnlyAssignedCorridors = true),
-        TMacroActionProductionSettingHolder(ProdProperties = [TProdProperty_LaunchAsSoonAsPossible] PoolModelList = <PoolModelList> LaunchASAP_RatioMin = 0.01),
+        TMacroActionProductionSettingHolder(ProdProperties = [TProdProperty_LaunchAsSoonAsPossible] PoolModelList = <PoolModelList>),
         TAttackRatioSettingHolder(RatioMinimumPourAttaquer = <RatioMinimumPourAttaquer>),
         TCorridorPlacementSettingHolder(MargeDeRegroupementDepuisLaLigneDeFront = 1 ActiveComportementEnBoutDeCouloir = true),
     ]

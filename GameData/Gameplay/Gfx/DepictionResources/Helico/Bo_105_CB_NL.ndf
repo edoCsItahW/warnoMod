@@ -1,0 +1,17 @@
+export Modele_Bo_105_CB_NL is TResourceMesh
+(
+    Mesh="GameData:/Assets/3D/Units/RFA/Helico/BO_105_M_trans/BO_105_M_trans.fbx"
+    Textures="GameData:/Assets/3D/Units/NL/Helico/BO_105_M_trans"
+)
+
+export Modele_Bo_105_CB_NL_MID is TResourceMesh
+(
+    Mesh="GameData:/Assets/3D/Units/RFA/Helico/BO_105_M_trans_MID/BO_105_M_trans_MID.fbx"
+    Textures="GameData:/Assets/3D/Units/NL/Helico/BO_105_M_trans_MID"
+)
+
+export Modele_Bo_105_CB_NL_LOW is TResourceMesh
+(
+    Mesh="GameData:/Assets/3D/Units/RFA/Helico/BO_105_M_trans_LOW/BO_105_M_trans_LOW.fbx"
+    Textures="GameData:/Assets/3D/Units/NL/Helico/BO_105_M_trans_LOW"
+)

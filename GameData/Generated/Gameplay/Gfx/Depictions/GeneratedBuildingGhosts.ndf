@@ -5,6 +5,8 @@ BuildingMimeticGhost is MAP[
   ( 'FOB_BEL', 'FOB_Nato_03' ),
   ( 'FOB_DDR', 'FOB_Pact_03' ),
   ( 'FOB_FR', 'FOB_Nato_03' ),
+  ( 'FOB_NL', 'FOB_Nato_03' ),
+  ( 'FOB_POL', 'FOB_Pact_03' ),
   ( 'FOB_RFA', 'FOB_Nato_03' ),
   ( 'FOB_SOV', 'FOB_Pact_03' ),
   ( 'FOB_UK', 'FOB_Nato_03' ),
